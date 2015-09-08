@@ -8,3 +8,11 @@ li{
 ul{
 	padding: 0;
 }
+.container{
+	max-width: 960px;
+	margin: auto;
+}
+.red{
+	background-color: red;
+	color: blue;
+}
