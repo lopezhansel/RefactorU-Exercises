@@ -22,3 +22,18 @@ for (var i = 0; i < 9; i+=1){
 		console.log(3);
 	}
 }
+// 4: increment by twos to 10
+console.log("4: increment by twos till 10");
+for (var i = 0; i < 11; i+=2){
+	console.log(i); 
+}
+// 5: increment by threes till 15
+console.log("5: increment by threes till 15");
+for (var i = 0; i < 16; i+=3){
+	console.log(i); 
+}
+// 6: increment by 3s till 15
+console.log("6: increment by 3s till 15");
+for (var i = 0; i < 16; i+=3){
+	console.log(i); 
+}
