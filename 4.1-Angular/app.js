@@ -7,7 +7,7 @@ var app = angular.module('myApp', []);
 app.controller('MainController', ['$scope', function($scope){
 	$scope.hideH1  = false;
 	$scope.hideList = true;
-	$scope.redText = true;
+	$scope.redText = false;
 
 	$scope.toggleH1 = function(){         
 		console.log("hello world");

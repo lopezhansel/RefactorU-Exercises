@@ -10,6 +10,7 @@ ul{
 }
 .container{
 	max-width: 960px;
+	padding: 15px;
 	margin: auto;
 }
 .red{
