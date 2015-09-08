@@ -3,8 +3,8 @@
 *
 * Description
 */
-var app = angular.module('myapp', []);
-app.controller('MainController', ['$scope', function(){
+var app = angular.module('myApp', []);
+app.controller('MainController', ['$scope', function($scope){
 	$scope.hideH1  = false;
 	$scope.hideList = true;
 

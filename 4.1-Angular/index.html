@@ -5,12 +5,12 @@
 	<link rel="stylesheet" href="main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
-<body>
-<div class="container">
-	<button>Toggle Hello World</button>
-	<h1>Hello World</h1>
-	<button>Toggle List</button>
-	<ul>
+<body ng-app="myApp">
+<div class="container" ng-controller="MainController">
+	<button ng-click="toggleH1()">Toggle Hello World</button>
+	<h1 ng-hide="hideH1">Hello World</h1>
+	<button ng-click="toggleList()">Toggle List</button>
+	<ul ng-hide="hideList">
 		<li>item 1</li>
 		<li>item 2</li>
 		<li>item 3</li>
