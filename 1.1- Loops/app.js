@@ -37,3 +37,8 @@ console.log("6: increment by 3s till 15");
 for (var i = 0; i < 16; i+=3){
 	console.log(i); 
 }
+// 7: 0,1,2,3 x 4
+console.log("7: 0,1,2,3 x 3");
+for (var i = 0; i < 12; i+=1){
+	console.log(i%4); 
+}
