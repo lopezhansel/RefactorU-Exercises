@@ -1,1 +1,10 @@
-main.css
+body{
+	text-align: center;
+}
+li{
+		list-style: none;
+		text-align: center;
+}
+ul{
+	padding: 0;
+}
