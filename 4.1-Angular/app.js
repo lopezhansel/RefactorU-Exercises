@@ -30,6 +30,10 @@ app.controller('MainController', ['$scope', '$timeout', function($scope, $timeou
 		var yesOrNo = confirm('are you sure you want to leave');
     	yesOrNo === true ? 'ok': evt.preventDefault()
 	}
+	$scope.showPopUp = false;
+	$scope.popUp = function(){
+		$scope.showPopUp = !$scope.showPopUp
+	}
 
 	// this is thed old excite method
 	// $scope.excite = function (input){

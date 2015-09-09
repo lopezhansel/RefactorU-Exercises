@@ -6,7 +6,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
 <body ng-app="myApp">
-<div class="container" ng-controller="MainController">
+<div ng-controller="MainController">
+	
+		<div class="popUp" ng-show="showPopUp" ng-click="popUp(true)">Hello</div>
+<div class="container" >
 	<button ng-click="toggleH1()">Toggle Hello World</button>
 	<h1 ng-hide="hideH1">Hello World</h1>
 	<button ng-click="toggleList()">Toggle List</button>
@@ -16,7 +19,7 @@
 		<li>item 3</li>
 	</ul>
 	<div class="main">
-		<button class="popUp" ng-click="popUp()">Giant Button For PopUp</button>
+		<button class="popUpToggle" ng-click="popUp(true)">Giant Button For PopUp</button>
 		<h1 ng-click="excite('h1')"> {{h1}}</h1>
 		<p ng-mouseenter="toggleRedText(1)" ng-mouseleave="toggleRedText(0)" class="{{redText1}}" >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 		<h1 ng-click="excite('h2')"> {{h2}}</h1>
@@ -31,5 +34,6 @@
 </div>
 
 <script type="text/javascript" src="app.js"></script>
+</div>
 </body>
 </html>
