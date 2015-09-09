@@ -7,13 +7,14 @@
 </head>
 <body ng-app="myApp">
 <div ng-controller="MainController">
-	
-		<div class="popUpContainer" ng-show="showPopUp">
-			<div class="popUp" ng-show="showPopUp" >
-				<h1>Pop Up</h1>
-				<button class="closePopUp" ng-click="popUp(true)">Close</button>
-			</div>
-		</div>
+
+<!-- the ng-click on the div.popUp is to reset the boolean -->
+<div class="popUpContainer" ng-show="showPopUp" ng-click="popUp()">
+	<div class="popUp" ng-show="showPopUp" ng-click="popUp()" >
+		<h1>Pop Up</h1>
+		<button class="closePopUp" ng-click="popUp()">Close</button>
+	</div>
+</div>
 
 <div class="container" >
 	<button ng-click="toggleH1()">Toggle Hello World</button>

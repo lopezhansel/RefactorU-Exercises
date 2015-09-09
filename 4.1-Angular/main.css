@@ -5,7 +5,8 @@ body{
 	font-size: 1em;	
 	text-align: center;
 	margin: 0;
-	
+	box-sizing: border-box;
+
 
 }
 p{
