@@ -1,10 +1,5 @@
-/**
-* myapp Module
-*
-* Description
-*/
 var app = angular.module('myApp', []);
-app.controller('MainController', ['$scope', function($scope){
+app.controller('MainController', ['$scope', '$timeout', function($scope, $timeout){
 
 	$scope.hideH1  = false;
 	$scope.hideList = true;
@@ -30,10 +25,19 @@ app.controller('MainController', ['$scope', function($scope){
 	$scope.excite = function(head){
 		$scope[head] += "!";
 	}
-	// $scope.oldExcite = function (input){
+	$scope.alerto= function(input){
+		console.log(input.target)
+	}
+	// this is thed old excite method
+	// $scope.excite = function (input){
 	// 	if(input ===1){$scope.h1 += "!"};
 	// 	if(input ===2){$scope.h2 += "!"};
 	// 	if(input ===3){$scope.h3 += "!"};
 	// }
+	
+	// just testing this feature out
+	// $timeout(function(){
+	// 	console.log('waited 5secs')
+	// }, 5000);
 }]);
 
