@@ -13,9 +13,9 @@ app.controller('MainController', ['$scope', '$timeout', function($scope, $timeou
 	}
 
 	$scope.toggleRedText = function(num){
-		$scope.redText1 = (num === 1) ? 'blue' : 'black';
-		$scope.redText2 = (num === 2) ? 'blue' : 'black';
-		$scope.redText3 = (num === 3) ? 'blue' : 'black';
+		$scope.redText1 = (num === 1) ? 'black' : 'white';
+		$scope.redText2 = (num === 2) ? 'black' : 'white';
+		$scope.redText3 = (num === 3) ? 'black' : 'white';
 	}
 
 	$scope.h1 = "Headings 1";
