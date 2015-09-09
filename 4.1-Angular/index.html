@@ -8,7 +8,13 @@
 <body ng-app="myApp">
 <div ng-controller="MainController">
 	
-		<div class="popUp" ng-show="showPopUp" ng-click="popUp(true)">Hello</div>
+		<div class="popUpContainer" ng-show="showPopUp">
+			<div class="popUp" ng-show="showPopUp" >
+				<h1>Pop Up</h1>
+				<button class="closePopUp" ng-click="popUp(true)">Close</button>
+			</div>
+		</div>
+
 <div class="container" >
 	<button ng-click="toggleH1()">Toggle Hello World</button>
 	<h1 ng-hide="hideH1">Hello World</h1>
