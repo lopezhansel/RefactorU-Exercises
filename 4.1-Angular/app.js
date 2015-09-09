@@ -10,10 +10,11 @@ app.controller('MainController', ['$scope', function($scope){
 	$scope.redText = false;
 
 	$scope.toggleH1 = function(){         
-			$scope.hideH1 = !$scope.hideH1;
+		$scope.hideH1 = !$scope.hideH1;
 	}
+
 	$scope.toggleList = function(){
-			$scope.hideList = !$scope.hideList;
+		$scope.hideList = !$scope.hideList
 	}
 	$scope.toggleRedText = function(){
 		$scope.redText = !$scope.redText;
