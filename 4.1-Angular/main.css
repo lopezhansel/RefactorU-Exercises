@@ -13,6 +13,7 @@ ul{
 	padding: 15px;
 	margin: auto;
 }
-.red{
+
+.p1.true, .p2.true, .p3.true  {
 	color: red;
 }
