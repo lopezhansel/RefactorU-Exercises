@@ -27,11 +27,13 @@ app.controller('MainController', ['$scope', function($scope){
 	$scope.h2 = "Heading 2";
 	$scope.h3 = "Heading 3";
 
-
-	$scope.excite = function (input){
-		if(input ===1){$scope.h1 += "!"};
-		if(input ===2){$scope.h2 += "!"};
-		if(input ===3){$scope.h3 += "!"};
+	$scope.excite = function(head){
+		$scope[head] += "!";
 	}
+	// $scope.oldExcite = function (input){
+	// 	if(input ===1){$scope.h1 += "!"};
+	// 	if(input ===2){$scope.h2 += "!"};
+	// 	if(input ===3){$scope.h3 += "!"};
+	// }
 }]);
 
