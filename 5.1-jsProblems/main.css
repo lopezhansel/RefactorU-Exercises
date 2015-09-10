@@ -6,3 +6,7 @@ body{
 	margin: 0;
 	box-sizing: border-box;
 }
+.main{
+	max-width: 960px;
+	margin: auto;
+}
