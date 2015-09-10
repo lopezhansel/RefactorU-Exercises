@@ -33,7 +33,7 @@ img.userPic{
 }
 .content{
 	clear: left;
-	background: white;
+	background: rgb(172, 172, 172);
 	color:black;
 	margin: 15px 0;
 	padding: 15px;

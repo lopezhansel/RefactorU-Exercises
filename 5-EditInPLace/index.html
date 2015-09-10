@@ -9,13 +9,18 @@
 <body ng-controller="MainController">
 <div class="mainContainer">
 	<div class="main">
-		<img class="userPic" src="http://s3.amazonaws.com/caw-prod/default_profile_image.png" alt="">
+		<img class="userPic"  src="http://s3.amazonaws.com/caw-prod/default_profile_image.png" alt="">
 		<div class="userInfo">
-			<div class="name">{{userName}}</div>
-			<div class="name">{{userEmail}}</div>
-			<div class="name">{{userWork}}</div>
-			<div class="name">{{userSchool}}</div>
-			<div class="name">{{userLocation}}</div>
+			<div class="name" ng-hide="userName[1]" ng-click="toggle('userName')">{{userName[0]}}</div>
+			<div class="name" ng-show="userName[1]" ng-mouseleave="toggle('userName')"> <input  ng-model="userName[0]"> </div>
+			<div class="name" ng-hide="userEmail[1]" ng-click="toggle('userEmail')">{{userEmail[0]}}</div>
+			<div class="name" ng-show="userEmail[1]" ng-mouseleave="toggle('userEmail')"> <input  ng-model="userEmail[0]"> </div>
+			<div class="name" ng-hide="userWork[1]" ng-click="toggle('userWork')">{{userWork[0]}}</div>
+			<div class="name" ng-show="userWork[1]" ng-mouseleave="toggle('userWork')"> <input  ng-model="userWork[0]"> </div>
+			<div class="name" ng-hide="userSchool[1]" ng-click="toggle('userSchool')">{{userSchool[0]}}</div>
+			<div class="name" ng-show="userSchool[1]" ng-mouseleave="toggle('userSchool')"> <input  ng-model="userSchool[0]"> </div>
+			<div class="name" ng-hide="userLocation[1]" ng-click="toggle('userLocation')">{{userLocation[0]}}</div>
+			<div class="name" ng-show="userLocation[1]" ng-mouseleave="toggle('userLocation')"> <input  ng-model="userLocation[0]"> </div>
 		</div>
 		<div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 		<div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
