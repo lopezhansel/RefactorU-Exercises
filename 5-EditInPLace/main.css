@@ -16,15 +16,25 @@ body{
 	height: auto;
 	overflow: auto;
 }	
-div.img{
+img.userPic{
 	width: 200px;
 	height: 200px;
 	position: relative;
-	background: black;
 	float: left;
-	display: inline-block;
+	margin-bottom: 20px;
+	
 }
 .name{
+	margin: 15px 30px;
 	font-size: large;
-	display: inline-block;
+}
+.userInfo{
+	float: left;
+}
+.content{
+	clear: left;
+	background: white;
+	color:black;
+	margin: 15px 0;
+	padding: 15px;
 }

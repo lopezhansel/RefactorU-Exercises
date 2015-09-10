@@ -1,7 +1,11 @@
 
 var app = angular.module('myApp', [])
 app.controller('MainController', ['$scope', function($scope){
-	$scope.name = 'User Name';
-	$scope.email = 'me@email.com';
+	$scope.userName = 'User Name';
+	$scope.userEmail = 'me@email.com';
+	$scope.userWork = "Developer"
+	$scope.userSchool = "RefactorU"
+	$scope.userLocation = "Boulder"
+
 }])
 
