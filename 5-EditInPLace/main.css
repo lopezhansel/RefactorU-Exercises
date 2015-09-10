@@ -6,3 +6,25 @@ body{
 	margin: 0;
 	box-sizing: border-box;
 }
+.main{
+	top: 20px;
+	max-width: 960px;
+	margin: auto;
+	padding: 20px;
+	position: relative;
+	background: gray;
+	height: auto;
+	overflow: auto;
+}	
+div.img{
+	width: 200px;
+	height: 200px;
+	position: relative;
+	background: black;
+	float: left;
+	display: inline-block;
+}
+.name{
+	font-size: large;
+	display: inline-block;
+}
