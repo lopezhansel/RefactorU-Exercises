@@ -1,16 +1,51 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html >
 <head>
 	<title>JS6-hideAForm</title>
 	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="normalize.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
-<div class="main">
-	<body ng-controller="MainController">
-	<h1>{{h1}}</h1>
+<body ng-app="myApp">
+<div class="wrapper" ng-controller="MainController" >
+	
+	<div class="editUserInfoContainer"  ng-show="formShow" >
+		<div class="editUserInfo" >
+			<img class="settings" ng-click="formToggle()" src="https://cdn3.iconfinder.com/data/icons/gray-toolbar-2/512/gear_settings_cog_preferences-512.png" alt="">
+
+			<div class="userEdit">
+				<div class="userInput"><div class="label" >Name  </div><input type="text" ng-model= "userName" ></div>
+				<div class="userInput"><div class="label" >Twitter  </div><input type="text" ng-model= "userTwitter" ></div>
+				<div class="userInput"><div class="label" >Work  </div><input type="text" ng-model= "userWork" ></div>
+				<div class="userInput"><div class="label" >Education  </div><input type="text" ng-model= "userEdu" ></div>
+				<div class="userInput"><div class="label" >Location  </div><input type="text" ng-model= "userLocation" ></div>
+				<div class="userInput"><div class="label" >Biography  </div><input type="text" ng-model= "userBio" ></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="page">
+
+		<div class="main">
+		<img class="settings" ng-click="formToggle()"  src="https://cdn3.iconfinder.com/data/icons/gray-toolbar-2/512/gear_settings_cog_preferences-512.png" alt="">
+			<div class="userInfoContainer">
+				<img class="userPic"  src="http://s3.amazonaws.com/caw-prod/default_profile_image.png" alt="">
+				<div class="userFavLibs"> {{userFavLibs}}</div>
+				<div class="userName">{{userName}}</div>
+				<div class="userTwitter">{{userTwitter}}</div>
+				<div class="userWork">{{userWork}}</div>
+				<div class="userEdu"> {{userEdu}}</div>
+				<div class="userLocation">{{userLocation}}</div>
+			</div>
+	
+			<div class="userBioContainer">
+				<div class="userName"><h1>{{userName}}</h1></div>
+				<div class="userBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac neque ac quam cursus auctor. Maecenas eget hendrerit dui. Integer ornare tellus non lobortis imperdiet. Aenean vitae interdum felis. Fusce a purus vel turpis ultricies sollicitudin. Fusce sodales nulla a sem condimentum, sit amet consequat turpis scelerisque. Mauris a purus ipsum. Nulla ornare lacus vulputate lorem viverra consequat. Fusce odio risus, euismod in nisi consequat, sodales malesuada metus. Cras quis sodales eros. Aliquam justo nulla, tristique sed enim a, fermentum pellentesque sapien. Nam enim purus, aliquam eget eros eu, tempor vulputate nisl. Aenean tempor dui nunc, id ultrices nisl sagittis sit amet. Fusce molestie, nibh sed mollis vestibulum, lacus ligula bibendum est, sed euismod orci ligula et massa.</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-	<script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
+

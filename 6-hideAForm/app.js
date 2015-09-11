@@ -1,4 +1,22 @@
-var app = angular.module('myApp', [])	
-app.controller('MainController', ['$scope', function($scope){
-	$scope.h1 = 'JS6-hideAFrom'
+
+
+var app = angular.module('myApp', [])
+app.controller('MainController', ['$scope', '$timeout', function($scope, $timeout){
+
+	$scope.userFavLibs	=	"angular.js , React.js, Node.js, Express.js, Meteor.js"
+	$scope.userName		=	"Benjamin Franklin"
+	$scope.userTwitter	=	"@bjDollaBills"
+	$scope.userWork		=	"Developer"
+	$scope.userEdu 		=	"RefactorU"
+	$scope.userLocation =	"Boulder, CO"
+	$scope.userBio  	=	" "
+
+	$scope.formShow = true;
+	$scope.formToggle = function  () {
+		$scope.formShow = !$scope.formShow
+	}
+	
+
 }])
+
+

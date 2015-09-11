@@ -6,8 +6,91 @@ body{
 	margin: 0;
 	box-sizing: border-box;
 }
+.page {
+	padding: 20px;
+	position: relative;
+}
+/* Main ====================================*/
+
 .main{
+	position: relative;
+	top: 30px;
 	max-width: 960px;
 	margin: auto;
-	padding: 20px;
+	padding: 20px;	
+	background: #2980b9;
+	overflow: auto;
+}
+/*User Bio ====================================*/
+.userInfoContainer{
+	float: left;
+	width: 20%;
+	margin: 15px;
+}
+
+.userPic{
+	width: 100%;
+}
+/*User Info ====================================*/
+.userBioContainer{
+
+
+}
+.settings{
+	width: 30px;
+	height: 30px;
+	padding: 10px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.settings:hover{
+	background: white;
+	border-radius: 30px;
+}
+.editUserInfo{
+	width: 70%;
+	left: 15%;
+	top: 50px;
+	height: 600px;
+	position: fixed;
+	background: gray;
+	z-index: 2;
+	
+
+
+}
+.editUserInfoContainer{
+	background: rgba(0,0,1,0.6);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: auto;
+
+}
+.userEdit{
+	margin: auto;
+	font-size: 30px;
+	margin-top: 30px;
+	padding: 30px;
+	overflow: auto;
+
+
+}
+.userInput{
+	position: relative;
+	margin: 10px
+}
+.userInput label{
+	width: 300px;
+	height: 100%;
+	margin-right: 20px;
+	/*position: absolute;*/
+	color: black;
+}
+.userEdit input{
+	/*position: absolute;*/
+	font-size: 30px;
+	/*margin-left: 400px;*/
+
 }

@@ -1,6 +1,7 @@
 
 var app = angular.module('myApp', [])
 app.controller('MainController', ['$scope', function($scope){
+
 	$scope.userName 	= 	['User Name',false];
 	$scope.userEmail	= 	['me@email.com', false];
 	$scope.userWork	    = 	["Profession",false];
@@ -14,4 +15,5 @@ app.controller('MainController', ['$scope', function($scope){
 	}
 		
 }])
+
 

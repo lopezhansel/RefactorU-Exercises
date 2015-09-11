@@ -10,17 +10,21 @@
 <div class="mainContainer">
 	<div class="main">
 		<img class="userPic"  src="http://s3.amazonaws.com/caw-prod/default_profile_image.png" alt="">
-		<div class="userInfo">
-			<div class="name" ng-hide="userName[1]" ng-click="toggle('userName')">{{userName[0]}}</div>
-			<div class="name" ng-show="userName[1]" ng-mouseleave="toggle('userName')"> <input  ng-model="userName[0]"> </div>
-			<div class="name" ng-hide="userEmail[1]" ng-click="toggle('userEmail')">{{userEmail[0]}}</div>
-			<div class="name" ng-show="userEmail[1]" ng-mouseleave="toggle('userEmail')"> <input  ng-model="userEmail[0]"> </div>
-			<div class="name" ng-hide="userWork[1]" ng-click="toggle('userWork')">{{userWork[0]}}</div>
-			<div class="name" ng-show="userWork[1]" ng-mouseleave="toggle('userWork')"> <input  ng-model="userWork[0]"> </div>
-			<div class="name" ng-hide="userSchool[1]" ng-click="toggle('userSchool')">{{userSchool[0]}}</div>
-			<div class="name" ng-show="userSchool[1]" ng-mouseleave="toggle('userSchool')"> <input  ng-model="userSchool[0]"> </div>
-			<div class="name" ng-hide="userLocation[1]" ng-click="toggle('userLocation')">{{userLocation[0]}}</div>
-			<div class="name" ng-show="userLocation[1]" ng-mouseleave="toggle('userLocation')"> <input  ng-model="userLocation[0]"> </div>
+		<div class="userInfoContainer">
+			<div class="userInfo" ng-hide="userName[1]" ng-click="toggle('userName')">{{userName[0]}}</div>
+			<div class="userInfo" ng-show="userName[1]"   > <input ng-blur="toggle('userName')" ng-model="userName[0]"> </div>
+
+			<div class="userInfo" ng-hide="userEmail[1]" ng-click="toggle('userEmail')">{{userEmail[0]}}</div>
+			<div class="userInfo" ng-show="userEmail[1]" > <input ng-blur="toggle('userEmail')" ng-model="userEmail[0]"> </div>
+
+			<div class="userInfo" ng-hide="userWork[1]" ng-click="toggle('userWork')">{{userWork[0]}}</div>
+			<div class="userInfo" ng-show="userWork[1]" > <input ng-blur="toggle('userWork')" ng-model="userWork[0]"> </div>
+
+			<div class="userInfo" ng-hide="userSchool[1]" ng-click="toggle('userSchool')">{{userSchool[0]}}</div>
+			<div class="userInfo" ng-show="userSchool[1]" > <input ng-blur="toggle('userSchool')" ng-model="userSchool[0]"> </div>
+
+			<div class="userInfo" ng-hide="userLocation[1]" ng-click="toggle('userLocation')">{{userLocation[0]}}</div>
+			<div class="userInfo" ng-show="userLocation[1]" > <input ng-blur="toggle('userLocation')" ng-model="userLocation[0]"> </div>
 		</div>
 		<div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 		<div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
