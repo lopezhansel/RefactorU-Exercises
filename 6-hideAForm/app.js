@@ -11,8 +11,8 @@ app.controller('MainController', ['$scope', '$timeout', function($scope, $timeou
 	$scope.userLocation =	"Boulder, CO"
 	$scope.userBio  	=	" "
 
-	$scope.formShow = true;
-	$scope.formToggle = function  () {
+	$scope.formShow		= false;
+	$scope.formToggle	= function  () {
 		$scope.formShow = !$scope.formShow
 	}
 	
