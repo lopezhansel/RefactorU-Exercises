@@ -1,0 +1,14 @@
+Description
+-Display various products
+-Able to navigate and see product reviews
+-Able to add reviews to app
+
+To-do 
+-add Seach Bar
+-add reviews page
+-add galery and slide show
+- Favorite or add to wish list
+-add to cart
+-keyboard inputs
+-sort by ratings
+
