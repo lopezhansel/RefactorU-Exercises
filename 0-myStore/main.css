@@ -8,3 +8,50 @@ body{
 
 }
 
+p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
+	color: red;
+}
+
+
+/*===============Nav===============*/
+.container.header {
+	height: 150px;
+	padding-top: 50px;
+
+}
+
+
+/*===============MAIN===============*/
+
+
+.main{
+	padding: 75px 0px;
+	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+}
+.row img{
+	width:100%; 
+}
+/*===============PRODUCT===============*/
+
+.row h2 {
+	text-align: right;
+	padding-right: 5px;
+}
+
+/*===============FOOTER===============*/
+
+
+.footer{
+	background: #252830;
+	text-align: center;
+}
+.footer li{
+	list-style: none;
+
+}
+.col-sm-4{
+	padding: 5px;
+}
+.col-sm-4:hover {
+	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+}
