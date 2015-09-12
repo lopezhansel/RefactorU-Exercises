@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="main2.css">
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div class="container">
+      <h1>
+  
+  
+  Function Practice #2</h1>
+  
+  <p>Complete the following function practice problems.</p>
+
+<div class="alert alert-warning">
+  <p><strong>Warning:</strong></p>
+
+<ul>
+<li>Do not use regex or underscore.</li>
+</ul>
+
+<ul>
+<li>All problems except #6 require you to return the result. Make sure that you have a proper return statement and then console.log the result outside the function.</li>
+</ul></div>
+
+<h3 id="requirements">Requirements</h3>
+
+<ol>
+<li>Write a function called 'getName' which takes a single object argument and returns the value of the 'name' property of the given object.
+<ul><li><code>getName({ name: 'Luisa', age: 25 })</code> should return 'Luisa'</li></ul></li>
+<li>Write a function called 'totalLetters' which takes an array of strings and returns the total number of letters in all strings.
+<ul><li><code>totalLetters(['javascript', 'is', 'awesome'])</code> should return 19</li>
+<li><code>totalLetters(['what', 'happened', 'to', 'my', 'function'])</code> should return 24</li></ul></li>
+<li>Write a function called 'keyValue' which takes two arguments and returns a new object with a key of the first argument and the value of the second argument.
+<ul><li><code>keyValue('city', 'Denver')</code> should return <em><code>Object {city: "Denver"}</code></em></li></ul></li>
+<li>Write a function called 'negativeIndex' which takes an array and a negative number, and returns the value from the array at the given negative index, as if the array was circular, i.e. arr.length+num.
+<ul><li><code>negativeIndex(['a', 'b', 'c', 'd', 'e'], -2)</code> should return 'd'</li>
+<li><code>negativeIndex(['jerry', 'sarah', 'sally'], -1)</code> should return 'sally'</li></ul></li>
+<li>Write a function called 'removeM' which takes a single string argument and removes all 'm' characters from the string. The function won't actually modify
+<ul><li><code>removeM('family')</code> should return 'faily'</li>
+<li><code>removeM('memory')</code> should return 'eory'</li></ul></li>
+<li>Write a function called 'printObject' which takes a single object argument and console.log's each key-value pair in the format <code>key is value</code> on separate lines.
+<ul><li><code>printObject({ a: 10, b: 20, c: 30 })</code> should print:
+<pre><code class="md hljs markdown">a is 10
+b is 20
+c is 30
+</code></pre></li>
+<li><code>printObject({ firstName: 'pork', lastName: 'chops' })</code> should print:
+<pre><code class="md hljs markdown">firstName is pork
+lastName is chops
+</code></pre></li></ul></li>
+<li>Write a function called 'vowels' which takes a string and returns an array of all the vowels in the string, including duplicates.
+<ul><li><code>vowels('alabama')</code> should return ['a', 'a', 'a', 'a']</li>
+<li><code>vowels('What evil odd ducks!')</code> should return ['a', 'e', 'i', 'o', 'u']</li></ul></li>
+<li>Write a function called 'twins' which takes an array and returns true if every adjacent pair of items in the array is the same.
+<ul><li><code>twins(['a', 'a', 'b', 'b', 'c', 'c'])</code> should return true</li>
+<li><code>twins(['a', 'a', 'b', 'c', 'd', 'd'])</code> should return false</li>
+<li><code>twins(['a', 'a', 'b', 'z'])</code> should return false</li>
+<li><code>twins(['a', 'a', undefined])</code> should return false</li></ul></li>
+<li>Write a function called 'or' which takes an array of booleans and returns true if any one of them is true. Given an empty array, return false. If you find an item that is true, the function should return true immediately and not continue checking further values.
+<ul><li><code>or([false, false, true, false])</code> should return true</li>
+<li><code>or([false, false, false])</code> should return false</li>
+<li><code>or([])</code> should return false</li></ul></li>
+<li>Write a function called 'unique' which takes an array of strings, and returns a new array consisting of the unique values (no duplicates).
+<ul><li><code>unique(['a', 'b', 'a', 'c', 'd', 'd'])</code> should return ['a', 'b', 'c', 'd']</li>
+<li><code>unique(['todd', 'avery', 'maria', 'avery'])</code> should return ['todd', 'avery', 'maria']</li></ul></li>
+</ol>
+
+    </div>
+</body>
+</html>
+
