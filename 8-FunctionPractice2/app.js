@@ -9,3 +9,15 @@ function totalLetters (arg) {
 console.log("Function 2")
 console.log(totalLetters(['javascript', 'is', 'awesome']))
 console.log(totalLetters(['what', 'happened', 'to', 'my', 'function']))
+
+function keyValue (arg1 , arg2) {
+	// this didnt work I'm not sure why
+	// var obj = {
+	// 	arg1 = arg2;
+	// }
+	var obj = {};
+	obj[arg1]= arg2;
+	return obj
+}
+console.log("Function 3")
+console.log(keyValue('city', 'Denver'))
