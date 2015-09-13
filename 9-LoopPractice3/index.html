@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="main2.css">
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div class="container">
+      <h1>
+  
+  
+  Loop Practice #3</h1>
+  
+  <h2 id="requirements">Requirements</h2>
+
+<p>For each problem below, write a loop that prints the given output. Some of the problems will require you to write an <code>if</code> statement in the loop. Assume a global array called <code>students</code> is defined as follows:</p>
+
+<pre><code class="hljs coffeescript"><span class="hljs-reserved">var</span> students = [{
+ <span class="hljs-attribute">name</span>: <span class="hljs-string">'Liz'</span>,
+ <span class="hljs-attribute">age</span>: <span class="hljs-number">25</span>,
+ <span class="hljs-attribute">city</span>: <span class="hljs-string">'Boulder'</span>
+},{
+ <span class="hljs-attribute">name</span>: <span class="hljs-string">'Meghan'</span>,
+ <span class="hljs-attribute">age</span>: <span class="hljs-number">27</span>,
+ <span class="hljs-attribute">city</span>: <span class="hljs-string">'Denver'</span>
+},{
+ <span class="hljs-attribute">name</span>: <span class="hljs-string">'Trent'</span>,
+ <span class="hljs-attribute">age</span>: <span class="hljs-number">32</span>,
+ <span class="hljs-attribute">city</span>: <span class="hljs-string">'Boulder'</span>
+},{
+ <span class="hljs-attribute">name</span>: <span class="hljs-string">'Chelsea'</span>,
+ <span class="hljs-attribute">age</span>: <span class="hljs-number">24</span>,
+ <span class="hljs-attribute">city</span>: <span class="hljs-string">'Boulder'</span>
+},{
+ <span class="hljs-attribute">name</span>: <span class="hljs-string">'Amir'</span>,
+ <span class="hljs-attribute">age</span>: <span class="hljs-number">18</span>,
+ <span class="hljs-attribute">city</span>: <span class="hljs-string">'Denver'</span>
+}];
+</code></pre>
+
+<h4 id="forexample">For example:</h4>
+
+<p>Problem:</p>
+
+<pre><code class="md hljs markdown">Liz
+Meghan
+Trent
+Chelsea
+Amir
+</code></pre>
+
+<p>Solution:</p>
+
+<pre><code class="hljs coffeescript"><span class="hljs-keyword">for</span>(<span class="hljs-reserved">var</span> i=<span class="hljs-number">0</span>; i&lt;students.length; i++) {
+ <span class="hljs-built_in">console</span>.log(students[i].name);
+}
+</code></pre>
+
+<h2 id="problem">Problem:</h2>
+
+<ol>
+<li><p>&nbsp;</p>
+
+<pre><code class="md hljs markdown">25
+27
+32
+24
+18
+</code></pre></li>
+<li><p>&nbsp;</p>
+
+<pre><code class="md hljs markdown">Liz, Boulder
+Meghan, Denver
+Trent, Boulder
+Chelsea, Boulder
+Amir, Denver
+</code></pre></li>
+<li><p>&nbsp;</p>
+
+<pre><code class="md hljs markdown">Liz is from Boulder
+Trent is from Boulder
+Chelsea is from Boulder
+</code></pre></li>
+<li><p>&nbsp;</p>
+
+<pre><code class="md hljs markdown">Meghan is older than 25
+Trent is older than 25
+</code></pre></li>
+</ol>
+
+    </div>
+</body>
+</html>
+
