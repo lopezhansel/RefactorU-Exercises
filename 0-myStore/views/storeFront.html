@@ -2,14 +2,17 @@
 	<div class="container">
 		<div class="content">
 			<div class="row">
-				<div class="col-sm-4 " ng-repeat="product in products">
-				<img class="" ng-src="{{product.img}}" alt="">
-					<h2><a ng-mouseover="fun()"href="#product/{{$index}}">{{product.name}}</a></h2>
-					<h2>{{product.price}}</h2>
-					{{selectedIndexs}}
-					
+				<div class="col-md-4 " ng-repeat="product in products">
+				<div class="img-container">
+					<a href="#product/{{$index}}"><img class="" ng-src="{{product.img}}" alt=""></a>
+				</div>
+					<div class="product-content"><a href="#product/{{$index}}">
+							<h2><a ng-mouseover="fun()"href="#product/{{$index}}">{{product.name}}</a></h2>
+							<h2>{{product.price | currency}}</h2>
+					</a></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+

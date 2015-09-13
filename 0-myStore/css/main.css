@@ -5,6 +5,7 @@ body{
 	margin: 0;
 	padding: 0;
 	background: #252830;
+	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
 
 }
 
@@ -12,7 +13,9 @@ p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
 	color: red;
 }
 
-
+a{
+	color: white;
+}
 /*===============Nav===============*/
 .container.header {
 	height: 150px;
@@ -25,8 +28,7 @@ p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
 
 
 .main{
-	padding: 75px 0px;
-	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+	padding: 30px 0px;
 }
 .row img{
 	width:100%; 
@@ -49,9 +51,29 @@ p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
 	list-style: none;
 
 }
-.col-sm-4{
-	padding: 5px;
-}
 .col-sm-4:hover {
 	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+}
+
+.col-sm-4 {
+	padding: 5px;
+	overflow: hidden;
+	position: relative;
+}
+
+.img-container img{
+	max-width: 250px;
+	width: auto;
+	margin: auto;
+	text-align: center;
+	display: block;
+	position: relative;
+	height: 200px;
+}
+.img-container{
+	position: relative;
+	background: white;
+}
+.product-content{
+	height: 150px;
 }

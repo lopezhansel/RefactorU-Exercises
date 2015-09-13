@@ -5,10 +5,19 @@ Description
 
 To-do 
 -add Seach Bar
--add reviews page
 -add galery and slide show
 - Favorite or add to wish list
--add to cart
--keyboard inputs
+
 -sort by ratings
 
+-add users
+-add reviews page
+
+-keyboard inputs
+
+
+
+
+
+
+-add to cart
