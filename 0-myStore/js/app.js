@@ -1,4 +1,23 @@
-var app = angular.module('myApp',[])
+var app = angular.module('myApp',['ngRoute']);
+app.config(function($routeProvider){
+	$routeProvider
+    .when('/books', { 
+      controller: 'BookshelfController', 
+      templateUrl: 'views/bookshelf.html' 
+    })
+     .when('/books/:bookId', { 
+      controller: 'BookController', 
+      templateUrl: 'views/book.html' 
+    })
+     .when('/books/:bookId/chapters/:chapterId', { 
+      controller: 'ChapterController', 
+      templateUrl: 'views/chapter.html' 
+    })
+    .otherwise({ 
+      redirectTo: '/books' 
+    });   	
+});
+
 app.controller('MainController', ['$scope', function($scope){
 	$scope.products = [
 		{
