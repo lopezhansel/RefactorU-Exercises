@@ -1,67 +1,96 @@
 body{
 	font-family:"Montserrat"; 
     font-weight:300; 
-	color: #DFDFE1;
+	/*color: #DFDFE1;*/
 	margin: 0;
 	padding: 0;
-	background: #252830;
+	-webit-box-sizing: border-box;
+	box-sizing: border-box;
+	-mox-box-sizing: border-box;
+	
+}
+html, body {
+  height: 100%;
+}
+
+/*p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
+	color: gray;
+}*/
+
+.bodyWrapper{
 	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
-
+	position: relative;
+	min-height: 100%;
 }
 
-p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
-	color: red;
-}
 
-a{
-	color: white;
-}
-/*===============Nav===============*/
-.container.header {
+/*===============Header===============*/
+/*.header .container  {
 	height: 150px;
 	padding-top: 50px;
-
 }
-
-
-/*===============MAIN===============*/
-
-
-.main{
-	padding: 30px 0px;
-}
-.row img{
-	width:100%; 
-}
-/*===============PRODUCT===============*/
-
-.row h2 {
-	text-align: right;
-	padding-right: 5px;
-}
-
+*/
 /*===============FOOTER===============*/
 
 
 .footer{
 	background: #252830;
 	text-align: center;
+	position: relative;
+	width: 100%;
+	overflow: auto;
+	padding: 100px  0;
+	bottom: 0;
+	left: 0;
+	color: white;
 }
 .footer li{
 	list-style: none;
 
 }
-.col-sm-4:hover {
-	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+.footer ul {
+	padding: 0;
 }
 
-.col-sm-4 {
+/*===============StoreFront===============*/
+.storeFront .items{
+	background: white;
+	border-radius: 10px;
+	margin: 10px;
+	-webkit-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
+
+}
+.storeFront .items:hover {
+	/*background-image: linear-gradient(to bottom, #137499, #137499);*/
+-webkit-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+}
+.storeFront{
+	margin-bottom: 200px;
+}
+
+.storeFront h3 {
+	text-align: right;
+	padding-right: 5px;
+	bottom: 5px;
+	position: absolute;
+	right: 30px;
+}
+
+}
+/*.storeFront .col-md-4 {
 	padding: 5px;
 	overflow: hidden;
-	position: relative;
+}*/
+.storeFront .img-container{
+	background: white;
+	border-radius: 15px;
 }
 
-.img-container img{
+.storeFront .img-container img{
 	max-width: 250px;
 	width: auto;
 	margin: auto;
@@ -70,10 +99,73 @@ a{
 	position: relative;
 	height: 200px;
 }
-.img-container{
-	position: relative;
+
+.storeFront .product-content{
+	height: 200px;
+	padding: 10px;
+	/*background: grey;*/
+}
+/*===============PRODUCT Page===============*/
+.productPage img{
+	max-width: 400px;
+	float: left;
+	margin-right: 25px;
+}
+.productPage {
 	background: white;
+	color: black;
+	border-radius: 15px;
+	padding: 30px;
 }
-.product-content{
-	height: 150px;
+.productPage .product-review{
+	clear: both;
 }
+
+/*=============== Other ===============*/
+.ngView{
+	margin-bottom: 200px;
+	margin-top: 100px;
+}
+/*=============== Other ===============*/
+
+
+
+
+.view-animate-container {
+  position:relative;
+  height:100px!important;
+  background:white;
+  border:1px solid black;
+  height:40px;
+  overflow:hidden;
+}
+
+.view-animate {
+  padding:10px;
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+
+  display:block;
+  width:100%;
+  border-left:1px solid black;
+
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:10px;
+}
+
+.view-animate.ng-enter {
+  left:100%;
+}
+.view-animate.ng-enter.ng-enter-active {
+  left:0;
+}
+.view-animate.ng-leave.ng-leave-active {
+  left:-100%;
+}
+/*=============== Other ===============*/

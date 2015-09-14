@@ -1,5 +1,16 @@
-<div class="container productPage">
-<img class="" ng-src="{{products[select].img}}" alt=""><h1 ng-click="addToX()">{{products[select].name}}</h1>
-<h1>{{$storage.x}}</h1>
+<div class="container productPage storeFront " >
+	<div class="product-info">
+		<img class="" ng-src="{{products[select].img}}" alt="">
+		<div class="product-description">
+			<h1 ng-click="addToX()">{{products[select].name}}</h1>
+			<h1>{{products[select].price | currency}}</h1>
+			<h1 >{{products[select].description}}</h1>
+		</div>
+	</div>
+	<div class="product-review">
+	<hr>
+		<h1>{{$storage.x}}</h1>
+
+	</div>
 
 </div>

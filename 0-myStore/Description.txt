@@ -1,17 +1,24 @@
-Description
--Display various products
--Able to navigate and see product reviews
--Able to add reviews to app
+---------------------------------StoreFront 
+Display various products
+
 
 To-do 
 -add Seach Bar
+- Favorite or add to wish list
+-sort by ratings
+-add to cart
+
+
+---------------------------------ProductPage
 -add galery and slide show
+-See product reviews
+-Able to add reviews to app
 - Favorite or add to wish list
 
--sort by ratings
 
+
+-------------------------Maybe When Done
 -add users
--add reviews page
 
 -keyboard inputs
 
@@ -20,4 +27,3 @@ To-do
 
 
 
--add to cart
