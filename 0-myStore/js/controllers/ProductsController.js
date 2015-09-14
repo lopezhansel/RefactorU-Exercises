@@ -1,4 +1,27 @@
 app.controller('ProductsController', ['$scope','$routeParams','$localStorage', function($scope,$routeParams,$localStorage){
+	// $scope.review = 'hello'
+	$scope.sub = function (event,select) {
+		var obj = $scope.review
+		$localStorage.reviews[select].push(obj)	
+		event.preventDefault()
+		$scope.review = {}
+	}
+	$scope.heart = "&#9829";
+
+	$scope.$storage = $localStorage.$default({reviews : [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]] })
+	// $scope.$storage = $localStorage.$default({ x: 42});
+	
+	// $scope.addToX = function  () {
+	// 	$scope.$storage.x++;
+	// }
+
+
+	$scope.reset = function(){
+		$localStorage.$reset();
+		location.reload();
+	};
+
+	$scope.select = $routeParams.id
 	$scope.products = [
 		{
 			name: 'Samsung Galaxy Note 5 ',
@@ -78,10 +101,5 @@ app.controller('ProductsController', ['$scope','$routeParams','$localStorage', f
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac neque ac quam cursus auctor. Maecenas eget hendrerit dui. Integer ornare tellus non lobortis imperdiet. '
 		}
 
-	]
-	$scope.select = $routeParams.id
-	$scope.$storage = $localStorage.$default({ x: 42});
-	$scope.addToX = function  () {
-		$scope.$storage.x++;
-	}
+	];
 }])
