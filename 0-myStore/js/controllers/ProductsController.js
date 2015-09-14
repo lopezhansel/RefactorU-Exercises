@@ -6,7 +6,6 @@ app.controller('ProductsController', ['$scope','$routeParams','$localStorage', f
 		event.preventDefault()
 		$scope.review = {}
 	}
-	$scope.heart = "&#9829";
 
 	$scope.$storage = $localStorage.$default({reviews : [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]] })
 	// $scope.$storage = $localStorage.$default({ x: 42});
