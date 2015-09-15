@@ -1,20 +1,20 @@
 <div class="container productPage storeFront " >
 	<div class="product-info">
-		<img class="" ng-src="{{products[select].img}}" alt="">
+		<img class="" ng-src="{{products[currentProduct].img}}" alt="">
 		<div class="product-description">
-			<h1 ng-click="addToX()">{{products[select].name}}</h1>
-			<h1>{{products[select].price | currency}}</h1>
-			<h1 >{{products[select].description }} </h1>
+			<h1 ng-click="addToX()">{{products[currentProduct].name}}</h1>
+			<h1>{{products[currentProduct].price | currency}}</h1>
+			<h1 >{{products[currentProduct].description }} </h1>
 		</div>
 	</div>
 	<div class="product-review">
 	<hr>
-<!-- 		<h1>$service{{$storage}}</h1>
+		<h1>$service{{$storage}}</h1>
 		<h1>storage.reviews {{$storage.reviews}}</h1>
 		<h1>review {{review}}</h1>
-		<h2></h2> -->
+		<h2></h2>
 		<form action="" name="reviewFrom">
-			<blockquote ng-repeat="review in $storage.reviews[select]">
+			<blockquote ng-repeat="review in $storage.reviews[currentProduct]" ng-click="deleteReview($index)">
 				<b>Stars: {{review.stars }}</b>
 				<cite>by: {{review.author}}</cite>
 				<br>
@@ -33,7 +33,7 @@
 				<label >by:</label>
 				<input  placeholder="your@email.com" ng-model="review.author" type="email">
 			</div>
-				<input  type="submit" ng-click="sub($event,select)">
+				<input  type="submit" ng-click="sub($event,currentProduct)">
 		</form>
 		<button ng-click="reset()">Delete</button>
 	</div>

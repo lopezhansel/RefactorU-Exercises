@@ -1,17 +1,33 @@
 app.controller('ProductsController', ['$scope','$routeParams','$localStorage','productService', function($scope,$routeParams,$localStorage,productService){
-	$scope.select = $routeParams.id
 	$scope.products = productService.products
 
-	$scope.sub = function (event,select) {
+	$scope.currentProduct = $routeParams.id
+	$scope.$storage = $localStorage.$default({reviews : [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]] })
+	$scope.selectedProduct = $localStorage.reviews[$routeParams.id] /// confusing
+
+
+
+	$scope.deleteReview = function(index){
+		$localStorage.reviews[$routeParams.id].splice(index,1)
+	}
+	
+	$scope.sub = function (event,currentProduct) {
 		event.preventDefault() //cancel default submit action 
-		$localStorage.reviews[select].push($scope.review)	
+		$localStorage.reviews[currentProduct].push($scope.review)	
 		$scope.review = {} // resets review 
 	}
-	$scope.$storage = $localStorage.$default({reviews : [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]] })
+	
+	
 	$scope.reset = function(){
 		$localStorage.$reset();
 		location.reload();
 	};
-	console.log($scope.products[0])
+
 
 }])
+
+var arr = ["orange","red","black","white"];
+var index = arr.indexOf("red");
+if (index >= 0) {
+  arr.splice( index, 1 );
+}
