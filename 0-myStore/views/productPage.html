@@ -21,17 +21,19 @@
 				{{review.body}}
 			</blockquote>
 				
-			<select ng-model="review.stars">
-				<option value="1">1 star</option>
-				<option value="2">2 stars</option>
-				<option value="3">3 stars</option>
-				<option value="4">4 stars</option>
-				<option value="5">5 stars</option>
-			</select>
-			<textarea ng-model="review.body" cols="30" rows="10"></textarea>
+			<div class="userReview">
+				<select ng-model="review.stars" >
+					<option value="1">1 star</option>
+					<option value="2">2 stars</option>
+					<option value="3">3 stars</option>
+					<option value="4">4 stars</option>
+					<option value="5">5 stars</option>
+				</select>
+				<textarea placeholder="Write Review Here" ng-model="review.body" cols="100" rows="3"></textarea>
 				<label >by:</label>
-				<input ng-model="review.author" type="email">
-				<input type="submit" ng-click="sub($event,select)">
+				<input  placeholder="your@email.com" ng-model="review.author" type="email">
+			</div>
+				<input  type="submit" ng-click="sub($event,select)">
 		</form>
 		<button ng-click="reset()">Delete</button>
 	</div>

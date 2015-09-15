@@ -169,3 +169,24 @@ box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
   left:-100%;
 }
 /*=============== Other ===============*/
+.userReview{
+	width: 400px;
+	padding: 5px;
+}
+.userReview select{
+	width: 400px;
+	margin: 10px 0;
+	padding: 5px;
+
+}
+.userReview textarea{
+	width: 400px;
+	padding: 5px;
+	
+}
+.userReview input{
+	width: 400px;
+	padding: 5px;
+}
+
+
