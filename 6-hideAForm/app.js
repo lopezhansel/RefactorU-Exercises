@@ -4,7 +4,7 @@ var app = angular.module('myApp', [])
 app.controller('MainController', ['$scope', '$timeout', function($scope, $timeout){
 
 	$scope.userFavLibs	=	"angular.js , React.js, Node.js, Express.js, Meteor.js"
-	$scope.userName		=	"Benjamin Franklin"
+	$scope.userName		=	"hansel whatever"
 	$scope.userTwitter	=	"@bjDollaBills"
 	$scope.userWork		=	"Developer"
 	$scope.userEdu 		=	"RefactorU"
