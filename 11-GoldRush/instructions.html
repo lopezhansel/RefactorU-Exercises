@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="main2.css">
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div class="container">
+      <h1>
+   <i class="fa fa-fw fa-group"></i> 
+  
+  JS12: Gold Rush</h1>
+  
+    
+
+    
+  
+  <p><img src="https://ru-student-site.s3.amazonaws.com/gold-prospecting.jpg" alt="gold-prospecting.jpg" title=""></p>
+
+<h2 id="objective">Objective</h2>
+
+<p>Build a user interface that allows gold prospectors to mark gold discoveries on a map.</p>
+
+<h2 id="background">Background</h2>
+
+<p>You are an enterpresing individual in the recreational gold prospecting community and you've decided to build an app that allows you and your fellow weekend prospectors to identify locations where gold has been discovered. The app will display a large map and allow users to click on any point on the map to add a marker.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="https://github.com/RefactorU/exercise-starters/tree/master/client-js/gold-rush">Colorado Topo Map</a></li>
+<li><a href="http://api.jquery.com/event.pageX/">event.pageX</a>, <a href="http://api.jquery.com/event.pageX/">event.pageY</a></li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<h3 id="parti">Part I</h3>
+
+<ol>
+<li>Create an HTML page that displays a large map that fits the entire page. (You may use the provided <a href="https://github.com/RefactorU/exercise-starters/tree/master/client-js/gold-rush">Colorado Topo Map </a> or use your own.)</li>
+<li>When the user clicks on the map, create a new DOM element and position it where they clicked. You can render a styled div or an image for the marker element.
+<ul><li>You can access the mouse coordinates with the <code>pageX</code> and <code>pageY</code> properties of the event object.</li>
+<li>You can position the marker by setting it to <code>position: absolute</code>, its container to <code>position: relative</code>, and its left and top css properties to a calculated value based on the mouse coordinate.</li></ul></li>
+</ol>
+
+<h3 id="partii">Part II</h3>
+
+<p>When the user clicks on a marker, remove the marker element from the DOM.</p>
+
+<h3 id="bonusi">Bonus I</h3>
+
+<p>Add functionality to allow notes to be saved with each marker.</p>
+
+<ol>
+<li>When the adds a marker, prompt them to enter a note that will be saved with the marker. Show a styled div with a textarea as a popup for the user to enter a note.</li>
+<li>When the user hovers over a marker, display the note in a read-only popup next to the marker.</li>
+</ol>
+
+<h3 id="bonusii">Bonus II</h3>
+
+<p>Recreate the app using the <a href="https://developers.google.com/maps/documentation/javascript/tutorial">Google Maps API</a> to allow users to mark gold discoveries on a fully interactive map. Use the Google Maps API's built-in markers (see <a href="https://developers.google.com/maps/documentation/javascript/markers">documentation</a>).</p>
+
+    </div>
+</body>
+</html>
+

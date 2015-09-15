@@ -1,0 +1,39 @@
+body {
+	margin: 0;
+	padding: 0;
+
+	background: url(https://github.com/RefactorU/exercise-starters/blob/master/client-js/gold-rush/topo-co.jpg?raw=true )  no-repeat center center fixed;
+	  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#wrapper{
+	width: 100vw;
+	height: 100vh;
+	min-height: 1px;
+}
+.marker{
+	width: 75px;
+	height: 75px;
+	font-size: 75px;
+	color:#DB1D1D;
+	position: absolute;
+	z-index: 400;
+
+}
+.marker-info{
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    position: absolute;
+    margin-left: -85px;
+	z-index: 400;
+
+}
+.marker-info textarea{
+	width: 100%;
+	height: 100%;
+	z-index: 400;
+	
+}
