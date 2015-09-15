@@ -3,10 +3,9 @@ app.controller('ProductsController', ['$scope','$routeParams','$localStorage','p
 	$scope.products = productService.products
 
 	$scope.sub = function (event,select) {
-		var obj = $scope.review
-		$localStorage.reviews[select].push(obj)	
-		event.preventDefault()
-		$scope.review = {}
+		event.preventDefault() //cancel default submit action 
+		$localStorage.reviews[select].push($scope.review)	
+		$scope.review = {} // resets review 
 	}
 	$scope.$storage = $localStorage.$default({reviews : [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]] })
 	$scope.reset = function(){
