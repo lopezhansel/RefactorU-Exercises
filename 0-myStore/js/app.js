@@ -9,7 +9,10 @@ app.config(function($routeProvider){
       controller: 'ProductsController', 
       templateUrl: 'views/productPage.html' 
     })
-
+   .when('/account', { 
+      controller: 'ProductsController', 
+      templateUrl: 'views/accountPage.html' 
+    })
     .otherwise({ 
       redirectTo: '/' 
     });     
