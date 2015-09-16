@@ -6,13 +6,14 @@
 			<h1>{{products[currentProduct].price | currency}}</h1>
 			<h1 >{{products[currentProduct].description }} </h1>
 		</div>
-	</div>
+	</div>	
+
 	<div class="product-review">
+
 	<hr>
 		<h1>$service{{$storage}}</h1>
 		<h1>storage.reviews {{$storage.reviews}}</h1>
 		<h1>review {{review}}</h1>
-		<h2></h2>
 		<form action="" name="reviewFrom">
 			<blockquote ng-repeat="review in $storage.reviews[currentProduct]" ng-click="deleteReview($index)">
 				<b>Stars: {{review.stars }}</b>
@@ -33,7 +34,7 @@
 				<label >by:</label>
 				<input  placeholder="your@email.com" ng-model="review.author" type="email">
 			</div>
-				<input  type="submit" ng-click="sub($event,currentProduct)">
+				<input  type="submit" ng-click="submitReview($event,currentProduct)">
 		</form>
 		<button ng-click="reset()">Delete</button>
 	</div>

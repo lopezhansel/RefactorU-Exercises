@@ -16,6 +16,7 @@ for (var i = animals.length -1; i > -1  ; i--){
 } 
 console.log('\n')
 console.log('Problem Set 4')
+
 for (var i = 0 ; i < animals.length-1  ; i++){
 	console.log("4: "+animals[i]);
 
