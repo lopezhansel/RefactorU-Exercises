@@ -1,19 +1,19 @@
 app.controller('ProductsController', ['$scope','$routeParams','$localStorage','productService', function($scope,$routeParams,$localStorage,productService){
-	console.log('hi')
 	$scope.products = productService.products
 	$scope.currentProduct = $routeParams.id
 	$scope.$storage = $localStorage.$default({reviews : [] })
-	$scope.selectedProduct = $localStorage.reviews[$routeParams.id] /// confusing
-	// product.length for each push []
+	$scope.selectedProduct = $localStorage.reviews[$routeParams.id] 
 
 
 
-	$scope.create = function(){
-		for(var i = 0; i< $scope.products.length; i++){
-			$localStorage.reviews.push([])
+	$scope.createReviewArrays = function(){
+		if ($localStorage.reviews.length < $scope.products.length  ){
+			for(var i = 0; i< $scope.products.length; i++){
+				$localStorage.reviews.push([])
+			}
 		}
 	}
-	$scope.create()
+	$scope.createReviewArrays()
 
 
 	$scope.deleteReview = function(index){
