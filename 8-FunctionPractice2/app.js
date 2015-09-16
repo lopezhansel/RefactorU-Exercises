@@ -2,35 +2,30 @@
 function getName (arg) {
 	return arg.name
 }
-console.log("Function 1 getName()")
+console.log("-=-=-=--=-=-=-=-=-= Function 1 getName()")
 console.log(getName({ name: 'Luisa', age: 25  })+ '\n')
 
 // =====================FUNCTION 2 ========================================
 function totalLetters (arg) {
 	return arg.join('').length
 }
-console.log("Function 2 totalLetters()")
+console.log("-=-=-=--=-=-=-=-=-= Function 2 totalLetters()")
 console.log(totalLetters(['javascript', 'is', 'awesome']))
 console.log(totalLetters(['what', 'happened', 'to', 'my', 'function']) + '\n')
 // =====================FUNCTION  3=======================================
 function keyValue (arg1 , arg2) {
-	// this didnt work I'm not sure why
-	// var obj = {
-	// 	arg1 : arg2
-	// } 
-	// return obj  // arg 1 has to be a literal string
 	var obj = {};
 	obj[arg1]= arg2;
 	return obj
 }
-console.log("Function 3 keyValue()")
+console.log("-=-=-=--=-=-=-=-=-= Function 3 keyValue()")
 console.log(keyValue('city', 'Denver') + '\n')
 // =====================FUNCTION  4========================================
 
 function negativeIndex (array, num) {
 	return array[array.length+num]
 }
-console.log('Function 4 negativeIndex')
+console.log('-=-=-=--=-=-=-=-=-= Function 4 negativeIndex')
 console.log(negativeIndex(['a', 'b', 'c', 'd', 'e'], -2))
 console.log(negativeIndex(['jerry', 'sarah', 'sally'], -1) + '\n')
 // =====================FUNCTION  5========================================
@@ -44,7 +39,7 @@ function removeM (str) {
 	}
 	return array.join('')
 }
-console.log('Function 5 removeM()')
+console.log('-=-=-=-=-=-=-=-=-=-= Function 5 removeM()')
 console.log(removeM('abcdbemadamadfmf') +'\n')
 
 // =====================FUNCTION  6 PRINT OBJECT ========================================
@@ -54,7 +49,7 @@ function printObject (obj) {
 		console.log(prop + " is " + obj[prop]);
 	}
 }
-console.log('Function 6 printObject()')
+console.log('-=-=-=--=-=-=-=-=-= Function 6 printObject()')
 printObject({ a: 10, b: 20, c: 30 }) 
 printObject({ firstName: 'pork', lastName: 'chops' })
 console.log('\n')
@@ -87,17 +82,42 @@ console.log('\n')
 // console.log(twins(['a', 'a', 'b', 'c', 'd', 'd']));	
 // console.log(twins(['a', 'a', 'c', 'c', 'd', 'd']));	
 // =====================FUNCTION  9 OR ========================================
-// function or (arr) {
-// 	if (arr.length < 0) {
-// 		return false;
-// 	};
-// 	for (var i = 0; i < arr.length; i++) {
+function or (arr) {
+	var check 
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i]=== true) {
+			 check = true
+		}
+	}
+	if(check === undefined){
+		check = false
+	}
+	return check
+	
+}
 
-// 		};
-// }
-
-
+console.log('-=-=-=--=-=-=-=-=-= Function 9');
+console.log(or([false, false, true, false]));
+console.log(or([false, false, false]));
+console.log(or([]) +'\n');
 // =====================FUNCTION   10 UNIQUE ========================================
+function unique (array) {
+	var nameObj = {}
+	var outputArray = []
+	array.forEach(function(element){
+		nameObj[element] = element
+	})
+	for( var key in nameObj){
+		outputArray.push(key)
+	}
+	return outputArray
+}
+console.log('-=-=-=-=-=-=--= Funtion 10 ');
+console.log(unique(['a', 'b', 'a', 'c', 'd', 'd']) ); 
+console.log(unique(['todd', 'avery', 'maria', 'avery','avery']));
+
+
+//this dint work found a better way of doind things
 // console.log('\n');
 // console.log('Function 10 ');
 
