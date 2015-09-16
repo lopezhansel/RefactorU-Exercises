@@ -1,9 +1,10 @@
 app.controller('ProductsController', ['$scope','$routeParams','$localStorage','productService', function($scope,$routeParams,$localStorage,productService){
 	$scope.products = productService.products
+	$scope.movies = productService.movies
+
 	$scope.currentProduct = $routeParams.id
 	$scope.$storage = $localStorage.$default({reviews : [] })
 	$scope.selectedProduct = $localStorage.reviews[$routeParams.id] 
-
 
 
 	$scope.createReviewArrays = function(){
