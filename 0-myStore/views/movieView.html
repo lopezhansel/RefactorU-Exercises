@@ -4,27 +4,35 @@
 		<div class="imgWrapper">
 			<img class="moviePoster" ng-src="{{movies[currentProduct].Poster}}" >
 		</div>
-		<div class="movieInfoContainer">
-			<div class="movieTitle"><h1>{{movies[currentProduct].Title}}</h1></div>
-			<div class="movieYear">{{movies[currentProduct].Year}}</div>
-			<div class="movieRated">{{movies[currentProduct].Rated}}</div>
-			<div class="movieReleased">{{movies[currentProduct].Released}}</div>
-			<div class="movieRuntime">{{movies[currentProduct].Runtime}}</div>
-			<div class="movieGenre">{{movies[currentProduct].Genre}}</div>
+			<h1 class="movieTitle">{{movies[currentProduct].Title}} ({{ movies[currentProduct].Year}})</h1>
+			<hr>
+			<div class="movieDetails">
+				<div class="movieYear"></div>
+				<div class="movieRated">{{movies[currentProduct].Rated}}</div>
+				<div class="movieRuntime">{{movies[currentProduct].Runtime}}</div>
+				<div class="movieGenre">{{movies[currentProduct].Genre}}</div>
+				<div class="movieReleased">{{movies[currentProduct].Released}}</div>
+			</div>
+			<hr>
+			<div class="movieInfoContainer">
+			<div class="movieLanguage">{{movies[currentProduct].Language}}</div>
+			<div class="movieCountry">{{movies[currentProduct].Country}}</div>
+			<hr>
+			<div class="moviePlot"><h3>Plot Summary</h3>{{movies[currentProduct].Plot}}</div>
+			<hr>
 			<div class="movieDirector">{{movies[currentProduct].Director}}</div>
 			<div class="movieWriter">{{movies[currentProduct].Writer}}</div>
 			<div class="movieActors">{{movies[currentProduct].Actors}}</div>
-			<div class="moviePlot">{{movies[currentProduct].Plot}}</div>
-			<div class="movieLanguage">{{movies[currentProduct].Language}}</div>
-			<div class="movieCountry">{{movies[currentProduct].Country}}</div>
-			<div class="movieAwards">{{movies[currentProduct].Awards}}</div>
-			<div class="moviePoster">{{movies[currentProduct].Poster}}</div>
+			<hr>
 			<div class="movieMetascore">{{movies[currentProduct].Metascore}}</div>
 			<div class="movieimdbRating">{{movies[currentProduct].imdbRating}}</div>
 			<div class="movieimdbVotes">{{movies[currentProduct].imdbVotes}}</div>
+			<div class="movieAwards">{{movies[currentProduct].Awards}}</div>
+			<hr>
 			<div class="movieimdbID">{{movies[currentProduct].imdbID}}</div>
 			<div class="movieType">{{movies[currentProduct].Type}}</div>
 			<div class="movieResponse">{{movies[currentProduct].Response}}</div>
 		</div>
 	</div>
 </div>
+

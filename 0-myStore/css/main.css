@@ -124,7 +124,10 @@ body{
 }
 
 /*===============Movie Page===============*/
-
+.moviePage hr{
+	background: red;
+	border-bottom: solid;
+}
 
 .moviePage .container{
 	background: white;
@@ -137,17 +140,21 @@ body{
 .moviePage .imgWrapper{
 	margin-right: 20px;
 	margin-bottom: 20px;
+	float: left;
 
 }
 .moviePage img{
-	float: left;
 }
 .movieInfoContainer{
-	float: right;
+	/*float: right;*/
 }
 
-.moviePage .movieTitle{
-
+.moviePage .movieTitle {
+	display: inline;
+}
+ .movieDetails * {
+	display: inline-block;
+	padding-right: 5px;
 }
 .moviePage .movieYear{
 
