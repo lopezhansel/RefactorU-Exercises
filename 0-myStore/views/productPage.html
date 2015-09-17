@@ -11,9 +11,9 @@
 	<div class="product-review">
 
 	<hr>
-		<h1>$service{{$storage}}</h1>
+		<!-- <h1>$service{{$storage}}</h1>
 		<h1>storage.reviews {{$storage.reviews}}</h1>
-		<h1>review {{review}}</h1>
+		<h1>review {{review}}</h1> -->
 		<form action="" name="reviewFrom">
 			<blockquote ng-repeat="review in $storage.reviews[currentProduct]" ng-click="deleteReview($index)">
 				<b>Stars: {{review.stars }}</b>

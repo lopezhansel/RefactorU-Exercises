@@ -1,6 +1,17 @@
-<div class="row">
-	<div class="col-md-4" ng-repeat="movie in movies">
-				<div>{{movie.Title}}</div>
+<div class="movieCatalog">
+	<div class="container">
+		
+	<div class="row">
+		<div class="col-md-3" ng-repeat="movie in movies">
+			<div class="items">	
+				<a href="#movie/{{$index}}">
+					<img class="" ng-src="{{movie.Poster}}" alt="">
+				</a>
+				<div class="img-container">
+				</div>
+
+<div>{{movie.Title}}</div>
+<!-- 				
 				<div>{{movie.Year}}</div>
 				<div>{{movie.Rated}}</div>
 				<div>{{movie.Released}}</div>
@@ -20,6 +31,8 @@
 				<div>{{movie.imdbID}}</div>
 				<div>{{movie.Type}}</div>
 				<div>{{movie.Response}}</div>
-		
+			</div> -->
+		</div>
+	</div>
 	</div>
 </div>

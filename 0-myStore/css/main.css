@@ -1,38 +1,23 @@
+html, body {
+  height: 100%;
+}
 body{
 	font-family:"Montserrat"; 
     font-weight:300; 
-	/*color: #DFDFE1;*/
 	margin: 0;
 	padding: 0;
 	-webit-box-sizing: border-box;
 	box-sizing: border-box;
-	-mox-box-sizing: border-box;
-	
+	-mox-box-sizing: border-box;	
 }
-html, body {
-  height: 100%;
-}
-
-/*p:hover, h2:hover , li:hover , h1:hover, h3:hover  {
-	color: gray;
-}*/
-
 .bodyWrapper{
 	background-image: linear-gradient(to bottom, #137499, #1ca8dd);
 	position: relative;
 	min-height: 100%;
 }
-
-
 /*===============Header===============*/
-/*.header .container  {
-	height: 150px;
-	padding-top: 50px;
-}
-*/
+
 /*===============FOOTER===============*/
-
-
 .footer{
 	background: #252830;
 	text-align: center;
@@ -46,32 +31,28 @@ html, body {
 }
 .footer li{
 	list-style: none;
-
 }
 .footer ul {
 	padding: 0;
 }
-
 /*===============StoreFront===============*/
 .storeFront .items{
 	background: white;
 	border-radius: 10px;
 	margin: 10px;
 	-webkit-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.75);
 
 }
 .storeFront .items:hover {
-	/*background-image: linear-gradient(to bottom, #137499, #137499);*/
--webkit-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
+	 box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
 }
 .storeFront{
 	margin-bottom: 200px;
 }
-
 .storeFront h3 {
 	text-align: right;
 	padding-right: 5px;
@@ -80,11 +61,7 @@ box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
 	right: 30px;
 }
 
-}
-/*.storeFront .col-md-4 {
-	padding: 5px;
-	overflow: hidden;
-}*/
+
 .storeFront .img-container{
 	background: white;
 	border-radius: 15px;
@@ -99,11 +76,9 @@ box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
 	position: relative;
 	height: 200px;
 }
-
 .storeFront .product-content{
 	height: 200px;
 	padding: 10px;
-	/*background: grey;*/
 }
 /*===============PRODUCT Page===============*/
 .productPage img{
@@ -120,28 +95,6 @@ box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
 .productPage .product-review{
 	clear: both;
 }
-
-/*=============== Other ===============*/
-.ngView{
-	margin-bottom: 200px;
-	margin-top: 100px;
-}
-/*=============== Other ===============*/
-
-
-
-
-.view-animate-container {
-  position:relative;
-  height:100px!important;
-  background:white;
-  border:1px solid black;
-  height:40px;
-  overflow:hidden;
-}
-
-
-/*=============== Other ===============*/
 .userReview{
 	width: 400px;
 	padding: 5px;
@@ -161,5 +114,98 @@ box-shadow: 10px 10px 35px 5px rgba(0,0,0,0.75);
 	width: 400px;
 	padding: 5px;
 }
+/*===============Movies Catalog===============*/
+.movieCatalog img{
+	height: 300px;
+	width: auto;
+}
+.movieCatalog .items{
+	text-align: center;
+}
+
+/*===============Movie Page===============*/
 
 
+.moviePage .container{
+	background: white;
+	color: black;
+	border-radius: 15px;
+	padding: 30px;
+	margin-bottom: 200px;
+
+}
+.moviePage .imgWrapper{
+	margin-right: 20px;
+	margin-bottom: 20px;
+
+}
+.moviePage img{
+	float: left;
+}
+.movieInfoContainer{
+	float: right;
+}
+
+.moviePage .movieTitle{
+
+}
+.moviePage .movieYear{
+
+}
+.moviePage .movieRated{
+
+}
+.moviePage .movieReleased{
+
+}
+.moviePage .movieRuntime{
+
+}
+.moviePage .movieGenre{
+
+}
+.moviePage .movieDirector{
+
+}
+.moviePage .movieWriter{
+
+}
+.moviePage .movieActors{
+
+}
+.moviePage .moviePlot{
+
+}
+.moviePage .movieLanguage{
+
+}
+.moviePage .movieCountry{
+
+}
+.moviePage .movieAwards{
+
+}
+.moviePage .moviePoster{
+
+}
+.moviePage .movieMetascore{
+
+}
+.moviePage .movieimdbRating{
+
+}
+.moviePage .movieimdbVotes{
+
+}
+.moviePage .movieimdbID{
+
+}
+.moviePage .movieType{
+
+}
+.moviePage .movieResponse{
+
+}
+/*=============== Other ===============*/
+/*=============== Other ===============*/
+/*=============== Other ===============*/
