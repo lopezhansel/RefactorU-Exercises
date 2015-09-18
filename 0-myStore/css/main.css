@@ -25,7 +25,7 @@ body{
 	width: 100%;
 	overflow: auto;
 	padding: 100px  0;
-	bottom: 0;
+	bottom: 0;		
 	left: 0;
 	color: white;
 }
@@ -125,16 +125,22 @@ body{
 
 /*===============Movie Page===============*/
 .moviePage hr{
-	background: red;
-	border-bottom: solid;
-}
+	border-bottom: 2px solid;
+	border-color: gray;
+	margin: 10px  0px;
 
+}
+.moviePage span{ 
+	color: gray;
+}
 .moviePage .container{
 	background: white;
 	color: black;
 	border-radius: 15px;
 	padding: 30px;
 	margin-bottom: 200px;
+	font-size: 1.3em;
+	font-weight: 800;
 
 }
 .moviePage .imgWrapper{
@@ -148,6 +154,13 @@ body{
 .movieInfoContainer{
 	/*float: right;*/
 }
+.moviePage h3 {
+	color: #1685B0;
+	font-weight: bold;
+	display: inline-block;
+	padding-right: 10px;
+	margin: 10px 0px;
+}
 
 .moviePage .movieTitle {
 	display: inline;
@@ -155,6 +168,7 @@ body{
  .movieDetails * {
 	display: inline-block;
 	padding-right: 5px;
+	font-size: .8em;
 }
 .moviePage .movieYear{
 

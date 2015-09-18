@@ -5,7 +5,6 @@
 			<img class="moviePoster" ng-src="{{movies[currentProduct].Poster}}" >
 		</div>
 			<h1 class="movieTitle">{{movies[currentProduct].Title}} ({{ movies[currentProduct].Year}})</h1>
-			<hr>
 			<div class="movieDetails">
 				<div class="movieYear"></div>
 				<div class="movieRated">{{movies[currentProduct].Rated}}</div>
@@ -14,15 +13,16 @@
 				<div class="movieReleased">{{movies[currentProduct].Released}}</div>
 			</div>
 			<hr>
+			<div class="moviePlot"><h3>Plot Summary</h3>{{movies[currentProduct].Plot}}</div>
+			<hr>
 			<div class="movieInfoContainer">
 			<div class="movieLanguage">{{movies[currentProduct].Language}}</div>
 			<div class="movieCountry">{{movies[currentProduct].Country}}</div>
 			<hr>
-			<div class="moviePlot"><h3>Plot Summary</h3>{{movies[currentProduct].Plot}}</div>
-			<hr>
-			<div class="movieDirector">{{movies[currentProduct].Director}}</div>
-			<div class="movieWriter">{{movies[currentProduct].Writer}}</div>
-			<div class="movieActors">{{movies[currentProduct].Actors}}</div>
+			<div class="movieDirector">			<h3>Credits</h3> <span>Director: </span>
+{{movies[currentProduct].Director}}</div>
+			<div class="movieWriter"> <span>Writer: </span> {{movies[currentProduct].Writer}}</div>
+			<div class="movieActors"><span>Actors: </span> {{movies[currentProduct].Actors}}</div>
 			<hr>
 			<div class="movieMetascore">{{movies[currentProduct].Metascore}}</div>
 			<div class="movieimdbRating">{{movies[currentProduct].imdbRating}}</div>
@@ -35,4 +35,3 @@
 		</div>
 	</div>
 </div>
-
