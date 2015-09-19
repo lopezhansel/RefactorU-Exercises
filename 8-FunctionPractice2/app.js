@@ -55,17 +55,9 @@ printObject({ firstName: 'pork', lastName: 'chops' })
 console.log('\n')
 // =====================FUNCTION  7 VOWELS ========================================
 
-// var arr = []
-// function vowels (str) {
-	
-// 	for(var i = 0; i < str.length; i++){
-// 		if (str[i] === 'a') {
-// 			arr.push(str[i])
-// 		}
-// 	}
-// 	console.log(arr);
-// }
-// vowels('adfasdfad')
+function vowels (str) {
+	output = []
+}
 
 
 // =====================FUNCTION  8 TWINS ========================================
@@ -141,6 +133,7 @@ console.log(unique(['todd', 'avery', 'maria', 'avery','avery']));
 // }
 // // console.log(unique(['a', 'b', 'a', 'c', 'd', 'd']) ); // dont include this
 // console.log(unique(['todd', 'avery', 'maria', 'avery','avery']));
+
 console.log('');
 console.log('');
 console.log('');
