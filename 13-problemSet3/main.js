@@ -21,7 +21,7 @@
  }
  console.log(swapCase('Hello World 10(;/#@) rEFACTORu')) 
 
-function popularLetter  (str) {
+function mostUsedLetter  (str) {
 	str = str.replace(/\s/g,''); 
 	var obj = {}
 	for (var i = 0; i < str.length; i++) { 
@@ -40,9 +40,9 @@ function popularLetter  (str) {
 	}
 	return  "Most Used Letter is '" +biggestKey[0] + "' and it was used " +biggestKey[1]+ ' times'
 }
-console.log(popularLetter('The quick brown fox jumps over the lazy dog'));
+console.log(mostUsedLetter('The quick brown fox jumps over the lazy dog'));
 
-function popularLetters  (str) {
+function repeatedLetters  (str) {
 	str = str.replace(/\s/g,''); 
 	var obj = {}
 	for (var i = 0; i < str.length; i++) { 
@@ -54,7 +54,7 @@ function popularLetters  (str) {
 	};
 	return obj
 }
-function countKeyValueTotal (obj) {
+function propertyTotal (obj) {
 	var output = 0
 	for (var key in obj){
 		if(obj[key] > 1){
@@ -64,25 +64,29 @@ function countKeyValueTotal (obj) {
 	return output
 }
 function letterCount  (str) {
-	var arr = str.split(' ')
-	var output = []
-	arr.forEach(function(element) {
-		var pops = popularLetters(element)
-		output.push(countKeyValueTotal(pops))
+
+	var wordsArray = str.split(' ')// make into array
+	
+	var wordsArrayTemp = []
+	wordsArray.forEach(function(element) {	// loop through wordsArray counted each repeated letter 
+		var pops = repeatedLetters(element)
+		wordsArrayTemp.push(propertyTotal(pops)) // pushing result to new array
 	})
+
 	var biggestNum = 0
-	output.forEach(function(element){
+	wordsArrayTemp.forEach(function(element){
 		if (element > biggestNum){
 			biggestNum = element
 		}
 	})
-	output2 = []
-	for (var i = 0; i < output.length; i++) {
-		if (output[i] === biggestNum) {
-			output2.push(arr[i])
+
+	output = []
+	for (var i = 0; i < wordsArrayTemp.length; i++) {
+		if (wordsArrayTemp[i] === biggestNum) {
+			output.push(wordsArray[i])
 		};
 	};
-	return output2.toString()
+	return output.toString()
 }
-console.log(letterCount('Thee quiuaicck bbbbbrown fox jumps over the lazy dog'));
+console.log(letterCount('Thee foxx jumps over the lazy dog'));
 
