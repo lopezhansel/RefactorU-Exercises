@@ -41,6 +41,7 @@ function popularLetter  (str) {
 	return  "Most Used Letter is '" +biggestKey[0] + "' and it was used " +biggestKey[1]+ ' times'
 }
 console.log(popularLetter('The quick brown fox jumps over the lazy dog'));
+
 function popularLetters  (str) {
 	str = str.replace(/\s/g,''); 
 	var obj = {}
@@ -53,14 +54,35 @@ function popularLetters  (str) {
 	};
 	return obj
 }
+function countKeyValueTotal (obj) {
+	var output = 0
+	for (var key in obj){
+		if(obj[key] > 1){
+			output = output + obj[key]
+		}
+	}
+	return output
+}
 function letterCount  (str) {
 	var arr = str.split(' ')
 	var output = []
 	arr.forEach(function(element) {
 		var pops = popularLetters(element)
-		output.push(pops)
+		output.push(countKeyValueTotal(pops))
 	})
-	return output
+	var biggestNum = 0
+	output.forEach(function(element){
+		if (element > biggestNum){
+			biggestNum = element
+		}
+	})
+	output2 = []
+	for (var i = 0; i < output.length; i++) {
+		if (output[i] === biggestNum) {
+			output2.push(arr[i])
+		};
+	};
+	return output2.toString()
 }
-console.log(letterCount('Thee quuick bbrown fox jumps over the lazy dog'));
+console.log(letterCount('Thee quiuaicck bbbbbrown fox jumps over the lazy dog'));
 
