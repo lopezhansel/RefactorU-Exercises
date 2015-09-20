@@ -22,3 +22,24 @@
      return output.join('')
  }
  console.log(swapCase('Hello World 10(;/#@) rEFACTORu')) 
+
+function popularLetter  (str) {
+	str = str.replace(/\s/g,''); 
+	var obj = {}
+	for (var i = 0; i < str.length; i++) { 
+		if (obj.hasOwnProperty(str[i])){
+			obj[str[i]]	++
+		}else{
+			obj[str[i]] = 1
+		}
+	};
+	biggestKey = ['none',0];
+	for(var key in obj){
+		if (obj[key] > biggestKey[1]){
+			biggestKey[0] = key
+			biggestKey[1] = obj[key]
+		}
+	}
+	return "Most Used Letter is '" +biggestKey[0] + "' and it was used " +biggestKey[1]+ ' times'
+}
+console.log(popularLetter('The quick brown fox jumps over the lazy dog'));
