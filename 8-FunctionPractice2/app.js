@@ -134,17 +134,4 @@ console.log(unique(['todd', 'avery', 'maria', 'avery','avery']));
 // // console.log(unique(['a', 'b', 'a', 'c', 'd', 'd']) ); // dont include this
 // console.log(unique(['todd', 'avery', 'maria', 'avery','avery']));
 
-console.log('');
-console.log('');
-console.log('');
 
-// var swapCase = function(string){
-//     var str2 =string.toUpperCase()
-//     var arr = str2.split(" ")// ['HELLO', 'WORLD']
-//     var arr2 = []
-//     for(var i = 0; i < arr.length; i++){
-//     	arr2.push(arr[i].replace(arr[i].charAt(0), arr[i].charAt(0).toLowerCase() ))
-//     }
-//     return arr2.join(' ')
-// }
-// console.log(swapCase('hello world')) 
