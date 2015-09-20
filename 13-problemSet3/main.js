@@ -7,13 +7,18 @@
  	return output.join('')
  }
  console.log(firstReverse('hello'));
- var swapCase = function(string){
-     var str2 =string.toUpperCase()
-     var arr = str2.split(" ")// ['HELLO', 'WORLD']
-     var arr2 = []
-     for(var i = 0; i < arr.length; i++){
-    	arr2.push(arr[i].replace(arr[i].charAt(0), arr[i].charAt(0).toLowerCase() ))
-     }
-     return arr2.join(' ')
+
+ var swapCase = function(str){
+     var output = []
+     for (var i = 0; i < str.length; i++) {
+     	if(str[i] === str[i].toLowerCase()){
+     		output.push(str[i].toUpperCase())
+     	}else if(str[i] === str[i].toUpperCase()){
+     		output.push(str[i].toLowerCase())
+     	}else{
+     		// output.push(str[i])
+     	}
+     };
+     return output.join('')
  }
- console.log(swapCase('hello world')) 
+ console.log(swapCase('Hello World 10(;/#@) rEFACTORu')) 
