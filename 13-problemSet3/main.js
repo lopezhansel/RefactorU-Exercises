@@ -1,3 +1,12 @@
+
+ function firstReverse  (str) {
+ 	var output = []
+ 	for(var i = str.length-1; i >=0; i--){
+ 		output.push(str[i]);
+ 	}
+ 	return output.join('')
+ }
+ console.log(firstReverse('hello'));
  var swapCase = function(string){
      var str2 =string.toUpperCase()
      var arr = str2.split(" ")// ['HELLO', 'WORLD']
