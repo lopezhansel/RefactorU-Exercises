@@ -15,8 +15,6 @@
      		output.push(str[i].toUpperCase())
      	}else if(str[i] === str[i].toUpperCase()){
      		output.push(str[i].toLowerCase())
-     	}else{
-     		// output.push(str[i])
      	}
      };
      return output.join('')
@@ -40,6 +38,29 @@ function popularLetter  (str) {
 			biggestKey[1] = obj[key]
 		}
 	}
-	return "Most Used Letter is '" +biggestKey[0] + "' and it was used " +biggestKey[1]+ ' times'
+	return  "Most Used Letter is '" +biggestKey[0] + "' and it was used " +biggestKey[1]+ ' times'
 }
 console.log(popularLetter('The quick brown fox jumps over the lazy dog'));
+function popularLetters  (str) {
+	str = str.replace(/\s/g,''); 
+	var obj = {}
+	for (var i = 0; i < str.length; i++) { 
+		if (obj.hasOwnProperty(str[i])){
+			obj[str[i]]	++
+		}else{
+			obj[str[i]] = 1
+		}
+	};
+	return obj
+}
+function letterCount  (str) {
+	var arr = str.split(' ')
+	var output = []
+	arr.forEach(function(element) {
+		var pops = popularLetters(element)
+		output.push(pops)
+	})
+	return output
+}
+console.log(letterCount('Thee quuick bbrown fox jumps over the lazy dog'));
+
