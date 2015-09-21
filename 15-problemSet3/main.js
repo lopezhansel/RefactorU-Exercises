@@ -32,3 +32,14 @@ function dashInsert (num) {
 	return arr.join('')
 }
 console.log(dashInsert(1234556));
+
+
+function caesarCipher (str,num) {
+	var output = []
+	for (var i = 0; i < str.length; i++) {
+		var charCode = str.charCodeAt(i);
+		output.push(String.fromCharCode(charCode + num) )
+	};
+	return output.join('')
+}
+console.log(caesarCipher('Caesar Cipher' , 2));
