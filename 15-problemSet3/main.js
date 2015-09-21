@@ -13,3 +13,22 @@ function palindrome (str) {
 console.log(palindrome('hello'));
 console.log(palindrome('racecar'));
 
+function isOdd (str) {
+	if (Number(str)%2 === 0) {
+		return false
+	}else{
+		return true
+	}
+}
+function dashInsert (num) {
+	var str = num.toString();
+	var arr = []
+	for (var i = 0; i < str.length; i++) {
+		arr.push(str[i])
+		if (isOdd(str[i]) && isOdd(str[i+1])) {
+			arr.push('-')		
+		};
+	};
+	return arr.join('')
+}
+console.log(dashInsert(1234556));
