@@ -51,6 +51,7 @@ for (var i = 65; i < 91; i++) {
 // 	};
 // 	return output.join('')
 // }
+
 function caesarCipherSingle (str,num) {
 	var output = []
 	for (var i = 0; i < str.length; i++) {
