@@ -10,8 +10,8 @@ function palindrome (str) {
 		return false
 	}
 }
-console.log(palindrome('hello'));
-console.log(palindrome('racecar'));
+// console.log(palindrome('hello'));
+// console.log(palindrome('racecar'));
 
 function isOdd (str) {
 	if (Number(str)%2 === 0) {
@@ -31,7 +31,7 @@ function dashInsert (num) {
 	};
 	return arr.join('')
 }
-console.log(dashInsert(1234556));
+// console.log(dashInsert(1234556));
 
 var lowerCase = []
 	upperCase =  []
@@ -54,9 +54,18 @@ for (var i = 65; i < 91; i++) {
 function caesarCipherSingle (str,num) {
 	var output = []
 	for (var i = 0; i < str.length; i++) {
-		var charCode = lowerCase.indexOf(str[i]);
-		output.push(lowerCase[charCode + num] )
+		var shiftLower = lowerCase.indexOf(str[i]);
+		var shiftUpper = upperCase.indexOf(str[i]);
+		if (shiftLower > 0) {
+			output.push(lowerCase[(shiftLower + num)%26] )
+		}else if (shiftUpper > 0) {
+			output.push(upperCase[(shiftUpper + num)%26] )
+		}else{
+			output.push(str[i])
+		}
+
 	};
+
 	return output.join('')
 }
 
@@ -67,5 +76,6 @@ function caesarCipher (str,num) {
 	})
 	return output.join(' ')
 }
-console.log(caesarCipher('caesar cipher' , 2));
+console.log(caesarCipher('HadouKen' , 27));
 console.log(caesarCipher('Caesar Cipher' , 2));
+console.log(caesarCipher('Caesar .42*& Cipher' , 2));
