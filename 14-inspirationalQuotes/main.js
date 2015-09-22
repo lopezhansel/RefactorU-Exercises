@@ -1,8 +1,14 @@
 var app = angular.module('quotes', ['ngStorage'])
 app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localStorage) {
-	$scope.quote1 = 'Movie Quotes'
-	$scope.$storage = $localStorage.$default({here:['hello']})
-	$scope.quotes = [{
+	$scope.addQuote = function  () {
+		var obj = {}
+		obj.author = $scope.author;
+		obj.quote = $scope.quote;
+		obj.rating = $scope.rating
+		$localStorage.quotes.push(obj)
+		console.log(obj);
+	}
+	$scope.$storage = $localStorage.$default({quotes:[{
 		author: 'Forest Gump',
 		quote : "My momma always said, 'Life was like a box of chocolates. You never know what you're gonna get.'",
 		rating: 5
@@ -26,6 +32,6 @@ app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localS
 		author: "The Terminator",
 		quote: "Hasta la vista, baby." ,
 		rating: 5
-	}]
+	}]})
 
 }])

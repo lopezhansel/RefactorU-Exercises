@@ -6,11 +6,18 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
 </head>
 <body ng-controller="quotesCtrl">
-<div class="card" ng-repeat="quote in quotes">
+<div class="submitQuote">
+	<input placeholder='Author' ng-model="author">
+	<input placeholder="Quote" ng-model="quote">
+	<input placeholder="Rating" ng-model="rating">
+	<button ng-click="addQuote()">Submit</button>
+</div>
+<div class="card" ng-repeat="quote in $storage.quotes">
 	<h1>{{quote.author}}</h1>
 	<h2>{{quote.quote}}</h2>
 	<p>{{quote.rating}}</p>
 </div>
+
 
 	<script type="text/javascript" src="main.js" ></script>
 </body>
