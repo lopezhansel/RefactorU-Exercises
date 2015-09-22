@@ -13,8 +13,8 @@
 	<button ng-click="addQuote()">Submit</button>
 </div>
 
-<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthorr" ng-dblclick="deleteQuote($index)">
-	<h1 ng-click="selectedAuthor($index)">{{quote.author}}</h1>
+<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthor" ng-dblclick="deleteQuote($index)">
+	<h1 ng-click="clickAuthor($index)">{{quote.author}}</h1>
 	<h2>{{quote.quote}}</h2>
 	<p>{{quote.rating}}</p>
 </div>

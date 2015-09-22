@@ -17,9 +17,9 @@ app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localS
 		localStorage.clear();
 		location.reload();
 	}
-	$scope.selectedAuthor = function 	(index) {
-			$scope.selectedAuthorr = $localStorage.quotes[index].author
-			console.log($scope.selectedAuthorr);
+	$scope.clickAuthor = function 	(index) {
+			$scope.selectedAuthor = $localStorage.quotes[index].author
+			console.log($scope.selectedAuthor);
 	}
 	$scope.$storage = $localStorage.$default({quotes:[{
 		author: 'Forest Gump',
