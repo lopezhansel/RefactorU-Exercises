@@ -12,13 +12,14 @@
 	<input placeholder="Rating" ng-model="rating">
 	<button ng-click="addQuote()">Submit</button>
 </div>
-<div class="card" ng-repeat="quote in $storage.quotes">
-	<h1>{{quote.author}}</h1>
+
+<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthorr" ng-dblclick="deleteQuote($index)">
+	<h1 ng-click="selectedAuthor($index)">{{quote.author}}</h1>
 	<h2>{{quote.quote}}</h2>
 	<p>{{quote.rating}}</p>
 </div>
 
-
+<button ng-click="resetQuotes()">Reset</button>
 	<script type="text/javascript" src="main.js" ></script>
 </body>
 </html>

@@ -4,9 +4,22 @@ app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localS
 		var obj = {}
 		obj.author = $scope.author;
 		obj.quote = $scope.quote;
-		obj.rating = $scope.rating
+		obj.rating = $scope.rating;
 		$localStorage.quotes.push(obj)
-		console.log(obj);
+		$scope.author  = ''
+		 $scope.quote  = ''
+		$scope.rating = ''
+	}
+	$scope.deleteQuote = function  (index) {
+		$localStorage.quotes.splice(index,1)
+	}
+	$scope.resetQuotes = function  () {
+		localStorage.clear();
+		location.reload();
+	}
+	$scope.selectedAuthor = function 	(index) {
+			$scope.selectedAuthorr = $localStorage.quotes[index].author
+			console.log($scope.selectedAuthorr);
 	}
 	$scope.$storage = $localStorage.$default({quotes:[{
 		author: 'Forest Gump',
@@ -31,6 +44,10 @@ app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localS
 	},{
 		author: "The Terminator",
 		quote: "Hasta la vista, baby." ,
+		rating: 5
+	},{
+		author: "The Terminator",
+		quote: "I'll be back" ,
 		rating: 5
 	}]})
 
