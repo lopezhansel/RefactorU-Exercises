@@ -1,27 +1,36 @@
 var app = angular.module('quotes', ['ngStorage'])
 app.controller('quotesCtrl', ['$scope','$localStorage', function ($scope,$localStorage) {
+	$scope.toggleSortByRating = function  () {
+		$scope.sortRating = ($scope.sortRating === '-rating') ? '' : "-rating";
+	}
+	$scope.setAuthor = function  () {
+		$scope.selectedAuthor = undefined	}
 	$scope.addQuote = function  () {
 		var obj = {}
 		obj.author = $scope.author;
-		obj.quote = $scope.quote;
-		obj.rating = $scope.rating;
+		obj.quote  = $scope.quote;
+		obj.rating = Number($scope.rating);
 		$localStorage.quotes.push(obj)
 		$scope.author  = ''
-		 $scope.quote  = ''
-		$scope.rating = ''
+		$scope.quote   = ''
+		$scope.rating  = ''
 	}
+	// need to finish  the undelete
 	$scope.deleteQuote = function  (index) {
-		$localStorage.quotes.splice(index,1)
+		$scope.removed = $localStorage.quotes.splice(index,1)
+		$scope.removedIndex = index
 	}
 	$scope.resetQuotes = function  () {
 		localStorage.clear();
 		location.reload();
 	}
-	$scope.clickAuthor = function 	(index) {
-			$scope.selectedAuthor = $localStorage.quotes[index].author
-			console.log($scope.selectedAuthor);
+
+	$scope.clickAuthor = function (index) {
+		$scope.selectedAuthor = ($scope.selectedAuthor == undefined) ? $localStorage.quotes[index].author :  undefined 
 	}
-	$scope.$storage = $localStorage.$default({quotes:[{
+	$scope.$storage = $localStorage.$default({
+		quotes:[
+		{
 		author: 'Forest Gump',
 		quote : "My momma always said, 'Life was like a box of chocolates. You never know what you're gonna get.'",
 		rating: 5

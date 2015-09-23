@@ -6,6 +6,9 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
 </head>
 <body ng-controller="quotesCtrl">
+<button ng-click="setAuthor()">back</button>
+<button ng-click="toggleSortByRating()">Sort By rating</button>
+<button ng-click="resetQuotes()">Reset</button>
 <div class="submitQuote">
 	<input placeholder='Author' ng-model="author">
 	<input placeholder="Quote" ng-model="quote">
@@ -13,13 +16,15 @@
 	<button ng-click="addQuote()">Submit</button>
 </div>
 
-<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthor" ng-dblclick="deleteQuote($index)">
+<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " ng-dblclick="deleteQuote($index)">
+<!-- button goback() and showGoback -->
+	<button ng-click="goback()" ng-show="showGoBack"></button>
 	<h1 ng-click="clickAuthor($index)">{{quote.author}}</h1>
 	<h2>{{quote.quote}}</h2>
 	<p>{{quote.rating}}</p>
 </div>
 
-<button ng-click="resetQuotes()">Reset</button>
 	<script type="text/javascript" src="main.js" ></script>
 </body>
 </html>
+
