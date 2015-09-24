@@ -3,6 +3,9 @@
   <head>
     <title>js18 inspirations Quotes</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
@@ -10,20 +13,22 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
   </head>
   <body ng-controller="quotesCtrl">
-    <div class="submitQuote">
-      <input placeholder="Author" ng-model="author">
-      <input placeholder="Rating" ng-model="rating">
-      <textarea placeholder="Quote" ng-model="quote"></textarea>
-      <button ng-click="addQuote()">Submit</button>
+    <div ng-show="showQuoteForm" class="formWrapper">
+      <div class="formBox">
+        <input placeholder="Author" ng-model="author">
+        <input placeholder="Rating" ng-model="rating">
+        <textarea placeholder="Quote" ng-model="quote"></textarea>
+        <button ng-click="addQuote()">Submit</button>
+      </div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper container row">
       <div class="sorting"><img ng-click="showAddQuote()" src="http://wws.kirupa.com/images/add_style.png" alt="" class="add">
         <button ng-click="toggleSortByRating()">Sort By rating</button>
         <button ng-click="resetQuotes()">Reset</button>
       </div>
-      <div class="cardContainer">
+      <div class="cardContainer row">
         <h1 class="welcome">Movie Quotes</h1>
-        <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " class="card">
+        <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " class="card col-md-3">
           <div ng-click="clickAuthor($index)" class="author">
             <button ng-click="goback()" ng-show="showGoBack">hello</button><img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico" alt="" ng-click="deleteQuote($index)" class="delete"><a href="#">{{quote.author}}</a>
           </div>
@@ -31,7 +36,14 @@
             <cite>{{quote.quote}}</cite><span>”</span>
           </div>
           <div class="rating">{{quote.stars.join('')}}</div>
-          <!--<div class="rating">{{quote.rating}}</div>-->
+          <select ng-model="quote.rating" ng-click="stars()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <div class="rating">{{quote.rating}}</div>
         </div>
       </div>
     </div>

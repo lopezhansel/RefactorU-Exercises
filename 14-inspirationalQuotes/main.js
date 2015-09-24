@@ -48,43 +48,51 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 		{
 		author: 'Forest Gump',
 		quote : "My momma always said, 'Life was like a box of chocolates. You never know what you're gonna get.",
-		rating: 5
+		rating: 5,
+		stars: []
 	},{
 		author: 'Johnny Castle' ,
 		quote: "Nobody puts Baby in the corner",
-		rating: 3
+		rating: 3,
+		stars: []
 	},{
 		author: "Travis Bickle" ,
 		quote: "You talkin' to me?" ,
-		rating: 3
+		rating: 3,
+		stars: []
 	},{
 		author: "Tony Montana",
 		quote:  "Say 'hello' to my little friend!",
-		rating: 4
+		rating: 4,
+		stars: []
 	},{
 		author: "Det. Robert Thorn",
 		quote: "Soylent Green is people!" ,
-		rating: 2
+		rating: 2,
+		stars: []
 	},{
 		author: "The Terminator",
 		quote: "Hasta la vista, baby." ,
-		rating: 5
+		rating: 5,
+		stars: []
 	},{
 		author: "The Terminator",
 		quote: "I'll be back" ,
-		rating: 5
+		rating: 5,
+		stars: []
 	}]})
 
-	function stars () {
+	$scope.stars = function () {
 		for (var i = 0; i < $localStorage.quotes.length; i++) {
 			$localStorage.quotes[i].stars = []
 			for (var j = 0; j < $localStorage.quotes[i].rating; j++) {
 				$localStorage.quotes[i].stars.push('★')
 			};
 		};
+		console.log('hello');
 
 	}
-	stars();
+	$scope.stars();
 
 }])
 // app.config( function($mdThemingProvider){
