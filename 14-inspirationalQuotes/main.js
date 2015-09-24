@@ -1,22 +1,23 @@
 var app = angular.module('quotes', ['ngMaterial','ngStorage',])
 
 app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($scope,$localStorage) {
-	$scope.showQuoteForm = false
-
+// --------------------------- Sorting -------------------------------------------------
 	$scope.toggleSortByRating = function  () {
 		$scope.sortRating = ($scope.sortRating === '-rating') ? '' : "-rating";
 
 	}
-	$scope.cl = function  (hello) {
-		console.log(hello);
-	}
 	$scope.setAuthor = function  () {
 		$scope.selectedAuthor = undefined	
 	}
-
+	$scope.clickAuthor = function (index) {
+		$scope.selectedAuthor = ($scope.selectedAuthor == undefined) ? $localStorage.quotes[index].author :  undefined 
+	}
+// --------------------------- Adding and Deleting  -------------------------------------------------
+	$scope.showQuoteForm = false
 	$scope.showAddQuote = function  () {
 		$scope.showQuoteForm = !$scope.showQuoteForm
 	}
+
 	$scope.addQuote = function  () {
 		var obj = {}
 		obj.author = $scope.author;
@@ -28,19 +29,19 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 		$scope.quote   = ''
 		$scope.rating  = ''
 	}
+
 	// need to finish  the undelete
 	$scope.deleteQuote = function  (index) {
 		$scope.removed = $localStorage.quotes.splice(index,1)
 		$scope.removedIndex = index
+// --------------------------- Reset Local Storage -------------------------------------------------
 	}
 	$scope.resetQuotes = function  () {
 		localStorage.clear();
 		location.reload();
 	}
 
-	$scope.clickAuthor = function (index) {
-		$scope.selectedAuthor = ($scope.selectedAuthor == undefined) ? $localStorage.quotes[index].author :  undefined 
-	}
+// --------------------------- Data -------------------------------------------------
 
 	$scope.$storage = $localStorage.$default({
 		quotes:[

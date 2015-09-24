@@ -25,7 +25,7 @@ body {
   width: 400px;
   margin: 0;
 }
-.cardContainer {
+.wrapper {
   margin: auto;
   background: #1a171e;
   max-width: 1206px;
@@ -36,18 +36,27 @@ body {
   color: #fff;
   padding: 20px 200px 200px 200px;
 }
-.cardContainer .welcome {
-  text-align: center;
+.wrapper .sorting {
+  position: relative;
+  overflow: auto;
+  height: 100px;
 }
-.cardContainer img.add {
+.wrapper .sorting button {
+  font-size: 1em;
+  width: 300px;
+  height: 50px;
+}
+.wrapper .sorting img.add {
   width: 50px;
   height: 50px;
   border-radius: 193px;
   position: absolute;
   right: 20px;
-  top: 20px;
 }
-.cardContainer .card {
+.wrapper .cardContainer .welcome {
+  text-align: center;
+}
+.wrapper .cardContainer .card {
   border: 4px solid;
   border-radius: 15px;
   border-color: #ffd400;
@@ -55,7 +64,7 @@ body {
   margin: 15px 0;
   position: relative;
 }
-.cardContainer .card img.delete {
+.wrapper .cardContainer .card img.delete {
   width: 50px;
   height: 50px;
   border-radius: 140px;
@@ -63,29 +72,29 @@ body {
   position: absolute;
   right: 31px;
 }
-.cardContainer .card .author {
+.wrapper .cardContainer .card .author {
   padding: 10px;
   text-align: center;
   background: #808080;
   border-radius: 15px;
   font-size: 50px;
 }
-.cardContainer .card .author a {
+.wrapper .cardContainer .card .author a {
   text-decoration: none;
   color: #fff;
 }
-.cardContainer .card .author a:hover {
+.wrapper .cardContainer .card .author a:hover {
   text-decoration: none;
   color: #ffd400;
 }
-.cardContainer .card .quote {
+.wrapper .cardContainer .card .quote {
   padding: 10px 0 0 0;
   text-align: center;
 }
-.cardContainer .card .quote span {
+.wrapper .cardContainer .card .quote span {
   font-size: 1.3em;
 }
-.cardContainer .card .rating {
+.wrapper .cardContainer .card .rating {
   text-align: right;
   color: #ffd400;
 }

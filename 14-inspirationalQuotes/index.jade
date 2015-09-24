@@ -11,31 +11,31 @@ html(ng-app='quotes')
 
   body(ng-controller='quotesCtrl')
 
-    .sorting
-      button(ng-click='setAuthor()') back
-      button(ng-click='toggleSortByRating()') Sort By rating
-      button(ng-click='resetQuotes()') Reset
 
     .submitQuote
       input(placeholder='Author', ng-model='author')
       input(placeholder='Rating', ng-model='rating')
       textarea(placeholder='Quote', ng-model='quote')
       button(ng-click='addQuote()') Submit
-
-    .cardContainer
-      img.add(ng-click='showAddQuote()', src='http://wws.kirupa.com/images/add_style.png', alt='')
-      h1.welcome Movie Quotes
-      .card(ng-repeat='quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating ')
-        // button goback() and showGoback
-        button(ng-click='goback()', ng-show='showGoBack')
-        img.delete(src='http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico', alt='', ng-click='deleteQuote($index)')
-        .author(ng-click='clickAuthor($index)')
-          a(href='#') {{quote.author}}
-        .quote
-          span “	
-          cite {{quote.quote}}
-          span ”
-        .rating {{quote.stars.join('')}}
-        //<div class="rating">{{quote.rating}}</div>
+      
+    .wrapper
+      .sorting
+        img.add(ng-click='showAddQuote()', src='http://wws.kirupa.com/images/add_style.png', alt='')
+        button(ng-click='toggleSortByRating()') Sort By rating
+        button(ng-click='resetQuotes()') Reset
+      .cardContainer
+        h1.welcome Movie Quotes
+        .card(ng-repeat='quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating ')
+          .author(ng-click='clickAuthor($index)')
+            button(ng-click='goback()', ng-show='showGoBack') hello
+            img.delete(src='http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico', alt='', ng-click='deleteQuote($index)')
+            //- button(ng-click='setAuthor()') back
+            a(href='#') {{quote.author}}
+          .quote
+            span “	
+            cite {{quote.quote}}
+            span ”
+          .rating {{quote.stars.join('')}}
+          //<div class="rating">{{quote.rating}}</div>
 
     script(type='text/javascript', src='main.js')

@@ -3,6 +3,8 @@ body
   background #FFD400
   padding 30px
   
+
+  // ------------- Form -----------
 .submitQuote
   background white
   position: absolute
@@ -22,8 +24,9 @@ body
     padding 0
     width 400px
     margin 0
-    
-.cardContainer
+  
+  
+.wrapper // ------------- Wrapper -----------
   margin auto
   background #1A171E
   max-width 1206px
@@ -33,53 +36,62 @@ body
   font-size 2em
   color white
   padding 20px 200px 200px 200px
-  .welcome
-    text-align center
-
-   img.add
-    width 50px
-    height 50px
-    border-radius 193px
-    position absolute
-    right 20px
-    top 20px
-    
-    
-  .card
-    border 4px solid
-    border-radius 15px
-    border-color #FFD400
-    padding 15px
-    margin 15px 0
+  .sorting // ------------- Sort -----------
+    // background white
     position: relative
-
-    img.delete
+    overflow auto
+    height 100px
+    button
+      font-size 1em
+      width 300px
+      height 50px
+    img.add
       width 50px
       height 50px
-      border-radius 140px
-      top 27px
+      border-radius 193px
       position absolute
-      right 31px
-
-    .author
-      padding 10px
+      right 20px
+      // top 20px
+  .cardContainer // ------------- cardContainer -----------
+    // background red
+    .welcome
       text-align center
-      background gray
+    .card
+      border 4px solid
       border-radius 15px
-      font-size 50px
-      a
-        text-decoration none
-        color white
-        &:hover
+      border-color #FFD400
+      padding 15px
+      margin 15px 0
+      position: relative
+
+      img.delete
+        width 50px
+        height 50px
+        border-radius 140px
+        top 27px
+        position absolute
+        right 31px
+
+      .author
+        padding 10px
+        text-align center
+        background gray
+        border-radius 15px
+        font-size 50px
+        a
           text-decoration none
-          color #FFD400
+          color white
+          &:hover
+            text-decoration none
+            color #FFD400
 
-    .quote
-      padding 10px 0 0 0
-      text-align center
-      span
-        font-size 1.3em
+      .quote
+        padding 10px 0 0 0
+        text-align center
+        span
+          font-size 1.3em
 
-    .rating
-      text-align right
-      color #FFD400
+      .rating
+        text-align right
+        color #FFD400
+    
