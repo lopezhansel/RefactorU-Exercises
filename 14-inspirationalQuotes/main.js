@@ -1,23 +1,20 @@
 var app = angular.module('quotes', ['ngMaterial','ngStorage',])
 
 app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($scope,$localStorage) {
-	$scope.user = {
-      title: 'Developer',
-      email: 'ipsum@lorem.com',
-      firstName: '',
-      lastName: '' ,
-      company: 'Google' ,
-      address: '1600 Amphitheatre Pkwy' ,
-      city: 'Mountain View' ,
-      state: 'CA' ,
-      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
-      postalCode : '94043'
-    };
+	$scope.showQuoteForm = false
+
 	$scope.toggleSortByRating = function  () {
 		$scope.sortRating = ($scope.sortRating === '-rating') ? '' : "-rating";
+
 	}
+
 	$scope.setAuthor = function  () {
-		$scope.selectedAuthor = undefined	}
+		$scope.selectedAuthor = undefined	
+	}
+
+	$scope.showAddQuote = function  () {
+		$scope.showQuoteForm = !$scope.showQuoteForm
+	}
 	$scope.addQuote = function  () {
 		var obj = {}
 		obj.author = $scope.author;
@@ -42,6 +39,7 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 	$scope.clickAuthor = function (index) {
 		$scope.selectedAuthor = ($scope.selectedAuthor == undefined) ? $localStorage.quotes[index].author :  undefined 
 	}
+
 	$scope.$storage = $localStorage.$default({
 		quotes:[
 		{
@@ -73,14 +71,12 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 		quote: "I'll be back" ,
 		rating: 5
 	}]})
+
 	function stars () {
 		for (var i = 0; i < $localStorage.quotes.length; i++) {
 			$localStorage.quotes[i].stars = []
 			for (var j = 0; j < $localStorage.quotes[i].rating; j++) {
-			console.log($localStorage.quotes[i].stars);
 				$localStorage.quotes[i].stars.push('★')
-
-			// $localStorage.quotes[i].stars.join('')
 			};
 		};
 
@@ -88,9 +84,9 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 	stars();
 
 }])
-app.config( function($mdThemingProvider){
-    // Configure a dark theme with primary foreground yellow
-    $mdThemingProvider.theme('docs-dark', 'default')
-        .primaryPalette('blue')
-        .dark();
-  });
+// app.config( function($mdThemingProvider){
+//     // Configure a dark theme with primary foreground yellow
+//     $mdThemingProvider.theme('docs-dark', 'default')
+//         .primaryPalette('blue')
+//         .dark();
+//   });

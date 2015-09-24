@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html ng-app="quotes">
-<head>
-	<title>js18 inspirations Quotes</title>
-	<link rel="stylesheet" href="main.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <head>
+    <title>js18 inspirations Quotes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
-</head>
-<body ng-controller="quotesCtrl">
-        <md-button md-no-ink class="md-primary">Primary (md-noink)</md-button>
-      <md-button>Hansel</md-button>
-
-<button ng-click="setAuthor()">back</button>
-<button ng-click="toggleSortByRating()">Sort By rating</button>
-<button ng-click="resetQuotes()">Reset</button>
-<div class="submitQuote">
-	<input placeholder='Author' ng-model="author">
-	<input placeholder="Quote" ng-model="quote">
-	<input placeholder="Rating" ng-model="rating">
-	<button ng-click="addQuote()">Submit</button>
-</div>
-
-<div class="cardContainer">
-	<md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
-    <md-input-container>
-      <label>Title</label>
-      <input ng-model="user.title">
-    </md-input-container>
-    <md-input-container>
-      <label>Email</label>
-      <input ng-model="user.email" type="email">
-    </md-input-container>
-  </md-content>
-	<div class="card" ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " ng-dblclick="deleteQuote($index)">
-	<!-- button goback() and showGoback -->
-		<button ng-click="goback()" ng-show="showGoBack"></button>
-		<div class="author" ng-click="clickAuthor($index)"><a href="#">{{quote.author}}</a></div>
-		<div class="quote"><span>“	</span> <cite>{{quote.quote}}</cite> <span>”</span></div >
-		<div class="rating">{{quote.stars.join('')}}</div>
-		<!-- <div class="rating">{{quote.rating}}</div> -->
-	</div>
-</div>
-
-	<script type="text/javascript" src="main.js" ></script>
-</body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
+  </head>
+  <body ng-controller="quotesCtrl">
+    <div class="sorting">
+      <button ng-click="setAuthor()">back</button>
+      <button ng-click="toggleSortByRating()">Sort By rating</button>
+      <button ng-click="resetQuotes()">Reset</button>
+    </div>
+    <div class="submitQuote">
+      <input placeholder="Author" ng-model="author">
+      <input placeholder="Rating" ng-model="rating">
+      <textarea placeholder="Quote" ng-model="quote"></textarea>
+      <button ng-click="addQuote()">Submit</button>
+    </div>
+    <div class="cardContainer"><img ng-click="showAddQuote()" src="http://wws.kirupa.com/images/add_style.png" alt="" class="add">
+      <h1 class="welcome">Movie Quotes</h1>
+      <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " ng-dblclick="deleteQuote($index)" class="card">
+        <!-- button goback() and showGoback-->
+        <button ng-click="goback()" ng-show="showGoBack"></button><img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico" alt="" class="delete">
+        <div ng-click="clickAuthor($index)" class="author"><a href="#">{{quote.author}}</a></div>
+        <div class="quote"><span>“	</span>
+          <cite>{{quote.quote}}</cite><span>”</span>
+        </div>
+        <div class="rating">{{quote.stars.join('')}}</div>
+        <!--<div class="rating">{{quote.rating}}</div>-->
+      </div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
-
