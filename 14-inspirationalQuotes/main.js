@@ -7,7 +7,9 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 		$scope.sortRating = ($scope.sortRating === '-rating') ? '' : "-rating";
 
 	}
-
+	$scope.cl = function  (hello) {
+		console.log(hello);
+	}
 	$scope.setAuthor = function  () {
 		$scope.selectedAuthor = undefined	
 	}

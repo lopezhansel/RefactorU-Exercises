@@ -23,9 +23,9 @@
     </div>
     <div class="cardContainer"><img ng-click="showAddQuote()" src="http://wws.kirupa.com/images/add_style.png" alt="" class="add">
       <h1 class="welcome">Movie Quotes</h1>
-      <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " ng-dblclick="deleteQuote($index)" class="card">
+      <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " class="card">
         <!-- button goback() and showGoback-->
-        <button ng-click="goback()" ng-show="showGoBack"></button><img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico" alt="" class="delete">
+        <button ng-click="goback()" ng-show="showGoBack"></button><img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico" alt="" ng-click="deleteQuote($index)" class="delete">
         <div ng-click="clickAuthor($index)" class="author"><a href="#">{{quote.author}}</a></div>
         <div class="quote"><span>“	</span>
           <cite>{{quote.quote}}</cite><span>”</span>

@@ -8,23 +8,27 @@ html(ng-app='quotes')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js')
+
   body(ng-controller='quotesCtrl')
+
     .sorting
       button(ng-click='setAuthor()') back
       button(ng-click='toggleSortByRating()') Sort By rating
       button(ng-click='resetQuotes()') Reset
+
     .submitQuote
       input(placeholder='Author', ng-model='author')
       input(placeholder='Rating', ng-model='rating')
       textarea(placeholder='Quote', ng-model='quote')
       button(ng-click='addQuote()') Submit
+
     .cardContainer
       img.add(ng-click='showAddQuote()', src='http://wws.kirupa.com/images/add_style.png', alt='')
       h1.welcome Movie Quotes
-      .card(ng-repeat='quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating ', ng-dblclick='deleteQuote($index)')
+      .card(ng-repeat='quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating ')
         // button goback() and showGoback
         button(ng-click='goback()', ng-show='showGoBack')
-        img.delete(src='http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico', alt='')
+        img.delete(src='http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico', alt='', ng-click='deleteQuote($index)')
         .author(ng-click='clickAuthor($index)')
           a(href='#') {{quote.author}}
         .quote
@@ -33,4 +37,5 @@ html(ng-app='quotes')
           span ”
         .rating {{quote.stars.join('')}}
         //<div class="rating">{{quote.rating}}</div>
+
     script(type='text/javascript', src='main.js')
