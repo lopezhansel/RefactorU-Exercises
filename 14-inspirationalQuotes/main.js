@@ -17,7 +17,7 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 	$scope.showAddQuote = function  () {
 		$scope.showQuoteForm = !$scope.showQuoteForm
 	}
-
+	
 	$scope.addQuote = function  () {
 		var obj = {}
 		obj.author = $scope.author;
@@ -89,8 +89,6 @@ app.controller('quotesCtrl', ['$scope','$localStorage','$mdSidenav', function ($
 				$localStorage.quotes[i].stars.push('★')
 			};
 		};
-		console.log('hello');
-
 	}
 	$scope.stars();
 

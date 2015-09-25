@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
   </head>
   <body ng-controller="quotesCtrl">
+
     <div ng-show="showQuoteForm" class="formWrapper">
       <div class="formBox">
         <input placeholder="Author" ng-model="author">
@@ -21,19 +22,24 @@
         <button ng-click="addQuote()">Submit</button>
       </div>
     </div>
-    <div class="wrapper container row">
-      <div class="sorting"><img ng-click="showAddQuote()" src="http://wws.kirupa.com/images/add_style.png" alt="" class="add">
+
+    <div class="wrapper">
+      <div class="sorting">
+        <img ng-click="showAddQuote()" src="http://wws.kirupa.com/images/add_style.png" alt="" class="add">
         <button ng-click="toggleSortByRating()">Sort By rating</button>
         <button ng-click="resetQuotes()">Reset</button>
       </div>
-      <div class="cardContainer row">
+
+      <div class="cardContainer">
         <h1 class="welcome">Movie Quotes</h1>
         <div ng-repeat="quote in $storage.quotes | filter: selectedAuthor | orderBy: sortRating " class="card col-md-3">
           <div ng-click="clickAuthor($index)" class="author">
-            <button ng-click="goback()" ng-show="showGoBack">hello</button><img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico" alt="" ng-click="deleteQuote($index)" class="delete"><a href="#">{{quote.author}}</a>
+            <button ng-click="goback()" ng-show="showGoBack">hello</button>
+            <img src="http://www.iconarchive.com/download/i51281/awicons/vista-artistic/delete.ico"ng-click="deleteQuote($index)" class="delete">
+            <a href="#">{{quote.author}}</a>
           </div>
-          <div class="quote"><span>“	</span>
-            <cite>{{quote.quote}}</cite><span>”</span>
+          <div class="quote">
+            <span>“</span><cite>{{quote.quote}}</cite><span>”</span>
           </div>
           <div class="rating">{{quote.stars.join('')}}</div>
           <select ng-model="quote.rating" ng-click="stars()">
@@ -43,7 +49,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <div class="rating">{{quote.rating}}</div>
+          <!-- <div class="rating">{{quote.rating}}</div> -->
         </div>
       </div>
     </div>
