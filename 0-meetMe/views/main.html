@@ -1,0 +1,72 @@
+ <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+          <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
+        <h1 ><a href="#account">Hello World</a></h1>
+
+      </div>
+    </md-toolbar>
+
+    <!-- UNDER THE TOOLBAR -->
+    <div layout="row" flex>
+        
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+        <h2 id="startLat">Lat</h2>
+        <h2 id="startLon">Long</h2>
+        </md-sidenav>
+
+        <!-- CONTENT -->
+        <div layout="column" flex id="content">
+            <md-content layout="column" flex class="md-padding">
+
+              <div ng-controller="ModalDemoCtrl">
+                <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+                <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+                <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+                <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+                <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+              </div>
+
+              <md-card>
+                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <md-card-content>
+                  <h2 class="md-title">Paracosm</h2>
+                  <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                  </p>
+                </md-card-content>
+                <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button>Action 1</md-button>
+                  <md-button>Action 2</md-button>
+                </div>
+              </md-card>
+              <br/>
+
+              <md-card>
+                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <md-card-content>
+                  <h2 class="md-title">Paracosm</h2>
+                  <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                  </p>
+                </md-card-content>
+              </md-card>
+              <br/>
+
+              <md-card>
+                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <md-card-content>
+                  <h2 class="md-title">Paracosm</h2>
+                  <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                  </p>
+                </md-card-content>
+              </md-card>
+            </md-content>
+
+        </div>
+    </div>
