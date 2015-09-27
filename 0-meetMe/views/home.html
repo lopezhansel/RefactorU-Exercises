@@ -1,19 +1,34 @@
- <md-toolbar layout="row">
+ <md-toolbar layout="column">
       <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
           <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
         </md-button>
-        <h1 ><a href="#account">Hello World</a></h1>
+        <h1 ><a href="#ac">Hello World</a></h1>
 
       </div>
     </md-toolbar>
 
     <!-- UNDER THE TOOLBAR -->
-    <div layout="row" flex>
+    <div layout="{{layout}}" flex>
         
         <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-        <h2 id="startLat">Lat</h2>
-        <h2 id="startLon">Long</h2>
+        <h2 id="startLat">Latitude {{lat}}</h2>
+        <h2 id="startLon">Longittude {{longg}}</h2>
+        <h3><a href="#MyAccount">
+        		<p>My Account</p>
+        	</a></h3>
+        <h3><a href="#form">
+        		<p>Form</p>
+        	</a></h3>
+        <h3><a href="#home">
+        		<p>home</p>
+        	</a></h3>
+        	<h3><a href="#messages">
+        		<p>messages</p>
+        	</a></h3>
+        	<h3><a href="#MyProfile">
+        		<p>My Profile</p>
+        	</a></h3>
         </md-sidenav>
 
         <!-- CONTENT -->

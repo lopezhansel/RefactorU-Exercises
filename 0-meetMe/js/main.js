@@ -10,11 +10,19 @@ app.config(function($routeProvider){
   $routeProvider
     .when('/', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/main.html' 
+      templateUrl: 'views/home.html' 
     })
-    .when('/account', { 
+    .when('/MyAccount', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/account.html' 
+      templateUrl: 'views/MyAccount.html' 
+    })
+    .when('/editProfile', { 
+      controller: 'AppCtrl', 
+      templateUrl: 'views/form.html' 
+    })
+    .when('/messages', { 
+      controller: 'AppCtrl', 
+      templateUrl: 'views/messages.html' 
     })
     .otherwise({ 
       redirectTo: '/' 
