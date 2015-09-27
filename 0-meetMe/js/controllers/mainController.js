@@ -1,5 +1,6 @@
-app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService', function($scope, $mdSidenav,userService){
 //--------------------------------------------------------Material desing content--------------------------------------------------------------
+  $scope.users = userService.users
   $scope.layout = 'row'
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
@@ -45,9 +46,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
     console.log("I am " , Math.round(distance), "miles from Monterrey, Mexico");
   }
 
-
 }]);
-
 
 
 //----------------------------------------------------------------------------------------------------------------------

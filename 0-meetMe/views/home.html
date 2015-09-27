@@ -43,7 +43,7 @@
                 <div ng-show="selected">Selection from a modal: {{ selected }}</div>
               </div>
 
-              <md-card>
+              <md-card data-ng-repeat="user in users">
                 <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
                 <md-card-content>
                   <h2 class="md-title">Paracosm</h2>
