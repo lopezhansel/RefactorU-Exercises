@@ -12,17 +12,17 @@ app.config(function($routeProvider){
       controller: 'AppCtrl', 
       templateUrl: 'views/home.html' 
     })
-    .when('/MyAccount', { 
+    .when('/AccountSettings', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/MyAccount.html' 
+      templateUrl: 'views/AccountSettings.html' 
     })
-    .when('/editProfile', { 
+    .when('/ProfileView', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/form.html' 
+      templateUrl: 'views/ProfileView.html' 
     })
-    .when('/messages', { 
+    .when('/Messages', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/messages.html' 
+      templateUrl: 'views/Messages.html' 
     })
     .otherwise({ 
       redirectTo: '/' 
