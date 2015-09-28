@@ -1,12 +1,12 @@
+// ========================================================================== APPCTRL ===============================
 app.controller('AppCtrl', ['$scope', '$mdSidenav','userService', function($scope, $mdSidenav,userService){
-//--------------------------------------------------------Material desing content--------------------------------------------------------------
+//------------------------------------------Material desing content--------------------------------------------------------------
   $scope.users = userService.users
   $scope.layout = 'row'
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
   $scope.imagePath = 'https://material.angularjs.org/latest/img/washedout.png';
-  $scope.names=['Igor Minar', 'Brad Green', 'Dave Geddes', 'Naomi Black', 'Greg Weber', 'Dean Sofer', 'Wes Alvaro', 'John Scott', 'Daniel Nadasi'];
 //------------------------------------------------Location----------------------------------------------------------------------
   if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian
     Number.prototype.toRad = function() {
@@ -49,8 +49,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService', function($scope
 }]);
 
 
-//----------------------------------------------------------------------------------------------------------------------
 
+// ========================================================================== ModalInstanceCtrl =====================
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
   $scope.items = items;
   $scope.selected = {
@@ -66,6 +66,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
   };
 });
 
+// ========================================================================== ModalDemoCtrl =========================
 app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
