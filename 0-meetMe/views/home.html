@@ -14,23 +14,18 @@
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')">
         <h2 id="startLat">Latitude {{lat}}</h2>
         <h2 id="startLon">Longittude {{longg}}</h2>
-        <h3><a href="#AccountSettings">
-        		<p>Account Settings</p>
-        	</a></h3>
-        <h3><a href="#ProfileView">
-        		<p>Profile View</p>
-        	</a></h3>
-        <h3><a href="#Home">
-        		<p>Home</p>
-        	</a></h3>
-        	<h3><a href="#Messages">
-        		<p>Messages</p>
-        	</a></h3>
+        <h3>
+	        <a href="#AccountSettings"><p>Account Settings</p></a>
+        </h3>
+        <h3>
+	        <a href="#ProfileView"><p>Profile View</p></a>
+        </h3>
+        <h3>
+	        <a href="#Home"><p>Home</p></a>
+        </h3>
+	        	<h3><a href="#Messages"><p>Messages</p></a>
+        </h3>
     </md-sidenav>
-
-	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
-    <div layout="column" flex id="content" >
-        <md-content layout="column"  class="md-padding" >
 
 			<!-- .................................... BOOSTRAP BUTTONS ........................................................ -->
         <!--   <div ng-controller="ModalDemoCtrl">
@@ -40,15 +35,25 @@
             <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
             <div ng-show="selected">Selection from a modal: {{ selected }}</div>
           </div> -->
-        	<md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px" class="md-padding" >
-        		<md-grid-tile data-ng-repeat="user in users"  md-rowspan="3" md-colspan="2" md-colspan-sm="1">
-			          <md-card >
-			            <img ng-src="{{user.Poster}}" class="md-card-image" alt="Washed Out">
+	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
+    <div layout="column" flex id="content" >
+        <md-content >
+
+        	<md-grid-list 
+        	md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4" md-cols-gt-lg="6"
+       		 md-row-height-gt-sm="1:1" md-row-height="2:1"
+       		 md-gutter="8px" md-gutter-gt-sm="4px" >
+        		<!-- <br> <br> <br> <br> -->
+
+        		<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" >
+			          <md-card class="md-padding">
+			            <img ng-src="{{user.Poster}}" class="sm-card-image" alt="Movie Img">
 			            <md-card-content>
 			              <h1 class="md-title">{{user.Title}}</h1>
 			              <p>
-			                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-			                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+			              	<!-- {{user.Plot}} -->
+			              	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			              	
 			              </p>
 			            </md-card-content>
 			            <div class="md-actions" layout="row" layout-align="end center">
@@ -56,6 +61,7 @@
 			              <md-button>Action 2</md-button>
 			            </div>
 			          </md-card>
+			          <br>
         		</md-grid-tile>
            </md-grid-list>
 

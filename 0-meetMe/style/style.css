@@ -1,3 +1,32 @@
+body{
+	/*box-sizing: border-box;*/
+}
+.cards img {
+	height: 150px;
+	width: 100px;
+}
+.card h1{
+	float: right;
+}
+md-card{
+	display: inline;
+	float: right;
+}
+
+md-grid-tile{
+	/*margin-top: 50px;*/
+/*	height: 00px;
+*/}
+
+.card{
+/*	height: 00px;
+*/
+}
+md-grid-list{
+	background: gray;
+	/*overflow: auto*/
+}
+
 .fade.ng-enter {
   transition:0.5s linear all;
   opacity:0;
@@ -7,8 +36,12 @@
   opacity:1;
 }
 .carddemoBasicUsage md-card {
-  min-height: 150px; }
+  min-height: 150px; 
+}
   .fade.ng-enter {
   transition:0.5s linear all;
   opacity:0;
 }
+/*pass in the quote itself */
+
+
