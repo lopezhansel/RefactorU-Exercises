@@ -28,45 +28,37 @@
     </md-sidenav>
 
 			<!-- .................................... BOOSTRAP BUTTONS ........................................................ -->
-        <!--   <div ng-controller="ModalDemoCtrl">
-            <button type="button" clasModalDemoCtrls="btn btn-default" ng-click="open()">Open me!</button>
-            <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
-            <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
-            <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
-            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-          </div> -->
+          
 	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
     <div layout="column" flex id="content" >
         <md-content flex>
 
         	<md-grid-list 
-        	md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4" md-cols-gt-lg="6"
-       		  md-row-height="190px"
-       		 md-gutter="8px" md-gutter-gt-sm="4px" >
-        		<!-- <br> <br> <br> <br> -->
+        			md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4" md-cols-gt-lg="6"
+       		 		md-row-height="200px"
+       				md-gutter="8px" md-gutter-gt-sm="4px" >
 
-        		<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" >
-			          <md-card class="md-padding">
-			            <img ng-src="{{user.Poster}}" class="sm-card-image" alt="Movie Img">
-			            <md-card-content>
-			              <h1 class="md-title">{{user.Title}}</h1>
-			              <p>
-			              	<!-- {{user.Plot}} -->
-			              	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			              	
-			              </p>
-			            </md-card-content>
-			            <div class="md-actions" layout="row" layout-align="end center">
-			              <md-button>Action 1</md-button>
-			              <md-button>Action 2</md-button>
-			            </div>
-			          </md-card>
-			          <br>
+        			<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" layout="column">
+
+			        	<md-card class="md-padding"   flex>
+				            <md-card-content layout='row'  >
+					            <img ng-src="{{user.Poster}}" class="sm-card-image" alt="Movie Img" >
+					            <div class="here"  layout="row" layout-align="right" >
+					            	<h1 class="md-title" >{{user.Title}}</h1>
+					            </div>
+				            </md-card-content>
+				            <md-content  >
+				            	<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+					            <div class="md-actions" layout="row" layout-align="end center">
+					            	<md-button>Action 1</md-button>
+					            	<md-button>Action 2</md-button>
+					            </div>
+				            </md-content>
+			        	</md-card>
+			        	<br>
         		</md-grid-tile>
            </md-grid-list>
-
-			<!-- .................................... MATERIAL CARDS ........................................................ -->
-
+		
 
         </md-content>
 

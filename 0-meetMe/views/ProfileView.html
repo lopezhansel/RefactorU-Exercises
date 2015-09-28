@@ -16,23 +16,30 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
+    <div ng-controller="ModalDemoCtrl">
+            <button type="button" clasModalDemoCtrls="btn btn-default" ng-click="open()">Open me!</button>
+            <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+            <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+            <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+          </div>
     
-<li>{{user.Year}}</li>
-<li>{{user.Rated}}</li>
-<li>{{user.Released}}</li>
-<li>{{user.Runtime}}</li>
-<li>{{user.Genre}}</li>
-<li>{{user.Director}}</li>
-<li>{{user.Writer}}</li>
-<li>{{user.Actors}}</li>
-<li>{{user.Plot}}</li>
-<li>{{user.Language}}</li>
-<li>{{user.Country}}</li>
-<li>{{user.Awards}}</li>
-<li>{{user.Poster}}</li>
-<li>{{user.Metascore}}</li>
-<li>{{user.imdbRating}}</li>
-<li>{{user.imdbVotes}}</li>
-<li>{{user.imdbID}}</li>
-<li>{{user.Type}}</li>
-<li>{{user.Response}}</li>
+<li>{{users[0].Year}}</li>
+<li>{{users[0].Rated}}</li>
+<li>{{users[0].Released}}</li>
+<li>{{users[0].Runtime}}</li>
+<li>{{users[0].Genre}}</li>
+<li>{{users[0].Director}}</li>
+<li>{{users[0].Writer}}</li>
+<li>{{users[0].Actors}}</li>
+<li>{{users[0].Plot}}</li>
+<li>{{users[0].Language}}</li>
+<li>{{users[0].Country}}</li>
+<li>{{users[0].Awards}}</li>
+<li>{{users[0].Poster}}</li>
+<li>{{users[0].Metascore}}</li>
+<li>{{users[0].imdbRating}}</li>
+<li>{{users[0].imdbVotes}}</li>
+<li>{{users[0].imdbID}}</li>
+<li>{{users[0].Type}}</li>
+<li>{{users[0].Response}}</li>

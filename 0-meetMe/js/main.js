@@ -13,7 +13,7 @@ app.config(function($routeProvider){
       templateUrl: 'views/home.html' 
     })
     .when('/AccountSettings', { 
-      controller: 'AppCtrl', 
+      controller: 'accountController', 
       templateUrl: 'views/AccountSettings.html' 
     })
     .when('/ProfileView', { 
