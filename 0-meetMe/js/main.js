@@ -1,4 +1,4 @@
-var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.bootstrap','ngRoute']);
+var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.bootstrap']);
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')

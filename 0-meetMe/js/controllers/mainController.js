@@ -1,7 +1,7 @@
 // ========================================================================== APPCTRL ===============================
 app.controller('AppCtrl', ['$scope', '$mdSidenav','userService', function($scope, $mdSidenav,userService){
 //------------------------------------------Material desing content--------------------------------------------------------------
-  $scope.users = userService.users
+  $scope.users = userService.movies
   $scope.layout = 'row'
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();

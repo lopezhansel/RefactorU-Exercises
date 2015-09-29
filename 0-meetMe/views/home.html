@@ -1,12 +1,14 @@
 <!-- ===================================== Top Nav Bar =================================================== -->
 <!--Nav Bar -->
 <md-toolbar layout="column">
+<md-button>
   <div class="md-toolbar-tools">
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
     <h1 ><a href="#Home">Home</a></h1>
   </div>
+</md-button>
 </md-toolbar>
 <!-- ===================================== Layout =================================================== -->
 <div layout="{{layout}}" flex>
@@ -32,14 +34,12 @@
 	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
     <div layout="column" flex id="content" >
         <md-content flex>
-
         	<md-grid-list 
         			md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4" md-cols-gt-lg="6"
        		 		md-row-height="200px"
        				md-gutter="8px" md-gutter-gt-sm="4px" >
 
         			<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" layout="column">
-
 			        	<md-card class="md-padding"   flex>
 				            <md-card-content layout='row'  >
 					            <img ng-src="{{user.Poster}}" class="sm-card-image" alt="Movie Img" >
@@ -47,12 +47,14 @@
 					            	<h1 class="md-title" >{{user.Title}}</h1>
 					            </div>
 				            </md-card-content>
-				            <md-content  >
+				            <md-content  md-ink-ripple>
 				            	<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+						
 					            <div class="md-actions" layout="row" layout-align="end center">
 					            	<md-button>Action 1</md-button>
 					            	<md-button>Action 2</md-button>
 					            </div>
+
 				            </md-content>
 			        	</md-card>
 			        	<br>

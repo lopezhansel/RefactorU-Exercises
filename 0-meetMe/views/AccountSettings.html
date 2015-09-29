@@ -1,8 +1,68 @@
-<li>Account Settings {{hello}}</li>
-<li>Edit Profile Account Form</li>
-<li>History </li>
-<li>Settings</li><li></li>
+<link rel="stylesheet" type="text/css" href="./style/style2.css">
+<!-- {{reandomUsers}} -->
+<!-- {{randomUsers}} -->
+ <div class="users" data-ng-repeat="userss in randomUsers">
+	<p>{{userss.gender}}</p>
+	<p>{{userss.name.first}}</p>
+	<!-- <p>{{userss.title}}</p>
+	<p>{{userss.first}}</p>
+	<p>{{userss.last}}</p>
+	<p>{{userss.location}}</p>
+	<p>{{userss.street}}</p>
+	<p>{{userss.city}}</p>
+	<p>{{userss.state}}</p>
+	<p>{{userss.zip}}</p>
+	<p>{{userss.email}}</p>
+	<p>{{userss.username}}</p>
+	<p>{{userss.password}}</p>
+	<p>{{userss.salt}}</p>
+	<p>{{userss.md5}}</p>
+	<p>{{userss.sha1}}</p>
+	<p>{{userss.sha256}}</p>
+	<p>{{userss.registered}}</p>
+	<p>{{userss.dob}}</p>
+	<p>{{userss.phone}}</p>
+	<p>{{userss.cell}}</p>
+	<p>{{userss.DNI}}</p> -->
+	<!-- <p>{{userss.picture.large}}</p> -->
+	<!-- <p>{{userss.picture.medium}}</p> -->
+	<!-- <p>{{userss.picture.thumbnail}}</p> -->
+	<!-- <img src="{{userss.picture.large}}"> -->
+	<!-- <img src="{{userss.picture.medium}}"> -->
+	<!-- <img src="{{userss.picture.thumbnail}}"> -->
 
 
-<!-- static positioning doesnt user top right  -->
+	<!-- <p>{{userss.large}}</p>
+	<p>{{userss.https}}</p>
+	<p>{{userss.medium}}</p>
+	<p>{{userss.https}}</p>
+	<p>{{userss.thumbnail}}</p> -->
+</div>       
 
+
+<!-- <div  class="accountSettings">
+	<md-button class="md-raised md-primary">
+		<h2><a href="#home">Home</a></h2>
+	</md-button>
+	<div  style='padding: 40px;'>
+	  <md-content>
+	    <h4>Standard date-picker</h4>
+	    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+	    <h4>Disabled date-picker</h4>
+	    <md-datepicker ng-model="myDate" md-placeholder="Enter date" disabled></md-datepicker>
+	    <h4>Date-picker with min date and max date</h4>
+	    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+	        md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+	    <h4>With ngMessages</h4>
+	    <form name="myForm">
+	      <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
+	          required md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+	      <div class="validation-messages" ng-messages="myForm.dateField.$error">
+	        <div ng-message="required">This date is required!</div>
+	        <div ng-message="mindate">Date is too early!</div>
+	        <div ng-message="maxdate">Date is too late!</div>
+	      </div>
+	    </form>
+	  </md-content>
+	</div>
+</div> -->
