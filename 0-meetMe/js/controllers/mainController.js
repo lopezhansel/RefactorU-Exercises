@@ -1,7 +1,8 @@
 // ========================================================================== APPCTRL ===============================
-app.controller('AppCtrl', ['$scope', '$mdSidenav','userService', function($scope, $mdSidenav,userService){
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', function($scope, $mdSidenav,userService,$routeParams){
 //------------------------------------------Material desing content--------------------------------------------------------------
-  $scope.users = userService.movies
+  $scope.user = userService.randomUsers[$routeParams.id]
+  $scope.users = userService.randomUsers
   $scope.layout = 'row'
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();

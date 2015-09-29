@@ -15,10 +15,10 @@ body{
     pointer-events: none;
     background: radial-gradient(circle farthest-side at top,rgba(255,255,255,0.45) 0,rgba(255,255,255,0) 100%);
 }*/
-.cards img {
-	height: 150px;
-	width: 100px;
-}
+  /*.cards img {
+  	height: 150px;
+  	width: 100px;
+  }*/
 .card h1{
 	float: right;
 }

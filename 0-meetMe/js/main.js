@@ -16,7 +16,7 @@ app.config(function($routeProvider){
       controller: 'accountController', 
       templateUrl: 'views/AccountSettings.html' 
     })
-    .when('/ProfileView', { 
+    .when('/ProfileView/:id', { 
       controller: 'AppCtrl', 
       templateUrl: 'views/ProfileView.html' 
     })

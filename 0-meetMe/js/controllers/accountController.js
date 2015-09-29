@@ -1,10 +1,7 @@
-app.controller('accountController', ['$scope','$http',"userService", function ($scope,$http,userService) {
+app.controller('accountController', ['$scope','$http',"userService",'$routeParams', function ($scope,$http,userService,$routeParams) {
 	// $scope.users = userService.randomUsers
 	$scope.randomUsers = userService.randomUsers
 
-
-	// $scope.random = randomUser
-	// console.log($scope.random);
 	$scope.myDate = new Date();
 	$scope.minDate = new Date(
 	    $scope.myDate.getFullYear(),

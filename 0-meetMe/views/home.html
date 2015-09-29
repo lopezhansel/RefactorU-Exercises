@@ -1,14 +1,12 @@
 <!-- ===================================== Top Nav Bar =================================================== -->
 <!--Nav Bar -->
 <md-toolbar layout="column">
-<md-button>
-  <div class="md-toolbar-tools">
+  <div class="md-toolbar-tools" md-ink-ripple>
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
     <h1 ><a href="#Home">Home</a></h1>
   </div>
-</md-button>
 </md-toolbar>
 <!-- ===================================== Layout =================================================== -->
 <div layout="{{layout}}" flex>
@@ -40,14 +38,14 @@
        				md-gutter="8px" md-gutter-gt-sm="4px" >
 
         			<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" layout="column">
-			        	<md-card class="md-padding"   flex>
+			        	<md-card class="md-padding"  md-ink-ripple flex>
 				            <md-card-content layout='row'  >
-					            <img ng-src="{{user.Poster}}" class="sm-card-image" alt="Movie Img" >
+					            <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
 					            <div class="here"  layout="row" layout-align="right" >
-					            	<h1 class="md-title" >{{user.Title}}</h1>
+					            	<h1 class="md-title" ><a href="#ProfileView/{{$index}}">{{user.name.first + " " +user.name.last}}</a></h1>
 					            </div>
 				            </md-card-content>
-				            <md-content  md-ink-ripple>
+				            <md-content  >
 				            	<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
 						
 					            <div class="md-actions" layout="row" layout-align="end center">
