@@ -37,7 +37,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
-    zoom: 17
+    zoom: 12
   };
 
 //------------------------------------------Material desing content--------------------------------------------------------------
@@ -51,6 +51,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
     $scope.users[i].lonn = $scope.denver[randomNUm].lon
     $scope.users[i].place = $scope.denver[randomNUm].title
     $scope.users[i].placeid = $scope.denver[randomNUm].pageid
+     $scope.mapMarkerss = userLocToMarkers($scope.users)
     // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
   };
   for (var i = 0; i < $scope.users.length; i++) {
@@ -107,7 +108,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
         $scope.$apply(function(){
         // console.log( distanceFrom($scope.users[i].lat,$scope.users[i].lonn) );
           $scope.users[i].apart = distanceFrom($scope.users[i].lat,$scope.users[i].lonn)
-       $scope.mapMarkerss = userLocToMarkers($scope.users)
 
         }) 
       };
