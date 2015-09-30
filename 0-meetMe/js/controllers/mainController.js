@@ -1,5 +1,45 @@
 // ========================================================================== APPCTRL ===============================
 app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', function($scope, $mdSidenav,userService,$routeParams){
+//------------------------------------------ Leaf Let Maps --------------------------------------------------------------
+  var geodataToMarkers = function(geodata) {
+    var places = geodata.query.geosearch;
+    var markers = [];
+    for(var i=0; i<places.length; i++) {
+      place = {
+        lat: places[i].lat,
+        lng: places[i].lon,
+        message: getMessage(places[i].title)
+      }
+      markers.push(place);
+    }
+
+    return markers;
+  }
+
+  var userLocToMarkers = function  (usersGeoData) {
+    var markers = []
+    for (var i = 0; i < usersGeoData.length; i++) {
+      place = {
+        lat: usersGeoData[i].lat,
+        lng: usersGeoData[i].lonn,
+        message: getMessage(usersGeoData[i])
+      }
+      markers.push(place);
+    };
+    return markers;
+  }
+
+
+  var getMessage = function(user) {
+    var url = "http://en.wikipedia.org/wiki/" + user.name.first;                                 
+    return "<a target='_blank' href='" + url + "'>" + user.name.first + "</a>"+ "<br>"+"<img src="+user.picture.thumbnail +">";
+  }
+  $scope.mapCenter = {
+    lat: 40.0164106,
+    lng: -105.2201631,
+    zoom: 17
+  };
+
 //------------------------------------------Material desing content--------------------------------------------------------------
   $scope.user = userService.randomUsers[$routeParams.id]
   $scope.users = userService.randomUsers
@@ -65,13 +105,15 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
       for (var i = 0; i < $scope.users.length; i++) {
         
         $scope.$apply(function(){
-        console.log( distanceFrom($scope.users[i].lat,$scope.users[i].lonn) );
+        // console.log( distanceFrom($scope.users[i].lat,$scope.users[i].lonn) );
           $scope.users[i].apart = distanceFrom($scope.users[i].lat,$scope.users[i].lonn)
+       $scope.mapMarkerss = userLocToMarkers($scope.users)
 
         }) 
       };
 
     });   
+    
   };
 
 }]);

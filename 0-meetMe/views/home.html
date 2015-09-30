@@ -25,6 +25,7 @@
         </h3>
 	        	<h3><a href="#Messages"><p>Messages</p></a>
         </h3>
+        <h3 data-ng-click="showMap= !showMap">Show Map</h3>
     </md-sidenav>
 
 			<!-- .................................... BOOSTRAP BUTTONS ........................................................ -->
@@ -61,6 +62,12 @@
         		</md-grid-tile>
            </md-grid-list>
 		
+           <div class="main" data-ng-show="showMap">
+			  <div class="container-fluid" id="map-canvas">
+			  	<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+			  </div>
+			</div>
+
 
         </md-content>
 

@@ -2,7 +2,29 @@ body{
 	/*box-sizing: border-box;*/
 	/*color: red;*/
 }
+html, body, #map_canvas {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+#map_canvas {
+  position: relative;
+}
 
+.angular-leaflet-map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+ .leaflet-popup-content-wrapper{
+  width: 120px;
+ }
+ .leaflet-popup-close-button{
+  overflow: auto;
+ }
 /*Fancy Title*/
 /*md-card > md-card-content  :after {
     content: '';
