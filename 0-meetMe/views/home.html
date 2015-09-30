@@ -37,16 +37,18 @@
        		 		md-row-height="200px"
        				md-gutter="8px" md-gutter-gt-sm="4px" >
 
-        			<md-grid-tile data-ng-repeat="user in users"   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" layout="column">
+        			<md-grid-tile data-ng-repeat="user in users | orderBy:'apart' "   md-rowspan="2" md-colspan="2" md-colspan-sm="1" class="md-padding cards" layout="column">
 			        	<md-card class="md-padding"  md-ink-ripple flex>
 				            <md-card-content layout='row'  >
 					            <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
-					            <div class="here"  layout="row" layout-align="right" >
+					            <div class="here"  layout="column" layout-align="right" >
 					            	<h1 class="md-title" ><a href="#ProfileView/{{$index}}">{{user.name.first + " " +user.name.last}}</a></h1>
+					            	<p class="md-title">{{user.place}}</p>
 					            </div>
 				            </md-card-content>
 				            <md-content  >
-				            	<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+				            	<p> Lat:{{user.lat}} Lon:{{user.lonn}}</p>
+				            	<p>	here{{user.apart}} </p>
 						
 					            <div class="md-actions" layout="row" layout-align="end center">
 					            	<md-button>Action 1</md-button>
