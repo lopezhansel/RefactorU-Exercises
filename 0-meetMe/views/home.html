@@ -1,11 +1,35 @@
 <!-- ===================================== Top Nav Bar ===================================================-->
 <!--Nav Bar -->
+<!-- <div ng-controller="AppCtrl" class="md-padding" id="popupContainer">
+  <p class="inset">
+    Open a dialog over the app's content. Press escape or click outside to close the dialog and
+    send focus back to the triggering button.
+  </p>
+  <div class="dialog-demo-content" layout="row" layout-wrap >
+    <md-button class="md-primary md-raised" ng-click="showAlert($event)" flex flex-md="100">
+      Alert Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="showConfirm($event)" flex flex-md="100">
+      Confirm Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex flex-md="100">
+      Custom Dialog
+    </md-button>
+  </div>
+  <p class="footer">Note: The <b>Confirm</b> dialog does not use <code>$mdDialog.clickOutsideToClose(true)</code>.</p>
+  <div ng-if="status">
+    <br/>
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+</div> -->
 <md-toolbar layout="column">
   <div class="md-toolbar-tools" md-ink-ripple>
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
-    <h1 ><a href="#Home">Home</a></h1>
+    <h1 ><a href="#Home">Home {{status}}</a></h1>
   </div>
 </md-toolbar>
 <!-- ===================================== Layout =================================================== -->
@@ -36,7 +60,7 @@
 				            <md-card-content layout='row'  >
 					            <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
 					            <div class="here"  layout="column" layout-align="right" >
-					            	<h1 class="md-title" ><a href="#ProfileView/{{$index}}">{{user.name.first + " " +user.name.last}}</a></h1>
+					            	<h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{user.name.first + " " +user.name.last | uppercase}}</a></h1>
 					            	<p class="md-title">{{user.place}}</p>
 					            </div>
 				            </md-card-content>
@@ -45,8 +69,8 @@
 				            	<p>	here{{user.apart}} </p>
 						
 					            <div class="md-actions" layout="row" layout-align="end center">
-					            	<md-button>Action 1</md-button>
-					            	<md-button>Action 2</md-button>
+					            	<md-button ng-click="showAdvanced($event,user)">More Info</md-button>
+					            	<md-button>View Map</md-button>
 					            </div>
 
 				            </md-content>
@@ -61,7 +85,7 @@
 
     </div>
     
-	<md-content layout-padding layout="column" flex data-ng-hide="showMap" data-ng-show="bigScreen">
+	<md-content layout-padding layout="column" flex data-ng-show="showMap" data-ng-show="bigScreen">
 	    <div class="container-fluid" id="map-canvas">
 			<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
 		</div>

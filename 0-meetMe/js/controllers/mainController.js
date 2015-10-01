@@ -1,23 +1,92 @@
-// ========================================================================== APPCTRL ===============================
-app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia', function($scope, $mdSidenav,userService,$routeParams,$mdMedia){
-//------------------------------------------Material desing content--------------------------------------------------------------
 
-  $scope.layout = 'row'
-
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
+function DialogController($scope, $mdDialog,currentUserPopUP) {
+  console.log(currentUserPopUP);
+  $scope.popUpDialogUser = currentUserPopUP
+    $scope.hide = function() {
+    $mdDialog.hide();
   };
-  // $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(big) {
-  //   $scope.bigScreen = big;
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(answer) {
+    $mdDialog.hide(answer);
+  };
+}
+
+// ========================================================================== APPCTRL =============================================================================================================================
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog){
+
+
+//----------------------------------------------------------------------- APPCTRL   $mdDialog and $mdMedia 1111-------------------------------------------------------------------------------------------------------------------
+  $scope.selectUserProfile = function  (user) {
+    $scope.currentUserProfile = user
+    console.log(user);  
+  }
+
+  $scope.status = '  ';
+  $scope.showAlert = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    // Modal dialogs should fully cover application
+    // to prevent interaction outside of dialog
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('This is an alert title')
+        .content('You can specify some description text in here.')
+        .ariaLabel('Alert Dialog Demo')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
+  };
+  $scope.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+          .title('Would you like to delete your debt?')
+          .content('All of the banks have agreed to <span class="debt-be-gone">forgive</span> you your debts.')
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('Please do it!')
+          .cancel('Sounds like a scam');
+    $mdDialog.show(confirm).then(function() {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
+  };
+
+  $scope.showAdvanced = function(ev,index) {
+      $scope.popUpDialogUser = index
+      // console.log($scope.popUpDialogUser);
+      console.log($scope.popUpDialogUser);
+      $mdDialog.show({
+
+        locals: {currentUserPopUP: $scope.popUpDialogUser},
+        controller: DialogController,
+        templateUrl: '/views/profilePreview.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true
+      })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+      // console.log('popopWorkded', index.name.first);
+  };
+
+  // $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
+  //   $scope.biScreen = sizeBool;
   // });
-  //  $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
-  //   $scope.bigScreen = big;
+  //  $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
+  //   $scope.mediumScreen = sizeBool;
   // });
-  //  $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
-  //   $scope.bigScreen = big;
+  //  $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
+  //   $scope.smallScreen = sizeBool;
   // });
 
-//------------------------------------------ Leaf Let Maps --------------------------------------------------------------
+//----------------------------------------------------------------------- APPCTRL  Leaf Let Maps 2222 -------------------------------------------------------------------------------------------------------------------
   var geodataToMarkers = function(geodata) {
     var places = geodata.query.geosearch;
     var markers = [];
@@ -56,11 +125,21 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
     lng: -105.2201631,
     zoom: 12
   };
+  
+//----------------------------------------------------------------------- APPCTRL  content-------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------- APPCTRL  content-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------Material desing content--------------------------------------------------------------
+  $scope.layout = 'row'
 
-//------------------------------------------------Location----------------------------------------------------------------------
-  $scope.user = userService.randomUsers[$routeParams.id]
+  $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+
+
+//----------------------------------------------------------------------- APPCTRL  users and location-------------------------------------------------------------------------------------------------------------------
   $scope.users = userService.randomUsers
   $scope.denver = userService.boulder 
+  $scope.user = userService.randomUsers[$routeParams.id]
   
   for (var i = 0; i < $scope.users.length; i++) {
     var randomNUm = Math.floor(Math.random() * $scope.denver.length)
@@ -111,9 +190,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
       }) 
       mylat = $scope.lat 
       mylon = $scope.longg 
-      console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
+      // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
       distanceFrom(lat2,lon2)
-      console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
+      // console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
       for (var i = 0; i < $scope.users.length; i++) {
         
         $scope.$apply(function(){
@@ -130,8 +209,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
 }]);
 
 
+// ========================================================================== ModalInstanceCtrl =============================================================================================================================
 
-// ========================================================================== ModalInstanceCtrl =====================
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
   $scope.items = items;
   $scope.selected = {
@@ -147,7 +226,8 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
   };
 });
 
-// ========================================================================== ModalDemoCtrl =========================
+// ========================================================================== ModalDemoCtrl =============================================================================================================================
+
 app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
