@@ -1,5 +1,22 @@
 // ========================================================================== APPCTRL ===============================
-app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', function($scope, $mdSidenav,userService,$routeParams){
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia', function($scope, $mdSidenav,userService,$routeParams,$mdMedia){
+//------------------------------------------Material desing content--------------------------------------------------------------
+
+  $scope.layout = 'row'
+
+  $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+  // $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(big) {
+  //   $scope.bigScreen = big;
+  // });
+  //  $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
+  //   $scope.bigScreen = big;
+  // });
+  //  $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
+  //   $scope.bigScreen = big;
+  // });
+
 //------------------------------------------ Leaf Let Maps --------------------------------------------------------------
   var geodataToMarkers = function(geodata) {
     var places = geodata.query.geosearch;
@@ -40,7 +57,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
     zoom: 12
   };
 
-//------------------------------------------Material desing content--------------------------------------------------------------
+//------------------------------------------------Location----------------------------------------------------------------------
   $scope.user = userService.randomUsers[$routeParams.id]
   $scope.users = userService.randomUsers
   $scope.denver = userService.boulder 
@@ -54,14 +71,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams', 
      $scope.mapMarkerss = userLocToMarkers($scope.users)
     // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
   };
-  for (var i = 0; i < $scope.users.length; i++) {
-    $scope.users[i].name.first
-  };
-  $scope.layout = 'row'
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
-//------------------------------------------------Location----------------------------------------------------------------------
+
+
   if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian
     Number.prototype.toRad = function() {
       return this * Math.PI / 180;

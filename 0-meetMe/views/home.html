@@ -1,4 +1,4 @@
-<!-- ===================================== Top Nav Bar =================================================== -->
+<!-- ===================================== Top Nav Bar ===================================================-->
 <!--Nav Bar -->
 <md-toolbar layout="column">
   <div class="md-toolbar-tools" md-ink-ripple>
@@ -9,26 +9,19 @@
   </div>
 </md-toolbar>
 <!-- ===================================== Layout =================================================== -->
-<div layout="{{layout}}" flex>
+<div layout="column" layout-gt-lg="row" flex>
+
 	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Side Nav =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')">
         <h2 id="startLat">Latitude {{lat}}</h2>
         <h2 id="startLon">Longittude {{longg}}</h2>
-        <h3>
-	        <a href="#AccountSettings"><p>Account Settings</p></a>
-        </h3>
-        <h3>
-	        <a href="#ProfileView"><p>Profile View</p></a>
-        </h3>
-        <h3>
-	        <a href="#Home"><p>Home</p></a>
-        </h3>
-	        	<h3><a href="#Messages"><p>Messages</p></a>
-        </h3>
+        <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
+        <h3> <a href="#ProfileView"><p>Profile View</p></a> </h3>
+        <h3> <a href="#Home"><p>Home</p></a> </h3>
+	    <h3><a href="#Messages"><p>Messages</p></a> </h3>
         <h3 data-ng-click="showMap= !showMap">Show Map</h3>
     </md-sidenav>
 
-			<!-- .................................... BOOSTRAP BUTTONS ........................................................ -->
           
 	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
     <div layout="column" flex id="content" >
@@ -62,14 +55,22 @@
         		</md-grid-tile>
            </md-grid-list>
 		
-           <div class="main" data-ng-hide="showMap">
-			  <div class="container-fluid" id="map-canvas">
-			  	<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
-			  </div>
-			</div>
 
 
         </md-content>
 
     </div>
+    
+	<md-content layout-padding layout="column" flex data-ng-hide="showMap" data-ng-show="bigScreen">
+	    <div class="container-fluid" id="map-canvas">
+			<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+		</div>
+	</md-content>
+
 </div>
+
+   <!-- <div class="main" data-ng-hide="showMap" layout="column" flex="50">
+	  <div class="container-fluid" id="map-canvas">
+	  	<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+	  </div>
+	</div> -->
