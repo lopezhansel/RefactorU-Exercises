@@ -86,3 +86,26 @@ md-grid-list{
     font-size: 11px;
     color: darkred;
     margin: 10px 0 0 25px; }
+    img.logo {
+    width: 161px;
+    position: relative;
+    top: 13px;
+}
+
+md-toolbar {
+    height: 56px;
+}
+
+md-toolbar.layout.layout-column.ng-scope.md-default-theme {
+    height: 92px;
+}
+img.funny{
+  border: 5px;
+  width: 500px;
+}
+md-card.md-padding.flex.ng-scope.md-default-theme {
+    height: 392px;
+}
+md-sidenav.md-sidenav-left.md-whiteframe-z2.layout.layout-column.ng-isolate-scope {
+    padding: 20px;
+}

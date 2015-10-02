@@ -1,8 +1,8 @@
 
 function DialogController($scope, $mdDialog,currentUserPopUP) {
-  console.log(currentUserPopUP);
+  // console.log(currentUserPopUP);
   $scope.popUpDialogUser = currentUserPopUP
-    $scope.hide = function() {
+    $scope.hide = function() {  
     $mdDialog.hide();
   };
   $scope.cancel = function() {
@@ -14,13 +14,19 @@ function DialogController($scope, $mdDialog,currentUserPopUP) {
 }
 
 // ========================================================================== APPCTRL =============================================================================================================================
-app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog){
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog','$mdToast', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog,$mdToast){
+    $scope.cardColumn = "2"
 
 
+
+$scope.openToast = function( message) {
+    $mdToast.show($mdToast.simple().content(message).position("bottom right"));
+    // Could also do $mdToast.showSimple('Hello');
+  };
 //----------------------------------------------------------------------- APPCTRL   $mdDialog and $mdMedia 1111-------------------------------------------------------------------------------------------------------------------
   $scope.selectUserProfile = function  (user) {
     $scope.currentUserProfile = user
-    console.log(user);  
+    // console.log(user);  
   }
 
   $scope.status = '  ';
@@ -58,7 +64,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
   $scope.showAdvanced = function(ev,index) {
       $scope.popUpDialogUser = index
       // console.log($scope.popUpDialogUser);
-      console.log($scope.popUpDialogUser);
+      // console.log($scope.popUpDialogUser);
       $mdDialog.show({
 
         locals: {currentUserPopUP: $scope.popUpDialogUser},
@@ -76,15 +82,18 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
       // console.log('popopWorkded', index.name.first);
   };
 
-  // $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
-  //   $scope.biScreen = sizeBool;
-  // });
-  //  $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
-  //   $scope.mediumScreen = sizeBool;
-  // });
-  //  $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
-  //   $scope.smallScreen = sizeBool;
-  // });
+  $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
+    $scope.biScreen = sizeBool;
+    // console.log("big");
+  });
+   $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
+    $scope.mediumScreen = sizeBool;
+    // console.log("sm");
+  });
+   $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
+    $scope.smallScreen = sizeBool;
+    // console.log('md');
+  });
 
 //----------------------------------------------------------------------- APPCTRL  Leaf Let Maps 2222 -------------------------------------------------------------------------------------------------------------------
   var geodataToMarkers = function(geodata) {
@@ -115,10 +124,29 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
     return markers;
   }
 
+  $scope.setMapCenter = function  (user) {
+    // console.log(user);
+    $scope.mapCenter = {
+      lat: user.lat,
+      lng: user.lonn,
+      zoom: 20
+    };
+  }
+  $scope.toggleMap = function  (user) {
+    $scope.showMap= !$scope.showMap;
+    $scope.cardColumn = ($scope.cardColumn ==="2")? "3" : "2";
+    // $scope.setMapCenter(user)
+  }
 
   var getMessage = function(user) {
-    var url = "http://en.wikipedia.org/wiki/" + user.name.first;                                 
-    return "<a target='_blank' href='" + url + "'>" + user.name.first + "</a>"+ "<br>"+"<img src="+user.picture.thumbnail +">";
+    // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
+    var url = "http://en.wikipedia.org/wiki/" + user.place;
+    // $scope.openToast(user.pageid)
+
+    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>"
+
+    var profileUrl = "#ProfileView/{{$index}}" ;                                 
+    return   "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.name.first.toUpperCase() + "</a></h5>"+ ptag+"<img src="+user.picture.thumbnail +">";
   }
   $scope.mapCenter = {
     lat: 40.0164106,
@@ -127,8 +155,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
   };
   
 //----------------------------------------------------------------------- APPCTRL  content-------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------- APPCTRL  content-------------------------------------------------------------------------------------------------------------------
-//------------------------------------------Material desing content--------------------------------------------------------------
   $scope.layout = 'row'
 
   $scope.toggleSidenav = function(menuId) {
@@ -136,18 +162,19 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
   };
 
 
-//----------------------------------------------------------------------- APPCTRL  users and location-------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------- APPCTRL  get users and calculate their locatoin from me-------------------------------------------------------------------------------------------------------------------
   $scope.users = userService.randomUsers
-  $scope.denver = userService.boulder 
   $scope.user = userService.randomUsers[$routeParams.id]
+  $scope.boulder = userService.boulder 
   
-  for (var i = 0; i < $scope.users.length; i++) {
-    var randomNUm = Math.floor(Math.random() * $scope.denver.length)
-    $scope.users[i].lat = $scope.denver[randomNUm].lat
-    $scope.users[i].lonn = $scope.denver[randomNUm].lon
-    $scope.users[i].place = $scope.denver[randomNUm].title
-    $scope.users[i].placeid = $scope.denver[randomNUm].pageid
-     $scope.mapMarkerss = userLocToMarkers($scope.users)
+  for (var i = 0; i < $scope.users.length; i++) { // give each user random cordinates and location title 
+    var randomNUm = Math.floor(Math.random() * $scope.boulder.length)
+    $scope.users[i].lat = $scope.boulder[randomNUm].lat
+    $scope.users[i].lonn = $scope.boulder[randomNUm].lon
+    $scope.users[i].apart = 0
+    $scope.users[i].place = $scope.boulder[randomNUm].title
+    $scope.users[i].placeid = $scope.boulder[randomNUm].pageid
+     $scope.mapMarkerss = userLocToMarkers($scope.users) // push into markers
     // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
   };
 
@@ -161,10 +188,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
   var lon2 = -100.3000 // Monterrey = boulder actual distance = 1030 miles
   var mylat = 0
   var mylon = 0
-  // navigator.geolocation.watchPosition(function(position) {
-  //   $scope.lat = position.coords.latitude;
-  //   $scope.longg = position.coords.longitude;
-  // }); 
+
   function distanceFrom (atitude , ong) { // Central Subtended Angle Method || Great Circle Method
     var R = 6371 / 1.609344; //Earth Median radius in Kilometers / convert to km to miles
     var φ1 = mylat.toRad();
@@ -201,9 +225,17 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','
 
         }) 
       };
+          $scope.users.sort(function(a, b) {
+            return a.apart - b.apart;
+          });
+          $scope.newUsers = []
+          for (var i = 0; i < $scope.users.length; i++) {
+            $scope.newUsers.push({i :$scope.users[i]}) 
+          };
+          console.log($scope.newUsers);
 
+          $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg)
     });   
-    
   };
 
 }]);
@@ -260,3 +292,12 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
   };
 
 });
+
+
+// LEARN TO USE
+
+
+  // navigator.geolocation.watchPosition(function(position) {
+  //   $scope.lat = position.coords.latitude;
+  //   $scope.longg = position.coords.longitude;
+  // }); 
