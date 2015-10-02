@@ -126,6 +126,9 @@ $scope.openToast = function( message) {
 
   $scope.setMapCenter = function  (user) {
     // console.log(user);
+    $scope.showMap= true;
+    $scope.cardColumn =  "3"
+
     $scope.mapCenter = {
       lat: user.lat,
       lng: user.lonn,
