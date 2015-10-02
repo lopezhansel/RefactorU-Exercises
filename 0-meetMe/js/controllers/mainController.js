@@ -202,7 +202,7 @@ $scope.openToast = function( message) {
     var distance = (R * c) ;
     return distance
   }
-  window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
+  // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
     var startPos;
     // get ip location
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -232,11 +232,11 @@ $scope.openToast = function( message) {
           for (var i = 0; i < $scope.users.length; i++) {
             $scope.newUsers.push({i :$scope.users[i]}) 
           };
-          console.log($scope.newUsers);
+          // console.log($scope.newUsers);
 
           $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg)
     });   
-  };
+  // };
 
 }]);
 

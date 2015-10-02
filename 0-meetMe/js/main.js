@@ -1,3 +1,11 @@
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+  String.prototype.capitalize = function(){
+        return this.toLowerCase().replace( /\b\w/g, function (m) {
+            return m.toUpperCase();
+        });
+    };
 var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.bootstrap','leaflet-directive']);
 
 app.config(function($mdThemingProvider) {
@@ -28,3 +36,22 @@ app.config(function($routeProvider){
       redirectTo: '/' 
     }); 
 });
+
+// notes
+
+// window on resizeBy
+// add html to cetain calss
+// ng mouse down 
+// ng mouse move
+// give each obj and unique id
+// md-dialog locals vs $rootScope
+
+
+// userfull applications
+// -grindr 
+// - kidFinder 
+// -Tinder 
+
+// company 
+// uber 
+// gasBuddy

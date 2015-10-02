@@ -1,3 +1,48 @@
+<md-content layout="row" id="accountSettings" layout-align="center start">
+
+<md-content layout-padding layout="column"  flex="80" >
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+      <md-button class="md-raised md-secondary"><a href="#home">back</a></md-button>
+        
+        <h1>{{user.name.title  + "."+user.name.first + " "+ user.name.last  | uppercase}}</h1>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding layout="row" layout-align-md="center center" layout-align-gt-md="start start">
+        <img class="profilePic" ng-src={{user.picture.large}} flex-sm >
+        <md-content layout-padding  hide-sm hide-md >
+<!--             Lorem ipsum dolor sit amet, ne quod novum mei.
+ -->    </md-content>
+
+
+    </md-content>
+    <md-content layout-padding>
+        <h3>Gender: {{user.gender.capitalize()}}</h3>
+        <h2>User Name: {{user.username.capitalize() }}</h2>
+        <h2>Password: {{user.password}}</h2>
+        <h3>Email: {{user.email}}</h3>
+        <h3>Phone: {{user.phone}}</h3>
+        <h3>Cell: {{user.cell}}</h3>
+        <h2>Address: {{user.location.street.capitalize()}} {{user.location.city.capitalize()}} ,{{user.location.state.capitalize()}}</h2>
+        <h2>{{user.dob|date}}</h2>
+        <h4>Latitude: {{user.lat}}</h4>
+        <h4>Longitutde: {{user.lonn}}</h4>
+        <h4>Distance: {{user.apart}}</h4>
+        <h4>Current Place: {{user.place}}</h4>
+    
+    </md-content>
+</md-content>
+</md-content>
+
+<!-- ======================================================================================= -->
+<!-- 
+    <div ng-controller="ModalDemoCtrl">
+            <button type="button" clasModalDemoCtrls="btn btn-default" ng-click="open()">Open me!</button>
+            <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+            <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+            <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+          </div> -->
     
  <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
@@ -16,36 +61,3 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
-<!-- 
-    <div ng-controller="ModalDemoCtrl">
-            <button type="button" clasModalDemoCtrls="btn btn-default" ng-click="open()">Open me!</button>
-            <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
-            <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
-            <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
-            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-          </div> -->
-          {{currentUserProfile}}
-    <img ng-src={{user.picture.medium}}>
-    <h1>User Name {{user.name.first | uppercase}}</h1>
-    <h2>{{user.username}}</h2>
-    {{user}}
-
-<!-- <li>{{users[0].Year}}</li>
-<li>{{users[0].Rated}}</li>
-<li>{{users[0].Released}}</li>
-<li>{{users[0].Runtime}}</li>
-<li>{{users[0].Genre}}</li>
-<li>{{users[0].Director}}</li>
-<li>{{users[0].Writer}}</li>
-<li>{{users[0].Actors}}</li>
-<li>{{users[0].Plot}}</li>
-<li>{{users[0].Language}}</li>
-<li>{{users[0].Country}}</li>
-<li>{{users[0].Awards}}</li>
-<li>{{users[0].Poster}}</li>
-<li>{{users[0].Metascore}}</li>
-<li>{{users[0].imdbRating}}</li>
-<li>{{users[0].imdbVotes}}</li>
-<li>{{users[0].imdbID}}</li>
-<li>{{users[0].Type}}</li>
-<li>{{users[0].Response}}</li> -->

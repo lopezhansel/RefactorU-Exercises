@@ -2,6 +2,11 @@ body{
 	/*box-sizing: border-box;*/
 	/*color: red;*/
 }
+#accountSettings{
+  background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+  height: 100%;
+
+}
 html, body, #map_canvas {
   margin: 0;
   padding: 0;
@@ -25,6 +30,9 @@ html, body, #map_canvas {
  .leaflet-popup-close-button{
   overflow: auto;
  }
+/* .profilePic{
+  width: 500px
+ }*/
 /*Fancy Title*/
 /*md-card > md-card-content  :after {
     content: '';

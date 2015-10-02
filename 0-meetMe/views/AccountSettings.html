@@ -1,85 +1,70 @@
-<br>
-<h1> Awesome Account Settings Page</h1>
+<md-content layout-padding id="accountSettings">
+<md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+      <md-button class="md-raised md-primary"><a href="#home">back</a></md-button>
+        
+        <h1> Awesome Account Settings Page</h1>
+      </div>
+    </md-toolbar>
+
 <!-- ng-option -->
 <!-- ng-change -->
-
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<link rel="stylesheet" type="text/css" href="./style/style2.css">
-<!-- {{reandomUsers}} -->
-<!-- {{randomUsers}} -->
- <div class="users" data-ng-repeat="userss in randomUsers">
-	<p>{{userss.gender}}</p>
-	<p>{{userss.name.first}}</p>
-	<p>{{userss.title}}</p<!-- >
-	<p>{{userss.first}}</p> 
-	<p>last {{userss.last}}</p>
-	<p>location {{userss.location}}</p>
-	<p>street {{userss.street}}</p>
-	<p>city {{userss.city}}</p>
-	<p>state {{userss.state}}</p>
-	<p>zip {{userss.zip}}</p>
-	<p>email {{userss.email}}</p>
-	<p>username {{userss.username}}</p>
-	<p>password {{userss.password}}</p>
-	<p>salt {{userss.salt}}</p>
-	<p>md5 {{userss.md5}}</p>
-	<p>sha1 {{userss.sha1}}</p>
-	<p>sha256 {{userss.sha256}}</p>
-	<p>registered {{userss.registered}}</p>
-	<p>dob {{userss.dob}}</p>
-	<p>phone {{userss.phone}}</p>
-	<p>cell {{userss.cell}}</p> cell
-	<p>DNI {{userss.DNI}}</p> dni
-	<p>picture {{userss.picture.large}}</p>
-	<p>picture {{userss.picture.medium}}</p>
-	<p>picture {{userss.picture.thumbnail}}</p>
-	<!-- <img src="{{userss.picture.large}}"> -->
-	<!-- <img src="{{userss.picture.medium}}"> -->
-	<!-- <img src="{{userss.picture.thumbnail}}"> -->
-
-
-	<!-- <p>{{userss.large}}</p> -->
-	
-	<!-- <p>{{userss.medium}}</p> -->
-	<p>{{userss.thumbnail}}</p>
-</div>       
-
-
-<!-- <div  class="accountSettings">
-	<md-button class="md-raised md-primary">
-		<h2><a href="#home">Home</a></h2>
-	</md-button>
-	<div  style='padding: 40px;'>
-	  <md-content>
-	    <h4>Standard date-picker</h4>
-	    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
-	    <h4>Disabled date-picker</h4>
-	    <md-datepicker ng-model="myDate" md-placeholder="Enter date" disabled></md-datepicker>
-	    <h4>Date-picker with min date and max date</h4>
-	    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
-	        md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
-	    <h4>With ngMessages</h4>
-	    <form name="myForm">
-	      <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
-	          required md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
-	      <div class="validation-messages" ng-messages="myForm.dateField.$error">
-	        <div ng-message="required">This date is required!</div>
-	        <div ng-message="mindate">Date is too early!</div>
-	        <div ng-message="maxdate">Date is too late!</div>
-	      </div>
-	    </form>
-	  </md-content>
-	</div>
-</div> -->
+<div ng-controller="DemoCtrl" layout="column" ng-cloak >
+  <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+    <md-input-container>
+      <label>Title</label>
+      <input ng-model="user.title">
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="user.email" type="email">
+    </md-input-container>
+  </md-content>
+  <md-content layout-padding>
+    <form name="userForm">
+      <div layout layout-sm="column">
+        <md-input-container style="width:70%">
+            <label>Company (Disabled)</label>
+            <input ng-model="user.company" disabled>
+          </md-input-container>
+        <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date"></md-datepicker>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>First name</label>
+          <input ng-model="user.firstName">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Last Name</label>
+          <input ng-model="theMax">
+        </md-input-container>
+      </div>
+      <md-input-container flex>
+        <label>Address</label>
+        <input ng-model="user.address">
+      </md-input-container>
+      <md-input-container md-no-float>
+        <input ng-model="user.address2" placeholder="Address 2">
+      </md-input-container>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>City</label>
+          <input ng-model="user.city">
+        </md-input-container>
+        <md-input-container flex>
+          <label>State</label>
+          <input ng-model="user.state">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Postal Code</label>
+          <input ng-model="user.postalCode" placeholder="12345">
+        </md-input-container>
+      </div>
+      <md-input-container flex>
+        <label>Biography</label>
+        <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+      </md-input-container>
+    </form>
+  </md-content>
+</div>
+</md-content>
