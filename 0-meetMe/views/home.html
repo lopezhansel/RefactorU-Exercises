@@ -1,49 +1,20 @@
-<!--===================================== Top Nav Bar ===================================================-->
-<!--Nav Bar -->
-<!-- <div ng-controller="AppCtrl" class="md-padding" id="popupContainer">
-  <p class="inset">
-    Open a dialog over the app's content. Press escape or click outside to close the dialog and
-    send focus back to the triggering button.
-  </p>
-  <div class="dialog-demo-content" layout="row" layout-wrap >
-    <md-button class="md-primary md-raised" ng-click="showAlert($event)" flex flex-md="100">
-      Alert Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="showConfirm($event)" flex flex-md="100">
-      Confirm Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex flex-md="100">
-      Custom Dialog
-    </md-button>
-  </div>
-  <p class="footer">Note: The <b>Confirm</b> dialog does not use <code>$mdDialog.clickOutsideToClose(true)</code>.</p>
-  <div ng-if="status">
-    <br/>
-    <b layout="row" layout-align="center center" class="md-padding">
-      {{status}}
-    </b>
-  </div>
-</div> -->
-
 <md-toolbar layout="column" >
   <div class="md-toolbar-tools" md-ink-ripple >
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
     <img class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
-    <!-- <h1 ><a href="#Home" {{status}}</a></h1> -->
   </div>
 </md-toolbar>
-<!-- ===================================== Layout =================================================== -->
+<!-- ================================================================================================================================ -->
+<!-- ================================================================================================================================ -->
+
 <div layout="column" layout-gt-lg="row" flex>
 
-	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Side Nav =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
+<!-- *********************************************************** SIDENAV ******************************************************************************* -->
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
         <h3 id="startLat" data-ng-click="openToast('You Found an Easter Egg')">Welcome to Map Me </h3>
-        <!-- <h2 id="startLon">/h2> -->
         <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
-        <!-- <h3> <a href="#ProfileView"><p>Profile View</p></a> </h3> -->
-        <!-- <h3> <a href="#Home"><p>Home</p></a> </h3> -->
         <h3><a href="#Messages"><p>Messages</p></a> </h3>
         <h3 data-ng-click="toggleMap()">Show Map</h3>
         <h2>Search:</h2>
@@ -51,36 +22,31 @@
     </md-sidenav>
 
           
-	<!-- -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=- Content  =-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-= -->
+<!-- *********************************************************** GRID  ******************************************************************************* -->
     <div layout="column" flex id="content" >
         <md-content flex>
-        	<md-grid-list 
-        			md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
-       		 		md-row-height="200px"
-       				md-gutter="8px" md-gutter-gt-sm="4px" >
+          <md-grid-list 
+              md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
+              md-row-height="200px"
+              md-gutter="8px" md-gutter-gt-sm="4px" >
 
-        			<md-grid-tile data-ng-repeat="user in users  | filter: searchbox "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
-			        	<md-card class="md-padding" flex layout="column" >
-<!-- ================================================================================================================================ -->
-<!-- ================================================================================================================================ -->
+              <md-grid-tile data-ng-repeat="user in users  | filter: searchbox "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
+                <md-card class="md-padding" flex layout="column" >
                     <md-card-content layout='row'  >
                       <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
                       <md-content  layout="column" layout-align="start center" flex>
                         <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.name.first + ' '+ user.name.last| uppercase}}</a></h1>
                         <p></p>
-                        <!-- <h2>here</h2>                         -->
                       </md-content>
                     </md-card-content>
-<!-- ............................................................................................................................... -->
                     <md-content  flex layout="column" layout-align="start start">
 
                       <div flex layout="column" layout-align="start start">
                         <p class="md-title"> Near: {{user.place}} </p>
                         <p>{{user.apart| limitTo: 3}} Miles Away</p>
                       </div>
-				            </md-content>
-                      <!-- <p> Lat:{{user.lat}} Lon:{{user.lonn}}</p> -->
-                      <!-- <p>  here{{user.apart}} </p> -->
+                    </md-content>
+                
             
                       <md-content class="md-actions" layout="row" layout-align="end end">
                         <!-- <div flex="50">here</div> -->
@@ -88,29 +54,29 @@
                         <md-button data-ng-click="setMapCenter(user)">View On Map</md-button>
                       </md-content>
 
-<!-- ================================================================================================================================ -->
-<!-- ================================================================================================================================ -->
-
-			        	</md-card>
-        		</md-grid-tile>
+                </md-card>
+            </md-grid-tile>
            </md-grid-list>
-		
+    
 
 
         </md-content>
 
     </div>
     
-	<md-content layout-padding layout="column" flex data-ng-show="showMap" data-ng-show="bigScreen">
-	    <div class="container-fluid" id="map-canvas">
-			<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
-		</div>
-	</md-content>
+<!-- *********************************************************** LEAFLET ******************************************************************************* -->
+  <md-content layout-padding layout="column" flex data-ng-show="showMap" data-ng-show="bigScreen">
+      <div class="container-fluid" id="map-canvas">
+      <leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+    </div>
+  </md-content>
 
 </div>
 
    <!-- <div class="main" data-ng-hide="showMap" layout="column" flex="50">
-	  <div class="container-fluid" id="map-canvas">
-	  	<leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
-	  </div>
-	</div>
+    <div class="container-fluid" id="map-canvas">
+      <leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+    </div>
+  </div> -->
+<!-- ================================================================================================================================ -->
+<!-- ================================================================================================================================ 
