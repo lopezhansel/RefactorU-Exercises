@@ -23,8 +23,8 @@
 
           
 <!-- *********************************************************** GRID  ******************************************************************************* -->
-    <div layout="column" flex id="content" >
-        <md-content flex>
+    <div layout="column" flex flex-md="50" flex-sm="50" id="content" >
+        <md-content>
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
               md-row-height="200px"
@@ -53,24 +53,21 @@
                         <md-button ng-click="showAdvanced($event,user)">More Info</md-button>
                         <md-button data-ng-click="setMapCenter(user)">View On Map</md-button>
                       </md-content>
-
                 </md-card>
-            </md-grid-tile>
+              </md-grid-tile>
            </md-grid-list>
-    
-
-
         </md-content>
 
     </div>
     
 <!-- *********************************************************** LEAFLET ******************************************************************************* -->
-  <md-content layout-padding layout="column" flex data-ng-show="showMap" data-ng-show="bigScreen">
-      <div class="container-fluid" id="map-canvas">
-      <leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+  <md-content   ng-hide="showMap" flex >
+    <div  id="map-canvas">
+      <leaflet center="mapCenter" markers="mapMarkerss"> </leaflet>
     </div>
   </md-content>
 
+<!-- *********************************************************** END OF BODY ******************************************************************************* -->
 </div>
 
    <!-- <div class="main" data-ng-hide="showMap" layout="column" flex="50">
