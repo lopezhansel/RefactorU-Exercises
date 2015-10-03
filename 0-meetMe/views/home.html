@@ -3,7 +3,7 @@
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
-    <img class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
+    <img ng-click="testTrigger()" class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
   </div>
 </md-toolbar>
 <!-- ================================================================================================================================ -->
@@ -13,17 +13,18 @@
 
 <!-- *********************************************************** SIDENAV ******************************************************************************* -->
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
-        <h3 id="startLat" data-ng-click="openToast('You Found an Easter Egg')">Welcome to Map Me </h3>
+    <!-- data-ng-click="openToast('You Found an Easter Egg')" -->
+        <h3 id="startLat" ng-dblclick="testTrigger()" >Welcome to Map Me </h3>
         <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
         <h3><a href="#Messages"><p>Messages</p></a> </h3>
         <h3 data-ng-click="toggleMap()">Show Map</h3>
         <h2>Search:</h2>
         <input type="text" data-ng-model="searchbox">
     </md-sidenav>
-
+  
           
 <!-- *********************************************************** GRID  ******************************************************************************* -->
-    <div layout="column" flex flex-md="50" flex-sm="50" id="content" >
+    <div layout="column"   id="content"   class="flex" ng-class="flexer">
         <md-content>
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"

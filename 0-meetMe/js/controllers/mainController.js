@@ -16,11 +16,18 @@ function DialogController($scope, $mdDialog,currentUserPopUP) {
 // ========================================================================== APPCTRL =============================================================================================================================
 app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog','$mdToast', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog,$mdToast){
     $scope.cardColumn = "2"
+    $scope.flexer = ""
+
+    $scope.testTrigger = function  () {
+      console.log('trigger worked')
+
+      $scope.flexer = ($scope.flexer === "flex-25")? "flex-75" : "flex-25"
+    }
 
 
 
 $scope.openToast = function( message) {
-    $mdToast.show($mdToast.simple().content(message).position("bottom right"));
+    $mdToast.show($mdToast.simple().content(message).position("top right"));
     // Could also do $mdToast.showSimple('Hello');
   };
 //----------------------------------------------------------------------- APPCTRL   $mdDialog and $mdMedia 1111-------------------------------------------------------------------------------------------------------------------
@@ -128,6 +135,7 @@ $scope.openToast = function( message) {
     // console.log(user);
     $scope.showMap= true;
     $scope.cardColumn =  "3"
+    $scope.flexer = "flex-50"
 
     $scope.mapCenter = {
       lat: user.lat,
@@ -138,6 +146,7 @@ $scope.openToast = function( message) {
   $scope.toggleMap = function  (user) {
     $scope.showMap= !$scope.showMap;
     $scope.cardColumn = ($scope.cardColumn ==="2")? "3" : "2";
+    $scope.flexer = "flex-50"
     // $scope.setMapCenter(user)
   }
 
