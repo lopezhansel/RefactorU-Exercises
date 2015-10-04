@@ -114,36 +114,41 @@ $scope.openToast = function( message) {
   $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
     $scope.sm = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.sm)? "flex-50" : 'closed'
-    // console.log($scope.gridflex, "sm", $scope.sm);
+    console.log("sm",  $scope.sm,"| Grid-flex",$scope.gridflex);
   });
 
   $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
     $scope.md = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.md)? "flex-50" : 'closed'
-    // console.log($scope.gridflex, "md" , $scope.md);
+    console.log("md",  $scope.md,"| Grid-flex",$scope.gridflex);
   });
 
   $scope.$watch(function() { return $mdMedia('lg'); }, function(sizeBool) {
     $scope.lg = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.lg)? "flex-50" : 'closed'
-    // console.log($scope.gridflex, "lg", $scope.lg);
+    console.log("lg",  $scope.lg,"| Grid-flex",$scope.gridflex);
    });
 
 
   $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
-    $scope.gtlg = sizeBool;
-    $scope.gridflex = ($scope.showMap)? "noflex" : 'closed'
-    // console.log($scope.gridflex, "gt-lg", $scope.gtlg );
+    $scope.gtlg = sizeBool; 
+    if ($scope.showMap && $scope.gtlg) {$scope.gridflex = "noflex" }
+    if($scope.showMap  && !$scope.gtlg){$scope.gridflex = "'flex-50'";console.log('not xlg yes map');}
+    console.log("gt-lg", $scope.gtlg,"| Grid-flex",$scope.gridflex );
   });
-  
+
 
   $scope.setMapCenter = function  (user) {
-    $scope.showMap= true;
-    $scope.gridflex = ($scope.gtlg === false)? "flex-50" : ''
+    // $scope.openToast($scope.gtlg )
+    console.log($scope.gtlg );
+    $scope.gridflex = ($scope.gtlg === false)? "flex-50" : 'noflex'
+
+    // $scope.openToast($scope.gridflex)
     $scope.cardColumn =  "3"
     // console.log(user);
     if (typeof(user) === "object") { 
 
+      $scope.showMap= true;
       $scope.mapCenter = {
         lat: user.lat ,
         lng: user.lonn ,
@@ -151,6 +156,8 @@ $scope.openToast = function( message) {
       }
     } else {
         console.log("not user defined");
+        $scope.showMap= !$scope.showMap;
+        if(showMap && ($scope.gridflex= 'noflex')){}
       }
   }
   // $scope.setMapCenter()
