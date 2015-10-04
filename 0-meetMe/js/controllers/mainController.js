@@ -16,15 +16,7 @@ function DialogController($scope, $mdDialog,currentUserPopUP) {
 // ========================================================================== APPCTRL =============================================================================================================================
 app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog','$mdToast', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog,$mdToast){
     $scope.cardColumn = "2"
-    $scope.flexer = ""
-
-    $scope.testTrigger = function  () {
-      console.log('trigger worked')
-
-      $scope.flexer = ($scope.flexer === "flex-25")? "flex-75" : "flex-25"
-    }
-
-
+    $scope.gridflex = ""
 
 $scope.openToast = function( message) {
     $mdToast.show($mdToast.simple().content(message).position("top right"));
@@ -89,18 +81,7 @@ $scope.openToast = function( message) {
       // console.log('popopWorkded', index.name.first);
   };
 
-  $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
-    $scope.biScreen = sizeBool;
-    // console.log("big");
-  });
-   $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
-    $scope.mediumScreen = sizeBool;
-    // console.log("sm");
-  });
-   $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
-    $scope.smallScreen = sizeBool;
-    // console.log('md');
-  });
+
 
 //----------------------------------------------------------------------- APPCTRL  Leaf Let Maps 2222 -------------------------------------------------------------------------------------------------------------------
   var geodataToMarkers = function(geodata) {
@@ -130,25 +111,57 @@ $scope.openToast = function( message) {
     };
     return markers;
   }
+  $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
+    $scope.sm = sizeBool;
+    // $scope.gridflex = ($scope.showMap && $scope.sm)? "flex-50" : 'closed'
+    // console.log($scope.gridflex, "sm", $scope.sm);
+  });
+
+  $scope.$watch(function() { return $mdMedia('md'); }, function(sizeBool) {
+    $scope.md = sizeBool;
+    // $scope.gridflex = ($scope.showMap && $scope.md)? "flex-50" : 'closed'
+    // console.log($scope.gridflex, "md" , $scope.md);
+  });
+
+  $scope.$watch(function() { return $mdMedia('lg'); }, function(sizeBool) {
+    $scope.lg = sizeBool;
+    // $scope.gridflex = ($scope.showMap && $scope.lg)? "flex-50" : 'closed'
+    // console.log($scope.gridflex, "lg", $scope.lg);
+   });
+
+
+  $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
+    $scope.gtlg = sizeBool;
+    $scope.gridflex = ($scope.showMap)? "noflex" : 'closed'
+    // console.log($scope.gridflex, "gt-lg", $scope.gtlg );
+  });
+  
 
   $scope.setMapCenter = function  (user) {
-    // console.log(user);
     $scope.showMap= true;
+    $scope.gridflex = ($scope.gtlg === false)? "flex-50" : ''
     $scope.cardColumn =  "3"
-    $scope.flexer = "flex-50"
+    // console.log(user);
+    if (typeof(user) === "object") { 
 
-    $scope.mapCenter = {
-      lat: user.lat,
-      lng: user.lonn,
-      zoom: 20
-    };
+      $scope.mapCenter = {
+        lat: user.lat ,
+        lng: user.lonn ,
+        zoom: 17,
+      }
+    } else {
+        console.log("not user defined");
+      }
   }
-  $scope.toggleMap = function  (user) {
-    $scope.showMap= !$scope.showMap;
-    $scope.cardColumn = ($scope.cardColumn ==="2")? "3" : "2";
-    $scope.flexer = "flex-50"
-    // $scope.setMapCenter(user)
-  }
+  // $scope.setMapCenter()
+  // $scope.toggleMap = function  (user) {
+  //   // $scope.gridflex = ($scope.gtlg === true)? "flex-50" : ''
+  //   // $scope.gridflex = ($scope.gridflex === "")? "flex-50" : ""
+
+  //   $scope.showMap= !$scope.showMap;
+  //   $scope.cardColumn = ($scope.cardColumn ==="2")? "3" : "2";
+  //   // $scope.setMapCenter(user)
+  // }
 
   var getMessage = function(user) {
     // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"

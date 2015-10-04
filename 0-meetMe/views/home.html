@@ -3,7 +3,8 @@
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
-    <img ng-click="testTrigger()" class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
+    <img ng-click="setMapCenter()" class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
+    <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{gtlg}}</h2>
   </div>
 </md-toolbar>
 <!-- ================================================================================================================================ -->
@@ -17,14 +18,14 @@
         <h3 id="startLat" ng-dblclick="testTrigger()" >Welcome to Map Me </h3>
         <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
         <h3><a href="#Messages"><p>Messages</p></a> </h3>
-        <h3 data-ng-click="toggleMap()">Show Map</h3>
+        <h3 data-ng-click="setMapCenter()">Show Map</h3>
         <h2>Search:</h2>
         <input type="text" data-ng-model="searchbox">
     </md-sidenav>
   
           
 <!-- *********************************************************** GRID  ******************************************************************************* -->
-    <div layout="column"   id="content"   class="flex" ng-class="flexer">
+    <div layout="column"   id="content"   class="flex" ng-class="gridflex">
         <md-content>
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
