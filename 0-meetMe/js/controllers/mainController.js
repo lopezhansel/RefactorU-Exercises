@@ -111,6 +111,7 @@ $scope.openToast = function( message) {
     };
     return markers;
   }
+
   $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
     $scope.sm = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.sm)? "flex-50" : 'closed'
@@ -131,44 +132,32 @@ $scope.openToast = function( message) {
 
 
   $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
-    $scope.gtlg = sizeBool; 
-    if ($scope.showMap && $scope.gtlg) {$scope.gridflex = "noflex" }
-    if($scope.showMap  && !$scope.gtlg){$scope.gridflex = "'flex-50'";console.log('not xlg yes map');}
-    console.log("gt-lg", $scope.gtlg,"| Grid-flex",$scope.gridflex );
+    $scope.xlg = sizeBool; 
+    if ($scope.showMap && $scope.xlg) {$scope.gridflex = "noflex" }
+    if($scope.showMap  && !$scope.xlg){$scope.gridflex = "flex-50";console.log('not xlg yes map');}
+    console.log("gt-lg", $scope.xlg,"| Grid-flex",$scope.gridflex );
   });
 
-
+  $scope.showMap= false
   $scope.setMapCenter = function  (user) {
-    // $scope.openToast($scope.gtlg )
-    console.log($scope.gtlg );
-    $scope.gridflex = ($scope.gtlg === false)? "flex-50" : 'noflex'
-
-    // $scope.openToast($scope.gridflex)
+    $scope.gridflex = ($scope.xlg === false)? "flex-50" : 'noflex'
     $scope.cardColumn =  "3"
-    // console.log(user);
-    if (typeof(user) === "object") { 
-
+    if (typeof(user) === "object") {  // set position clicking on a user
       $scope.showMap= true;
       $scope.mapCenter = {
         lat: user.lat ,
         lng: user.lonn ,
         zoom: 17,
       }
-    } else {
+    } else { // other toggle 
         console.log("not user defined");
         $scope.showMap= !$scope.showMap;
-        if(showMap && ($scope.gridflex= 'noflex')){}
-      }
+        if($scope.showMap && $scope.xlg){$scope.gridflex = "noFlex"}
+          else if ($scope.showMap && !$scope.xlg){$scope.gridflex = "flex-50";}
+        if (!$scope.showMap) {$scope.gridflex = "";}
+      } 
   }
-  // $scope.setMapCenter()
-  // $scope.toggleMap = function  (user) {
-  //   // $scope.gridflex = ($scope.gtlg === true)? "flex-50" : ''
-  //   // $scope.gridflex = ($scope.gridflex === "")? "flex-50" : ""
 
-  //   $scope.showMap= !$scope.showMap;
-  //   $scope.cardColumn = ($scope.cardColumn ==="2")? "3" : "2";
-  //   // $scope.setMapCenter(user)
-  // }
 
   var getMessage = function(user) {
     // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
