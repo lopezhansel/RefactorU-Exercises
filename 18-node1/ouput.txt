@@ -1,0 +1,35 @@
+npm install underscore --save
+npm uninstall 
+npm different versions
+var 
+.gitignore new file{ 
+node-modules
+}
+
+major.minor.patch
+fail.feature.fix
+patch/fix: fixes a bug
+
+"2.3.4" dont upgrade at all
+"^2.3.4" caret is update any version locks the first number
+"~2.3.4" tilde just the last number , stricter
+
+
+
+browserfy require 
+pm2 & forever running scripts 
+grunt and gulp are task runnys
+what is bower
+learning bash simple 
+
+What is: 
+-cross domain request
+-Process
+
+//how to quit
+// process.argv // arguments vector . its array 
+// process.arg[0] is always node 
+// process.arg[1] is the script that is being run currently . to check  
+// passing in a varable in node with $ sign
+// there is no global namespace
+// comandline  "less"? function what is it
