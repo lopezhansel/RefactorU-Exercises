@@ -1,7 +1,9 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var fs = require('fs')
 
 var app = express()
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
@@ -14,7 +16,20 @@ app.get('/', function(req, res) {
 app.get('/:location', function(req, res) {
 	// res.sendFile('canary.html', { root: './public'})	
 	console.log(req.params.location);
-	res.sendFile(req.params.location + ".html", { root: './public'})	
+	// res.sendFile(req.params.location + ".html", { root: './public'})
+
+	fs.readFile("./public/"+req.params.location + ".html",function(err,data){
+		// console.log(req.params.location);
+		// console.log(data);
+
+		if(data === undefined){
+			res.send("Not valid destination")
+		}else{
+			res.header('Content-Type', 'text/html');
+			res.send(data)
+		}
+	})
+
 })
 
 // app.get('/capeVerde', function(req, res) {
