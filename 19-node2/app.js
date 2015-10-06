@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
-var fileContents = fs.readFileSync('data.txt');
+// var fileContents = fs.readFileSync('.data.txt');
+// console.log(fileContents);
 // res.header('Content-Type', 'text/html'); 
 
 var routes = require('./routes/index');
