@@ -23,7 +23,7 @@ var students = [{
 for(var i=0; i<students.length; i++) {
  console.log(students[i].age);
 }
-console.log('\n')
+console.log('\n');
 for(var i=0; i<students.length; i++) {
  console.log(students[i].name + ', ' + students[i].city);
 }
