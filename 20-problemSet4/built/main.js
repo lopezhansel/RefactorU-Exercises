@@ -31,3 +31,9 @@ function longestWord(str) {
 }
 longestWord('that takes a single string parameter and returns the largest word in the string. If there are two or more words that are the same length, it returns the first word from the string with that length. Ignore punctuation and assume the input sentence will not be empty.');
 //# sourceMappingURL=main.js.map
+
+function averageStringNumbers  (str) {
+    var arr = str.split(' ')
+    console.log(arr);
+}
+averageStringNumbers('hello44444 ')
