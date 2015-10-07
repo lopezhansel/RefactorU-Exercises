@@ -13,23 +13,34 @@ app.get('/', function(req, res) {
 	res.sendFile('seville.html', { root: './public'})	
 })
 
-app.get('/:location', function(req, res) {
-	// res.sendFile('canary.html', { root: './public'})	
-	console.log(req.params.location);
-	// res.sendFile(req.params.location + ".html", { root: './public'})
+// app.get('/:location', function(req, res) {
+// 	// res.sendFile('canary.html', { root: './public'})	
+// 	console.log(req.params.location);
+// 	// res.sendFile(req.params.location + ".html", { root: './public'})
 
-	fs.readFile("./public/"+req.params.location + ".html",function(err,data){
-		// console.log(req.params.location);
-		// console.log(data);
+// 	fs.readFile("./public/"+req.params.location + ".html",function(err,data){
+// 		// console.log(req.params.location);
+// 		// console.log(data);
 
-		if(data === undefined){
-			res.send("Not valid destination")
-		}else{
-			res.header('Content-Type', 'text/html');
-			res.send(data)
+// 		if(err){
+// 			res.send("Not valid destination")
+// 		}else{
+// 			res.header('Content-Type', 'text/html');
+// 			res.send(data)
+// 		}
+// 	})
+
+// })
+app.get('/:location', function(req, res,next) {
+	// console.log(next);
+	res.sendFile(req.params.location + ".html", { root: './public'},
+		function(err){
+		if(err){
+			res.redirect('guam.html')
+			
 		}
 	})
-
+	
 })
 
 // app.get('/capeVerde', function(req, res) {
