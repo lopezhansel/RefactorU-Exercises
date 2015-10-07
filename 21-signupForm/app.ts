@@ -9,9 +9,7 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-	res.sendFile('form.html', { root: './public'})
-	console.log('hellos')
-	
+	res.sendFile('form.html', { root: './public'})	
 })
 
 app.post('/formsubmit', function(req, res) {
