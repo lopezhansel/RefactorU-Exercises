@@ -1,0 +1,81 @@
+<md-toolbar layout="column" >
+  <div class="md-toolbar-tools" md-ink-ripple >
+    <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
+      <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+    </md-button>
+    <img ng-click="setMapCenter()" class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
+    <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2>
+  </div>
+</md-toolbar>
+<!-- ================================================================================================================================ -->
+<!-- ================================================================================================================================ -->
+
+<div layout="column" layout-gt-lg="row" flex>
+
+<!-- *********************************************************** SIDENAV ******************************************************************************* -->
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
+    <!-- data-ng-click="openToast('You Found an Easter Egg')" -->
+        <h3 id="startLat" ng-dblclick="testTrigger()" >Welcome to Map Me </h3>
+        <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
+        <h3><a href="#Messages"><p>Messages</p></a> </h3>
+        <h3 data-ng-click="setMapCenter()">Show Map</h3>
+        <h2>Search:</h2>
+        <input type="text" data-ng-model="searchbox">
+    </md-sidenav>
+  
+          
+<!-- *********************************************************** GRID  ******************************************************************************* -->
+    <div layout="column"   id="content"   class="flex" ng-class="gridflex">
+        <md-content>
+          <md-grid-list 
+              md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
+              md-row-height="200px"
+              md-gutter="8px" md-gutter-gt-sm="4px" >
+
+              <md-grid-tile data-ng-repeat="user in users  | filter: searchbox "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
+                <md-card class="md-padding" flex layout="column" >
+                    <md-card-content layout='row'  >
+                      <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
+                      <md-content  layout="column" layout-align="start center" flex>
+                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.name.first + ' '+ user.name.last| uppercase}}</a></h1>
+                        <p></p>
+                      </md-content>
+                    </md-card-content>
+                    <md-content  flex layout="column" layout-align="start start">
+
+                      <div flex layout="column" layout-align="start start">
+                        <p class="md-title"> Near: {{user.place}} </p>
+                        <p>{{user.apart| limitTo: 3}} Miles Away</p>
+                      </div>
+                    </md-content>
+                
+            
+                      <md-content class="md-actions" layout="row" layout-align="end end">
+                        <!-- <div flex="50">here</div> -->
+                        <md-button ng-click="showAdvanced($event,user)">More Info</md-button>
+                        <md-button data-ng-click="setMapCenter(user)">View On Map</md-button>
+                      </md-content>
+                </md-card>
+              </md-grid-tile>
+           </md-grid-list>
+        </md-content>
+
+    </div>
+    
+<!-- *********************************************************** LEAFLET ******************************************************************************* -->
+  <md-content   ng-show="showMap" flex >
+    <div  id="map-canvas">
+      <leaflet center="mapCenter" markers="mapMarkerss"> </leaflet>
+    </div>
+  </md-content>
+
+<!-- *********************************************************** END OF BODY ******************************************************************************* -->
+</div>
+
+   <!-- <div class="main" data-ng-hide="showMap" layout="column" flex="50">
+    <div class="container-fluid" id="map-canvas">
+      <leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
+    </div>
+  </div> -->
+<!-- ================================================================================================================================ -->
+<!-- ================================================================================================================================ 
