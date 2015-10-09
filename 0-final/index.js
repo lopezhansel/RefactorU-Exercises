@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
 	res.sendFile('index.html');
 });
 
-var port = 3000;
+var port = 80;
 app.listen(port, function() {
 	console.log('Server Started');
 });
