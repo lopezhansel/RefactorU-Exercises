@@ -11,13 +11,11 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/',function(req,res){
+app.get('/', function(req, res) {
 	res.sendFile('index.html');
 });
 
 var port = 3000;
-app.listen(port,function(){
+app.listen(port, function() {
 	console.log('Server Started');
 });
-
-

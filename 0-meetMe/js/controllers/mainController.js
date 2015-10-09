@@ -219,29 +219,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   }
 
 
-  if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian
-    Number.prototype.toRad = function() {
-      return this * Math.PI / 180;
-    };
-  }
-  var lat2 = 25.6667; // Monterrey , Mexico 
-  var lon2 = -100.3000; // Monterrey = boulder actual distance = 1030 miles
+
   var mylat = 0;
   var mylon = 0;
 
-  function distanceFrom(atitude, ong) { // Central Subtended Angle Method || Great Circle Method
-    var R = 6371 / 1.609344; //Earth Median radius in Kilometers / convert to km to miles
-    var φ1 = mylat.toRad();
-    var φ2 = atitude.toRad();
-    var Δφ = (atitude - mylat).toRad();
-    var Δλ = (ong - mylon).toRad();
-    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + // arc length
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var distance = (R * c);
-    return distance;
-  }
+
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
   var startPos;
   // get ip location
