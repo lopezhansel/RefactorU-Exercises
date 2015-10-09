@@ -1,6 +1,6 @@
 function DialogController($scope, $mdDialog, currentUserPopUP) {
   // console.log(currentUserPopUP);
-  $scope.popUpDialogUser = currentUserPopUP
+  $scope.popUpDialogUser = currentUserPopUP;
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -24,45 +24,16 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   //----------------------------------------------------------------------- APPCTRL   $mdDialog and $mdMedia 1111-------------------------------------------------------------------------------------------------------------------
   $scope.selectUserProfile = function(user) {
     $scope.currentUserProfile = user;
-      // console.log(user);  
+    // console.log(user);  
   };
 
   $scope.status = '  ';
-  $scope.showAlert = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    // Modal dialogs should fully cover application
-    // to prevent interaction outside of dialog
-    $mdDialog.show(
-      $mdDialog.alert()
-      .parent(angular.element(document.querySelector('#popupContainer')))
-      .clickOutsideToClose(true)
-      .title('This is an alert title')
-      .content('You can specify some description text in here.')
-      .ariaLabel('Alert Dialog Demo')
-      .ok('Got it!')
-      .targetEvent(ev)
-    );
-  };
-  $scope.showConfirm = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-      .title('Would you like to delete your debt?')
-      .content('All of the banks have agreed to <span class="debt-be-gone">forgive</span> you your debts.')
-      .ariaLabel('Lucky day')
-      .targetEvent(ev)
-      .ok('Please do it!')
-      .cancel('Sounds like a scam');
-    $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
-  };
+
 
   $scope.showAdvanced = function(ev, index) {
     $scope.popUpDialogUser = index;
-      // console.log($scope.popUpDialogUser);
-      // console.log($scope.popUpDialogUser);
+    // console.log($scope.popUpDialogUser);
+    // console.log($scope.popUpDialogUser);
     $mdDialog.show({
 
         locals: {
@@ -215,12 +186,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $scope.users[i].place = $scope.boulder[randomNUm].title;
     $scope.users[i].placeid = $scope.boulder[randomNUm].pageid;
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
-      // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
+    // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
   }
 
-
-
-  
 
 
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
@@ -235,9 +203,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     });
     mylat = $scope.lat;
     mylon = $scope.longg;
-      // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
+    // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
     distanceFrom(lat2, lon2);
-      // console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
+    // console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
     for (var i = 0; i < $scope.users.length; i++) {
 
       $scope.$apply(function() {

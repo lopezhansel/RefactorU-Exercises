@@ -1,11 +1,3 @@
-String.prototype.capitalizeFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-  String.prototype.capitalize = function(){
-        return this.toLowerCase().replace( /\b\w/g, function (m) {
-            return m.toUpperCase();
-        });
-    };
 var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.bootstrap','leaflet-directive']);
 
 app.config(function($mdThemingProvider) {
