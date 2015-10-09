@@ -6,7 +6,16 @@
 	<title>Contest App</title>
 </head>
 <body data-ng-controller="MainCtrl">
-<h1>{{hello}}</h1>
+
+<form data-ng-submit="videoSubmit()">
+	<input type="text" ng-model="videoSubmited.what" placeholder="hello">
+	<input type="text" ng-model="videoSubmited.is" placeholder="hello">
+	<input type="text" ng-model="videoSubmited.this" placeholder="hello">
+	<input type="text" ng-model="videoSubmited.doing" placeholder="hello">
+	<input type="submit">
+</form>
+{{returnObj}} Here
+
 
 <script src="./js/main.js"></script>
 </body>
