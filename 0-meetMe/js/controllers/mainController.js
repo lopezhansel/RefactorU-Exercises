@@ -220,8 +220,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
 
-  var mylat = 0;
-  var mylon = 0;
+  
 
 
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
