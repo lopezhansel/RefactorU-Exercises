@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html  data-ng-app="contestApp">
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+
+	<title>Contest App</title>
+</head>
+<body data-ng-controller="MainCtrl">
+
+<h1>Best Videos</h1>
+{{returnObj}}
+<div data-ng-repeat="video in returnObj">
+	<h2>{{video.name}}</h2>
+	
+</div>
+
+
+
+
+<script src="./js/main.js"></script>
+</body>
+</html>
