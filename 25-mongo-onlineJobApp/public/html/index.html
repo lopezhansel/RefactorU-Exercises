@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="JobApp">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
+  </head>
+  <body ng-controller="homeController">
+	  
+    <div class="container">
+      <h1>Omega 3 Studios</h1>
+      <h2>Application for Senior Web Developer</h2>
+      <form id="application-form" action="/applicant" method="post">
+        <div class="form-group">
+          <input name="name" type="text" placeholder="Name" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <textarea name="bio" rows="5" placeholder="Bio" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <textarea name="skills" rows="3" placeholder="Skills (separated by commas)" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <input name="years" type="number" placeholder="Years of experience" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <textarea name="why" rows="5" placeholder="Why do you want to work here?" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default"/>
+        </div>
+      </form>
+    </div>
+	  
+	  
+	  
+	  
+	<script src="/javascripts/main.js"></script>
+  </body>
+</html>
