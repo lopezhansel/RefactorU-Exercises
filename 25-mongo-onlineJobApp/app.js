@@ -2,12 +2,14 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var db         = require('./models/applicantsDb');
+
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+
 app.use(express.static(__dirname + '/public'));
 
 
@@ -27,13 +29,20 @@ app.get('/applicants', function(req, res) {
 
 
 app.get('/success', function(req, res) {
-	res.send('Thank you for applying, we will review you application shortly.');
+
+		res.send('Thank you for applying, we will review you application shortly.');
+
 });
 
-app.post('/applicant', function(req, res) {
-	console.log(req.body);
-	res.redirect('/success');
-});
+// app.post('/applicant', function(req, res) {
+// 	console.log(req.body);
+// 	res.redirect('/success');
+// 	var newApplicant = new applicant.ApplicantsConstructor;
+// 	var newTask = new db.Task(req.body)
+// 	newTask.save(function(){
+// 	    res.send('task received!')
+// 	})
+// });
 
 
 

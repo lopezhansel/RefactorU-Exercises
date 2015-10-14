@@ -1,4 +1,4 @@
-angular.module('JobApp', [])
+angular.module('JobApp', []);
 
 angular.module('JobApp')
 	.controller('homeController', ['$scope', function($scope){
