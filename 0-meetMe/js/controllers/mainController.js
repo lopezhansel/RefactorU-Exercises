@@ -172,12 +172,12 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $mdSidenav(menuId).toggle();
   };
 
+  console.log($routeParams);
 
   //----------------------------------------------------------------------- APPCTRL  get users and calculate their locatoin from me-------------------------------------------------------------------------------------------------------------------
   $scope.users = userService.randomUsers;
   $scope.user = userService.randomUsers[$routeParams.id];
   $scope.boulder = userService.boulder;
-
   for (var i = 0; i < $scope.users.length; i++) { // give each user random cordinates and location title 
     var randomNUm = Math.floor(Math.random() * $scope.boulder.length);
     $scope.users[i].lat = $scope.boulder[randomNUm].lat;
