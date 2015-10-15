@@ -13,6 +13,8 @@ app.use(session({
 	saveUninitialized : false
 }));
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
@@ -20,8 +22,9 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/',function  (req,res) {
 	console.log('this router is redundants ughs');
-});
 
+});
+app.get('/login',phoneCtrl.login);
 app.post('/api/createPhones', phoneCtrl.createPhones);
 app.get('/api/readPhones',phoneCtrl.readPhones);
 
