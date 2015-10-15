@@ -1,10 +1,10 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
 var session    = require('express-session');
-var mongoose   = require('mongoose');
+// var mongoose   = require('mongoose');
 
 var phoneCtrl  = require('./controllers/phoneCtrl');
-mongoose.connect('mongodb://localhost/practiceMean');
+// mongoose.connect('mongodb://localhost/phoneDb');
 var app = express();
 
 app.use(session({

@@ -8,13 +8,8 @@ module.exports = {
 // function hoisting yeah!
 function readPhones (req,res) {
 	Phone.find({},function  (err, phone) {
-		console.log(phone);
-		console.log(err);
 		res.send(phone);
 	});
-	
-
-	console.log('finding phones');
 }
 
 function createPhones (req,res) {
