@@ -25,6 +25,7 @@ app.get('/',function  (req,res) {
 
 });
 app.get('/login',phoneCtrl.login);
+app.post('/login',phoneCtrl.login);
 app.post('/api/createPhones', phoneCtrl.createPhones);
 app.get('/api/readPhones',phoneCtrl.readPhones);
 

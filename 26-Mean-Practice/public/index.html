@@ -6,14 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="style/main.css">
 </head>
 <body ng-controller="phoneCtrl">
+	<div ng-show="loginForm">
+		<form data-ng-submit="loginUser()">
+			<label>Login: </label><input type="text" data-ng-model='username'>
+			<input type="submit">
+		</form>
+	</div>
 	<h3>{{greeting}}</h3>
 <div class="">
 	<div class="">
 		<form data-ng-submit="postPhones()">
-			<input type="text" placeholder="NAME" data-ng-model="phone.name "><br>
-			<input type="text" placeholder="MANUFACTURER" data-ng-model="phone.manufacturer "><br>
-			<input type="text" placeholder="COST" data-ng-model="phone.cost "><br>
-			<input type="text" placeholder="RATING" data-ng-model="phone.rating "><br>
+			<input type="text" placeholder="Name" data-ng-model="phone.name "><br>
+			<input type="text" placeholder="Manufacturer" data-ng-model="phone.manufacturer "><br>
+			<input type="text" placeholder="Cost" data-ng-model="phone.cost "><br>
+			<input type="text" placeholder="Rating" data-ng-model="phone.rating "><br>
 			<input type="submit" >
 		</form>
 	</div>
