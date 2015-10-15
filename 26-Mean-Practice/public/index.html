@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="phoneApp">
 <head>
-	<title>Hello</title>
+	<title>PhoneDB</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="style/main.css">
 </head>
 <body ng-controller="phoneCtrl">
 	<h3>{{greeting}}</h3>
+<div class="">
+	<div class="">
+		<form data-ng-submit="postPhones()">
+			<input type="text" placeholder="NAME" data-ng-model="phone.name "><br>
+			<input type="text" placeholder="MANUFACTURER" data-ng-model="phone.manufacturer "><br>
+			<input type="text" placeholder="COST" data-ng-model="phone.cost "><br>
+			<input type="text" placeholder="RATING" data-ng-model="phone.rating "><br>
+			<input type="submit" >
+		</form>
+	</div>
+	<div class="">
+		<h4>items</h4>
+		
+	</div>
+</div>
 
 
 

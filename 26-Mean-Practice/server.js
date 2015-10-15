@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var session    = require('express-session');
 var mongoose   = require('mongoose');
 
+var phoneCtrl  = require('./controllers/phoneCtrl');
 mongoose.connect('mongodb://localhost/practiceMean');
 var app = express();
 
@@ -18,14 +19,12 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/',function  (req,res) {
-	console.log('at home');
-	res.send('welcome to my home page');
+	console.log('this router is redundants ughs');
 });
 
-app.get('/',function  (req,res) {
-	console.log('at home');
-	res.send('welcome to my home page');
-});
+app.post('/api/createPhones', phoneCtrl.createPhones);
+app.get('/api/readPhones',phoneCtrl.readPhones);
+
 
 var port = 3000;
 app.listen(port, function() {
