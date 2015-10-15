@@ -5,6 +5,7 @@ app.controller('phoneCtrl', ['$scope','$http' , function ($scope,$http) {
 	$scope.phone = {};
 	$http.get('/api/readPhones',function  (returnData) {
 		console.log(returnData.data);
+		
 	});
 	$scope.postPhones = function  () {
 		console.log('Phone im posting', $scope.phone);

@@ -1,17 +1,25 @@
 // phoneCtrl.js
 // Create read Update Delete 
-var phoneSchema  = require('../models/phoneDb');
+var Phone  = require('../models/phoneDb');
 module.exports = {
 	readPhones     : readPhones,
 	createPhones   : createPhones
 };
 // function hoisting yeah!
 function readPhones (req,res) {
-	res.send();
+	Phone.find({},function  (err, phone) {
+		console.log(phone);
+		console.log(err);
+		res.send(phone);
+	});
+	
+
 	console.log('finding phones');
 }
 
 function createPhones (req,res) {
 	console.log('phone received', req.body);
+	var newPhone = new Phone(req.body);
+	newPhone.save();
 	res.send('create Phones');
 }

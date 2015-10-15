@@ -8,4 +8,4 @@ var phoneSchema = mongoose.Schema({
 	rating       : {type: Number}
 });
 
-module.exports = { phoneSchema: phoneSchema};
+module.exports = mongoose.model('Phone',phoneSchema);
