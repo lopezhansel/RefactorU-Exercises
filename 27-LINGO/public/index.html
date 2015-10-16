@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+	<title>PhoneDB</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="style/main.css">
+</head>
+<body ng-controller="phoneCtrl">
+	<div ng-show="loginForm">
+		<form data-ng-submit="loginUser()">
+			<label>Login: </label><input type="text" data-ng-model='username'>
+			<input type="submit">
+		</form>
+	</div>
+	<h3>{{greeting}}</h3>
+<div class="">
+	<div class="">
+		<form data-ng-submit="postPhones()">
+			<input type="text" placeholder="Name" data-ng-model="phone.name "><br>
+			<input type="text" placeholder="Manufacturer" data-ng-model="phone.manufacturer "><br>
+			<input type="text" placeholder="Cost" data-ng-model="phone.cost "><br>
+			<input type="text" placeholder="Rating" data-ng-model="phone.rating "><br>
+			<input type="submit" >
+		</form>
+	</div>
+	<div class="">
+		<h4 data-ng-repeat="phone in phonesArray">{{phone.name}}</h4>
+	
+	
+		
+	</div>
+</div>
+
+
+
+	<script src="/js/ngApp.js" type="text/javascript"></script>
+</body>
+</html>
