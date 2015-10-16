@@ -24,9 +24,11 @@ function createData (req,res) {
 }
 
 function home (req,res) {
-	console.log('at home');
-	res.send('welcome Home , this is redundant');
+	console.log(req);
+	// console.log(req._parsedOriginalUrl.path);
+	res.send('home');
 }
+
 
 function translating (req,res) {
 	console.log(req.body);

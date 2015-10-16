@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="Lingo">
 	<head>
-		<title>Lingo Translate</title>
+		<title>Lingo Quiz</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
@@ -16,14 +16,6 @@
 			<div  class="col-lg-4"><a href="/quiz">Quiz</a></div>
 			<div  class="col-lg-4"><a href="/progre">Progress</a></div>
 		</div>
-		<br>
-		<form data-ng-submit="postData()">
-			<input type="text" placeholder="Source Lang" data-ng-model="wordTranslate.sourceLang "><br>
-			<input type="text" placeholder="Dest Lang" data-ng-model="wordTranslate.newLang "><br>
-			<input type="text" placeholder="Word" data-ng-model="wordTranslate.sourceText "><br>
-			<input type="submit" >
-		</form>
-		<h2>{{translatedText}}</h2>
 		</div>
 
 		<script src="/js/ngApp.js" type="text/javascript"></script>

@@ -13,9 +13,9 @@ app.use(express.static(__dirname + '/public'));
 //   console.log(translation.translatedText);
 // });
 
-// app.get('/',routeCtrl.home);
-app.get('/quiz',routeCtrl.sendQuiz);
-app.get('/progress',routeCtrl.progress);
+app.get('/',routeCtrl.home);
+app.get('/quiz',routeCtrl.home);
+app.get('/progress',routeCtrl.home);
 
 
 
