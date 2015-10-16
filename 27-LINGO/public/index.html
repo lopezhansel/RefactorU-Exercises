@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="ngApp">
+<html ng-app="Lingo">
 	<head>
-		<title>Mean App</title>
+		<title>Lingo App</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="style/main.css">
 	</head>
-	<body ng-controller="appCtrl">
+	<body ng-controller="mainCtrl">
 		<h1>{{greeting}}</h1>
+
 		<form data-ng-submit="postData()">
 			<input type="text" placeholder="data1" data-ng-model="data.data1 "><br>
 			<input type="text" placeholder="data2" data-ng-model="data.data2 "><br>
