@@ -1,43 +1,21 @@
-var app = angular.module('phoneApp', []);
+var app = angular.module('ngApp', []);
 
-app.controller('phoneCtrl', ['$scope','$http' , function ($scope,$http) {
-	$scope.greeting = 'Welcome To Phone App';
-	$scope.phone = {};
-	$scope.phonesArray = [];
-	$scope.username = '';
-	$http.get("/login").then(function  (returnData) {
-		console.log(returnData.data);
-	});
+app.controller('appCtrl', ['$scope', '$http', function($scope, $http) {
+	$scope.greeting = 'Welcome To Scafold App';
 
-	$http.get('/api/readPhones').then(function  (returnData) {$scope.phonesArray = returnData.data; });
-	$scope.postPhones = function  () {
-		$http.post('/api/createPhones',$scope.phone);
-		$http.get('/api/readPhones').then(function  (returnData) {$scope.phonesArray = returnData.data; });
+	$scope.getData = function() {
+		$http.get('/api/readData').then(function(response) {
+			console.log(response.data);
+		});
+	};
+	
+	$scope.postData = function() {
+		$http.post('/api/createData', $scope.data).then(function(response) {
+			console.log(response.data);
+		});
+		$scope.getData();
 	};
 
-	$scope.loginUser = function(){
-		$http.post('/login', {username : $scope.username})
-			.then(function(returnData){
-				console.log('After login :', returnData)
-				$scope.loginForm = false
-				$scope.user = {
-					name : returnData.data.username
-				}
-			})
-	}
 
-	$http.get('/login').then(function(returnData){
-		var sessionObj = returnData.data
 
-		if(!sessionObj.username){
-			$scope.loginForm = true
-		}
-		else{
-			$scope.user = {
-				name : returnData.data.username
-			}
-
-		}
-
-	})
 }]);

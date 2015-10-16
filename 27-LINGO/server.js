@@ -10,8 +10,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
 
-
-
 app.get('/',routeCtrl.home);
 
 app.post('/api/createData',routeCtrl.createData);
