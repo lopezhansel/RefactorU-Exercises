@@ -1,9 +1,13 @@
 var Data = require('../models/dataDb');
+var api = require('myApis/api');
+var gTranslate  = require('google-translate')(api);
 
 module.exports = {
 	readData     : readData,
 	createData   : createData,
-	home         : home
+	home         : home,
+	translating  : translating
+
 };
 
 function readData (req,res) {
@@ -22,4 +26,15 @@ function createData (req,res) {
 function home (req,res) {
 	console.log('at home');
 	res.send('welcome Home , this is redundant');
+}
+
+function translating (req,res) {
+	console.log(req.body);
+
+	gTranslate.translate(req.body.sourceText,req.body.newLang,function  (err, translation) {
+		console.log(translation.translatedText);
+		if (err){res.send(err); }
+		else{res.send(translation.translatedText); }
+	});
+
 }
