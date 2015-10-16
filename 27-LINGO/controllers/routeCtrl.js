@@ -24,9 +24,9 @@ function createData (req,res) {
 }
 
 function home (req,res) {
-	console.log(req);
-	// console.log(req._parsedOriginalUrl.path);
-	res.send('home');
+	// console.log(req);
+	var path = req._parsedOriginalUrl.path;
+	res.sendFile('/views' +path+ ".html",{root:"./public"});
 }
 
 
