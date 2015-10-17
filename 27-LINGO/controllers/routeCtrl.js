@@ -54,17 +54,16 @@ var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight",
 // });
 
 function typoCheck(guess, right) {
+
 	if (guess.length === right.length) {
-		var count = 0
-		guess.split('').map(function  (el,i) {
-			if (el === right.split('')[i]){
-				count++
-				console.log(count,el);
-			}
+		var count = 0;
+		guess.split('').map(function(el, i) {
+			if (el === right.split('')[i]) {count++ }
 		});
+		return count > guess.length-2;
 	}
 }
-typoCheck('hello','hlllo');
+console.log(typoCheck('hello', 'hello'));
 
 // function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
 // 	var rightOrWrong = null;
@@ -79,4 +78,3 @@ typoCheck('hello','hlllo');
 // 	// return rightOrWrong;
 // }
 // testLang('en', 'es', 'hala', 'hello');
-
