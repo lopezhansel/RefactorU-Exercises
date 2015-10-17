@@ -55,21 +55,28 @@ var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight",
 
 function typoCheck(guess, right) {
 	if (guess.length === right.length) {
-		
+		var count = 0
+		guess.split('').map(function  (el,i) {
+			if (el === right.split('')[i]){
+				count++
+				console.log(count,el);
+			}
+		});
 	}
 }
+typoCheck('hello','hlllo');
 
-function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
-	var rightOrWrong = null;
-	gTranslate.translate(quizWord, destLang, function(err, translation) {
-		if (guess.toLowerCase() === translation.translatedText.toLowerCase()) {
-			rightOrWrong = "right";
-			return console.log(rightOrWrong);
-		} else {
-			console.log(typoCheck(guess, translation.translatedText));
-		}
-	});
-	// return rightOrWrong;
-}
-testLang('en', 'es', 'hala', 'hello');
+// function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
+// 	var rightOrWrong = null;
+// 	gTranslate.translate(quizWord, destLang, function(err, translation) {
+// 		if (guess.toLowerCase() === translation.translatedText.toLowerCase()) {
+// 			rightOrWrong = "right";
+// 			return console.log(rightOrWrong);
+// 		} else {
+// 			console.log(typoCheck(guess, translation.translatedText));
+// 		}
+// 	});
+// 	// return rightOrWrong;
+// }
+// testLang('en', 'es', 'hala', 'hello');
 
