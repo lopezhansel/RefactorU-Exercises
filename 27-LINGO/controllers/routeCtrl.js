@@ -40,3 +40,22 @@ function translating (req,res) {
 	});
 
 }
+var wordsAray = ["one","two","three","four","five","six","seven","eight" ,"nine","ten"];
+// var count = 0;
+
+
+// gTranslate.translate('My name is Hansel', 'es', function(err, translation) {
+//   console.log(translation.translatedText);
+// });
+
+
+function testLang (srcLang,destLang,guess,quizWord) {
+	var anser = null;
+	gTranslate.translate(quizWord,destLang,function  (err, translation) {
+		if (guess.toLowerCase() === translation.translatedText.toLowerCase()){anser =  true;}
+		else{anser =  false; }
+		console.log(anser);
+	});
+	// return anser;
+}
+var test = testLang('en','es','hola','hello');

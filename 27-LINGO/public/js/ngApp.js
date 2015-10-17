@@ -3,6 +3,7 @@ var app = angular.module('Lingo', []);
 app.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.greeting = 'Welcome To Lingo App';
 	$scope.wordTranslate = {};
+	$scope.fiveLanguages = ['es','fr','gr','it',''];
 
 	$scope.getData = function() {
 		$http.get('/api/readData').then(function(response) {
