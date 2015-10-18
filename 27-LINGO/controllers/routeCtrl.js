@@ -53,18 +53,49 @@ var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight",
 //   console.log(translation.translatedText);
 // });
 
-function typoCheck(guess, right) {
-
-	if (guess.length === right.length) {
+function typoCheck(guess, correctAnswer) {
+	if (guess.length === correctAnswer.length) {
 		var count = 0;
 		guess.split('').map(function(el, i) {
-			if (el === right.split('')[i]) {count++ }
+			if (el === correctAnswer.split('')[i]) {count++; }
 		});
-		return count > guess.length-2;
-	}
+		return count >= guess.length - 1;
+	} 
+	else {return false; }
 }
-console.log(typoCheck('hello', 'hello'));
+// typos missing one letter
+	// excuses - correct answer
+	// excuse  - missing last letter
+	// xcuses  - missing beginning letter
+	// excuss  - missing random letter
 
+// typos with extra letter 
+	// excuses   - correct answer
+	// exccuses  - extra letter in the middle 
+	// excusess  - extra letter at the end
+	// eexcusess - extra letter at the end 
+
+function offByOneCharacterPt2 (guess, correctAnswer) {
+	if (guess.length === correctAnswer.length-1 || guess.length === correctAnswer.length+1 ){
+		if (guess.length <correctAnswer){
+
+			console.log('guess is shorter than correctAnswer');
+		}else{
+			
+			console.log('guess is longer than correctAnswer');
+		}
+		return true;
+	}else {return false; }
+}
+
+
+// console.log(offByOneCharacterPt2('hello', 'hell'));
+
+function offByOneCharacterPt3 (guess, correctAnswer) {
+	return "im here havent finished ";
+
+}
+console.log(offByOneCharacterPt3('exccuses', "xexccuses"));
 // function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
 // 	var rightOrWrong = null;
 // 	gTranslate.translate(quizWord, destLang, function(err, translation) {
