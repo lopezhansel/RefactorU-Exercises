@@ -1,6 +1,6 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
-var app        = express();
+var app        = express()
 var serverName = 'Lingo Server';
 
 var routeCtrl  = require('./controllers/routeCtrl');
@@ -20,9 +20,10 @@ app.get('/progress',routeCtrl.home);
 
 
 // APIs
-app.get('/api/readData',routeCtrl.readData);
+app.get('/api/getWords',routeCtrl.getWords);
 app.post('/api/createData',routeCtrl.createData);
 app.post('/translating/',routeCtrl.translating);
+app.post('/validateAnswer',routeCtrl.validateAnswer);
 
 
 

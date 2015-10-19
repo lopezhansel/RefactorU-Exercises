@@ -1,19 +1,24 @@
 var Data = require('../models/dataDb');
 var api = require('myApis/api');
 var gTranslate = require('google-translate')(api);
+var helperFuncs = require('./helperFuncs');
 
 module.exports = {
-	readData: readData,
-	createData: createData,
-	home: home,
-	translating: translating
+	getWords       : getWords,
+	createData     : createData,
+	home           : home,
+	translating    : translating,
+	validateAnswer : validateAnswer
 
 };
 
-function readData(req, res) {
-	Data.find({}, function(err, docs) {
-		res.send(docs);
-	});
+function getWords(req, res) {
+	// Data.find({}, function(err, docs) {
+	// 	res.send(docs);
+	// });
+	var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+	res.send('health');
+	// console.log(req);
 }
 
 function createData(req, res) {
@@ -33,7 +38,6 @@ function home(req, res) {
 
 function translating(req, res) {
 	console.log(req.body);
-
 	gTranslate.translate(req.body.sourceText, req.body.newLang, function(err, translation) {
 		console.log(translation.translatedText);
 		if (err) {
@@ -42,72 +46,29 @@ function translating(req, res) {
 			res.send(translation.translatedText);
 		}
 	});
-
 }
-// gTranslate.translate('My name is Hansel', 'es', function(err, translation) {
-//   console.log(translation.translatedText);
-// });
-
-var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
-// var count = 0;
-
-
-// checks if same lengthed words have typo
-function typoCheckPt1(guess, correctAnswer) {
-	if (guess.length === correctAnswer.length) {
-		var count = 0;
-		guess.split('').map(function(el, i) {
-			if (el === correctAnswer.split('')[i]) {count++; }
-		});
-		return count >= guess.length - 1;
-	} 
-	else {return false; }
+function validateAnswer (req,res) {
+	gTranslate.translate(req.body.quiz,'es',function  (err,translation) {
+		req.body.answer = translation.translatedText.toLowerCase();
+		req.body.guess = req.body.guess.toLowerCase();
+		req.body.correct = isCorrect(req.body.guess, req.body.answer);
+		console.log(' ');
+		console.log(' ');
+		console.log(' ');
+		console.log(' ');
+		// console.log(req.body);
+		res.send(req.body);
+	});
 }
-// console.log("tyepoCheckOne", typoCheckPt1('hella','hello'));
 
-// checks if character extra or character short  was included in the guess
-function longerOrShorter (guess, correctAnswer) {
-	if (guess.length === correctAnswer.length-1 || guess.length === correctAnswer.length+1 ){
-		if (guess.length <correctAnswer){console.log('guess is shorter than correctAnswer');
-		}else{console.log('guess is longer than correctAnswer'); }
+function isCorrect (guess,answer) {
+	if (guess===answer) {
 		return true;
-	}else {return false; }
+	}else{
+		return helperFuncs.typoCheck(guess,answer) || helperFuncs.longerOrShorter(guess,answer) ;
+	}
 }
 
-
-
-// console.log(longerOrShorter('hello', 'hell'));
-// this function takes to similar words and makes them the same length
-function removeExtraLetters (guessAnswer, correctAnswer) {
-	var outputArray = [];
-	count = 0;
-	guessAnswer.split('').map(function  (element) {
-		if (element === correctAnswer.split('')[count]){ 
-			outputArray.push(element);
-			count++;
-		}
-	});
-	return outputArray.join("");
-}
-// console.log(removeExtraLetters('jaaavvascript', "javascript"));
-
-function missingOneLetter (guessAnswer,correctAnswer) {
-	var outputArray = [];
-	count = 0;
-	guessAnswer.split('').map(function  (element,index) {
-		if (element=== correctAnswer.split('')[count]) {
-			outputArray.push(element);
-			count++;
-		}
-		else{
-			outputArray.push("-"+element);
-			count= count + 2;
-		}
-	});
-	return outputArray.join('');
-}
-
-console.log(missingOneLetter('javacript','javascript'));
 
 // function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
 // 	var rightOrWrong = null;
@@ -121,4 +82,4 @@ console.log(missingOneLetter('javacript','javascript'));
 // 	});
 // 	// return rightOrWrong;
 // }
-// testLang('en', 'es', 'hala', 'hello');socket.setKeepAlive([enable], [initialDelay])
+// testLang('en', 'es', 'hala', 'hello');socket.setKeepAlive([enable], [initialDelay]);
