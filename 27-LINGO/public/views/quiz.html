@@ -10,16 +10,23 @@
 	</head>
 	<body ng-controller="mainCtrl">
 		<div class="container">
-		<h1>{{greeting}}</h1>
-		<div class="row navBar">
-			<div  class="col-lg-4"><a href="/">Translate</a></div>
-			<div  class="col-lg-4"><a href="/quiz">Quiz</a></div>
-			<div  class="col-lg-4"><a href="/progress">Progress</a></div>
-		</div>
-		</div>
-		<p>What Laguages Would you like To study?</p>
-		
+			<h1>{{greeting}}</h1>
+			<div class="row navBar">
+				<div  class="col-lg-4"><a href="/"><h2>Translate</h2></a></div>
+				<div  class="col-lg-4"><a href="/quiz"><h2>Quiz</h2></a></div>
+				<div  class="col-lg-4"><a href="/progress"><h2>Progress</h2></a></div>
+			</div>
+			<h1>Quiz</h1>
+			<h3>the word is {{test.quiz}}</h3>
+			<form data-ng-submit="validateAnswer()">
+				<label>Your Answer</label><input type="text" data-ng-model="test.guess">
+				<input type="submit">
+			</form>
+			<h3>{{realAnswer}}</h3>
 
+
+		</div>
+		
 		<script src="/js/ngApp.js" type="text/javascript"></script>
 	</body>
 </html>
