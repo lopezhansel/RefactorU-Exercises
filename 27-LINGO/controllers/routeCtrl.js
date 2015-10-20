@@ -1,32 +1,46 @@
-var Data = require('../models/dataDb');
+var Word = require('../models/dataDb');
+var User = require('../models/users');
 var api = require('myApis/api');
 var gTranslate = require('google-translate')(api);
 var helperFuncs = require('./helperFuncs');
 
+
 module.exports = {
-	getWords       : getWords,
-	createData     : createData,
-	home           : home,
-	translating    : translating,
-	validateAnswer : validateAnswer
+	getTenRandWords   : getTenRandWords,
+	createData        : createData,
+	home              : home,
+	translating       : translating,
+	validateAnswer    : validateAnswer
 
 };
 
-function getWords(req, res) {
-	// Data.find({}, function(err, docs) {
-	// 	res.send(docs);
-	// });
-	var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
-	res.send('health');
+function getTenRandWords(req, res) {
+	Word.find({}, function(err, docs) {
+		var tenRandWords = [];
+		res.send(docs[Math.floor(Math.random()*docs.length)].word);
+		for (var i = 0; i < 10; i++) {
+			tenRandWords.push(docs[Math.floor(Math.random()*docs.length)]);
+		}
+		// console.log(docs[Math.floor(Math.random()*docs.length)]);
+	});
 	// console.log(req);
 }
 
 function createData(req, res) {
-	var insertData = new Data(req.body);
-	console.log(insertData);
-	insertData.save();
-	res.send(insertData);
+	var newWord = new Word({
+		word            : "baby",
+		timesPracticed  : 0,
+		timesWrong      : 0,
+		timesCorrect    : 0,
+		percentage      : 0,
+		timestamp       : 0
+	});
+
+	newWord.save();
+	console.log(newWord);
+	res.send(newWord);
 }
+
 
 function home(req, res) {
 	// console.log(req);
@@ -51,11 +65,9 @@ function validateAnswer (req,res) {
 	gTranslate.translate(req.body.quiz,'es',function  (err,translation) {
 		req.body.answer = translation.translatedText.toLowerCase();
 		req.body.guess = req.body.guess.toLowerCase();
+
 		req.body.correct = isCorrect(req.body.guess, req.body.answer);
-		console.log(' ');
-		console.log(' ');
-		console.log(' ');
-		console.log(' ');
+
 		// console.log(req.body);
 		res.send(req.body);
 	});
@@ -83,3 +95,18 @@ function isCorrect (guess,answer) {
 // 	// return rightOrWrong;
 // }
 // testLang('en', 'es', 'hala', 'hello');socket.setKeepAlive([enable], [initialDelay]);
+// ......................................
+
+// 	var newUser = new User({
+// 		name            : "rocko",
+// 		wordsParactice  : 3,
+// 		timesWrong      : 3,
+// 		timesCorrect    : 3,
+// 		percentage      : 3,
+// 		timestamp       : 3
+// 	});
+// 	console.log(newUser);
+// 	newUser.save();
+// console.log('hello');
+
+

@@ -1,7 +1,11 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
-var app        = express()
+var app        = express();
 var serverName = 'Lingo Server';
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/wordDb');
 
 var routeCtrl  = require('./controllers/routeCtrl');
 
@@ -20,10 +24,10 @@ app.get('/progress',routeCtrl.home);
 
 
 // APIs
-app.get('/api/getWords',routeCtrl.getWords);
-app.post('/api/createData',routeCtrl.createData);
-app.post('/translating/',routeCtrl.translating);
-app.post('/validateAnswer',routeCtrl.validateAnswer);
+app.get('/api/getWords'    ,routeCtrl.getTenRandWords);
+app.post('/api/createData' ,routeCtrl.createData);
+app.post('/translating/'   ,routeCtrl.translating);
+app.post('/validateAnswer' ,routeCtrl.validateAnswer);
 
 
 

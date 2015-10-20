@@ -5,7 +5,7 @@ app.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.wordTranslate = {};
 	$scope.fiveLanguages = ['es','fr','gr','it','ru'];
 	$scope.test = {};
-	
+
 	$scope.getData = function() {
 		$http.get('/api/getWords').then(function(response) {
 			$scope.test.quiz = response.data;
@@ -13,7 +13,7 @@ app.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	};
 	$scope.getData();
 
-	$scope.postData = function() {
+	$scope.translateWord = function() {
 		$http.post('/translating', $scope.wordTranslate) 
 			.then(function(response) {
 				console.log(response.data.split('').join(''));
@@ -34,4 +34,3 @@ app.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 
 
 }]);
-// console.log();

@@ -1,75 +1,33 @@
+// Stay Hungry stay foolish
 
-var wordsAray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
-// var count = 0;
+// if today were the last day of your life, would you want to do what you are about to do today ?
 
+// the ones who are crazy enough to think that they can change the world, are the ones who do
 
-// checks if same lengthed words have typo
-function typoCheckPt1(guess, correctAnswer) {
-	if (guess.length === correctAnswer.length) {
-		var count = 0;
-		guess.split('').map(function(el, i) {
-			if (el === correctAnswer.split('')[i]) {count++; }
-		});
-		return count >= guess.length - 1;
-	} 
-	else {return false; }
-}
-// console.log("tyepoCheckOne", typoCheckPt1('hella','hello'));
+// the only way to do great work is to love what you do 
+	
 
-// checks if character extra or character short  was included in the guess
-function longerOrShorter (guess, correctAnswer) {
-	if (guess.length === correctAnswer.length-1 || guess.length === correctAnswer.length+1 ){
-		if (guess.length <correctAnswer){console.log('guess is shorter than correctAnswer');
-		}else{console.log('guess is longer than correctAnswer'); }
-		return true;
-	}else {return false; }
-}
+10 words to translate
+if 3 wrong start over 
+one words at a time
 
+if wrong +show correct answer
+if right show success 
 
+after go to the next word
 
-// console.log(longerOrShorter('hello', 'hell'));
-// this function takes to similar words and makes them the same length
-function removeExtraLetters (guessAnswer, correctAnswer) {
-	var outputArray = [];
-	count = 0;
-	guessAnswer.split('').map(function  (element) {
-		if (element === correctAnswer.split('')[count]){ 
-			outputArray.push(element);
-			count++;
-		}
-	});
-	return outputArray.join("");
-}
-// console.log(removeExtraLetters('jaaavvascript', "javascript"));
+if the anwer if off by a single character , it counts as correct
+it should point out their typo
 
-function missingOneLetter (guessAnswer,correctAnswer) {
-	var outputArray = [];
-	count = 0;
-	guessAnswer.split('').map(function  (element,index) {
-		if (element=== correctAnswer.split('')[count]) {
-			outputArray.push(element);
-			count++;
-		}
-		else{
-			outputArray.push("-"+element);
-			count= count + 2;
-		}
-	});
-	return outputArray.join('');
-}
+if no accent its fine but get a warning message
+...............
+.
+after 3 quizes allow
 
-console.log(missingOneLetter('vascript','javascript'));
+randon quiz
+hardest 10 words they gotten th e
+least practice 10 words
+most recent 10 words
+;
 
-// function testLang(srcLang, destLang, guess, quizWord) { // this is to see if the guess matches exactly to translation
-// 	var rightOrWrong = null;
-// 	gTranslate.translate(quizWord, destLang, function(err, translation) {
-// 		if (guess.toLowerCase() === translation.translatedText.toLowerCase()) {
-// 			rightOrWrong = "right";
-// 			return console.log(rightOrWrong);
-// 		} else {
-// 			console.log(typoCheck(guess, translation.translatedText));
-// 		}
-// 	});
-// 	// return rightOrWrong;
-// }
-// testLang('en', 'es', 'hala', 'hello');socket.setKeepAlive([enable], [initialDelay])
+https://www.google.com/search?q=tech+quotes&num=100&espv=2&rlz=1C1CHWA_enUS626US626&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAWoVChMItInAvunNyAIVCdJjCh0YgwLE&biw=1745&bih=926#imgrc=aSjJVpIsuPaLpM%3A
