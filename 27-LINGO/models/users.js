@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-
+console.log("userSchema");
 var userSchema = mongoose.Schema({
 	name            : String,
 	wordsParactice  : Number,

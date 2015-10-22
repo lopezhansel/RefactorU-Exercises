@@ -3,6 +3,7 @@ var User = require('../models/users');
 var api = require('myApis/api');
 var gTranslate = require('google-translate')(api);
 var helperFuncs = require('./helperFuncs');
+// var mongoose = require('mongoose');
 
 
 module.exports = {
@@ -97,16 +98,16 @@ function isCorrect (guess,answer) {
 // testLang('en', 'es', 'hala', 'hello');socket.setKeepAlive([enable], [initialDelay]);
 // ......................................
 
-// 	var newUser = new User({
-// 		name            : "rocko",
-// 		wordsParactice  : 3,
-// 		timesWrong      : 3,
-// 		timesCorrect    : 3,
-// 		percentage      : 3,
-// 		timestamp       : 3
-// 	});
-// 	console.log(newUser);
-// 	newUser.save();
-// console.log('hello');
+	var newUser = new User({
+		name            : "rocko",
+		wordsParactice  : 3,
+		timesWrong      : 3,
+		timesCorrect    : 3,
+		percentage      : 3,
+		timestamp       : 3
+	});
+	console.log(newUser);
+	newUser.save();
+console.log('hello');
 
 
