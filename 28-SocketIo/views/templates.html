@@ -1,0 +1,13 @@
+<script id="message-template" type="text/x-handlebars-template">
+	<div class="message alert alert-info"><b>{{user}}</b> : {{message}}</div>
+</script>
+
+<script id="notify-template" type="text/x-handlebars-template">
+	<div class="notification alert alert-success">{{message}}</div>
+</script>
+
+<script id="users-template" type="text/x-handlebars-template">
+	{{#each users}}
+		<div class="user" data-id="{{@key}}">{{this}}</div>
+	{{/each}}
+</script>

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	.container
+		.row
+			h1 Buck Wild Chatroom
+		.row
+			#room.col-xs-10
+			#users.col-xs-2
+		.row
+			textarea#message-input.form-control.col-xs-12(type="text", placeholder="send a message")
+
+	//- add Handlebars templates
+	include templates.html
+
+	//- includes
+	link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css")
+	script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+	script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
+	script(src="/socket.io/socket.io.js")
+	script(src="/javascripts/main.js")
