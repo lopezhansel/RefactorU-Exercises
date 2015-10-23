@@ -8,7 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var socketio = require('socket.io')
+var socketio = require('socket.io');
 var app = express();
 
 // all environments
