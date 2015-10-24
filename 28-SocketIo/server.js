@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var routeCtrl = require('./controllers/routeCtrl');
+var repl = require('repl');
 
-var serverName = 'Scafold';
+var serverName = 'Chat App';
 var app = express();
 
 app.use(bodyParser.json());
@@ -24,7 +25,14 @@ app.server = app.listen(port, function  () {
 var io = require('socket.io');
 var socketServer = io(app.server);
 
+var dateArray = [];
 socketServer.on("connection", function(socket){
-	console.log("here");
-	socketServer.emit('hello');
+	socket.emit('welcome', { hello: "You are connected to " + serverName });
+	
+	socket.on('response', function(data) {
+		dateArray.push(data);
+		console.log(dateArray);
+	});
+
 });
+

@@ -8,22 +8,28 @@ app.controller('appCtrl', ['$scope', '$http', function($scope, $http) {
 			console.log(response.data);
 		});
 	};
-	
+	$scope.ping = function  () {
+
+		socket.emit('response','hi therr');
+	};
 	$scope.postData = function() {
 		$http.post('/api/createData', $scope.data).then(function(response) {
 			console.log(response.data);
 		});
 		$scope.getData();
 	};
+	// var socket = io();
 
 	var socket = io();
-	console.log(socket);
-    socket.on('connection', function(data){
-    	console.log('hane');
+	$scope.newFeed = [];
+	socket.on('welcome',function  (data) {
+		console.log(data);
+	});
+	 socket.on('news', function (data) {
 
-        
-        $scope.$apply();
-        console.log(data);
-    });
+	   console.log(data);
+	   socket.emit('response', Date.now());
+	   // socket.emit('my other event', { my: 'data' });
+	 });
 
 }]);
