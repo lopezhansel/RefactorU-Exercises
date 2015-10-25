@@ -1,29 +1,23 @@
 ---------------------------------StoreFront 
 Display various products
 
-
 To-do 
--add Seach Bar
+
+- add Seach Bar
 - Favorite or add to wish list
--sort by ratings
--add to cart
+- sort by ratings
+- add to cart
 
+---------------------------------ProductPagehttps://github.com/account
 
----------------------------------ProductPage
--add galery and slide show
--See product reviews
--Able to add reviews to app
+- Add galery and slide show
+- See product reviews
+- Able to add reviews to app
 - Favorite or add to wish list
-
-
 
 -------------------------Maybe When Done
+
 -add users
-
 -keyboard inputs
-
-
-
-
 
 

@@ -1,24 +1,22 @@
-var express = require('express');
-var app = express();
-// module.exports = app;
+var express    = require('express');
+var session    = require('express-session');
+var bodyParser = require('body-parser');
 
+var app        = express();
 app.use(express.static(__dirname + '/public'));
-
-
-var session = require('express-session');
-
-app.sessionMiddleware = session({
+app.use(session({
   secret: 'c0mPl3xP4ssw0rD',
   resave: false,
   saveUninitialized: true,
-});
-app.use(app.sessionMiddleware);
-
-var bodyParser = require('body-parser');
+}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ 
+	extended: true 
+}));
 
 
+
+// == MODELS START == //
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/chat');
 
@@ -27,7 +25,9 @@ var userSchema = mongoose.Schema({
     password: { type: String, required: true },
 });
 var User = mongoose.model('user', userSchema);
+// == MODELS END == //
 
+ // == PASSPORT START == //
 
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
@@ -68,7 +68,9 @@ passport.use(new LocalStrategy(
 ));
 
 
+
 app.isAuthenticated = function(req, res, next){
+	console.log(req.isAuthenticated());
  if(req.isAuthenticated()){return next(); }
     res.redirect('/');
 };
@@ -79,6 +81,7 @@ app.isAuthenticatedAjax = function(req, res, next){
     res.send({error:'not logged in'});
 };
 
+// == PASSPORT END == //
 
 
 app.get('/', function(req, res){
@@ -120,10 +123,15 @@ app.post('/login', function(req, res, next){
 
 
 
+app.get('/chat', app.isAuthenticated, function(req, res){
+    res.sendFile('/html/chat.html', {root: './public'});
+});
 
-
+app.get('/api/me', app.isAuthenticatedAjax, function(req, res){
+    res.send({user:req.user});
+});
 
 
 console.log(Date.now());
 
-app.server = app.listen(4000);
+app.server = app.listen(3000);
