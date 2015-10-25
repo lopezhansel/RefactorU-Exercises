@@ -4,11 +4,13 @@ var bodyParser = require('body-parser');
 
 var app        = express();
 app.use(express.static(__dirname + '/public'));
-app.use(session({
+app.sessionMiddleware = session({
   secret: 'c0mPl3xP4ssw0rD',
   resave: false,
   saveUninitialized: true,
-}));
+});
+app.use(app.sessionMiddleware);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 
 	extended: true 
@@ -135,3 +137,12 @@ app.get('/api/me', app.isAuthenticatedAjax, function(req, res){
 console.log(Date.now());
 
 app.server = app.listen(3000);
+var io = require("socket.io");
+
+var socketServer = io(app.server);
+socketServer.use(function(socket, next){
+    app.sessionMiddleware(socket.request, {}, next);
+});
+socketServer.on("connection", function(socket){
+	console.log("SomeOne connected");
+});

@@ -9,6 +9,6 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http){
                 $scope.user = returnData.data.user;
             }
         });
-
+        var socket = io();
      
     }]);

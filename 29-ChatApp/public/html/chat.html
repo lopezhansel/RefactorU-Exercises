@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
-    	<title>ChatSide</title>
+        <title>ChatSide</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
     </head>
     <body ng-controller="mainController">
-    	<div class="container">
-        	<h1>Hey there {{user.username}}!</h1>
+        <div class="container">
+            <h1>Hey there {{user.username}}!</h1>
         </div>
-     
-    	<script src="/js/chat.js" type="text/javascript"></script>
+        <script type="text/javascript", src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+        <script src="/js/chat.js" type="text/javascript"></script>
     </body>
 </html>
