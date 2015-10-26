@@ -143,6 +143,15 @@ var socketServer = io(app.server);
 socketServer.use(function(socket, next){
     app.sessionMiddleware(socket.request, {}, next);
 });
+
 socketServer.on("connection", function(socket){
-	console.log("SomeOne connected");
+	if (socket.request.session.passport) {
+		  
+		console.log(app.sessionMiddleware.session);
+		console.log(socket.request.session.passport.username);
+	}
+
+	
+
+
 });
