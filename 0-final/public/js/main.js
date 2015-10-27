@@ -1,3 +1,4 @@
+
 var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.bootstrap','leaflet-directive']);
 
 app.config(function($mdThemingProvider) {
@@ -29,21 +30,3 @@ app.config(function($routeProvider){
     }); 
 });
 
-// notes
-
-// window on resizeBy
-// add html to cetain calss
-// ng mouse down 
-// ng mouse move
-// give each obj and unique id
-// md-dialog locals vs $rootScope
-
-
-// userfull applications
-// -grindr 
-// - kidFinder 
-// -Tinder 
-
-// company 
-// uber 
-// gasBuddy

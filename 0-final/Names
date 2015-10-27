@@ -1,0 +1,106 @@
+var heroSchema = mongoose.Schema({
+	name			: String,
+	HQ				: {type : mongoose.Schema.ObjectId, ref:'Review'}, // Data type value will be ObjectId, the ref tells it what collection to reference.
+	alignment		: String
+});
+
+var userSchema = mongoose.Schema({
+	name			: String,
+	HQ				: {type : mongoose.Schema.ObjectId, ref:'Review'}, // Data type value will be ObjectId, the ref tells it what collection to reference.
+	alignment		: String
+});
+
+
+PostMates, UberRush
+GoRide
+ridley
+trek
+
+
+Courier, Delivery, Messenger, 
+Eat , Coffee Run, 
+Bicylce, bike ,wheels , frame , Helmet , Ride , Gear, drive , libere free
+Spin, tourner, Spritztour , roue, veloce , rapide , kurier
+Run Quick Speed Dash Zoom Tranport
+Go Movement Now Rush
+Mates
+
+Le Tour de France
+express!!
+Giro - cylce 
+velo  - bycycle in french
+veloz
+velocidad
+Track Road 
+
+Ucycle
+GoCycle
+DashBike
+SpeedBike
+Rider
+RadRider
+RoadRider
+RoadRiders
+SuperGiro
+revolution
+vuelta - spanish Meaning
+
+
+cool super uber rad Dope Sweet Sick Wicked Groovy 
+joy happy Thrill
+
+velocety // defunc
+
+velocetti
+
+femWay 
+
+velocette
+
+velozCity
+Giro Rapide
+Express Rush 
+Rider
+
+velociter
+veloster
+
+velo 
+veloMe
+
+........................
+notes
+window on resizeBy
+add html to cetain calss
+ng mouse down 
+ng mouse move
+give each obj and unique id
+md-dialog locals vs $rootScope
+
+userfull applications
+-grindr 
+- kidFinder 
+-Tinder 
+
+company 
+uber 
+gasBuddy
+
+Redicuulus Fast 
+Simpler
+Complise in the back ent 
+no more back end
+no more ng-click now its only 40+ directlist
+anuglar CLI in npm with ember 
+deploy to gitHub
+angular universal
+== Feature wont be able to build
+Biking Mode
+PayPall 
+5 min nofication
+Request Before hand 
+Wall Of Shame
+Login Page
+Stats
+
+Call Chat Contacts
