@@ -138,6 +138,8 @@ console.log(Date.now());
 
 app.server = app.listen(3000);
 var io = require("socket.io");
+var loggedInUsers = {};
+
 
 var socketServer = io(app.server);
 socketServer.use(function(socket, next){
@@ -145,10 +147,19 @@ socketServer.use(function(socket, next){
 });
 
 socketServer.on("connection", function(socket){
-	if (socket.request.session.passport) {
-		  
-		console.log(app.sessionMiddleware.session);
-		console.log(socket.request.session.passport.username);
+	if ( socket.request.session && socket.request.session.passport && socket.request.session.passport.user ) {
+		
+        var id = socket.request.session.passport.user;
+        User.findById(id, function(error, user){
+
+
+            loggedInUsers[user.username] = true;
+
+            socketServer.emit('loggedInUsers', loggedInUsers);
+
+
+
+        });
 	}
 
 	

@@ -10,5 +10,12 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http){
             }
         });
         var socket = io();
-     
+
+        socket.on('loggedInUsers', function  (data) {
+            console.log('loggedInUsers' , data);
+            $scope.loggedInUsers = data;
+            $scope.$apply();
+
+        });
+        
     }]);
