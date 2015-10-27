@@ -3,7 +3,9 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var app = express();
+
 app.use(express.static(__dirname + '/public'));
+
 app.sessionMiddleware = session({
     secret: 'c0mPl3xP4ssw0rD',
     resave: false,
@@ -20,7 +22,7 @@ app.use(bodyParser.urlencoded({
 
 // == MODELS START == //
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/chat');
+mongoose.connect('mongodb://localhost/velociti');
 
 var userSchema = mongoose.Schema({
     username: {
@@ -207,8 +209,10 @@ socketServer.on("connection", function(socket) {
 
 
         });
+
+
+
+
+
     }
-
-
-
 });
