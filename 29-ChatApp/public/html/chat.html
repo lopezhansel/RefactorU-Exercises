@@ -16,6 +16,10 @@
             <h1>Hey there {{user.username}}!</h1>
         </div>
         
+        <div >
+            <div ><strong>Logged-In Users</strong></div>
+            <div ng-show="status" ng-repeat="(user, status) in loggedInUsers">{{user}}</div>
+        </div>
 
 
 
