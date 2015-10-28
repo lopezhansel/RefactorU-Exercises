@@ -6,23 +6,120 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
 
-
-
   socket.on('loggedInUsers', function(data) {
     $scope.users = data;
 
     $scope.$apply();
     console.log(data);
   });
-  socket.on('chatMessage', function(data) {
-    console.log('chat message? ', data);
-    $scope.messageHistory.push(data);
-    $scope.$apply();
-  });
-  socket.on('whisper', function(data) {
-    console.log(data.sender + ': ' + data.content);
-  });
 
+  // socket.on('chatMessage', function(data) {
+  //   console.log('chat message? ', data);
+  //   $scope.messageHistory.push(data);
+  //   $scope.$apply();
+  // });
+  // socket.on('whisper', function(data) {
+  //   console.log(data.sender + ': ' + data.content);
+  // });
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+
+    $scope.users = userService.randomUsers;
+    $scope.user = userService.randomUsers[$routeParams.id];
+    $scope.boulder = userService.boulder;
+
+    for (var i = 0; i < $scope.users.length; i++) { 
+      var randomNUm = Math.floor( Math.random() * $scope.boulder.length);
+      $scope.users[i].lat = $scope.boulder[randomNUm].lat;
+      $scope.users[i].lonn = $scope.boulder[randomNUm].lon;
+      $scope.users[i].apart = 0;
+      $scope.users[i].place = $scope.boulder[randomNUm].title;
+      $scope.users[i].placeid = $scope.boulder[randomNUm].pageid;
+      $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
+      // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
+      // $http.post('/signup',$scope.users[i]);
+    }
+
+    // var monterreyLat = 25.6667; 
+    // var monterreyLon = -100.3000; // Monterrey-Boulder 1030 miles
+    var mylat = 0; 
+    var mylon = 0;
+
+    function greatCircleMethod(latitude, longitude) { 
+      var earthMedianRadius = 6371 / 1.609344; //Convert Kilometers to Miles 
+      var φ1 = mylat.toRad();
+      var φ2 = latitude.toRad();
+      var Δφ = (latitude - mylat).toRad();
+      var Δλ = (longitude - mylon).toRad();
+      var arc = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + 
+        Math.cos(φ1) * Math.cos(φ2) *
+        Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+      var c = 2 * Math.atan2(Math.sqrt(arc), Math.sqrt(1 - arc));
+      var distance = (earthMedianRadius * c);
+      return distance;
+    }
+    // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
+    var startPos;
+    // get ip location
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      $scope.$apply(function() {
+
+        $scope.lat = startPos.coords.latitude;
+        $scope.longg = startPos.coords.longitude;
+      });
+      mylat = $scope.lat;
+      mylon = $scope.longg;
+      // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
+      // greatCircleMethod(monterreyLat, monterreyLon);
+      // console.log("I am " , greatCircleMethod(monterreyLat,monterreyLon), "miles from Monterrey, Mexico");
+      for (var i = 0; i < $scope.users.length; i++) {
+        $scope.$apply(function() {
+          $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lonn);
+        });
+      }
+      $scope.users.sort(function(a, b) {
+        return a.apart - b.apart;
+      });
+      $scope.newUsers = [];
+      for (var i = 0; i < $scope.users.length; i++) {
+        $scope.newUsers.push({
+          i: $scope.users[i]
+        });
+      }
+      // console.log($scope.newUsers);
+
+      $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
+    });
+    // };
+// #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  var geodataToMarkers = function(geodata) {
+    var places = geodata.query.geosearch;
+    var markers = [];
+    for (var i = 0; i < places.length; i++) {
+      place = {
+        lat: places[i].lat,
+        lng: places[i].lon,
+        message: getMessage(places[i].title)
+      };
+
+      markers.push(place);
+    }
+
+    return markers;
+  };
+
+  function userLocToMarkers (usersGeoData) {
+    var markers = [];
+    for (var i = 0; i < usersGeoData.length; i++) {
+      place = {
+        lat: usersGeoData[i].lat,
+        lng: usersGeoData[i].lonn,
+        message: getMessage(usersGeoData[i])
+      };
+      markers.push(place);
+    }
+    return markers;
+  }
 
 // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.cardColumn = "2";
@@ -96,34 +193,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
 
-// #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  var geodataToMarkers = function(geodata) {
-    var places = geodata.query.geosearch;
-    var markers = [];
-    for (var i = 0; i < places.length; i++) {
-      place = {
-        lat: places[i].lat,
-        lng: places[i].lon,
-        message: getMessage(places[i].title)
-      };
-      markers.push(place);
-    }
-
-    return markers;
-  };
-
-  var userLocToMarkers = function(usersGeoData) {
-    var markers = [];
-    for (var i = 0; i < usersGeoData.length; i++) {
-      place = {
-        lat: usersGeoData[i].lat,
-        lng: usersGeoData[i].lonn,
-        message: getMessage(usersGeoData[i])
-      };
-      markers.push(place);
-    }
-    return markers;
-  };
 
 // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.$watch(function() {
@@ -192,7 +261,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   };
 
 
-  var getMessage = function(user) {
+  function getMessage (user) {
     // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
     var url = "http://en.wikipedia.org/wiki/" + user.place;
     // $scope.openToast(user.pageid)
@@ -201,7 +270,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
     var profileUrl = "#ProfileView/{{$index}}";
     return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.name.first.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.picture.thumbnail + ">";
-  };
+  }
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
@@ -216,92 +285,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $mdSidenav(menuId).toggle();
   };
 
-
-
-// #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-
-  $scope.users = userService.randomUsers;
-  $scope.user = userService.randomUsers[$routeParams.id];
-  $scope.boulder = userService.boulder;
-  console.log($scope.users.length);
-  for (var i = 0; i < $scope.users.length; i++) { // give each user random cordinates and location title
-
-    // $scope.users[i].phone += Math.floor((Math.random() * 10) + 1);
-    // $scope.users[i].cell += Math.floor((Math.random() * 10) + 1);
-
-    var randomNUm = Math.floor(Math.random() * $scope.boulder.length);
-    $scope.users[i].lat = $scope.boulder[randomNUm].lat;
-    $scope.users[i].lonn = $scope.boulder[randomNUm].lon;
-    $scope.users[i].apart = 0;
-    $scope.users[i].place = $scope.boulder[randomNUm].title;
-
-    $scope.users[i].placeid = $scope.boulder[randomNUm].pageid;
-    $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
-
-    // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
-    // $http.post('/signup',$scope.users[i]);
-  }
-
-  if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian
-    Number.prototype.toRad = function() {
-      return this * Math.PI / 180;
-    };
-  }
-  var lat2 = 25.6667; // Monterrey , Mexico 
-  var lon2 = -100.3000; // Monterrey = boulder actual distance = 1030 miles
-  var mylat = 0;
-  var mylon = 0;
-
-  function distanceFrom(atitude, ong) { // Central Subtended Angle Method || Great Circle Method
-    var R = 6371 / 1.609344; //Earth Median radius in Kilometers / convert to km to miles
-    var φ1 = mylat.toRad();
-    var φ2 = atitude.toRad();
-    var Δφ = (atitude - mylat).toRad();
-    var Δλ = (ong - mylon).toRad();
-    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + // arc length
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var distance = (R * c);
-    return distance;
-  }
-  // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
-  var startPos;
-  // get ip location
-  navigator.geolocation.getCurrentPosition(function(position) {
-    startPos = position;
-    $scope.$apply(function() {
-
-      $scope.lat = startPos.coords.latitude;
-      $scope.longg = startPos.coords.longitude;
-    });
-    mylat = $scope.lat;
-    mylon = $scope.longg;
-    // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
-    distanceFrom(lat2, lon2);
-    // console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
-    for (var i = 0; i < $scope.users.length; i++) {
-
-      $scope.$apply(function() {
-        // console.log( distanceFrom($scope.users[i].lat,$scope.users[i].lonn) );
-        $scope.users[i].apart = distanceFrom($scope.users[i].lat, $scope.users[i].lonn);
-
-      });
-    }
-    $scope.users.sort(function(a, b) {
-      return a.apart - b.apart;
-    });
-    $scope.newUsers = [];
-    for (var i = 0; i < $scope.users.length; i++) {
-      $scope.newUsers.push({
-        i: $scope.users[i]
-      });
-    }
-    // console.log($scope.newUsers);
-
-    $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
-  });
-  // };
 
 
 }]);

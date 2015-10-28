@@ -148,8 +148,8 @@ socketServer.use(function(socket, next){
 
 
 socketServer.on("connection", function(socket){
-   User.find({},function  (err,docs) {
-       socketServer.emit('loggedInUsers', docs);
+   User.find({},function  (err,users) {
+       socketServer.emit('loggedInUsers', users);
 
    });
 

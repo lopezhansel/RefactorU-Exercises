@@ -20,7 +20,7 @@ var hansel = function() {};
 
 
 // this function compares a set of coordinates from user current location
-hansel.distanceFrom = function distanceFrom(inputLatitude, inputLongitude) { // Central Subtended Angle Method || Great Circle Method
+hansel.distanceFrom = function distanceFrom (inputLatitude, inputLongitude) { // Central Subtended Angle Method || Great Circle Method
 	var R = 6371 / 1.609344; //Earth Median radius in Kilometers / convert to km to miles
 	var mylat = (mylat === undefined) ? 37.7833 : mylat;
 	var mylon = (mylon === undefined) ? -122.4167 : mylon;
