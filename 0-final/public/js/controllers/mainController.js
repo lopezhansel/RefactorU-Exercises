@@ -24,9 +24,9 @@ $scope.openToast = function( message) {
   };
 //----------------------------------------------------------------------- APPCTRL   $mdDialog and $mdMedia 1111-------------------------------------------------------------------------------------------------------------------
   $scope.selectUserProfile = function  (user) {
-    $scope.currentUserProfile = user
+    $scope.currentUserProfile = user;
     // console.log(user);  
-  }
+  };
 
   $scope.status = '  ';
   $scope.showAlert = function(ev) {
@@ -61,7 +61,7 @@ $scope.openToast = function( message) {
   };
 
   $scope.showAdvanced = function(ev,index) {
-      $scope.popUpDialogUser = index
+      $scope.popUpDialogUser = index;
       // console.log($scope.popUpDialogUser);
       // console.log($scope.popUpDialogUser);
       $mdDialog.show({
@@ -93,25 +93,25 @@ $scope.openToast = function( message) {
         lat: places[i].lat,
         lng: places[i].lon,
         message: getMessage(places[i].title)
-      }
+      };
       markers.push(place);
     }
 
     return markers;
-  }
+  };
 
   var userLocToMarkers = function  (usersGeoData) {
-    var markers = []
+    var markers = [];
     for (var i = 0; i < usersGeoData.length; i++) {
       place = {
         lat: usersGeoData[i].lat,
         lng: usersGeoData[i].lonn,
         message: getMessage(usersGeoData[i])
-      }
+      };
       markers.push(place);
-    };
+    }
     return markers;
-  }
+  };
 
   $scope.$watch(function() { return $mdMedia('sm'); }, function(sizeBool) {
     $scope.sm = sizeBool;
@@ -134,30 +134,30 @@ $scope.openToast = function( message) {
 
   $scope.$watch(function() { return $mdMedia('gt-lg'); }, function(sizeBool) {
     $scope.xlg = sizeBool; 
-    if ($scope.showMap && $scope.xlg) {$scope.gridflex = "noflex" }
+    if ($scope.showMap && $scope.xlg) {$scope.gridflex = "noflex"; }
     if($scope.showMap  && !$scope.xlg){$scope.gridflex = "flex-50";console.log('not xlg yes map');}
     console.log("gt-lg", $scope.xlg,"| Grid-flex",$scope.gridflex );
   });
 
-  $scope.showMap= false
+  $scope.showMap= false;
   $scope.setMapCenter = function  (user) {
-    $scope.gridflex = ($scope.xlg === false)? "flex-50" : 'noflex'
-    $scope.cardColumn =  "3"
+    $scope.gridflex = ($scope.xlg === false)? "flex-50" : 'noflex';
+    $scope.cardColumn =  "3";
     if (typeof(user) === "object") {  // set position clicking on a user
       $scope.showMap= true;
       $scope.mapCenter = {
         lat: user.lat ,
         lng: user.lonn ,
         zoom: 17,
-      }
+      };
     } else { // other toggle 
         console.log("not user defined");
         $scope.showMap= !$scope.showMap;
-        if($scope.showMap && $scope.xlg){$scope.gridflex = "noFlex"}
+        if($scope.showMap && $scope.xlg){$scope.gridflex = "noFlex";}
           else if ($scope.showMap && !$scope.xlg){$scope.gridflex = "flex-50";}
         if (!$scope.showMap) {$scope.gridflex = "";}
       } 
-  }
+  };
 
 
   var getMessage = function(user) {
@@ -165,11 +165,11 @@ $scope.openToast = function( message) {
     var url = "http://en.wikipedia.org/wiki/" + user.place;
     // $scope.openToast(user.pageid)
 
-    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>"
+    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>";
 
     var profileUrl = "#ProfileView/{{$index}}" ;                                 
     return   "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.name.first.toUpperCase() + "</a></h5>"+ ptag+"<img src="+user.picture.thumbnail +">";
-  }
+  };
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
@@ -177,7 +177,7 @@ $scope.openToast = function( message) {
   };
   
 //----------------------------------------------------------------------- APPCTRL  content-------------------------------------------------------------------------------------------------------------------
-  $scope.layout = 'row'
+  $scope.layout = 'row';
 
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
@@ -212,12 +212,12 @@ $scope.openToast = function( message) {
   if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian
     Number.prototype.toRad = function() {
       return this * Math.PI / 180;
-    }
+    };
   }
-  var lat2 = 25.6667   // Monterrey , Mexico 
-  var lon2 = -100.3000 // Monterrey = boulder actual distance = 1030 miles
-  var mylat = 0
-  var mylon = 0
+  var lat2 = 25.6667 ;  // Monterrey , Mexico 
+  var lon2 = -100.3000; // Monterrey = boulder actual distance = 1030 miles
+  var mylat = 0;
+  var mylon = 0;
 
   function distanceFrom (atitude , ong) { // Central Subtended Angle Method || Great Circle Method
     var R = 6371 / 1.609344; //Earth Median radius in Kilometers / convert to km to miles
@@ -230,7 +230,7 @@ $scope.openToast = function( message) {
             Math.sin(Δλ/2) * Math.sin(Δλ/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var distance = (R * c) ;
-    return distance
+    return distance;
   }
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
     var startPos;
@@ -241,30 +241,30 @@ $scope.openToast = function( message) {
 
       $scope.lat = startPos.coords.latitude;
       $scope.longg = startPos.coords.longitude;
-      }) 
-      mylat = $scope.lat 
-      mylon = $scope.longg 
+      }) ;
+      mylat = $scope.lat ;
+      mylon = $scope.longg ;
       // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
-      distanceFrom(lat2,lon2)
+      distanceFrom(lat2,lon2);
       // console.log("I am " , distanceFrom(lat2,lon2), "miles from Monterrey, Mexico");
       for (var i = 0; i < $scope.users.length; i++) {
         
         $scope.$apply(function(){
         // console.log( distanceFrom($scope.users[i].lat,$scope.users[i].lonn) );
-          $scope.users[i].apart = distanceFrom($scope.users[i].lat,$scope.users[i].lonn)
+          $scope.users[i].apart = distanceFrom($scope.users[i].lat,$scope.users[i].lonn);
 
-        }) 
-      };
+        }) ;
+      }
           $scope.users.sort(function(a, b) {
             return a.apart - b.apart;
           });
-          $scope.newUsers = []
+          $scope.newUsers = [];
           for (var i = 0; i < $scope.users.length; i++) {
-            $scope.newUsers.push({i :$scope.users[i]}) 
-          };
+            $scope.newUsers.push({i :$scope.users[i]}) ;
+          }
           // console.log($scope.newUsers);
 
-          $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg)
+          $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
     });   
   // };
 

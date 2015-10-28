@@ -39,9 +39,7 @@ var LocalStrategy = require('passport-local').Strategy;
 app.use( passport.initialize() );
 app.use( passport.session()    );
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id)
-;});
+passport.serializeUser( function(user, done) { done(null, user.id) ;});
 passport.deserializeUser( function(id, done) {
     User.findById(id, function(err, user) {done(err, user); });
 });
@@ -128,3 +126,28 @@ app.get('/api/me', app.isAuthenticatedAjax, function(req, res){
 
 var port = 80;
 app.server = app.listen(port, function() {console.log('Final Started',Date.now() ); });
+
+
+var io = require("socket.io");
+var socketServer = io(app.server);
+var loggedInUsers = {};
+
+socketServer.use(function(socket, next){
+    app.sessionMiddleware(socket.request, {}, next);
+});
+
+socketServer.on("connection", function(socket){
+
+    if ( socket.request.session && socket.request.session.passport && socket.request.session.passport.user ) {
+
+        var id = socket.request.session.passport.user;
+        User.findById(id, function(error, user){
+
+            loggedInUsers[user.username] = true;
+            socketServer.emit('loggedInUsers', loggedInUsers);
+
+
+        });
+    }
+
+});
