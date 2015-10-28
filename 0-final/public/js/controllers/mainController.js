@@ -1,7 +1,7 @@
 
 function DialogController($scope, $mdDialog,currentUserPopUP) {
   // console.log(currentUserPopUP);
-  $scope.popUpDialogUser = currentUserPopUP
+  $scope.popUpDialogUser = currentUserPopUP;
     $scope.hide = function() {  
     $mdDialog.hide();
   };
@@ -14,9 +14,9 @@ function DialogController($scope, $mdDialog,currentUserPopUP) {
 }
 
 // ========================================================================== APPCTRL =============================================================================================================================
-app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog','$mdToast', function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog,$mdToast){
-    $scope.cardColumn = "2"
-    $scope.gridflex = ""
+app.controller('AppCtrl', ['$scope', '$mdSidenav','userService','$routeParams','$mdMedia','$mdDialog','$mdToast',"$http", function($scope, $mdSidenav,userService,$routeParams,$mdMedia,$mdDialog,$mdToast,$http){
+    $scope.cardColumn = "2";
+    $scope.gridflex = "";
 
 $scope.openToast = function( message) {
     $mdToast.show($mdToast.simple().content(message).position("top right"));
@@ -78,6 +78,7 @@ $scope.openToast = function( message) {
       }, function() {
         $scope.status = 'You cancelled the dialog.';
       });
+
       // console.log('popopWorkded', index.name.first);
   };
 
@@ -184,20 +185,28 @@ $scope.openToast = function( message) {
 
 
 //----------------------------------------------------------------------- APPCTRL  get users and calculate their locatoin from me-------------------------------------------------------------------------------------------------------------------
-  $scope.users = userService.randomUsers
-  $scope.user = userService.randomUsers[$routeParams.id]
-  $scope.boulder = userService.boulder 
-  
-  for (var i = 0; i < $scope.users.length; i++) { // give each user random cordinates and location title 
-    var randomNUm = Math.floor(Math.random() * $scope.boulder.length)
-    $scope.users[i].lat = $scope.boulder[randomNUm].lat
-    $scope.users[i].lonn = $scope.boulder[randomNUm].lon
-    $scope.users[i].apart = 0
-    $scope.users[i].place = $scope.boulder[randomNUm].title
-    $scope.users[i].placeid = $scope.boulder[randomNUm].pageid
-     $scope.mapMarkerss = userLocToMarkers($scope.users) // push into markers
+  $scope.users = userService.randomUsers;
+  $scope.user = userService.randomUsers[$routeParams.id];
+  $scope.boulder = userService.boulder ;
+  console.log($scope.users.length);
+  for (var i = 0; i < $scope.users.length; i++) { // give each user random cordinates and location title
+
+    // $scope.users[i].phone += Math.floor((Math.random() * 10) + 1);
+    // $scope.users[i].cell += Math.floor((Math.random() * 10) + 1);
+
+    var randomNUm = Math.floor(Math.random() * $scope.boulder.length);
+    $scope.users[i].lat = $scope.boulder[randomNUm].lat;
+    $scope.users[i].lonn = $scope.boulder[randomNUm].lon;
+    $scope.users[i].apart = 0;
+    $scope.users[i].place = $scope.boulder[randomNUm].title;
+
+    $scope.users[i].placeid = $scope.boulder[randomNUm].pageid;
+     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
     // console.log($scope.users[i].name.first, $scope.users[i].lat, $scope.users[i].lon);
-  };
+    // $http.post('/signup',$scope.users[i]);
+
+
+  }
 
 
   if (typeof(Number.prototype.toRad) === "undefined") { // convert degres to radian

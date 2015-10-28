@@ -15,6 +15,18 @@ mongoose.connect('mongodb://localhost/velociti');
 var userSchema = mongoose.Schema({
     username: {type: String, required: true, unique: true },
     password: {type: String, required: true },
+    gender    : String,
+    dob       : Number,
+    firstName : String,
+    lastName  : String,
+    email     : String,
+    phone     : String,
+    cell      : String,
+    pictureLg : String,
+    pictureMd : String,
+    pictureSm : String,
+    lat       : Number,
+    lon       : Number
 });
 var User = mongoose.model('user', userSchema);
 // == MODELS END == //
@@ -28,8 +40,8 @@ app.use( passport.initialize() );
 app.use( passport.session()    );
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
+    done(null, user.id)
+;});
 passport.deserializeUser( function(id, done) {
     User.findById(id, function(err, user) {done(err, user); });
 });
@@ -57,8 +69,6 @@ app.isAuthenticatedAjax = function(req, res, next){
 };
 // == PASSPORT End == //
 
-
-// app.get('/', function (req, res) { res.sendFile('index.html'); });
 app.get('/', function (req, res) { res.sendFile('/views/login.html', {root: './public'}); });
 
 
@@ -68,7 +78,20 @@ app.post('/signup', function(req, res){
             var newUser = new User({
                 username: req.body.username,
                 password: hash,
+                gender    : req.body.gender,
+                dob       : req.body.dob,
+                firstName : req.body.name.first,
+                lastName  : req.body.name.last,
+                email     : req.body.email,
+                phone     : req.body.phone,
+                cell      : req.body.cell,
+                lat       : req.body.lat,
+                lon       : req.body.lonn,
+                pictureLg : req.body.picture.large,
+                pictureMd : req.body.picture.medium,
+                pictureSm : req.body.picture.thumbnail,
             });
+
             newUser.save(function(saveErr, user){
                 if ( saveErr ) { res.send({ err:saveErr }); }
                 else { 
@@ -103,10 +126,5 @@ app.get('/api/me', app.isAuthenticatedAjax, function(req, res){
 });
 
 
-
-
-
 var port = 80;
-app.server = app.listen(port, function() {
-	console.log('Server Started');
-});
+app.server = app.listen(port, function() {console.log('Final Started',Date.now() ); });
