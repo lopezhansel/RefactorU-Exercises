@@ -38,6 +38,9 @@
                       <img ng-src="{{user.picture.medium}}" class="sm-card-image" alt="Movie Img" >
                       <md-content  layout="column" layout-align="start center" flex>
                         <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.name.first + ' '+ user.name.last| uppercase}}</a></h1>
+                        
+                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
+
                         <p></p>
                       </md-content>
                     </md-card-content>
@@ -77,5 +80,3 @@
       <leaflet center="mapCenter" markers="mapMarkerss">  </leaflet>
     </div>
   </div> -->
-<!-- ================================================================================================================================ -->
-<!-- ================================================================================================================================ 

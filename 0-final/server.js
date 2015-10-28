@@ -3,13 +3,13 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var app = express();
 
-// == MiddelWare START == //
+
+// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.sessionMiddleware = session({secret: 'pR3t3nDc0mPl3xP4ssw0rD', resave: false, saveUninitialized: true, });
-	
-// == MODELS START == //
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/velociti');
 var userSchema = mongoose.Schema({
@@ -29,9 +29,8 @@ var userSchema = mongoose.Schema({
     lon       : Number
 });
 var User = mongoose.model('user', userSchema);
-// == MODELS END == //
 
-// == PASSPORT START == //
+// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 
@@ -65,10 +64,12 @@ app.isAuthenticatedAjax = function(req, res, next){
     if(req.isAuthenticated()){return next(); }
     res.send({error:'not logged in'});
 };
-// == PASSPORT End == //
+
+
+// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
 app.get('/', function (req, res) { res.sendFile('/views/login.html', {root: './public'}); });
-
+ 
 
 app.post('/signup', function(req, res){
     bcrypt.genSalt(10, function(error, salt){
@@ -102,9 +103,15 @@ app.post('/signup', function(req, res){
             
         });
     });
-});
+}); 
+
+
 
 app.post('/login', function(req, res, next){
+
+
+
+
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.send({error : 'something went wrong :('}); }
@@ -130,16 +137,24 @@ app.server = app.listen(port, function() {console.log('Final Started',Date.now()
 
 var io = require("socket.io");
 var socketServer = io(app.server);
-var loggedInUsers = {};
+var loggedInUsers = {HANSEL: "HELI"};
 
 socketServer.use(function(socket, next){
     app.sessionMiddleware(socket.request, {}, next);
 });
 
+// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
+
+
+
 socketServer.on("connection", function(socket){
+   User.find({},function  (err,docs) {
+       socketServer.emit('loggedInUsers', docs);
+
+   });
+
 
     if ( socket.request.session && socket.request.session.passport && socket.request.session.passport.user ) {
-
         var id = socket.request.session.passport.user;
         User.findById(id, function(error, user){
 
@@ -147,7 +162,31 @@ socketServer.on("connection", function(socket){
             socketServer.emit('loggedInUsers', loggedInUsers);
 
 
+            socket.on('chatMessage', function(data){
+                console.log('message to server!', data);
+                socketServer.emit('chatMessage', {sender:user.username,content:data});
+
+            });
+
+            
+            socket.join(user.username);
+            socket.on('whisper', function(data){
+                socketServer.to(data.recipient).emit('whisper', {
+                    sender  : user.username,
+                    content : data.content
+                });
+            });
+
+            socket.on('disconnect', function(){
+                console.log('user disconnected');
+                loggedInUsers[user.username] = false;
+                socketServer.emit('loggedInUsers', loggedInUsers);
+
+            });
         });
     }
 
 });
+
+// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
+
