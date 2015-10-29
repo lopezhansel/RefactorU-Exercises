@@ -5,6 +5,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var socket = io();
   $scope.users = {};
 
+    var count = 0 
   socket.on('loggedInUsers', function(data) {
     console.log(data);
     $scope.users = data;
@@ -12,6 +13,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       $scope.users[i].apart = 0;
       $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
     }
+    if (count === 0 ) {
+      count++
     navigator.geolocation.getCurrentPosition(function(position) {
       startPos = position;
       $scope.$apply(function() {
@@ -42,6 +45,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
       $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
     });
+    }
     $scope.$apply();
   });
 
