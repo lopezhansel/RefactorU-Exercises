@@ -9,7 +9,7 @@ app.config(function($mdThemingProvider) {
 
 app.config(function($routeProvider){
   $routeProvider
-    .when('/', { 
+    .when('/home', { 
       controller: 'AppCtrl', 
       templateUrl: 'views/home.html' 
     })
@@ -25,8 +25,12 @@ app.config(function($routeProvider){
       controller: 'AppCtrl', 
       templateUrl: 'views/Messages.html' 
     })
+    .when('/login', { 
+      controller: 'AppCtrl', 
+      templateUrl: 'views/signin.html' 
+    })
     .otherwise({ 
-      redirectTo: '/' 
+      redirectTo: '/home' 
     }); 
 });
 
