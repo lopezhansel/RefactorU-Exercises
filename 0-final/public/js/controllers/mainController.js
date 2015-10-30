@@ -1,50 +1,49 @@
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http) {
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
 
-    var count = 0 
+  var count = 0;
   socket.on('loggedInUsers', function(data) {
-    console.log(data);
+    // console.log(data);
     $scope.users = data;
-    for (var i = 0; i < $scope.users.length; i++) {
-      $scope.users[i].apart = 0;
       $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
+    for (var i = 0; i < $scope.users.length; i++) {
+      // $scope.users[i].apart = 0;
     }
-    if (count === 0 ) {
-      count++
-    navigator.geolocation.getCurrentPosition(function(position) {
-      startPos = position;
-      $scope.$apply(function() {
-
-        $scope.lat = startPos.coords.latitude;
-        $scope.longg = startPos.coords.longitude;
-      });
-      mylat = $scope.lat;
-      mylon = $scope.longg;
-      // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
-      // greatCircleMethod(monterreyLat, monterreyLon);
-      // console.log("I am " , greatCircleMethod(monterreyLat,monterreyLon), "miles from Monterrey, Mexico");
-      for (var i = 0; i < $scope.users.length; i++) {
+    if (count === 0) {
+      console.log("Loop");
+      count++;
+      navigator.geolocation.getCurrentPosition(function(position) {
+        startPos = position;
         $scope.$apply(function() {
-          $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon);
+          $scope.lat = startPos.coords.latitude;
+          $scope.longg = startPos.coords.longitude;
         });
-      }
-      $scope.users.sort(function(a, b) {
-        return a.apart - b.apart;
-      });
-      $scope.newUsers = [];
-      for (var i = 0; i < $scope.users.length; i++) {
-        $scope.newUsers.push({
-          i: $scope.users[i]
+        mylat = $scope.lat;
+        mylon = $scope.longg;
+        // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
+        // greatCircleMethod(monterreyLat, monterreyLon);
+        // console.log("I am " , greatCircleMethod(monterreyLat,monterreyLon), "miles from Monterrey, Mexico");
+        for (var i = 0; i < $scope.users.length; i++) {
+          $scope.$apply(function() {
+            $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon);
+          });
+        }
+        $scope.users.sort(function(a, b) {
+          return a.apart - b.apart;
         });
-      }
-      // console.log($scope.newUsers);
+        $scope.newUsers = [];
+        for (var i = 0; i < $scope.users.length; i++) {
+          $scope.newUsers.push({
+            i: $scope.users[i]
+          });
+        }
+        // console.log($scope.newUsers);
 
-      $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
-    });
+        $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
+      });
     }
     $scope.$apply();
   });
@@ -69,7 +68,10 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // var monterreyLon = -100.3000; // Monterrey-Boulder 1030 miles
   var mylat = 0;
   var mylon = 0;
-
+  var redMarker = L.AwesomeMarkers.icon({
+      icon: 'coffee',
+      markerColor: 'red'
+    });
   function greatCircleMethod(latitude, longitude) {
     var earthMedianRadius = 6371 / 1.609344; //Convert Kilometers to Miles 
     var φ1 = mylat.toRad();
@@ -95,7 +97,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       place = {
         lat: places[i].lat,
         lng: places[i].lon,
-        message: getMessage(places[i].title)
+       
       };
 
       markers.push(place);
@@ -110,7 +112,14 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       place = {
         lat: usersGeoData[i].lat,
         lng: usersGeoData[i].lon,
-        message: getMessage(usersGeoData[i])
+        message: getMessage(usersGeoData[i]),
+        icon: {
+
+                iconUrl: 'https://cdn1.iconfinder.com/data/icons/transport-vol-2/48/092-512.png',
+                iconSize:     [25, 25],
+                     
+            }
+
       };
       markers.push(place);
     }
