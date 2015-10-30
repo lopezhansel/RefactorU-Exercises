@@ -12,18 +12,15 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
-
       var myLocation = {accuracy : showPosition.coords.accuracy,
       latitude : showPosition.coords.latitude,
       longitude : showPosition.coords.longitude,};
-
       socket.emit("location", myLocation);
-
     });
   }, 500);
 
   var count = 0;
-  socket.on('loggedInUsers', function(data) {
+  socket.on('allUsers', function(data) {
     // console.log(data);
     $scope.users = data;
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
@@ -129,9 +126,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         lng: usersGeoData[i].lon,
         message: getMessage(usersGeoData[i]),
         icon: {
-          iconUrl: 'http://www.solarteam.be/uploads/404/cycling_icon.png',
+          iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
 
-          iconSize: [25, 25],
+          iconSize: [45, 45],
 
 
         }
@@ -220,7 +217,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   }, function(sizeBool) {
     $scope.sm = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.sm)? "flex-50" : 'closed'
-    console.log("sm", $scope.sm, "| Grid-flex", $scope.gridflex);
+    // console.log("sm", $scope.sm, "| Grid-flex", $scope.gridflex);
   });
 
   $scope.$watch(function() {
@@ -228,7 +225,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   }, function(sizeBool) {
     $scope.md = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.md)? "flex-50" : 'closed'
-    console.log("md", $scope.md, "| Grid-flex", $scope.gridflex);
+    // console.log("md", $scope.md, "| Grid-flex", $scope.gridflex);
   });
 
   $scope.$watch(function() {
@@ -236,7 +233,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   }, function(sizeBool) {
     $scope.lg = sizeBool;
     // $scope.gridflex = ($scope.showMap && $scope.lg)? "flex-50" : 'closed'
-    console.log("lg", $scope.lg, "| Grid-flex", $scope.gridflex);
+    // console.log("lg", $scope.lg, "| Grid-flex", $scope.gridflex);
   });
 
 
@@ -249,9 +246,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     }
     if ($scope.showMap && !$scope.xlg) {
       $scope.gridflex = "flex-50";
-      console.log('not xlg yes map');
+      // console.log('not xlg yes map');
     }
-    console.log("gt-lg", $scope.xlg, "| Grid-flex", $scope.gridflex);
+    // console.log("gt-lg", $scope.xlg, "| Grid-flex", $scope.gridflex);
   });
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
@@ -328,61 +325,3 @@ function DialogController($scope, $mdDialog, currentUserPopUP) {
 }
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
-app.controller('ModalInstanceCtrl', function($scope, $modalInstance, items) {
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
-  $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function() {
-    $modalInstance.dismiss('cancel');
-  };
-});
-
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-
-app.controller('ModalDemoCtrl', function($scope, $modal, $log) {
-
-  $scope.items = ['item1', 'item2', 'item3'];
-
-  $scope.animationsEnabled = true;
-
-  $scope.open = function(size) {
-
-    var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function() {
-          return $scope.items;
-        }
-      }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
-
-  $scope.toggleAnimation = function() {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
-  };
-
-});
-
-
-// LEARN TO USE
-
-
-// navigator.geolocation.watchPosition(function(position) {
-//   $scope.lat = position.coords.latitude;
-//   $scope.longg = position.coords.longitude;
-// });

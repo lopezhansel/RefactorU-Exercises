@@ -128,18 +128,14 @@ app.post('/login', function(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.send({
-                error: 'something went wrong :('
-            });
+            return res.send({error: 'Incorrect Try Again. '});
         }
         req.logIn(user, function(err) {
             if (err) {
                 return next(err);
             }
-            console.log(user);
-            return res.send({
-                success: 'success'
-            });
+            return  res.redirect('/');
+            // res.send({success: 'success'});
         });
     })(req, res, next);
 });
