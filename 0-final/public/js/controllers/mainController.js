@@ -1,27 +1,24 @@
-
-
-
-
-
-
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http","$interval" ,function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http,$interval) {
+app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
 
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
-      var myLocation = {accuracy : showPosition.coords.accuracy,
-      latitude : showPosition.coords.latitude,
-      longitude : showPosition.coords.longitude,};
+      var myLocation = {
+        accuracy: showPosition.coords.accuracy,
+        latitude: showPosition.coords.latitude,
+        longitude: showPosition.coords.longitude,
+      };
       socket.emit("location", myLocation);
-    });
-  }, 500);
+    }); //navigator.geolocation.getCurrentPosition
+  }, 1000); //setInterval(function() {
 
   var count = 0;
   socket.on('allUsers', function(data) {
-    // console.log(data);
+    console.log(data);
+
     $scope.users = data;
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
     for (var i = 0; i < $scope.users.length; i++) {
@@ -61,7 +58,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       });
     }
     $scope.$apply();
-  }); //socket.on('loggedInUsers'
+  }); //socket.on('allUsers'
 
   // socket.on('chatMessage', function(data) {
   //   console.log('chat message? ', data);
@@ -102,42 +99,52 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // get ip location
   // };
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  var geodataToMarkers = function(geodata) {
-    var places = geodata.query.geosearch;
-    var markers = [];
-    for (var i = 0; i < places.length; i++) {
-      place = {
-        lat: places[i].lat,
-        lng: places[i].lon,
+  // var geodataToMarkers = function(geodata) { // This Will Deleted After I confirm I dont Need it
+  //   var places = geodata.query.geosearch;
+  //   var markers = [];
+  //   for (var i = 0; i < places.length; i++) {
+  //     place = {
+  //       lat: places[i].lat,
+  //       lng: places[i].lon,
 
-      };
+  //     };
 
-      markers.push(place);
-    }
+  //     markers.push(place);
+  //   }
 
-    return markers;
-  };
+  //   return markers;
+  // };
+
+
 
   function userLocToMarkers(usersGeoData) {
     var markers = [];
-    for (var i = 0; i < usersGeoData.length; i++) {
-      place = {
-        lat: usersGeoData[i].lat,
-        lng: usersGeoData[i].lon,
-        message: getMessage(usersGeoData[i]),
-        icon: {
-          iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
-
-          iconSize: [45, 45],
-
-
-        }
-
-      };
-      markers.push(place);
-    }
+    if (usersGeoData.constructor === Object) {
+      for (var prop in usersGeoData) {
+        place = {
+          lat: usersGeoData[prop].lat,
+          lng: usersGeoData[prop].lon,
+          message: getMessage(usersGeoData[prop]),
+          icon: {iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png', iconSize: [45, 45], }
+        };
+        markers.push(place);
+      }
+    } // if (usersGeoData.constructor === Object
+    if (usersGeoData.constructor === Array) {
+      for (var i = 0; i < usersGeoData.length; i++) {
+        place = {
+          lat: usersGeoData[i].lat,
+          lng: usersGeoData[i].lon,
+          message: getMessage(usersGeoData[i]),
+          icon: {iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png', iconSize: [45, 45], }
+        };
+        markers.push(place);
+      }
+    }// if (usersGeoData.constructor === Array)
     return markers;
   }
+
+
 
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.cardColumn = "2";
@@ -324,4 +331,3 @@ function DialogController($scope, $mdDialog, currentUserPopUP) {
   };
 }
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-
