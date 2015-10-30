@@ -1,19 +1,37 @@
+
+
+
+
+
+
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http) {
+app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http","$interval" ,function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http,$interval) {
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
+
+  setInterval(function() {
+    navigator.geolocation.getCurrentPosition(function(showPosition) {
+
+      var myLocation = {accuracy : showPosition.coords.accuracy,
+      latitude : showPosition.coords.latitude,
+      longitude : showPosition.coords.longitude,};
+
+      socket.emit("location", myLocation);
+
+    });
+  }, 500);
 
   var count = 0;
   socket.on('loggedInUsers', function(data) {
     // console.log(data);
     $scope.users = data;
-      $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
+    $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
     for (var i = 0; i < $scope.users.length; i++) {
+      $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon);
       // $scope.users[i].apart = 0;
     }
     if (count === 0) {
-      console.log("Loop");
       count++;
       navigator.geolocation.getCurrentPosition(function(position) {
         startPos = position;
@@ -46,7 +64,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       });
     }
     $scope.$apply();
-  });
+  }); //socket.on('loggedInUsers'
 
   // socket.on('chatMessage', function(data) {
   //   console.log('chat message? ', data);
@@ -68,10 +86,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // var monterreyLon = -100.3000; // Monterrey-Boulder 1030 miles
   var mylat = 0;
   var mylon = 0;
-  var redMarker = L.AwesomeMarkers.icon({
-      icon: 'coffee',
-      markerColor: 'red'
-    });
+
   function greatCircleMethod(latitude, longitude) {
     var earthMedianRadius = 6371 / 1.609344; //Convert Kilometers to Miles 
     var φ1 = mylat.toRad();
@@ -97,7 +112,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       place = {
         lat: places[i].lat,
         lng: places[i].lon,
-       
+
       };
 
       markers.push(place);
@@ -114,11 +129,12 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         lng: usersGeoData[i].lon,
         message: getMessage(usersGeoData[i]),
         icon: {
+          iconUrl: 'http://www.solarteam.be/uploads/404/cycling_icon.png',
 
-                iconUrl: 'https://cdn1.iconfinder.com/data/icons/transport-vol-2/48/092-512.png',
-                iconSize:     [25, 25],
-                     
-            }
+          iconSize: [25, 25],
+
+
+        }
 
       };
       markers.push(place);
