@@ -29,44 +29,7 @@
           
 
 <!-- //  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00 -->
-    <div layout="column"   id="content"   class="flex" ng-class="gridflex">
-        <md-content>
-          <md-grid-list 
-              md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
-              md-row-height="200px"
-              md-gutter="8px" md-gutter-gt-sm="4px" >
-
-              <md-grid-tile data-ng-repeat="user in users  | filter: searchbox "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
-                <md-card class="md-padding" flex layout="column" >
-                    <md-card-content layout='row'  >
-                      <img ng-src="{{user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
-                      <md-content  layout="column" layout-align="start center" flex>
-                        
-                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
-
-                        <p></p>
-                      </md-content>
-                    </md-card-content>
-                    <md-content  flex layout="column" layout-align="start start">
-
-                      <div flex layout="column" layout-align="start start">
-                        <p class="md-title"> Near: {{user.place}} </p>
-                        <p>{{user.apart| limitTo: 3}} Miles Away</p>
-                      </div>
-                    </md-content>
-                
-            
-                      <md-content class="md-actions" layout="row" layout-align="end end">
-                        <!-- <div flex="50">here</div> -->
-                        <md-button ng-click="showAdvanced($event,user)">More Info</md-button>
-                        <md-button data-ng-click="setMapCenter(user)">View On Map</md-button>
-                      </md-content>
-                </md-card>
-              </md-grid-tile>
-           </md-grid-list>
-        </md-content>
-
-    </div>
+    
 <!-- //  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00  #12FF00 -->
     
 <!-- //  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200 -->
