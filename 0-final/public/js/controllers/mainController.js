@@ -33,7 +33,12 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
 
-
+    for (var prop2 in $scope.users) {
+      $scope.$apply(function() {
+      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+      console.log($scope.users[prop2].apart);
+      });
+    }
     if (count === 0) {
       count++;
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -47,6 +52,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         for (var prop2 in $scope.users) {
           $scope.$apply(function() {
           $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+          console.log($scope.users[prop2].apart);
           });
         }
 
@@ -106,6 +112,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         markers.push(place);
       }
     } // if (usersGeoData.constructor === Object
+
     if (usersGeoData.constructor === Array) {
       for (var i = 0; i < usersGeoData.length; i++) {
         place = {
