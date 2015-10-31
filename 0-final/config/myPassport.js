@@ -85,16 +85,16 @@ app.post('/signup', function(req, res) {
                 password: hash,
                 gender: req.body.gender,
                 dob: req.body.dob,
-                firstName: req.body.name.first,
-                lastName: req.body.name.last,
+                // firstName: req.body.name.first,
+                // lastName: req.body.name.last,
                 email: req.body.email,
                 phone: req.body.phone,
                 cell: req.body.cell,
                 lat: req.body.lat,
                 lon: req.body.lonn,
-                pictureLg: req.body.picture.large,
-                pictureMd: req.body.picture.medium,
-                pictureSm: req.body.picture.thumbnail,
+                // pictureLg: req.body.picture.large,
+                // pictureMd: req.body.picture.medium,
+                // pictureSm: req.body.picture.thumbnail,
             });
             newUser.save(function(saveErr, user) {
                 if (saveErr) {

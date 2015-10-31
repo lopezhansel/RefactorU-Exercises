@@ -84,6 +84,8 @@
 
 
 
+
+
 var heroSchema = mongoose.Schema({
 	name			: String,
 	HQ				: {type : mongoose.Schema.ObjectId, ref:'Review'}, // Data type value will be ObjectId, the ref tells it what collection to reference.
