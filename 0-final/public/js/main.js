@@ -27,7 +27,7 @@ app.config(function($routeProvider){
     })
     .when('/login', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/signin.html' 
+      templateUrl: 'views/signIn.html' 
     })
     .otherwise({ 
       redirectTo: '/home' 
