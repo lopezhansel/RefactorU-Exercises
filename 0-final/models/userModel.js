@@ -15,6 +15,7 @@ var userSchema = mongoose.Schema({
     pictureSm    : {type: String, default: "http://www.homejobs90.com/sites/all/themes/responsive_blog/avatar-new.png"},
     lat          : {type: Number, default: 0 },
     lon          : {type: Number, default: 0 },
+    timeStamp    : {type: Number, default: 0 },
 });
 
 module.exports  = mongoose.model('user', userSchema);

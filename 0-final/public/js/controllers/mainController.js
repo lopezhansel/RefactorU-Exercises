@@ -3,7 +3,8 @@
 // mongoexport --db test --collection traffic --out traffic.json
 // ps -A | grep node 
 // kill ####
-//https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+//viiimvimkljl
+
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
@@ -11,29 +12,29 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
-
+  var myLocation = {};
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
-      var myLocation = {
-        accuracy  : showPosition.coords.accuracy,
-        lat       : showPosition.coords.latitude,
-        lon       : showPosition.coords.longitude,
-        timeStamp : showPosition.timeStamp,
+      myLocation = {
+        accuracy: showPosition.coords.accuracy,
+        lat: showPosition.coords.latitude,
+        lon: showPosition.coords.longitude,
+        timeStamp: Date.now(),
       };
       socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
-  }, 5000); //setInterval(function() {
+  }, 1000); //setInterval(function() {
 
   var count = 0;
   socket.on('allUsers', function(data) {
-    console.log(data);
-    console.log($scope.users);
-    $scope.users = data;
-    $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
-    for (var i = 0; i < $scope.users.length; i++) {
-      $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon);
-      // $scope.users[i].apart = 0;
+    $scope.users = data; 
+
+    $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
+
+    for ( var prop2 in $scope.users){
+      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon); 
     }
+
     if (count === 0) {
       count++;
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -47,25 +48,25 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
         // greatCircleMethod(monterreyLat, monterreyLon);
         // console.log("I am " , greatCircleMethod(monterreyLat,monterreyLon), "miles from Monterrey, Mexico");
-        for (var i = 0; i < $scope.users.length; i++) {
+        for (var i = 0; i < $scope.users.length; i++) { 
           $scope.$apply(function() {
-            $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon);
+            $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon); 
           });
         }
-        $scope.users.sort(function(a, b) {
-          return a.apart - b.apart;
-        });
+        // $scope.users.sort(function(a, b) { 
+        //   return a.apart - b.apart;
+        // });
         $scope.newUsers = [];
-        for (var i = 0; i < $scope.users.length; i++) {
+        for (var j = 0; j < $scope.users.length; j++) { 
           $scope.newUsers.push({
-            i: $scope.users[i]
+            j: $scope.users[j] 
           });
         }
         // console.log($scope.newUsers);
 
         $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
-      });
-    }
+      }); // navigator.geolocation.getCurrentPosition
+    } // if (count === 0) {
     $scope.$apply();
   }); //socket.on('allUsers'
 
@@ -80,14 +81,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
-  // $scope.users = userService.randomUsers;
   $scope.user = userService.randomUsers[$routeParams.id];
-  // $scope.boulder = userService.boulder;
 
-
-
-  // var monterreyLat = 25.6667; 
-  // var monterreyLon = -100.3000; // Monterrey-Boulder 1030 miles
   var mylat = 0;
   var mylon = 0;
 
@@ -109,7 +104,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
 
-
   function userLocToMarkers(usersGeoData) {
     var markers = [];
     if (usersGeoData.constructor === Object) {
@@ -118,7 +112,10 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
           lat: usersGeoData[prop].lat,
           lng: usersGeoData[prop].lon,
           message: getMessage(usersGeoData[prop]),
-          icon: {iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png', iconSize: [45, 45], }
+          icon: {
+            iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
+            iconSize: [45, 45],
+          }
         };
         markers.push(place);
       }
@@ -129,11 +126,14 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
           lat: usersGeoData[i].lat,
           lng: usersGeoData[i].lon,
           message: getMessage(usersGeoData[i]),
-          icon: {iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png', iconSize: [45, 45], }
+          icon: {
+            iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
+            iconSize: [45, 45],
+          }
         };
         markers.push(place);
       }
-    }// if (usersGeoData.constructor === Array)
+    } // if (usersGeoData.constructor === Array)
     return markers;
   }
 
@@ -177,7 +177,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
     var profileUrl = "#ProfileView/{{$index}}";
     // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h5><a target='_blank'  href='" + profileUrl + "'>"  + "</a></h5>" + ptag ;
+    return "<h5><a target='_blank'  href='" + profileUrl + "'>" + "</a></h5>" + ptag;
   }
   $scope.mapCenter = {
     lat: 40.0164106,

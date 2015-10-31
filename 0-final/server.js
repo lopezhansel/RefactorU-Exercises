@@ -37,40 +37,34 @@ socketServer.on("connection", function(socket) {
         console.log("UserId Logged In",userId);
 
         User.findById(userId, function(error, userDoc) {
+            userDoc.password = null;
             loggedInUsers[userId] = userDoc;
+
             // console.log(loggedInUsers);
+
             socketServer.emit('allUsers',loggedInUsers);
-        });// User.findById(userId
+        });//// User.findById(userId
 
         socket.on("myLocation", function(userLocation) {
             // console.log(userLocation);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
-            console.log("UserId Logged In",userId);
             loggedInUsers[userId].lat = userLocation.lat;
             loggedInUsers[userId].lon = userLocation.lon;
             loggedInUsers[userId].timeStamp = userLocation.timeStamp;
+            console.log(userLocation.timeStamp);
             console.log(loggedInUsers);
             socketServer.emit('allUsers',loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);
-        });
+        });////socket.on("myLocation",
+
         socket.on('disconnect', function() {
             console.log('user disconnected');
             delete  loggedInUsers[userId] ;
             socketServer.emit('loggedInUsers', loggedInUsers);
+        }); //////socket.on('disconnect'
 
-        }); //socket.on('disconnect'
 
-
-    }//if (socket.request.session &&
-}); //socketServer.on("connection",
+    }////if (socket.request.session &&
+}); ////socketServer.on("connection",
 
 
 
