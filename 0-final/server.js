@@ -33,7 +33,7 @@ socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION");
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
         var userId = socket.request.session.passport.user;
-        // console.log("UserId Logged In",userId);
+        console.log("UserId Logged In",userId);
 
         User.findById(userId, function(error, userLoggedin) {
             // console.log("userLoggedin______________" ,userLoggedin);
@@ -43,10 +43,23 @@ socketServer.on("connection", function(socket) {
         });// User.findById(userId
 
         socket.on("myLocation", function(userLocation) {
-            console.log(userLocation);
+            // console.log(userLocation);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
+            console.log("UserId Logged In",userId);
             loggedInUsers[userId].lat = userLocation.lat;
             loggedInUsers[userId].lon = userLocation.lon;
             loggedInUsers[userId].timeStamp = userLocation.timeStamp;
+            console.log(loggedInUsers);
+            socketServer.emit('allUsers',loggedInUsers);
+            // socketServer.emit('allUsers',loggedInUsers);
         });
 
 

@@ -15,7 +15,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       console.log(myLocation);
       socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
-  }, 1000); //setInterval(function() {
+  }, 5000); //setInterval(function() {
 
   var count = 0;
   socket.on('allUsers', function(data) {
