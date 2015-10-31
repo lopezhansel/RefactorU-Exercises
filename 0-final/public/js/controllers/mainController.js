@@ -12,7 +12,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         lon       : showPosition.coords.longitude,
         timeStamp : showPosition.timeStamp,
       };
-      console.log(myLocation);
       socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
   }, 5000); //setInterval(function() {
@@ -295,7 +294,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>";
 
     var profileUrl = "#ProfileView/{{$index}}";
-    return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
+    // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
+    return "<h5><a target='_blank'  href='" + profileUrl + "'>"  + "</a></h5>" + ptag ;
   }
   $scope.mapCenter = {
     lat: 40.0164106,
