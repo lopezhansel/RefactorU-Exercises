@@ -1,5 +1,13 @@
+//     mongoimport --db taac --collection july2012 lariatData-sgeT-2012-07-02.json --jsonArray
+//$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
+// mongoexport --db test --collection traffic --out traffic.json
+// ps -A | grep node 
+// kill ####
+//https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
@@ -70,6 +78,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   //   console.log(data.sender + ': ' + data.content);
   // });
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
   // $scope.users = userService.randomUsers;
   $scope.user = userService.randomUsers[$routeParams.id];
@@ -97,24 +106,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   }
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
   var startPos;
-  // get ip location
-  // };
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // var geodataToMarkers = function(geodata) { // This Will Deleted After I confirm I dont Need it
-  //   var places = geodata.query.geosearch;
-  //   var markers = [];
-  //   for (var i = 0; i < places.length; i++) {
-  //     place = {
-  //       lat: places[i].lat,
-  //       lng: places[i].lon,
 
-  //     };
-
-  //     markers.push(place);
-  //   }
-
-  //   return markers;
-  // };
 
 
 
@@ -148,6 +140,53 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+
+  $scope.showMap = false;
+  $scope.setMapCenter = function(user) {
+    $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
+    $scope.cardColumn = "3";
+    if (typeof(user) === "object") { // set position clicking on a user
+      $scope.showMap = true;
+      $scope.mapCenter = {
+        lat: user.lat,
+        lng: user.lon,
+        zoom: 17,
+      };
+    } else { // other toggle 
+      console.log("not user defined");
+      $scope.showMap = !$scope.showMap;
+      if ($scope.showMap && $scope.xlg) {
+        $scope.gridflex = "noFlex";
+      } else if ($scope.showMap && !$scope.xlg) {
+        $scope.gridflex = "flex-50";
+      }
+      if (!$scope.showMap) {
+        $scope.gridflex = "";
+      }
+    }
+  };
+
+
+  function getMessage(user) {
+    // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
+    var url = "http://en.wikipedia.org/wiki/" + user.place;
+    // $scope.openToast(user.pageid)
+
+    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>";
+
+    var profileUrl = "#ProfileView/{{$index}}";
+    // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
+    return "<h5><a target='_blank'  href='" + profileUrl + "'>"  + "</a></h5>" + ptag ;
+  }
+  $scope.mapCenter = {
+    lat: 40.0164106,
+    lng: -105.2201631,
+    zoom: 12
+  };
+  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
+  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
+
   $scope.cardColumn = "2";
   $scope.gridflex = "";
 
@@ -217,9 +256,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     // console.log('popopWorkded', index.name.first);
   };
 
-
-
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.$watch(function() {
     return $mdMedia('sm');
   }, function(sizeBool) {
@@ -258,59 +294,16 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     }
     // console.log("gt-lg", $scope.xlg, "| Grid-flex", $scope.gridflex);
   });
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-
-  $scope.showMap = false;
-  $scope.setMapCenter = function(user) {
-    $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
-    $scope.cardColumn = "3";
-    if (typeof(user) === "object") { // set position clicking on a user
-      $scope.showMap = true;
-      $scope.mapCenter = {
-        lat: user.lat,
-        lng: user.lon,
-        zoom: 17,
-      };
-    } else { // other toggle 
-      console.log("not user defined");
-      $scope.showMap = !$scope.showMap;
-      if ($scope.showMap && $scope.xlg) {
-        $scope.gridflex = "noFlex";
-      } else if ($scope.showMap && !$scope.xlg) {
-        $scope.gridflex = "flex-50";
-      }
-      if (!$scope.showMap) {
-        $scope.gridflex = "";
-      }
-    }
-  };
 
 
-  function getMessage(user) {
-    // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
-    var url = "http://en.wikipedia.org/wiki/" + user.place;
-    // $scope.openToast(user.pageid)
-
-    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>";
-
-    var profileUrl = "#ProfileView/{{$index}}";
-    // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h5><a target='_blank'  href='" + profileUrl + "'>"  + "</a></h5>" + ptag ;
-  }
-  $scope.mapCenter = {
-    lat: 40.0164106,
-    lng: -105.2201631,
-    zoom: 12
-  };
-
-
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.layout = 'row';
 
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
 
+  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
+  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
 
 
 }]);
