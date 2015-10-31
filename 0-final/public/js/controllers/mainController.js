@@ -8,6 +8,7 @@
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
+  var startPos;
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
@@ -27,13 +28,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   var count = 0;
   socket.on('allUsers', function(data) {
-    $scope.users = data; 
+    $scope.users = data;
 
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
-    for ( var prop2 in $scope.users){
-      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon); 
-    }
+
 
     if (count === 0) {
       count++;
@@ -45,24 +44,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         });
         mylat = $scope.lat;
         mylon = $scope.longg;
-        // console.log('My Coordinates are: \n Lat: ', mylat,"\n Lon: ",  mylon);
-        // greatCircleMethod(monterreyLat, monterreyLon);
-        // console.log("I am " , greatCircleMethod(monterreyLat,monterreyLon), "miles from Monterrey, Mexico");
-        for (var i = 0; i < $scope.users.length; i++) { 
+        for (var prop2 in $scope.users) {
           $scope.$apply(function() {
-            $scope.users[i].apart = greatCircleMethod($scope.users[i].lat, $scope.users[i].lon); 
+          $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
           });
         }
-        // $scope.users.sort(function(a, b) { 
-        //   return a.apart - b.apart;
-        // });
-        $scope.newUsers = [];
-        for (var j = 0; j < $scope.users.length; j++) { 
-          $scope.newUsers.push({
-            j: $scope.users[j] 
-          });
-        }
-        // console.log($scope.newUsers);
 
         $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
       }); // navigator.geolocation.getCurrentPosition
@@ -100,7 +86,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     return distance;
   }
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
-  var startPos;
+  
 
 
 
