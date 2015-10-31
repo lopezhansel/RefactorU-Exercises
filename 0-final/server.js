@@ -30,14 +30,14 @@ function isEven(n) {return n % 2 === 0; }
 
 
 socketServer.on("connection", function(socket) {
-    console.log("NEW SOCKET CONNECTION");
+    console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
+
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
         var userId = socket.request.session.passport.user;
         console.log("UserId Logged In",userId);
 
-        User.findById(userId, function(error, userLoggedin) {
-            // console.log("userLoggedin______________" ,userLoggedin);
-            loggedInUsers[userLoggedin._id] = userLoggedin;
+        User.findById(userId, function(error, userDoc) {
+            loggedInUsers[userId] = userDoc;
             // console.log(loggedInUsers);
             socketServer.emit('allUsers',loggedInUsers);
         });// User.findById(userId
@@ -61,6 +61,12 @@ socketServer.on("connection", function(socket) {
             socketServer.emit('allUsers',loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);
         });
+        socket.on('disconnect', function() {
+            console.log('user disconnected');
+            delete  loggedInUsers[userId] ;
+            socketServer.emit('loggedInUsers', loggedInUsers);
+
+        }); //socket.on('disconnect'
 
 
     }//if (socket.request.session &&

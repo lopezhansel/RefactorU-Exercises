@@ -27,7 +27,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var count = 0;
   socket.on('allUsers', function(data) {
     console.log(data);
-
+    console.log($scope.users);
     $scope.users = data;
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers
     for (var i = 0; i < $scope.users.length; i++) {
