@@ -28,6 +28,7 @@ function isEven(n) {return n % 2 === 0; }
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
 
+
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION");
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
@@ -41,7 +42,12 @@ socketServer.on("connection", function(socket) {
             socketServer.emit('allUsers',loggedInUsers);
         });// User.findById(userId
 
-
+        socket.on("myLocation", function(userLocation) {
+            console.log(userLocation);
+            loggedInUsers[userId].lat = userLocation.lat;
+            loggedInUsers[userId].lon = userLocation.lon;
+            loggedInUsers[userId].timeStamp = userLocation.timeStamp;
+        });
 
 
     }//if (socket.request.session &&

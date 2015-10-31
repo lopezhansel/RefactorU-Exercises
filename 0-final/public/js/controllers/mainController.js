@@ -7,11 +7,13 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
       var myLocation = {
-        accuracy: showPosition.coords.accuracy,
-        latitude: showPosition.coords.latitude,
-        longitude: showPosition.coords.longitude,
+        accuracy  : showPosition.coords.accuracy,
+        lat       : showPosition.coords.latitude,
+        lon       : showPosition.coords.longitude,
+        timeStamp : showPosition.timeStamp,
       };
-      socket.emit("location", myLocation);
+      console.log(myLocation);
+      socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
   }, 1000); //setInterval(function() {
 
