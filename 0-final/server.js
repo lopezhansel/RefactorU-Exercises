@@ -31,26 +31,27 @@ function isEven(n) {return n % 2 === 0; }
 
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
+    var apiMe = "there!";
+    socket.emit('apiMe',apiMe);
 
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
-        var userId = socket.request.session.passport.user;
-        console.log("UserId Logged In",userId);
+        apiMe = socket.request.session.passport.user;
+        socket.emit('apiMe',apiMe);
+        console.log("UserId Logged In",apiMe);
 
-        User.findById(userId, function(error, userDoc) {
+        User.findById(apiMe, function(error, userDoc) {
+            socket.emit('apiMe',userDoc.firstName);
             userDoc.password = null;
-            loggedInUsers[userId] = userDoc;
-
-            // console.log(loggedInUsers);
+            loggedInUsers[apiMe] = userDoc;
 
             socketServer.emit('allUsers',loggedInUsers);
-        });//// User.findById(userId
+        });//// User.findById(apiMe
 
         socket.on("myLocation", function(userLocation) {
             // console.log(userLocation);
-            loggedInUsers[userId].lat = userLocation.lat;
-            loggedInUsers[userId].lon = userLocation.lon;
-            loggedInUsers[userId].timeStamp = userLocation.timeStamp;
-            console.log(userLocation.timeStamp);
+            loggedInUsers[apiMe].lat = userLocation.lat;
+            loggedInUsers[apiMe].lon = userLocation.lon;
+            loggedInUsers[apiMe].timeStamp = userLocation.timeStamp;
             console.log(loggedInUsers);
             socketServer.emit('allUsers',loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);
@@ -58,7 +59,7 @@ socketServer.on("connection", function(socket) {
 
         socket.on('disconnect', function() {
             console.log('user disconnected');
-            delete  loggedInUsers[userId] ;
+            delete  loggedInUsers[apiMe] ;
             socketServer.emit('loggedInUsers', loggedInUsers);
         }); //////socket.on('disconnect'
 
