@@ -610,7 +610,7 @@ function isEven(n) {return n % 2 === 0; }
 
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
-    var apiMe = "there!";
+    var apiMe = "login!";
     socket.emit('apiMe',apiMe);
 
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {

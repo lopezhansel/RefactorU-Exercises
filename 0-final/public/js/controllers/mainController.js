@@ -14,15 +14,13 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var myLocation = {};
   $scope.me = {};
 
-
+  $scope.hello = "dob"
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
 
 
   socket.on('apiMe',function  (data) {
-    console.log(data);
-
     $scope.me.name =  data.capitalizeFirstLetter() ||  "NoName";
     $scope.$apply();
   });
@@ -41,6 +39,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var count = 0;
   socket.on('allUsers', function(data) {
     $scope.users = data;
+    console.log(data);
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
     for (var prop2 in $scope.users) {
@@ -61,7 +60,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         for (var prop2 in $scope.users) {
           $scope.$apply(function() {
           $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-          console.log($scope.users[prop2].apart);
+          // console.log($scope.users[prop2].apart);
           });
         }
 
@@ -88,7 +87,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var mylon = 0;
 
   function greatCircleMethod(latitude, longitude) {
-    var earthMedianRadius = (6371 / 1.609344)/5280; //Convert Kilometers to Miles 
+    var earthMedianRadius = (6371 / 1.609344); //Convert Kilometers to Miles 
     var φ1 = mylat.toRad();
     var φ2 = latitude.toRad();
     var Δφ = (latitude - mylat).toRad();
@@ -181,7 +180,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
   function getMessage(user) {
-    console.log(user);
     // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
     var url = "http://en.wikipedia.org/wiki/" + user.place;
     // $scope.openToast(user.pageid)
@@ -189,9 +187,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
     var profileUrl = "#ProfileView/"+ user._id;
     // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h5><a target='_blank'  href='" + profileUrl + "'>"+user.username + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
+    return "<h6><a target='_blank'  href='" + profileUrl + "'>"+user.username + "</a></h6>" + ptag + "<img src=" + user.pictureSm + ">";
   }
-
+     
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
