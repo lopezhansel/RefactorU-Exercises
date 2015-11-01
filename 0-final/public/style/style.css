@@ -140,11 +140,17 @@ md-dialog {
 }
 
 md-tabs-canvas  span.ng-scope {
-    color: white;
+    /*color: white;*/
     font-weight: bolder;
     font-size: 16px;
 }
 
-md-tabs-canvas {
-    background: #FFB03C;
+md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+    color: rgb(255, 255, 255);
 }
+/*md-tabs-canvas {
+    background: #FFB03C;
+}*/
+/*md-next-button {
+    background: #FFB03C;
+}*/

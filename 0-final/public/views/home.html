@@ -27,9 +27,9 @@
     </md-sidenav>
 <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
     <div layout="column"   id="content"   class="flex" ng-class="gridflex">
-    <md-tabs md-selected="selectedIndex"  flex >
+    <md-tabs md-selected="selectedIndex"  flex class="md-accent" >
       <md-tab label="Home"  >
-        <h1 ng-show="isUsersEmpty === 0">{{isUsersEmpty}}Please Login!</h1>
+        <h1 ng-show="isUsersEmpty === 0" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> Please Login.</h1>
         <md-content md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
