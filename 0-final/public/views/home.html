@@ -4,7 +4,7 @@
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
-    <img ng-click="setMapCenter()" class="logo" src="https://files.slack.com/files-pri/T07DT0MRD-F0BMW4XN0/mapme.png">
+    <img ng-click="setMapCenter()" class="logo" src="http://gdurl.com/0P2s">
     <!-- <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2> -->
   </div>
 </md-toolbar>
@@ -16,7 +16,7 @@
 <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
     <!-- data-ng-click="openToast('You Found an Easter Egg')" -->
-        <h3 id="startLat" ng-dblclick="testTrigger()" >Welcome to Map Me </h3>
+        <h1 id="startLat" ng-dblclick="testTrigger()" >Hello {{me.name}}!</h1>
         <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
         <h3><a href="#Messages"><p>Messages</p></a> </h3>
         <h3 data-ng-click="setMapCenter()">Show Map</h3>
