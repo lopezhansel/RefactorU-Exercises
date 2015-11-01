@@ -14,6 +14,13 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   $scope.isUsersEmpty = Object.keys($scope.users).length; 
   var myLocation = {};
   $scope.me = {};
+  $scope.selectedIndex = 0;
+  $scope.switchTabs = function  (leftOrRight) {
+    console.log("switchTabs", $scope.selectedIndex);
+    $scope.selectedIndex = $scope.selectedIndex + leftOrRight;
+    if ($scope.selectedIndex < 0) {$scope.selectedIndex = 0;}
+  };
+  
 
   console.log($scope.users);
   var json = 'http://ipv4.myexternalip.com/json';

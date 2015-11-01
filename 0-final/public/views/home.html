@@ -1,5 +1,5 @@
 <!-- // red  red  red  red  red  red  red  red  red  red  red  red -->
-<md-toolbar layout="column"  class="md-whiteframe-z2">
+<md-toolbar layout="column"  class="md-whiteframe-z2" >
   <div class="md-toolbar-tools" md-ink-ripple >
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
@@ -27,10 +27,10 @@
     </md-sidenav>
 <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
     <div layout="column"   id="content"   class="flex" ng-class="gridflex">
-    <md-tabs flex>
-      <md-tab label="Home">
+    <md-tabs md-selected="selectedIndex"  flex >
+      <md-tab label="Home"  >
         <h1 ng-show="isUsersEmpty === 0">{{isUsersEmpty}}Please Login!</h1>
-        <md-content>
+        <md-content md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
               md-row-height="200px"
@@ -47,7 +47,7 @@
 
 
                       </md-content>
-                    </md-card-content>
+                    </md-card-content  >
                     <md-content  flex layout="column" layout-align="start start">
 
                       <div flex layout="column" layout-align="start start">
@@ -71,19 +71,19 @@
       </md-tab>
       <md-tab label="Map">
 
-          <div  >
+          <div md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)" >
             <leaflet id="map-canvas" center="mapCenter" markers="mapMarkerss"> </leaflet>
           </div>
 
       </md-tab>
       <md-tab label="Profile">
-        <h3>Profile</h3>
+        <h3 md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">Profile</h3>
       </md-tab>
-      <md-tab label="Messages">
-        <h3>Messages</h3>
+      <md-tab label="Messages" >
+        <h3 md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">Messages</h3>
       </md-tab>
       <md-tab label="About">
-        <h3>Profile</h3>
+        <h3 md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">About Page</h3>
       </md-tab>
 
 
