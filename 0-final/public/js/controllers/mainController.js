@@ -11,9 +11,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var startPos;
   var socket = io();
   $scope.users = {};
+  $scope.isUsersEmpty = Object.keys($scope.users).length; 
   var myLocation = {};
   $scope.me = {};
 
+  console.log($scope.users);
   var json = 'http://ipv4.myexternalip.com/json';
   $http.get(json).then(function(result) {
     $scope.ip = result.data.ip;
@@ -53,6 +55,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var count = 0;
   socket.on('allUsers', function(data) {
     $scope.users = data;
+    $scope.isUsersEmpty = Object.keys($scope.users).length; 
+    
     console.log(data);
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
@@ -69,8 +73,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
           $scope.lat = startPos.coords.latitude;
           $scope.longg = startPos.coords.longitude;
         });
-        mylat = $scope.lat;
-        mylon = $scope.longg;
+        clientLat = $scope.lat;
+        clientLng = $scope.longg;
         for (var prop2 in $scope.users) {
           $scope.$apply(function() {
             $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
@@ -97,15 +101,15 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   $scope.user = userService.randomUsers[$routeParams.id];
 
-  var mylat = 0;
-  var mylon = 0;
+  var clientLat = 0;
+  var clientLng = 0;
 
   function greatCircleMethod(latitude, longitude) {
     var earthMedianRadius = (6371 / 1.609344); //Convert Kilometers to Miles 
-    var φ1 = mylat.toRad();
+    var φ1 = clientLat.toRad();
     var φ2 = latitude.toRad();
-    var Δφ = (latitude - mylat).toRad();
-    var Δλ = (longitude - mylon).toRad();
+    var Δφ = (latitude - clientLat).toRad();
+    var Δλ = (longitude - clientLng).toRad();
     var arc = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
       Math.cos(φ1) * Math.cos(φ2) *
       Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
@@ -113,7 +117,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     var distance = (earthMedianRadius * c);
     return distance;
   }
-  // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
+  // window.onload = function() { // get my location and set clientLat clientLng && $scope.lat $scope.longg
 
 
 
@@ -162,7 +166,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   $scope.setMapCenter = function(user) {
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
-    leafletData.getMap().then(function(map) {
+    leafletData.getMap().then(function(map) { 
       setTimeout(function() {
         map.invalidateSize(); // this fixes Map render Bug
       }, 200);

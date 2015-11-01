@@ -4,7 +4,7 @@ var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('orange')
-    .accentPalette('cyan');
+    .accentPalette('deep-orange');
 });
 app.filter('orderObjectBy', function() {
   return function(items, field, reverse) {

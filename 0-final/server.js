@@ -18,7 +18,7 @@ app.server = app.listen(port, function() {
 
 var io = require("socket.io");
 var socketServer = io(app.server);
-var loggedInUsers = {
+var loggedInUsers = { // This is Dummy Data to Render Some Users
     "563037f5369f0ff01e75fe7a": {
         "_id": "563037f5369f0ff01e75fe7a",
         "username": "goldengoose450",
@@ -610,7 +610,7 @@ function isEven(n) {return n % 2 === 0; }
 
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
-    var apiMe = "login!";
+    var apiMe = "there";
     socket.emit('apiMe',apiMe);
 
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {

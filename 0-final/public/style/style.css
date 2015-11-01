@@ -7,7 +7,7 @@ body{
   height: 100%;
 
 }
-html, body, #map-canvas {
+html, body, #map-wcanvas {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -137,4 +137,14 @@ md-dialog {
 
  a.leaflet-popup-close-button {
     display: none;
+}
+
+md-tabs-canvas  span.ng-scope {
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+md-tabs-canvas {
+    background: #FFB03C;
 }

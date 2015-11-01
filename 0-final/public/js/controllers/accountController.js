@@ -1,6 +1,6 @@
 app.controller('accountController', ['$scope','$http',"userService",'$routeParams', function ($scope,$http,userService,$routeParams) {
-	$scope.users = userService.randomUsers
-	$scope.randomUsers = userService.randomUsers
+	$scope.users = userService.randomUsers;
+	$scope.randomUsers = userService.randomUsers;
 
 	$scope.myDate = new Date();
 	$scope.minDate = new Date(
@@ -13,7 +13,7 @@ app.controller('accountController', ['$scope','$http',"userService",'$routeParam
 	    $scope.myDate.getDate());
 
 
-}])
+}]);
 
  app.controller('DemoCtrl', function($scope) {
     $scope.user = {
