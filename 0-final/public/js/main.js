@@ -3,8 +3,8 @@ var app = angular.module('StarterApp', ['ngAnimate','ngMaterial','ngRoute', 'ui.
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('cyan')
-    .accentPalette('orange');
+    .primaryPalette('orange')
+    .accentPalette('cyan');
 });
 
 app.config(function($routeProvider){

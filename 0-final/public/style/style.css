@@ -67,9 +67,9 @@ md-grid-tile{
 /*	height: 00px;
 */
 }
-md-grid-list{
-	background: gray;
-	/*overflow: auto*/
+md-grid-list,div#content{
+	background: #DCDCDC;
+	overflow: hidden;
 }
 
 .fade.ng-enter {
