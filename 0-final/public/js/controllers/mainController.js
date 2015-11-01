@@ -9,11 +9,22 @@
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
   var startPos;
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   var socket = io();
   $scope.users = {};
   var myLocation = {};
+  $scope.me = {};
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+
+
+
+  socket.on('apiMe',function  (data) {
+    console.log(data);
+
+    $scope.me.name =  data.capitalizeFirstLetter() ||  "NoName";
+    $scope.$apply();
+  });
+
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
       myLocation = {
@@ -29,14 +40,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var count = 0;
   socket.on('allUsers', function(data) {
     $scope.users = data;
-
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
-
 
     for (var prop2 in $scope.users) {
       $scope.$apply(function() {
       $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-      console.log($scope.users[prop2].apart);
       });
     }
     if (count === 0) {
@@ -79,7 +87,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var mylon = 0;
 
   function greatCircleMethod(latitude, longitude) {
-    var earthMedianRadius = 6371 / 1.609344; //Convert Kilometers to Miles 
+    var earthMedianRadius = (6371 / 1.609344)/5280; //Convert Kilometers to Miles 
     var φ1 = mylat.toRad();
     var φ2 = latitude.toRad();
     var Δφ = (latitude - mylat).toRad();
@@ -96,29 +104,31 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
 
-  function userLocToMarkers(usersGeoData) {
+  function userLocToMarkers(inputUsers) {
     var markers = [];
-    if (usersGeoData.constructor === Object) {
-      for (var prop in usersGeoData) {
-        place = {
-          lat: usersGeoData[prop].lat,
-          lng: usersGeoData[prop].lon,
-          message: getMessage(usersGeoData[prop]),
-          icon: {
-            iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
-            iconSize: [45, 45],
-          }
-        };
-        markers.push(place);
-      }
-    } // if (usersGeoData.constructor === Object
+    if (inputUsers.constructor === Object) {
+      for (var oneUser in inputUsers) {
+      // console.log(inputUsers[oneUser]);
 
-    if (usersGeoData.constructor === Array) {
-      for (var i = 0; i < usersGeoData.length; i++) {
         place = {
-          lat: usersGeoData[i].lat,
-          lng: usersGeoData[i].lon,
-          message: getMessage(usersGeoData[i]),
+          lat: inputUsers[oneUser].lat,
+          lng: inputUsers[oneUser].lon,
+          message: getMessage(inputUsers[oneUser]),
+          icon: {
+            iconUrl: inputUsers[oneUser].icon ||'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
+            iconSize: [45, 45],
+          }
+        };//for (var oneUser in usersGeoDat
+        markers.push(place);
+      }
+    } // if (inputUsers.constructor === Object
+
+    if (inputUsers.constructor === Array) {
+      for (var i = 0; i < inputUsers.length; i++) {
+        place = {
+          lat: inputUsers[i].lat,
+          lng: inputUsers[i].lon,
+          message: getMessage(inputUsers[i]),
           icon: {
             iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
             iconSize: [45, 45],
@@ -126,7 +136,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         };
         markers.push(place);
       }
-    } // if (usersGeoData.constructor === Array)
+    } // if (inputUsers.constructor === Array)
     return markers;
   }
 
@@ -162,16 +172,17 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
 
   function getMessage(user) {
+    console.log(user);
     // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
     var url = "http://en.wikipedia.org/wiki/" + user.place;
     // $scope.openToast(user.pageid)
+    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.timeStamp + "</a></p>";
 
-    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.place + "</a></p>";
-
-    var profileUrl = "#ProfileView/{{$index}}";
+    var profileUrl = "#ProfileView/"+ user._id;
     // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h5><a target='_blank'  href='" + profileUrl + "'>" + "</a></h5>" + ptag;
+    return "<h5><a target='_blank'  href='" + profileUrl + "'>"+user.username + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
   }
+
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
