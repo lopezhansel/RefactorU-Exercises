@@ -170,6 +170,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   $scope.showMap = false;
   $scope.setMapCenter = function(user) {
+    $scope.selectedIndex = 1;
+
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
     leafletData.getMap().then(function(map) { 
@@ -178,7 +180,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       }, 200);
     }); ////leafletData.getMap().then(function(map) {
     if (typeof(user) === "object") { // set position clicking on a user
-      $scope.showMap = true;
+      // $scope.showMap = true;
       $scope.mapCenter = {
         lat: user.lat,
         lng: user.lon,
@@ -196,8 +198,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         $scope.gridflex = "";
       }
     }
-
-
 
   };
 
