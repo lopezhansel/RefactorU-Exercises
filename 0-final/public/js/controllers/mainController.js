@@ -7,21 +7,35 @@
 
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval",'leafletData', function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval,leafletData) {
+app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData) {
   var startPos;
   var socket = io();
   $scope.users = {};
   var myLocation = {};
   $scope.me = {};
 
-  $scope.hello = "dob"
+  var json = 'http://ipv4.myexternalip.com/json';
+  $http.get(json).then(function(result) {
+    $scope.ip = result.data.ip;
+    $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
+      // This is to center map on user location based on their Ip
+      $scope.mapCenter = {
+        lat: res.data.latitude,
+        lng: res.data.longitude,
+        zoom: 10
+      };
+    }); ////$http.get("http://freegeoip
+  }, function(e) {
+    console.log("couldn't get Ip Address" , e);
+  });
+
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
 
 
-  socket.on('apiMe',function  (data) {
-    $scope.me.name =  data.capitalizeFirstLetter() ||  "NoName";
+  socket.on('apiMe', function(data) {
+    $scope.me.name = data.capitalizeFirstLetter() || "NoName";
     $scope.$apply();
   });
 
@@ -44,7 +58,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
     for (var prop2 in $scope.users) {
       $scope.$apply(function() {
-      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+        $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
       });
     }
     if (count === 0) {
@@ -59,8 +73,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         mylon = $scope.longg;
         for (var prop2 in $scope.users) {
           $scope.$apply(function() {
-          $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-          // console.log($scope.users[prop2].apart);
+            $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+            // console.log($scope.users[prop2].apart);
           });
         }
 
@@ -100,7 +114,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     return distance;
   }
   // window.onload = function() { // get my location and set mylat mylon && $scope.lat $scope.longg
-  
 
 
 
@@ -108,17 +121,17 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     var markers = [];
     if (inputUsers.constructor === Object) {
       for (var oneUser in inputUsers) {
-      // console.log(inputUsers[oneUser]);
+        // console.log(inputUsers[oneUser]);
 
         place = {
           lat: inputUsers[oneUser].lat,
           lng: inputUsers[oneUser].lon,
           message: getMessage(inputUsers[oneUser]),
           icon: {
-            iconUrl: inputUsers[oneUser].icon ||'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
+            iconUrl: inputUsers[oneUser].icon || 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
             iconSize: [45, 45],
           }
-        };//for (var oneUser in usersGeoDat
+        }; //for (var oneUser in usersGeoDat
         markers.push(place);
       }
     } // if (inputUsers.constructor === Object
@@ -150,10 +163,10 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
     leafletData.getMap().then(function(map) {
-      setTimeout(function(){
+      setTimeout(function() {
         map.invalidateSize(); // this fixes Map render Bug
       }, 200);
-    });////leafletData.getMap().then(function(map) {
+    }); ////leafletData.getMap().then(function(map) {
     if (typeof(user) === "object") { // set position clicking on a user
       $scope.showMap = true;
       $scope.mapCenter = {
@@ -185,16 +198,16 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     // $scope.openToast(user.pageid)
     var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.timeStamp + "</a></p>";
 
-    var profileUrl = "#ProfileView/"+ user._id;
+    var profileUrl = "#ProfileView/" + user._id;
     // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h6><a target='_blank'  href='" + profileUrl + "'>"+user.username + "</a></h6>" + ptag + "<img src=" + user.pictureSm + ">";
+    return "<h6><a target='_blank'  href='" + profileUrl + "'>" + user.username + "</a></h6>" + ptag + "<img src=" + user.pictureSm + ">";
   }
-     
   $scope.mapCenter = {
     lat: 40.0164106,
     lng: -105.2201631,
     zoom: 12
   };
+
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
 
