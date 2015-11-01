@@ -95,13 +95,12 @@ md-grid-list,div#content{
     color: darkred;
     margin: 10px 0 0 25px; }
 
-    img.logo {
-    width: 110px;
+img.logo {
+    width: 130px;
     position: relative;
-    left: 5px;
-    top: 3px;
+    left: 10px;
+    top: 0px;
 }
-
 
 
 md-toolbar.layout.layout-column.ng-scope.md-default-theme {
@@ -116,4 +115,18 @@ md-card.md-padding.flex.ng-scope.md-default-theme {
 }
 md-sidenav.md-sidenav-left.md-whiteframe-z2.layout.layout-column.ng-isolate-scope {
     padding: 20px;
+}
+
+
+md-dialog {
+    width: 800px;
+}
+
+ img:focus {
+    outline: none;
+    border: 0;
+ }
+
+ a.leaflet-popup-close-button {
+    display: none;
 }
