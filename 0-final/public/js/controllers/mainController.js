@@ -7,15 +7,19 @@
 
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval) {
+app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval",'leafletData', function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval,leafletData) {
   var startPos;
   var socket = io();
   $scope.users = {};
   var myLocation = {};
   $scope.me = {};
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
+
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  $scope.showMapUI = function(){
+  
+};
 
 
   socket.on('apiMe',function  (data) {
@@ -36,7 +40,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
   }, 1000); //setInterval(function() {
-
   var count = 0;
   socket.on('allUsers', function(data) {
     $scope.users = data;
@@ -149,6 +152,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   $scope.setMapCenter = function(user) {
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
+    leafletData.getMap().then(function(map) {
+      setTimeout(function(){
+        map.invalidateSize(); // this fixes Map render Bug
+      }, 200);
+    });////leafletData.getMap().then(function(map) {
     if (typeof(user) === "object") { // set position clicking on a user
       $scope.showMap = true;
       $scope.mapCenter = {
@@ -168,6 +176,9 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         $scope.gridflex = "";
       }
     }
+
+
+
   };
 
 

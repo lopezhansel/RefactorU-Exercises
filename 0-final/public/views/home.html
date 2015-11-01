@@ -4,6 +4,7 @@
     <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
     </md-button>
+    <!-- <img ng-click="showMapUI()" class="logo" src="http://gdurl.com/0P2s"> -->
     <img ng-click="setMapCenter()" class="logo" src="http://gdurl.com/0P2s">
     <!-- <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2> -->
   </div>
@@ -14,7 +15,7 @@
 <div layout="column" layout-gt-lg="row" flex>
 
 <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 md-padding" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
     <!-- data-ng-click="openToast('You Found an Easter Egg')" -->
         <h1 id="startLat" ng-dblclick="testTrigger()" >Hello {{me.name}}!</h1>
         <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
@@ -32,8 +33,9 @@
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
               md-row-height="200px"
               md-gutter="8px" md-gutter-gt-sm="4px" >
-
-              <md-grid-tile data-ng-repeat="user in users  | filter: searchbox "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
+              <!-- https://docs.angularjs.org/error/filter/notarray?p0=%7B%7D -->
+              <!-- data-ng-repeat="user in users  | filter: searchbox " > -->
+              <md-grid-tile data-ng-repeat="user in users   "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
                 <md-card class="md-padding" flex layout="column" >
                     <md-card-content layout='row'  >
                       <img ng-src="{{user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
@@ -71,9 +73,9 @@
     
 <!-- //  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200 -->
 
-  <md-content   ng-show="showMap" flex >
-    <div  id="map-canvas">
-      <leaflet center="mapCenter" markers="mapMarkerss"> </leaflet>
+  <md-content ng-cloak class="md-whiteframe-z4" ng-show="showMap" flex >
+    <div  >
+      <leaflet id="map-canvas" center="mapCenter" markers="mapMarkerss"> </leaflet>
     </div>
   </md-content>
 <!-- //  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200  #FF7200 -->
