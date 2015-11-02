@@ -40,10 +40,10 @@
               <md-grid-tile data-ng-repeat="user in users    "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
                 <md-card class="md-padding" flex layout="column" >
                     <md-card-content layout='row'  >
-                      <img ng-src="{{user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
+                      <img ng-src="{{::user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
                       <md-content  layout="column" layout-align="start center" flex>
                         
-                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
+                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ ::user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
 
 
                       </md-content>
@@ -78,6 +78,57 @@
       </md-tab>
       <md-tab label="Profile">
         <h3 md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">Profile</h3>
+          <form>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h1>{{selectedUser.name.title.capitalize() +'.'+selectedUser.username.capitalize()}} @ {{selectedUser.place}}</h1>
+              <span flex></span>
+              <md-button class="md-icon-button" aria-label="Close dialog" ng-click="cancel()">
+                <!-- <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon> -->
+              </md-button>
+            </div>
+          </md-toolbar>
+
+          <md-dialog-content style="max-width:800px;max-height:810px; ">
+              <md-content layout-padding layout="::row" layout-align-md="::center center" layout-align-gt-md="start start">
+                <img class="profilePic" ng-src={{::user.picture.large}} flex-sm >
+                <md-content layout-padding  hide-sm hide-md >
+        <!--             Lorem ipsum dolor sit amet, ne quod novum mei.
+         -->    </md-content>
+
+
+            </md-content>
+        <img ng-src={{::selectedUser.picture.large}}>
+            <md-content layout-padding>
+                <h3>Gender: {{::selectedUser.gender.capitalize()}}</h3>
+                <h2>user Name: {{::selectedUser.username.capitalize() }}</h2>
+                <h2>Password: {{::selectedUser.password}}</h2>
+                <h3>Email: {{::selectedUser.email}}</h3>
+                <h3>Phone: {{::selectedUser.phone}}</h3>
+                <h3>Cell: {{::selectedUser.cell}}</h3>
+                <h2>Address: {{::selectedUser.location.street.capitalize()}} {{::selectedUser.location.city.capitalize()}} ,{{::selectedUser.location.state.capitalize()}}</h2>
+                <h2>{{::selectedUser.dob|date}}</h2>
+                <h4>Latitude: {{selectedUser.lat}}</h4>
+                <h4>Longitutde: {{selectedUser.lonn}}</h4>
+                <h4>Distance: {{selectedUser.apart}}</h4>
+                <h4>Current Place: {{::selectedUser.place}}</h4>
+            
+            </md-content>
+
+          </md-dialog-content>
+          <div class="md-actions" layout="row">
+            <md-button href="http://en.wikipedia.org/wiki/{{selectedUser.place}}" target="_blank" md-autofocus>
+              More about {{::selectedUser.place}} on Wikipedia
+            </md-button>
+            <span flex></span>
+           <!--  <md-button ng-click="answer('not useful')" >
+             Not Useful
+            </md-button> -->
+            <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+              Close
+            </md-button>
+          </div>
+          </form>
       </md-tab>
       <md-tab label="Messages" >
         <h3 md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">Messages</h3>

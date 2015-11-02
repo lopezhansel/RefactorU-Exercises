@@ -9,17 +9,21 @@
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData) {
   var startPos;
+  var count = 0;
+
   var socket = io();
   $scope.users = {};
-  $scope.isUsersEmpty = Object.keys($scope.users).length; 
+  $scope.isUsersEmpty = Object.keys($scope.users).length;
   var myLocation = {};
   $scope.me = {};
   $scope.selectedIndex = 0;
-  $scope.switchTabs = function  (leftOrRight) {
+  $scope.switchTabs = function(leftOrRight) {
     $scope.selectedIndex = $scope.selectedIndex + leftOrRight;
-    if ($scope.selectedIndex < 0) {$scope.selectedIndex = 0;}
+    if ($scope.selectedIndex < 0) {
+      $scope.selectedIndex = 0;
+    }
   };
-  
+
 
   console.log($scope.users);
   var json = 'http://ipv4.myexternalip.com/json';
@@ -34,7 +38,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       };
     }); ////$http.get("http://freegeoip
   }, function(e) {
-    console.log("couldn't get Ip Address" , e);
+    console.log("couldn't get Ip Address", e);
   });
 
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
@@ -44,10 +48,11 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   socket.on('apiMe', function(data) {
     $scope.me.name = data.capitalizeFirstLetter() || "NoName";
-    $scope.$apply();
+    $scope.$digest();
   });
 
-  setInterval(function() {
+  $interval(function() {
+    console.log("RUnning");
     navigator.geolocation.getCurrentPosition(function(showPosition) {
       myLocation = {
         accuracy: showPosition.coords.accuracy,
@@ -57,22 +62,23 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       };
       socket.emit("myLocation", myLocation);
     }); //navigator.geolocation.getCurrentPosition
-  }, 1000); //setInterval(function() {
-  var count = 0;
+  }, 2000); ////$interval(function() {
+
   socket.on('allUsers', function(data) {
     $scope.users = data;
-    $scope.isUsersEmpty = Object.keys($scope.users).length; 
-    
+    $scope.isUsersEmpty = Object.keys($scope.users).length;
+
     console.log(data);
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
     for (var prop2 in $scope.users) {
-      $scope.$apply(function() {
-        $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-      });
+      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+      $scope.$digest();
     }
+
     if (count === 0) {
       count++;
+      console.log(count);
       navigator.geolocation.getCurrentPosition(function(position) {
         startPos = position;
         $scope.$apply(function() {
@@ -91,7 +97,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
         $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
       }); // navigator.geolocation.getCurrentPosition
     } // if (count === 0) {
-    $scope.$apply();
+    $scope.$digest();
   }); //socket.on('allUsers'
 
   // socket.on('chatMessage', function(data) {
@@ -169,12 +175,16 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
   $scope.showMap = false;
+  $scope.selectedUser = {};
+
   $scope.setMapCenter = function(user) {
+    $scope.selectedUser = user;
+    console.log($scope.selectedUser);
     $scope.selectedIndex = 1;
 
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
-    leafletData.getMap().then(function(map) { 
+    leafletData.getMap().then(function(map) {
       setTimeout(function() {
         map.invalidateSize(); // this fixes Map render Bug
       }, 200);

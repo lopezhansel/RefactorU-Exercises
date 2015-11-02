@@ -154,3 +154,9 @@ md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > m
 /*md-next-button {
     background: #FFB03C;
 }*/
+md-dialog {
+
+    max-width: 90%;
+    max-height: 90%;
+
+}
