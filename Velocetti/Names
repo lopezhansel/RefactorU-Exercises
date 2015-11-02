@@ -1,0 +1,215 @@
+var userSchema = mongoose.Schema({
+    username     : {type: String, required: true, unique: true },
+    password     : {type: String, required: true },
+    gender       : {type: String},
+    dob          : {type: Number},
+    firstName    : {type: String},
+    lastName     : {type: String},
+    email        : {type: String},
+    phone        : {type: String, default: "555-555-5555"},
+    cell         : {type: String, default: "555-555-5555"},
+    pictureLg    : {type: String, default: "https://tracker.moodle.org/secure/attachment/30912/f3.png"},
+    pictureMd    : {type: String, default: "https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg"},
+    pictureSm    : {type: String, default: "http://www.homejobs90.com/sites/all/themes/responsive_blog/avatar-new.png"},
+    lat          : {type: Number, default: 0 },
+    lon          : {type: Number, default: 0 },
+});
+
+
+
+
+
+   setTimeout(function  () {
+
+    User.find({}).limit(10).exec(function(err,allUserInDatabase) {
+        socketServer.emit('allUsers',allUserInDatabase);
+        setInterval(function() {
+           allUserInDatabase.forEach(function(oneUser) {
+                var num = 0.0001000; // var num = 0.00241666;
+                var addOrSub = Math.floor((Math.random() * 2) + 1);
+                var lonOrLat = Math.floor((Math.random() * 2) + 1);
+                var distance = ((isEven(oneUser.dob.toString().slice(-1))) ? num : -num);
+                ((lonOrLat === 1) ? oneUser.lat += distance : oneUser.lon += distance);
+            });
+            socketServer.emit('allUsers',allUserInDatabase);
+        }, 100);
+
+    }); // User.find({})
+    },2000);//setTimeout(function
+
+
+    if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
+        var userId = socket.request.session.passport.user;
+        console.log("UserId",userId);
+
+    }
+
+    socket.on('location', function(userLocation) {
+        // if ("UserId: ", id, "logged in") {console.log(id); }l
+        // console.log(userLocation);
+    });//socket.on('location',
+
+    if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
+        var id = socket.request.session.passport.user;
+        User.findById(id, function(error, user) {
+            console.log("start");
+            console.log("finding by id" ,user, "finding by id");
+            console.log("end");
+            loggedInUsers[user.username] = true;
+            socketServer.emit('loggedInUsers', loggedInUsers);
+
+
+            socket.on('chatMessage', function(data) {
+                console.log('message to server!', data);
+                socketServer.emit('chatMessage', {
+                    sender: user.username,
+                    content: data
+                });
+
+            });
+
+
+            socket.join(user.username);
+            socket.on('whisper', function(data) {
+                socketServer.to(data.recipient).emit('whisper', {
+                    sender: user.username,
+                    content: data.content
+                });
+            });
+
+            socket.on('disconnect', function() {
+                console.log('user disconnected');
+                loggedInUsers[user.username] = false;
+                socketServer.emit('loggedInUsers', loggedInUsers);
+
+            }); //socket.on('disconnect'
+        });
+    } // if(loggedIn == true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var heroSchema = mongoose.Schema({
+	name			: String,
+	HQ				: {type : mongoose.Schema.ObjectId, ref:'Review'}, // Data type value will be ObjectId, the ref tells it what collection to reference.
+	alignment		: String
+});
+
+var userSchema = mongoose.Schema({
+	name			: String,
+	HQ				: {type : mongoose.Schema.ObjectId, ref:'Review'}, // Data type value will be ObjectId, the ref tells it what collection to reference.
+	alignment		: String
+});
+
+
+PostMates, UberRush
+GoRide
+ridley
+trek
+
+
+Courier, Delivery, Messenger, 
+Eat , Coffee Run, 
+Bicylce, bike ,wheels , frame , Helmet , Ride , Gear, drive , libere free
+Spin, tourner, Spritztour , roue, veloce , rapide , kurier
+Run Quick Speed Dash Zoom Tranport
+Go Movement Now Rush
+Mates
+
+Le Tour de France
+express!!
+Giro - cylce 
+velo  - bycycle in french
+veloz
+velocidad
+Track Road 
+
+Ucycle
+GoCycle
+DashBike
+SpeedBike
+Rider
+RadRider
+RoadRider
+RoadRiders
+SuperGiro
+revolution
+vuelta - spanish Meaning
+
+
+cool super uber rad Dope Sweet Sick Wicked Groovy 
+joy happy Thrill
+
+velocety // defunc
+
+velocetti
+
+femWay 
+
+velocette
+
+velozCity
+Giro Rapide
+Express Rush 
+Rider
+
+velociter
+veloster
+
+velo 
+veloMe
+
+........................
+notes
+window on resizeBy
+add html to cetain calss
+ng mouse down 
+ng mouse move
+give each obj and unique id
+md-dialog locals vs $rootScope
+
+userfull applications
+-grindr 
+- kidFinder 
+-Tinder 
+
+company 
+uber 
+gasBuddy
+
+Redicuulus Fast 
+Simpler
+Complise in the back ent 
+no more back end
+no more ng-click now its only 40+ directlist
+anuglar CLI in npm with ember 
+deploy to gitHub
+angular universal
+== Feature wont be able to build
+Biking Mode
+PayPall 
+5 min nofication
+Request Before hand 
+Wall Of Shame
+Login Page
+Stats
+
+Call Chat Contacts

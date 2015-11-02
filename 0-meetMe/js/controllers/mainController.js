@@ -10,8 +10,6 @@ function DialogController($scope, $mdDialog, currentUserPopUP) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
-}
-
 // ========================================================================== APPCTRL =============================================================================================================================
 app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast) {
   $scope.cardColumn = "2";
