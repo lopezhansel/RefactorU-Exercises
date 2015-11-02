@@ -12,16 +12,17 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   var socket = io();
   var count = 0;
   $scope.users = {};
-  $scope.isUsersEmpty = Object.keys($scope.users).length; 
+  $scope.isUsersEmpty = Object.keys($scope.users).length;
   var myLocation = {};
   $scope.me = {};
   $scope.selectedIndex = 0;
-  $scope.switchTabs = function  (leftOrRight) {
+  $scope.switchTabs = function(leftOrRight) {
     $scope.selectedIndex = $scope.selectedIndex + leftOrRight;
-    if ($scope.selectedIndex < 0) {$scope.selectedIndex = 0;}
+    if ($scope.selectedIndex < 0) {
+      $scope.selectedIndex = 0;
+    }
   };
   
-
   console.log($scope.users);
   var json = 'http://ipv4.myexternalip.com/json';
   $http.get(json).then(function(result) {
@@ -35,7 +36,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       };
     }); ////$http.get("http://freegeoip
   }, function(e) {
-    console.log("couldn't get Ip Address" , e);
+    console.log("couldn't get Ip Address", e);
   });
 
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
@@ -48,7 +49,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
     $scope.$digest();
   });
 
-  setInterval(function() {
+  $interval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
       myLocation = {
         accuracy: showPosition.coords.accuracy,
@@ -59,40 +60,44 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       socket.emit("myLocation", myLocation); /// only emit of moved 10Feet
     }); //navigator.geolocation.getCurrentPosition
   }, 2000); //setInterval(function() {
-    
+
   socket.on('allUsers', function(data) {
     $scope.users = data;
-    $scope.isUsersEmpty = Object.keys($scope.users).length; 
-    
+    $scope.isUsersEmpty = Object.keys($scope.users).length;
+
     console.log(data);
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
     for (var prop2 in $scope.users) {
-      $scope.$apply(function() {
-        $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-      });
+      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+      // $scope.$apply(function() {
+      //   $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+      // });
+      $scope.$digest();
     }
     if (count === 0) {
       count++;
       navigator.geolocation.getCurrentPosition(function(position) {
         startPos = position;
-        $scope.$apply(function() {
+        // $scope.$apply(function() {
           $scope.lat = startPos.coords.latitude;
           $scope.longg = startPos.coords.longitude;
-        });
+        // });
+        $scope.$digest();
         clientLat = $scope.lat;
         clientLng = $scope.longg;
-        for (var prop2 in $scope.users) {
-          $scope.$apply(function() {
-            $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-            // console.log($scope.users[prop2].apart);
-          });
-        }
+        // for (var prop2 in $scope.users) {
+        //   $scope.$apply(function() {
+        //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+        //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+        //     // console.log($scope.users[prop2].apart);
+        //   });
+        // }
 
         $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
       }); // navigator.geolocation.getCurrentPosition
     } // if (count === 0) {
-    $scope.$apply();
+    $scope.$digest();
   }); //socket.on('allUsers'
 
   // socket.on('chatMessage', function(data) {
@@ -179,7 +184,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
     $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
     $scope.cardColumn = "3";
-    leafletData.getMap().then(function(map) { 
+    leafletData.getMap().then(function(map) {
       setTimeout(function() {
         map.invalidateSize(); // this fixes Map render Bug
       }, 200);
