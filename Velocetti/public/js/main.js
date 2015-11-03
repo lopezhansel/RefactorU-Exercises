@@ -106,7 +106,7 @@ app.config(function($routeProvider) {
       templateUrl: 'views/ProfileView.html'
     })
     .when('/messages', {
-      controller: 'mainController',
+      controller: 'messagesController',
       templateUrl: 'views/messagesView.html'
     })
     .when('/login', {

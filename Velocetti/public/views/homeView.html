@@ -28,7 +28,7 @@
                 <md-card class="md-padding" flex layout="column" >
                     <md-card-content layout='row'  >
                       <img ng-src="{{::user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
-                      <md-content  layout="column" layout-align="start center" flex>
+                      <md-content class="usertitle" layout="column" layout-align="start center" flex>
                         
                         <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ ::user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
 

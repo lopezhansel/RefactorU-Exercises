@@ -3,10 +3,21 @@
 		<md-toolbar layout="row">
 		<div class="md-toolbar-tools">
 			<md-button class="md-raised md-secondary"><a href="#home">back</a></md-button>
-		</div>`
+		</div>
 		</md-toolbar>
 		    <md-list>
-		    	<md-list-item>
+		    	<div ng-repeat="user in users">
+		    		<md-list-item>
+		    			<img ng-src={{user.pictureMd}} class="md-avatar" alt="{{item.who}}" />
+		    			        <div class="md-list-item-text" layout="column">
+		    			          <h3>{{user.username}}</h3>
+		    			          <h4> What?</h4>
+		    			          <p>Lorem ipsum dolor sit amet, ne quod novum mei</p>
+		    			        </div>
+		    		</md-list-item>
+		    		<md-divider ></md-divider>
+		    	</div>
+		    <!-- 	<md-list-item>
 		    		<img ng-src="https://material.angularjs.org/latest/img/list/60.jpeg?0" class="md-avatar" alt="{{item.who}}" />
 		    		        <div class="md-list-item-text" layout="column">
 		    		          <h3>Joe Schmo</h3>
@@ -41,16 +52,7 @@
 		    		          <p>Lorem ipsum dolor sit amet, ne quod novum mei</p>
 		    		        </div>
 		    	</md-list-item>
-		    	<md-divider ></md-divider>
-		    	<md-list-item>
-		    		<img ng-src="https://material.angularjs.org/latest/img/list/60.jpeg?0" class="md-avatar" alt="{{item.who}}" />
-		    		        <div class="md-list-item-text" layout="column">
-		    		          <h3>Joe Schmo</h3>
-		    		          <h4> What?</h4>
-		    		          <p>Lorem ipsum dolor sit amet, ne quod novum mei</p>
-		    		        </div>
-		    	</md-list-item>
-		    	<md-divider ></md-divider>
+		    	<md-divider ></md-divider> -->
 		    </md-list>
 
 	
@@ -62,6 +64,6 @@
 			<md-button class="md-raised md-secondary"><a href="#home">back</a></md-button>
 		</div>
 		</md-toolbar>
-		Lorem ipsum dolor sit amet, ne quod novum mei
+		{{users}}
 	</md-content>
 </md-content>

@@ -179,3 +179,6 @@ button.md-accent.md-raised.login.md-button {
     height: 10px;
     top: 10px;
 }
+md-content.usertitle.layout-align-start-center.layout-column.flex {
+    overflow: hidden;
+}

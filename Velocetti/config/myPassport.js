@@ -78,6 +78,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
+    console.log(req.body);
     bcrypt.genSalt(10, function(error, salt) {
         bcrypt.hash(req.body.password, salt, function(hashError, hash) {
             console.log(req.body.pictureMd);
@@ -86,8 +87,8 @@ app.post('/signup', function(req, res) {
                 password: hash,
                 gender: req.body.gender,
                 dob: req.body.dob,
-                // firstName: req.body.name.first,
-                // lastName: req.body.name.last,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 phone: req.body.phone,
                 cell: req.body.cell,
