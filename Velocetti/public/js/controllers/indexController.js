@@ -1,4 +1,5 @@
-app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
+app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", 
+	function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
 
 	$scope.redirect = function(urlStr) {
 		$location.path(urlStr);
@@ -13,6 +14,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 	};
 
 	$scope.me = {};
+
 	$scope.me = userService.me;
 
 	$scope.selectedIndex = 2;

@@ -2,10 +2,12 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	var userService = this;
 	var startPos;
 
-	userService.openToast = function(message) {
-		$mdToast.show($mdToast.simple().content(message).position("top right"));
+	userService.openToast = function(message,position) {
+		var input = (position ===undefined)? "top right" : position;
+		$mdToast.show($mdToast.simple().content(message).position(input));
 		// Could also do $mdToast.showSimple('Hello');
 	};
+
 	var socket = io();
 
 	(function(cb) {
@@ -34,7 +36,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		userService.openToast(showPosition.coords.latitude);
+		userService.openToast("Location Updated", "bottom right");
 		myLocation = {
 			accuracy: showPosition.coords.accuracy,
 			lat: showPosition.coords.latitude,
