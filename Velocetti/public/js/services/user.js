@@ -1,5 +1,10 @@
 app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
 	var userService = this;
+	userService.openToast = function(message) {
+	  $mdToast.show($mdToast.simple().content(message).position("top right"));
+	  // Could also do $mdToast.showSimple('Hello');
+	};
+	userService.openToast('userService');
 	// this.location = {};
 	// function getLocation (cb) {
 	// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
@@ -41,6 +46,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
+		userService.openToast('acuaried location');
 	});
 
 	userService.me= {};
