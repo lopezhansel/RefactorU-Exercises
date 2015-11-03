@@ -26,11 +26,11 @@ app.filter('orderObjectBy', function() {
 app.config(function($routeProvider){
   $routeProvider
     .when('/home', { 
-      controller: 'AppCtrl', 
+      controller: 'mainController', 
       templateUrl: 'views/homeView.html' 
     })
     .when('/map', { 
-      controller: 'AppCtrl', 
+      controller: 'mapController', 
       templateUrl: 'views/mapView.html' 
     })
     .when('/AccountSettings', { 
@@ -38,15 +38,15 @@ app.config(function($routeProvider){
       templateUrl: 'views/accountSettingsView.html' 
     })
     .when('/ProfileView/:id', { 
-      controller: 'AppCtrl', 
+      controller: 'mainController', 
       templateUrl: 'views/ProfileView.html' 
     })
     .when('/Messages', { 
-      controller: 'AppCtrl', 
+      controller: 'mainController', 
       templateUrl: 'views/messagesView.html' 
     })
     .when('/login', { 
-      controller: 'AppCtrl', 
+      controller: 'mainController', 
       templateUrl: 'views/login.html' 
     })
     .otherwise({ 

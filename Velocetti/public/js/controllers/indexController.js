@@ -27,7 +27,6 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 }]);
 
 
-
 // setMapCenter()
 // $mdMedia()
 
