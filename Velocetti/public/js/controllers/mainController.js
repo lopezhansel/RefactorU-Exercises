@@ -10,6 +10,8 @@
 app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
   setTimeout(function() {
     console.log(userService.me);
+    userService.hansel = "hansel";
+
   }, 2000);
 
 
