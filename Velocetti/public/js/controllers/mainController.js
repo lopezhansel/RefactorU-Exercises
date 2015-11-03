@@ -33,40 +33,51 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
   $scope.showMap = false;
   $scope.selectedUser = {};
-
   $scope.setMapCenter = function(user) {
     $scope.selectedUser = user;
-    console.log($scope.selectedUser);
-    $scope.selectedIndex = 1;
-
-    $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
-    $scope.cardColumn = "3";
-    leafletData.getMap().then(function(map) {
-      setTimeout(function() {
-        map.invalidateSize(); // this fixes Map render Bug
-      }, 200);
-    }); ////leafletData.getMap().then(function(map) {
-    if (typeof(user) === "object") { // set position clicking on a user
-      // $scope.showMap = true;
-      $scope.mapCenter = {
+    userService.location = {
         lat: user.lat,
         lng: user.lon,
         zoom: 17,
       };
-    } else { // other toggle 
-      console.log("not user defined");
-      $scope.showMap = !$scope.showMap;
-      if ($scope.showMap && $scope.xlg) {
-        $scope.gridflex = "noFlex";
-      } else if ($scope.showMap && !$scope.xlg) {
-        $scope.gridflex = "flex-50";
-      }
-      if (!$scope.showMap) {
-        $scope.gridflex = "";
-      }
-    }
-
+    console.log($scope.selectedUser);
+    $scope.selectedIndex = 1;
+    $location.path('/map');
   };
+
+  // $scope.setMapCenter = function(user) {
+  //   $scope.selectedUser = user;
+  //   console.log($scope.selectedUser);
+  //   $scope.selectedIndex = 1;
+
+  //   $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
+  //   $scope.cardColumn = "3";
+  //   leafletData.getMap().then(function(map) {
+  //     setTimeout(function() {
+  //       map.invalidateSize(); // this fixes Map render Bug
+  //     }, 200);
+  //   }); ////leafletData.getMap().then(function(map) {
+  //   if (typeof(user) === "object") { // set position clicking on a user
+  //     // $scope.showMap = true;
+  //     $scope.mapCenter = {
+  //       lat: user.lat,
+  //       lng: user.lon,
+  //       zoom: 17,
+  //     };
+  //   } else { // other toggle 
+  //     console.log("not user defined");
+  //     $scope.showMap = !$scope.showMap;
+  //     if ($scope.showMap && $scope.xlg) {
+  //       $scope.gridflex = "noFlex";
+  //     } else if ($scope.showMap && !$scope.xlg) {
+  //       $scope.gridflex = "flex-50";
+  //     }
+  //     if (!$scope.showMap) {
+  //       $scope.gridflex = "";
+  //     }
+  //   }
+
+  // };
 
   $scope.cardColumn = "2";
   $scope.gridflex = "";
@@ -135,14 +146,6 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   };
 
   // console.log($scope.isUsersEmpty);
-  $timeout(function() {
-    if ($scope.users === undefined) {
-
-      $scope.showAdvanced();
-    }
-
-  }, 500);
-
 
 
   $scope.$watch(function() {
@@ -221,12 +224,36 @@ function DialogController($scope, $mdDialog, $http) {
     });
     $mdDialog.hide();
   };
-
+  $scope.signup = function(argument) {
+    $http({
+      method: 'POST',
+      url: '/signup',
+      data: $scope.signupForm
+    }).then(function(returnData) {
+      console.log(returnData);
+      if (returnData.data) {
+        window.location.href = "/";
+      } else {
+        console.log(returnData);
+      }
+    });
+    $mdDialog.hide();
+  };
+  $scope.chuck = function  () {
+    console.log("running");
+    $scope.signupForm.pictureMd = 'http://www.fightersonlymag.com/images/chucknorris.jpg';
+  };
+  $scope.hansel = function  () {
+    console.log("running");
+    $scope.signupForm.pictureMd = 'https://avatars1.githubusercontent.com/u/11531054?v=3&s=400';
+  };
   $scope.login = function(argument) {
+    console.log($scope.signupForm);
+
     $http({
       method: 'POST',
       url: '/login',
-      data: $scope.loginForm
+      data: $scope.signupForm
     }).then(function(returnData) {
       console.log(returnData);
       if (returnData.data) {
