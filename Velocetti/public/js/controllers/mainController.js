@@ -202,6 +202,26 @@ function DialogController($scope, $mdDialog, $http) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
+  $scope.loginAsGuest = function() {
+    $scope.guest = {
+      username : "smallmouse892",
+      password : "tunafish"
+    },
+    $http({
+      method: 'POST',
+      url: '/login',
+      data: $scope.guest
+    }).then(function(returnData) {
+      console.log(returnData);
+      if (returnData.data) {
+        window.location.href = "/";
+      } else {
+        console.log(returnData);
+      }
+    });
+    $mdDialog.hide();
+  };
+
   $scope.login = function(argument) {
     $http({
       method: 'POST',

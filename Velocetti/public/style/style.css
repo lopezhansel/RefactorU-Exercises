@@ -168,3 +168,14 @@ md-tabs.md-accent.ng-isolate-scope {
 body{
   overflow: hidden;
 }
+img.sm-card-image {
+    height: 150px;
+    width: 150px;
+}
+.leaflet-popup-content img {
+    height: 80px;
+}
+button.md-accent.md-raised.login.md-button {
+    height: 10px;
+    top: 10px;
+}

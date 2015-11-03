@@ -28,7 +28,9 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {
-		userService.me.name = data.capitalizeFirstLetter() || "NoName";
+		console.log(data);
+		userService.me.name = (data !== null) ? data.capitalizeFirstLetter() : "No Name";
+
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
@@ -40,12 +42,12 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 			timeStamp: Date.now(),
 		};
 		console.log(myLocation);
-		socket.emit("myLocation", myLocation); 
+		socket.emit("myLocation", myLocation);
 	});
 
 
 
-	socket.on('allUsers', function(data) { // #00FF24 #24FF00
+	socket.on('allUsers', function(data) { 
 		userService.users = data;
 		console.log(userService.users);
 		userService.isUsersEmpty = Object.keys(userService.users).length;
@@ -69,7 +71,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		// 	}); // navigator.geolocation.getCurrentPosition
 		// } // if (count === 0) {
 
-	}); //socket.on('allUsers'   // #00FF24 #24FF00
+	}); //socket.on('allUsers'  
 
 }]);
 
@@ -129,4 +131,3 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 // 	userService.location = data;
 // });
 //////////////////////////////////////////////////////////
-
