@@ -25,19 +25,51 @@
           <md-button  class="md-accent md-raised login" ng-click='login()'  >
             <strong>Submit</strong>
           </md-button>
+      </form>
+
+
+      <h1>Become A New User</h1>
+
+      <form ng-submit="signup()" layout="column">
+        <div layout="row">
+          <md-input-container flex> 
+            <label>Username</label> 
+            <input ng-model="signupForm.username" type="text"/> 
+          </md-input-container>
+          <md-input-container flex> 
+            <label>Password</label> 
+            <input ng-model="signupForm.password" type="password"/> 
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex> 
+            <label>First Name</label> 
+            <input ng-model="signupForm.firstName" type="text"/> 
+          </md-input-container>
+          <md-input-container flex> 
+            <label>Last Name</label> 
+            <input ng-model="signupForm.lastName" type="text"/> 
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container ng-dblclick="hansel()" flex> 
+            <label>Email</label> 
+            <input ng-model="signupForm.email" type="text"/> 
+          </md-input-container>
+          <md-input-container ng-dblclick="chuck()" flex> 
+            <label>Picture</label> 
+            <input ng-model="signupForm.pictureMd" type="text"/> 
+          </md-input-container>
+        </div>
+        
+          <md-button  class="md-accent md-raised login" ng-click='signup()'  >
+            <strong>Submit</strong>
+          </md-button>
 
       </form>
 
 
-      <h1>Register </h1>
-      <form action="/signup" method="POST">
-        <input type="text" name="username" placeholder="Username"/>
-        <input type="email" name="email" placeholder="Email"/>
-        <input type="password" name="password" placeholder="Password"/>
-        <input type="pictureMd" name="pictureMd" placeholder="Picture Link"/>
-        <input type="submit"/>
-      </form>
-
+      
     </md-dialog-content>
 
     <div class="md-actions" layout="row">
