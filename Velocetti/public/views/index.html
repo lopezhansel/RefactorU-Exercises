@@ -64,21 +64,21 @@
             <div flex layout="column" layout-fill>
                 <md-tabs md-stretch-tabs md-selected="selectedIndex" class="md-accent">
                      <md-tab label="Home" ng-click="redirect('/home')" > 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/home')"> </ng-view>
+                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/home')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab> 
                     <md-tab label="Map" ng-click="redirect('/map')" > 
-                       <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/map')"> </ng-view>
+                       <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/map')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                     </md-tab>
                      <md-tab  label="Messages"  ng-click="redirect('/messages')"> 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/messages')"> </ng-view>
+                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/messages')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>
                 
                      <md-tab  label="Login"  ng-click="redirect('/login')">  
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')"> </ng-view>
+                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                 
                      <md-tab  label="AccountSettings"  ng-click="redirect('/accountSettings')"> 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/accountSettings')"> </ng-view>
+                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/accountSettings')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                 
                   </md-tabs>

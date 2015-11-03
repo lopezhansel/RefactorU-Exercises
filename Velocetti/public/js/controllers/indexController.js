@@ -15,13 +15,15 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 	$scope.me = {};
 	$scope.me = userService.me;
 
-	$scope.selectedIndex = 0;
+	$scope.selectedIndex = 2;
 	$scope.switchTabs = function(leftOrRight) {
 		console.log("switchTabs");
 		$scope.selectedIndex = $scope.selectedIndex + leftOrRight;
+		console.log($scope.selectedIndex);
 		if ($scope.selectedIndex < 0) {
 			$scope.selectedIndex = 0;
 		}
+
 	};
 
 	$scope.toggleSidenav = function(menuId) {
@@ -38,3 +40,5 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 
 // // $scope.me
 // selectedIndex
+smallmouse892
+tunafish
