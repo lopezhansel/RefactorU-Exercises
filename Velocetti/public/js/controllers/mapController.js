@@ -1,11 +1,13 @@
 app.controller('mapController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-	$scope.mapMarkerss = userLocToMarkers(userService.users);
-
-	$interval(function  () {
+	if (userService.users=== undefined){ $location.path("/login");} 
+	else{
+		
 		$scope.mapMarkerss = userLocToMarkers(userService.users);
-	},500);
+		$interval(function() {
+			$scope.mapMarkerss = userLocToMarkers(userService.users);
+		}, 500);
+	}
 
-	userService.openToast("hello");
 	$scope.mapCenter = {
 		lat: 40.0164106,
 		lng: -105.2201631,

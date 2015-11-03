@@ -31,6 +31,13 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		userService.me.name = data.capitalizeFirstLetter() || "NoName";
 	});
 
+	navigator.geolocation.watchPosition(function(position) {
+		console.log(position.coords.latitude, position.coords.longitude,Date.now());
+		userService.openToast(position.coords.latitude);
+		navigator.vibrate([500, 500,500, 500, 500, 500, 500, 500, 500, 500 ]);
+		// userService.openToast(Date.now());
+	});
+
 
 	$interval(function() {
 		navigator.geolocation.getCurrentPosition(function(showPosition) {

@@ -6,27 +6,19 @@
 // Angular Services are SingleTons
 
 
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
+app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
 
   var socket = io(); // #00FF24 #24FF00
   var count = 0;
-  $scope.users = {};
-  $scope.isUsersEmpty = Object.keys($scope.users).length;
+  $scope.users = null;
+  // $scope.isUsersEmpty = Object.keys($scope.users).length;
+
   var myLocation = {};
 
-
-
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.me = userService.me;
-  $timeout(function  () {
-  $scope.users = userService.users;
-    
-  },500);
-  // $scope.$digest()
-
-
+  $timeout(function() {
+    $scope.users = userService.users;
+  }, 5);
 
   // socket.on('chatMessage', function(data) {   // #00FF24 #24FF00
   //   console.log('chat message? ', data);
@@ -36,17 +28,8 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   // socket.on('whisper', function(data) {   // #00FF24 #24FF00
   //   console.log(data.sender + ': ' + data.content);
   // });
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
   // $scope.user = userService.randomUsers[$routeParams.id];
-
-
-
-
-
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
-  // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
   $scope.showMap = false;
   $scope.selectedUser = {};
@@ -84,13 +67,6 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
     }
 
   };
-
-
- 
-
-
-  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
-  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
 
   $scope.cardColumn = "2";
   $scope.gridflex = "";
@@ -139,10 +115,7 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
   $scope.showAdvanced = function(ev, index) {
     $scope.popUpDialogUser = index;
-    // console.log($scope.popUpDialogUser);
-    // console.log($scope.popUpDialogUser);
     $mdDialog.show({
-
         locals: {
           currentUserPopUP: $scope.popUpDialogUser
         },
@@ -160,6 +133,17 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
     // console.log('popopWorkded', index.name.first);
   };
+
+  // console.log($scope.isUsersEmpty);
+  $timeout(function() {
+    if ($scope.users === undefined) {
+
+      $scope.showAdvanced();
+    }
+
+  }, 500);
+
+
 
   $scope.$watch(function() {
     return $mdMedia('sm');
@@ -200,23 +184,15 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
     // console.log("gt-lg", $scope.xlg, "| Grid-flex", $scope.gridflex);
   });
 
-
   $scope.layout = 'row';
-
-
-  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
-  // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
-
 
 }]);
 
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
-
-function DialogController($scope, $mdDialog, currentUserPopUP) {
+function DialogController($scope, $mdDialog, $http) {
   // console.log(currentUserPopUP);
-  $scope.popUpDialogUser = currentUserPopUP;
+  // $scope.popUpDialogUser = currentUserPopUP;
+  $scope.loginForm = {};
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -226,6 +202,20 @@ function DialogController($scope, $mdDialog, currentUserPopUP) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
-}
+  $scope.login = function(argument) {
+    $http({
+      method: 'POST',
+      url: '/login',
+      data: $scope.loginForm
+    }).then(function(returnData) {
+      console.log(returnData);
+      if (returnData.data) {
+        window.location.href = "/";
+      } else {
+        console.log(returnData);
+      }
+    });
 
-// #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
+    $mdDialog.hide();
+  };
+}

@@ -1,5 +1,7 @@
-      <h1>
-        {{me.name}}
+      <h1 ng-if="!users">
+
+        <md-button ng-click="showAdvanced($event)"><h1>Log In Here</h1></md-button>
+        
       </h1>
         <md-content md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">
           <md-grid-list 

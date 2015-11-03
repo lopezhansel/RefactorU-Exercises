@@ -14,6 +14,13 @@ function greatCircleMethod(latitude, longitude) {
   var distance = (earthMedianRadius * c);
   return distance;
 }
+navigator.geolocation.watchPosition(function(position) {
+    console.log(position.coords.latitude, position.coords.longitude,Date.now());
+    // userService.openToast(position.coords.latitude);
+    navigator.vibrate(2000);
+    // userService.openToast(Date.now());
+
+  });
 
 
 
@@ -63,6 +70,8 @@ function getMessage(user) {
   // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
   return "<h6><a target='_blank'  href='" + profileUrl + "'>" + user.username + "</a></h6>" + ptag + "<img src=" + user.pictureSm + ">";
 }
+
+
 var app = angular.module('StarterApp', ['ngAnimate', 'ngMaterial', 'ngRoute', 'ui.bootstrap', 'leaflet-directive']);
 
 app.config(function($mdThemingProvider) {
