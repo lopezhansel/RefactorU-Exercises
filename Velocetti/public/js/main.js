@@ -27,15 +27,15 @@ app.config(function($routeProvider){
   $routeProvider
     .when('/home', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/home.html' 
+      templateUrl: 'views/homeView.html' 
     })
     .when('/map', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/map.html' 
+      templateUrl: 'views/mapView.html' 
     })
     .when('/AccountSettings', { 
       controller: 'accountController', 
-      templateUrl: 'views/AccountSettings.html' 
+      templateUrl: 'views/accountSettingsView.html' 
     })
     .when('/ProfileView/:id', { 
       controller: 'AppCtrl', 
@@ -43,11 +43,11 @@ app.config(function($routeProvider){
     })
     .when('/Messages', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/Messages.html' 
+      templateUrl: 'views/messagesView.html' 
     })
     .when('/login', { 
       controller: 'AppCtrl', 
-      templateUrl: 'views/signIn.html' 
+      templateUrl: 'views/login.html' 
     })
     .otherwise({ 
       redirectTo: '/home' 

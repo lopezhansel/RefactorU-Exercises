@@ -72,7 +72,7 @@ app.isAuthenticatedAjax = function(req, res, next) {
 };
 
 app.get('/', function(req, res) {
-    res.sendFile('/views/login.html', {
+    res.sendFile('/views/index.html', {
         root: './public'
     });
 });
@@ -142,7 +142,7 @@ app.post('/login', function(req, res, next) {
 });
 
 app.get('/restricted', app.isAuthenticated, function(req, res) {
-    res.sendFile('/views/restricted.html', {
+    res.sendFile('/views/restrictedView.html', {
         root: './public'
     });
 });

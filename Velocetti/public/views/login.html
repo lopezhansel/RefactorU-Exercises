@@ -1,106 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="StarterApp">
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-aria.min.js"></script> 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc2/angular-material.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.8.7/angular-leaflet-directive.min.js"></script>
-        <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script> -->
-
-        <script type="text/javascript", src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
-        <script src="./js/vendors/hanselLib.js"></script>
- 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" />
-        
-        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
-        
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc2/angular-material.min.css">
-        <link rel="stylesheet" type="text/css" href="./style/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-        <meta name="viewport" content="initial-scale=1" />
-    </head>
-
-    <body ng-controller="indexCtrl" ng-cloak>
-        <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
-        <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
-        <md-toolbar layout="column"  class="md-whiteframe-z2" >
-          <div class="md-toolbar-tools" md-ink-ripple >
-            <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
-              <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
-            </md-button>
-            <!-- <img ng-click="showMapUI()" class="logo" src="http://gdurl.com/0P2s"> -->
-            <img ng-click="setMapCenter()" class="logo" src="http://gdurl.com/0P2s">
-            <!-- <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2> -->
-          </div>
-        </md-toolbar>
-
-        <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
-        <!-- //  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF  #00B4FF -->
-        <div  layout="row" layout-fill >
-            <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 md-padding" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
-            <!-- data-ng-click="openToast('You Found an Easter Egg')" -->
-                <h1 >Hey {{me.name}}</h1>
-                <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
-                <h3><a href="#Messages"><p>Messages</p></a> </h3>
-                <h3 data-ng-click="setMapCenter()">Show Map</h3>
-                <h3><a href="#login">Login</a></h3>
-                <h2>Search:</h2>
-                <input type="text" data-ng-model="searchbox">
-            </md-sidenav>
-
-            <div flex layout="column" layout-fill>
-                <md-tabs md-stretch-tabs md-selected="selectedIndex" class="md-accent">
-                     <md-tab label="Home" ng-click="redirect('/home')" > 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/home')"> </ng-view>
-                     </md-tab> 
-                    <md-tab label="Map" ng-click="redirect('/map')" > 
-                       <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/map')"> </ng-view>
-                    </md-tab>
-                     <md-tab  label="Messages"  ng-click="redirect('/Messages')"> 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/Messages')"> </ng-view>
-                     </md-tab>
-                
-                     <md-tab  label="Login"  ng-click="redirect('/login')">  
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')"> </ng-view>
-                     </md-tab>  
-                
-                     <md-tab  label="AccountSettings"  ng-click="redirect('/AccountSettings')"> 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/AccountSettings')"> </ng-view>
-                     </md-tab>  
-                
-                  </md-tabs>
-            </div>
-            
 
 
+<h1>Existing Users </h1>
+
+<form action="/login" method="POST">
+  <input type="text"     name="username" placeholder="Username"/>
+  <input type="password" name="password" placeholder="Password"/>
+  <input type="submit"/>
+</form>
+
+<h1>Register </h1>
+
+<form action="/signup" method="POST">
+  <input type="text" name="username" placeholder="Username"/>
+  <input type="email" name="email" placeholder="Email"/>
+  <input type="password" name="password" placeholder="Password"/>
+  <input type="pictureMd" name="pictureMd" placeholder="Picture Link"/>
+  <input type="submit"/>
+</form>
 
 
-
-        </div>
-
-
-        <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
-
-        <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
-
-   
-    <script src="./js/main.js"></script>
-    <script src="./js/services/user.js"></script>
-    <script src="./js/controllers/mainController.js"></script>
-    <script src="./js/controllers/accountController.js"></script>
-    <script src="./js/controllers/homeController.js"></script>
-    </body>
-</html>
