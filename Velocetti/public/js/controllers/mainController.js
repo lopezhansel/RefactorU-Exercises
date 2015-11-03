@@ -7,16 +7,9 @@
 
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
-  setTimeout(function() {
-    console.log(userService.me);
-    userService.hansel = "hansel";
+app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
 
-  }, 2000);
-
-
-  var startPos;
-  var socket = io();   // #00FF24 #24FF00
+  var socket = io(); // #00FF24 #24FF00
   var count = 0;
   $scope.users = {};
   $scope.isUsersEmpty = Object.keys($scope.users).length;
@@ -24,50 +17,16 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
 
 
-
-
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   $scope.me = userService.me;
+  $timeout(function  () {
+  $scope.users = userService.users;
+    
+  },500);
+  // $scope.$digest()
 
 
-
-  socket.on('allUsers', function(data) {   // #00FF24 #24FF00
-    $scope.users = data;
-    $scope.isUsersEmpty = Object.keys($scope.users).length;
-    $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
-
-    for (var prop2 in $scope.users) {
-      $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-      // $scope.$apply(function() {
-      //   $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-      // });
-      $scope.$digest();
-    }
-    if (count === 0) {
-      count++;
-      navigator.geolocation.getCurrentPosition(function(position) {
-        startPos = position;
-        // $scope.$apply(function() {
-        $scope.lat = startPos.coords.latitude;
-        $scope.longg = startPos.coords.longitude;
-        // });
-        $scope.$digest();
-        clientLat = $scope.lat;
-        clientLng = $scope.longg;
-        // for (var prop2 in $scope.users) {
-        //   $scope.$apply(function() {
-        //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-        //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-        //     // console.log($scope.users[prop2].apart);
-        //   });
-        // }
-
-        $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
-      }); // navigator.geolocation.getCurrentPosition
-    } // if (count === 0) {
-    $scope.$digest();
-  }); //socket.on('allUsers'   // #00FF24 #24FF00
 
   // socket.on('chatMessage', function(data) {   // #00FF24 #24FF00
   //   console.log('chat message? ', data);
@@ -82,61 +41,7 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
   // $scope.user = userService.randomUsers[$routeParams.id];
 
-  var clientLat = 0;
-  var clientLng = 0;
 
-  function greatCircleMethod(latitude, longitude) {
-    var earthMedianRadius = (6371 / 1.609344); //Convert Kilometers to Miles 
-    var φ1 = clientLat.toRad();
-    var φ2 = latitude.toRad();
-    var Δφ = (latitude - clientLat).toRad();
-    var Δλ = (longitude - clientLng).toRad();
-    var arc = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    var c = 2 * Math.atan2(Math.sqrt(arc), Math.sqrt(1 - arc));
-    var distance = (earthMedianRadius * c);
-    return distance;
-  }
-  // window.onload = function() { // get my location and set clientLat clientLng && $scope.lat $scope.longg
-
-
-
-  function userLocToMarkers(inputUsers) {
-    var markers = [];
-    if (inputUsers.constructor === Object) {
-      for (var oneUser in inputUsers) {
-        // console.log(inputUsers[oneUser]);
-
-        place = {
-          lat: inputUsers[oneUser].lat,
-          lng: inputUsers[oneUser].lon,
-          message: getMessage(inputUsers[oneUser]),
-          icon: {
-            iconUrl: inputUsers[oneUser].icon || 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
-            iconSize: [45, 45],
-          }
-        }; //for (var oneUser in usersGeoDat
-        markers.push(place);
-      }
-    } // if (inputUsers.constructor === Object
-
-    if (inputUsers.constructor === Array) {
-      for (var i = 0; i < inputUsers.length; i++) {
-        place = {
-          lat: inputUsers[i].lat,
-          lng: inputUsers[i].lon,
-          message: getMessage(inputUsers[i]),
-          icon: {
-            iconUrl: 'https://cdn4.iconfinder.com/data/icons/transportation-2-front-view/80/Transportation_front_view-06-512.png',
-            iconSize: [45, 45],
-          }
-        };
-        markers.push(place);
-      }
-    } // if (inputUsers.constructor === Array)
-    return markers;
-  }
 
 
 
@@ -181,21 +86,8 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   };
 
 
-  function getMessage(user) {
-    // var h1 = "<p ng-click='toggleMap()" +"'>hello</p>"
-    var url = "http://en.wikipedia.org/wiki/" + user.place;
-    // $scope.openToast(user.pageid)
-    var ptag = "<p><a target='_blank'  href='" + url + "'>" + user.timeStamp + "</a></p>";
+ 
 
-    var profileUrl = "#ProfileView/" + user._id;
-    // return "<h5><a target='_blank'  href='" + profileUrl + "'>" + user.firstName.toUpperCase() + "</a></h5>" + ptag + "<img src=" + user.pictureSm + ">";
-    return "<h6><a target='_blank'  href='" + profileUrl + "'>" + user.username + "</a></h6>" + ptag + "<img src=" + user.pictureSm + ">";
-  }
-  $scope.mapCenter = {
-    lat: 40.0164106,
-    lng: -105.2201631,
-    zoom: 12
-  };
 
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF

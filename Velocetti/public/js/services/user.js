@@ -1,10 +1,11 @@
 app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
 	var userService = this;
+	var startPos;
+
 	userService.openToast = function(message) {
-	  $mdToast.show($mdToast.simple().content(message).position("top right"));
-	  // Could also do $mdToast.showSimple('Hello');
+		$mdToast.show($mdToast.simple().content(message).position("top right"));
+		// Could also do $mdToast.showSimple('Hello');
 	};
-	userService.openToast('userService Loaded');
 	var socket = io();
 
 	(function(cb) {
@@ -23,59 +24,108 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
-		userService.openToast('acquired location');
 	});
 
-	userService.me= {};
+	userService.me = {};
 	socket.on('apiMe', function(data) {
 		userService.me.name = data.capitalizeFirstLetter() || "NoName";
 	});
 
-	
-  $interval(function() {
-    navigator.geolocation.getCurrentPosition(function(showPosition) {
-      myLocation = {
-        accuracy: showPosition.coords.accuracy,
-        lat: showPosition.coords.latitude,
-        lon: showPosition.coords.longitude,
-        timeStamp: Date.now(),
-      };
-      socket.emit("myLocation", myLocation); /// only emit of moved 10Feet   // #00FF24 #24FF00
-    }); //navigator.geolocation.getCurrentPosition
-  }, 2000); //setInterval(function() {
 
+	$interval(function() {
+		navigator.geolocation.getCurrentPosition(function(showPosition) {
+			myLocation = {
+				accuracy: showPosition.coords.accuracy,
+				lat: showPosition.coords.latitude,
+				lon: showPosition.coords.longitude,
+				timeStamp: Date.now(),
+			};
+			socket.emit("myLocation", myLocation); /// only emit of moved 10Feet   // #00FF24 #24FF00
+		}); //navigator.geolocation.getCurrentPosition
+	}, 2000); //setInterval(function() {
 
+	socket.on('allUsers', function(data) { // #00FF24 #24FF00
+		userService.users = data;
+		console.log(userService.users);
+		userService.isUsersEmpty = Object.keys(userService.users).length;
 
+		// for (var prop2 in $scope.users) {
+		// 	$scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+		// }
+		// if (count === 0) {
+		// 	count++;
+		// 	navigator.geolocation.getCurrentPosition(function(position) {
+		// 		startPos = position;
+
+		// 		$scope.lat = startPos.coords.latitude;
+		// 		$scope.longg = startPos.coords.longitude;
+
+		// 		$scope.$digest();
+		// 		clientLat = $scope.lat;
+		// 		clientLng = $scope.longg;
+
+		// 		$scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
+		// 	}); // navigator.geolocation.getCurrentPosition
+		// } // if (count === 0) {
+
+	}); //socket.on('allUsers'   // #00FF24 #24FF00
 
 }]);
 
+//   for (var prop2 in $scope.users) {
+//     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+//     // $scope.$apply(function() {
+//     //   $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+//     // });
+//     $scope.$digest();
+//   }
+//   if (count === 0) {
+//     count++;
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//       startPos = position;
+//       // $scope.$apply(function() {
+//       $scope.lat = startPos.coords.latitude;
+//       $scope.longg = startPos.coords.longitude;
+//       // });
+//       $scope.$digest();
+//       clientLat = $scope.lat;
+//       clientLng = $scope.longg;
+//       // for (var prop2 in $scope.users) {
+//       //   $scope.$apply(function() {
+//       //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+//       //     $scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
+//       //     // console.log($scope.users[prop2].apart);
+//       //   });
+//       // }
 
+//       $scope.openToast("Acquired Location! Lat: " + $scope.lat + " Lon: " + $scope.longg);
+//     }); // navigator.geolocation.getCurrentPosition
+//   } // if (count === 0) {
+//   $scope.$digest();
+// }); //socket.on('allUsers'   // #00FF24 #24FF00
 
+///////////////////////////////////////////////////////////////////////////////
+// this.location = {};
+// function getLocation (cb) {
+// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
+// 		// this.ip = result.data.ip;
+// 		return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
+// 			// This is to center map on user location based on their Ip
+// 			cb( {
+// 				lat: res.data.latitude,
+// 				lng: res.data.longitude,
+// 				zoom: 10
+// 			});
+// 		}); ////$http.get("http://freegeoip
+// 	}, function(e) {
+// 		console.log("couldn't get Ip Address", e);
+// 	});
 
+// }
+// var userService = this;
+// getLocation(function (data) {
+// 	console.log(data);
+// 	userService.location = data;
+// });
+//////////////////////////////////////////////////////////
 
-
-
-
-	// this.location = {};
-	// function getLocation (cb) {
-	// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
-	// 		// this.ip = result.data.ip;
-	// 		return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
-	// 			// This is to center map on user location based on their Ip
-	// 			cb( {
-	// 				lat: res.data.latitude,
-	// 				lng: res.data.longitude,
-	// 				zoom: 10
-	// 			});
-	// 		}); ////$http.get("http://freegeoip
-	// 	}, function(e) {
-	// 		console.log("couldn't get Ip Address", e);
-	// 	});
-
-	// }
-	// var userService = this;
-	// getLocation(function (data) {
-	// 	console.log(data);
-	// 	userService.location = data;
-	// });
-	//////////////////////////////////////////////////////////
