@@ -31,25 +31,19 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		userService.me.name = data.capitalizeFirstLetter() || "NoName";
 	});
 
-	navigator.geolocation.watchPosition(function(position) {
-		console.log(position.coords.latitude, position.coords.longitude,Date.now());
-		userService.openToast(position.coords.latitude);
-		navigator.vibrate([500, 500,500, 500, 500, 500, 500, 500, 500, 500 ]);
-		// userService.openToast(Date.now());
+	navigator.geolocation.watchPosition(function(showPosition) {
+		userService.openToast(showPosition.coords.latitude);
+		myLocation = {
+			accuracy: showPosition.coords.accuracy,
+			lat: showPosition.coords.latitude,
+			lon: showPosition.coords.longitude,
+			timeStamp: Date.now(),
+		};
+		console.log(myLocation);
+		socket.emit("myLocation", myLocation); 
 	});
 
 
-	$interval(function() {
-		navigator.geolocation.getCurrentPosition(function(showPosition) {
-			myLocation = {
-				accuracy: showPosition.coords.accuracy,
-				lat: showPosition.coords.latitude,
-				lon: showPosition.coords.longitude,
-				timeStamp: Date.now(),
-			};
-			socket.emit("myLocation", myLocation); /// only emit of moved 10Feet   // #00FF24 #24FF00
-		}); //navigator.geolocation.getCurrentPosition
-	}, 2000); //setInterval(function() {
 
 	socket.on('allUsers', function(data) { // #00FF24 #24FF00
 		userService.users = data;

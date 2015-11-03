@@ -14,14 +14,6 @@ function greatCircleMethod(latitude, longitude) {
   var distance = (earthMedianRadius * c);
   return distance;
 }
-navigator.geolocation.watchPosition(function(position) {
-    console.log(position.coords.latitude, position.coords.longitude,Date.now());
-    // userService.openToast(position.coords.latitude);
-    navigator.vibrate(2000);
-    // userService.openToast(Date.now());
-
-  });
-
 
 
 function userLocToMarkers(inputUsers) {
