@@ -46,7 +46,7 @@
             <!-- <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2> -->
             <span flex></span>
 
-            <md-button class="md-raised " href="/logout" aria-label="LogOut"  md-ripple-size="full"><strong>LogOut</strong></md-button>
+            <md-button class="md-raised " href="/logout" aria-label="LogOut"  md-ripple-size="full" ng-if="me.name !== 'There'"><strong>Logout</strong></md-button>
           </div>
         </md-toolbar>
 
