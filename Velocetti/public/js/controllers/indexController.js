@@ -40,5 +40,5 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 
 // // $scope.me
 // selectedIndex
-smallmouse892
-tunafish
+// smallmouse892
+// tunafish
