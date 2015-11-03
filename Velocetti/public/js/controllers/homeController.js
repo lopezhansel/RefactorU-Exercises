@@ -17,16 +17,21 @@ app.controller('homeCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams
 		}
 	};
 
+	$scope.toggleSidenav = function(menuId) {
+	  $mdSidenav(menuId).toggle();
+	};
+
+
 }]);
 
 
-// sidenav
+
 // setMapCenter()
 // $mdMedia()
 
 
 // // $scope.me
 // selectedIndex
-// redirect
-// ngViewToggle
+
+
 

@@ -7,9 +7,11 @@
 
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
-app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData',"$location", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
+app.controller('AppCtrl', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
 
-
+  setTimeout(function() {
+    console.log(userService.me.name);
+  }, 2000);
 
 
   var startPos;
@@ -19,34 +21,12 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   $scope.isUsersEmpty = Object.keys($scope.users).length;
   var myLocation = {};
 
- 
 
-  
-
-  var json = 'http://ipv4.myexternalip.com/json';
-  $http.get(json).then(function(result) {
-    $scope.ip = result.data.ip;
-    $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
-      // This is to center map on user location based on their Ip
-      $scope.mapCenter = {
-        lat: res.data.latitude,
-        lng: res.data.longitude,
-        zoom: 10
-      };
-    }); ////$http.get("http://freegeoip
-  }, function(e) {
-    console.log("couldn't get Ip Address", e);
-  });
 
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
 
-
-  socket.on('apiMe', function(data) {
-    $scope.me.name = data.capitalizeFirstLetter() || "NoName";
-    $scope.$digest();
-  });
 
   $interval(function() {
     navigator.geolocation.getCurrentPosition(function(showPosition) {
@@ -79,8 +59,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
       navigator.geolocation.getCurrentPosition(function(position) {
         startPos = position;
         // $scope.$apply(function() {
-          $scope.lat = startPos.coords.latitude;
-          $scope.longg = startPos.coords.longitude;
+        $scope.lat = startPos.coords.latitude;
+        $scope.longg = startPos.coords.longitude;
         // });
         $scope.$digest();
         clientLat = $scope.lat;
@@ -110,7 +90,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
 
-  $scope.user = userService.randomUsers[$routeParams.id];
+  // $scope.user = userService.randomUsers[$routeParams.id];
 
   var clientLat = 0;
   var clientLng = 0;
@@ -341,9 +321,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams'
 
   $scope.layout = 'row';
 
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
 
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
   // #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF  #00E4FF
@@ -368,4 +345,5 @@ function DialogController($scope, $mdDialog, currentUserPopUP) {
     $mdDialog.hide(answer);
   };
 }
+
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
