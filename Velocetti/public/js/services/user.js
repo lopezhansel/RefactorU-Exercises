@@ -5,7 +5,6 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	userService.openToast = function(message,position) {
 		var input = (position ===undefined)? "top right" : position;
 		$mdToast.show($mdToast.simple().content(message).position(input));
-		// Could also do $mdToast.showSimple('Hello');
 	};
 
 	var socket = io();
