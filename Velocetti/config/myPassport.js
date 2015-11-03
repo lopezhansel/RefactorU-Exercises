@@ -121,7 +121,10 @@ app.post('/signup', function(req, res) {
     });
 });
 
-
+app.get('/logout',function   (req,res ) {
+        req.logout();
+        res.redirect('/');
+});
 
 app.post('/login', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {

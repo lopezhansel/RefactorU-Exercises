@@ -1,8 +1,22 @@
-      <h1 ng-if="!users">
 
-        <md-button ng-click="showAdvanced($event)"><h1>Log In Here</h1></md-button>
+       <md-content class="md-padding" ng-if="!users">
+          <md-content class="md-padding">
+
+           <md-content layout="column " layout-align="center center">
+             <h1> Welcome to Velocetti ! </h1>
+             <h3> A Community Base Bike Delivery App </h3>
+             <br>
+             <br>
+           </md-content>
+
+           <div class="md-actions" layout="row" layout-align="center center">
+             <md-button ng-click="showAdvanced($event)" class="md-accent md-raised "><h1>Log In Here</h1></md-button>
+           </div>
+           
+         </md-content> 
+       </md-content>
         
-      </h1>
+
         <md-content md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">
           <md-grid-list 
               md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
