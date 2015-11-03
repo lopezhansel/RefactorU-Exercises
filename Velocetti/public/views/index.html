@@ -55,12 +55,14 @@
         <div  layout="row" layout-fill >
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 md-padding" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
                 <h1 >Hey {{me.name}}</h1>
+                <md-input-container > 
+                  <label>Search</label> 
+                  <input ng-model="searchText" type="text"/> 
+                </md-input-container>
                 <h3> <a href="#AccountSettings"><p>Account Settings</p></a> </h3>
                 <h3><a href="#Messages"><p>Messages</p></a> </h3>
                 <h3 data-ng-click="setMapCenter()">Show Map</h3>
                 <h3><a href="#login">Login</a></h3>
-                <h2>Search:</h2>
-                <input type="text" data-ng-model="searchbox">
             </md-sidenav>
 
             <div flex layout="column" layout-fill>
