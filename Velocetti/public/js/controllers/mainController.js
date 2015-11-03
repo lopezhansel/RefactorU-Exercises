@@ -3,19 +3,18 @@
 // mongoexport --db test --collection traffic --out traffic.json
 // ps -A | grep node 
 // kill ####
-//viiimvimkljl
+// Angular Services are SingleTons
 
 
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 app.controller('AppCtrl', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
-
   setTimeout(function() {
-    console.log(userService.me.name);
+    console.log(userService.me);
   }, 2000);
 
 
   var startPos;
-  var socket = io();
+  var socket = io();   // #00FF24 #24FF00
   var count = 0;
   $scope.users = {};
   $scope.isUsersEmpty = Object.keys($scope.users).length;
@@ -23,28 +22,17 @@ app.controller('AppCtrl', ['$scope', 'userService', '$routeParams', '$mdMedia', 
 
 
 
+
+
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000
+  $scope.me = userService.me;
 
 
 
-  $interval(function() {
-    navigator.geolocation.getCurrentPosition(function(showPosition) {
-      myLocation = {
-        accuracy: showPosition.coords.accuracy,
-        lat: showPosition.coords.latitude,
-        lon: showPosition.coords.longitude,
-        timeStamp: Date.now(),
-      };
-      socket.emit("myLocation", myLocation); /// only emit of moved 10Feet
-    }); //navigator.geolocation.getCurrentPosition
-  }, 2000); //setInterval(function() {
-
-  socket.on('allUsers', function(data) {
+  socket.on('allUsers', function(data) {   // #00FF24 #24FF00
     $scope.users = data;
     $scope.isUsersEmpty = Object.keys($scope.users).length;
-
-    console.log(data);
     $scope.mapMarkerss = userLocToMarkers($scope.users); // push into markers  
 
     for (var prop2 in $scope.users) {
@@ -77,14 +65,14 @@ app.controller('AppCtrl', ['$scope', 'userService', '$routeParams', '$mdMedia', 
       }); // navigator.geolocation.getCurrentPosition
     } // if (count === 0) {
     $scope.$digest();
-  }); //socket.on('allUsers'
+  }); //socket.on('allUsers'   // #00FF24 #24FF00
 
-  // socket.on('chatMessage', function(data) {
+  // socket.on('chatMessage', function(data) {   // #00FF24 #24FF00
   //   console.log('chat message? ', data);
   //   $scope.messageHistory.push(data);
   //   $scope.$apply();
   // });
-  // socket.on('whisper', function(data) {
+  // socket.on('whisper', function(data) {   // #00FF24 #24FF00
   //   console.log(data.sender + ': ' + data.content);
   // });
   // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000

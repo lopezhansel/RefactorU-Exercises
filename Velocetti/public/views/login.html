@@ -33,7 +33,7 @@
         <meta name="viewport" content="initial-scale=1" />
     </head>
 
-    <body ng-controller="homeCtrl" ng-cloak>
+    <body ng-controller="indexCtrl" ng-cloak>
         <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
         <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->
         <md-toolbar layout="column"  class="md-whiteframe-z2" >
@@ -66,7 +66,9 @@
                      <md-tab label="Home" ng-click="redirect('/home')" > 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/home')"> </ng-view>
                      </md-tab> 
-                
+                    <md-tab label="Map" ng-click="redirect('/map')" > 
+                       <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/map')"> </ng-view>
+                    </md-tab>
                      <md-tab  label="Messages"  ng-click="redirect('/Messages')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/Messages')"> </ng-view>
                      </md-tab>

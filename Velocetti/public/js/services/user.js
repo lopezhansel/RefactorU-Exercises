@@ -48,6 +48,19 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		userService.me.name = data.capitalizeFirstLetter() || "NoName";
 	});
 
+	
+  $interval(function() {
+    navigator.geolocation.getCurrentPosition(function(showPosition) {
+      myLocation = {
+        accuracy: showPosition.coords.accuracy,
+        lat: showPosition.coords.latitude,
+        lon: showPosition.coords.longitude,
+        timeStamp: Date.now(),
+      };
+      socket.emit("myLocation", myLocation); /// only emit of moved 10Feet   // #00FF24 #24FF00
+    }); //navigator.geolocation.getCurrentPosition
+  }, 2000); //setInterval(function() {
+
 
 
 

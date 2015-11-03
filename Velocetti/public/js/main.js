@@ -29,6 +29,10 @@ app.config(function($routeProvider){
       controller: 'AppCtrl', 
       templateUrl: 'views/home.html' 
     })
+    .when('/map', { 
+      controller: 'AppCtrl', 
+      templateUrl: 'views/map.html' 
+    })
     .when('/AccountSettings', { 
       controller: 'accountController', 
       templateUrl: 'views/AccountSettings.html' 

@@ -1,4 +1,4 @@
-app.controller('homeCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
+app.controller('indexCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
 
 	$scope.redirect = function(urlStr) {
 		$location.path(urlStr);
@@ -8,6 +8,8 @@ app.controller('homeCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams
 	};
 
 	$scope.me = {};
+	$scope.me = userService.me;
+
 	$scope.selectedIndex = 0;
 	$scope.switchTabs = function(leftOrRight) {
 		console.log("switchTabs");
@@ -18,7 +20,7 @@ app.controller('homeCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams
 	};
 
 	$scope.toggleSidenav = function(menuId) {
-	  $mdSidenav(menuId).toggle();
+		$mdSidenav(menuId).toggle();
 	};
 
 
@@ -32,6 +34,3 @@ app.controller('homeCtrl', ['$scope', '$mdSidenav', 'userService', '$routeParams
 
 // // $scope.me
 // selectedIndex
-
-
-
