@@ -4,30 +4,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	  $mdToast.show($mdToast.simple().content(message).position("top right"));
 	  // Could also do $mdToast.showSimple('Hello');
 	};
-	userService.openToast('userService');
-	// this.location = {};
-	// function getLocation (cb) {
-	// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
-	// 		// this.ip = result.data.ip;
-	// 		return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
-	// 			// This is to center map on user location based on their Ip
-	// 			cb( {
-	// 				lat: res.data.latitude,
-	// 				lng: res.data.longitude,
-	// 				zoom: 10
-	// 			});
-	// 		}); ////$http.get("http://freegeoip
-	// 	}, function(e) {
-	// 		console.log("couldn't get Ip Address", e);
-	// 	});
-
-	// }
-	// var userService = this;
-	// getLocation(function (data) {
-	// 	console.log(data);
-	// 	userService.location = data;
-	// });
-	//////////////////////////////////////////////////////////
+	userService.openToast('userService Loaded');
 	var socket = io();
 
 	(function(cb) {
@@ -46,7 +23,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
-		userService.openToast('acuaried location');
+		userService.openToast('acquired location');
 	});
 
 	userService.me= {};
@@ -71,3 +48,34 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 
 }]);
+
+
+
+
+
+
+
+
+	// this.location = {};
+	// function getLocation (cb) {
+	// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
+	// 		// this.ip = result.data.ip;
+	// 		return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
+	// 			// This is to center map on user location based on their Ip
+	// 			cb( {
+	// 				lat: res.data.latitude,
+	// 				lng: res.data.longitude,
+	// 				zoom: 10
+	// 			});
+	// 		}); ////$http.get("http://freegeoip
+	// 	}, function(e) {
+	// 		console.log("couldn't get Ip Address", e);
+	// 	});
+
+	// }
+	// var userService = this;
+	// getLocation(function (data) {
+	// 	console.log(data);
+	// 	userService.location = data;
+	// });
+	//////////////////////////////////////////////////////////
