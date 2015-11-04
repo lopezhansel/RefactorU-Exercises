@@ -87,7 +87,7 @@
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                 
-                     <md-tab  label="Account Settings"  ng-click="redirect('/accountSettings')"> 
+                     <md-tab  disabled label="Account Settings"  ng-click="redirect('/accountSettings')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/accountSettings')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
  
@@ -98,7 +98,7 @@
 
 
         </div>
-          <md-button aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
+          <md-button ng-if="me !== 'there'" aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
             <md-icon ><i class="material-icons ">add</i></md-icon>
           </md-button>
          
