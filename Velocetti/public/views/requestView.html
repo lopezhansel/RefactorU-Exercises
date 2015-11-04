@@ -1,9 +1,9 @@
 
- <md-dialog aria-label="Login Form" >
+ <md-dialog aria-label="Sumimit Request" >
   <!-- <form> -->
-    <md-toolbar class="md-toolbar-tools">
+    <md-toolbar class="md-toolbar-tools md-accent">
 
-        <h1><strong>Welcome to Velocetti</strong></h1>
+        <h1><strong>Submit A New Request</strong></h1>
         <span flex></span>
         <md-button class="md-icon-button" aria-label="Close dialog" >
           
@@ -13,22 +13,10 @@
 
     <md-dialog-content  layout-padding style="max-width:800px;max-height:810px; ">
 
-      <h1 ng-dblclick="loginAsGuest()" >Existing Users </h1>
-
-      <form ng-submit="login()" layout="row">
-          <md-input-container flex> 
-            <label>Username</label> 
-          <input ng-model="loginForm.username" type="text"/> </md-input-container>
-          <md-input-container flex> 
-            <label>Password</label> 
-          <input ng-model="loginForm.password" type="password"/> </md-input-container>
-          <md-button  class="md-accent md-raised login" ng-click='login()'  >
-            <strong>Submit</strong>
-          </md-button>
-      </form>
+    
 
 
-      <h1>Become A New User</h1>
+      <h1>  Ask a biker to get you something</h1>
 
       <form ng-submit="signup()" layout="column">
         <div layout="row">
@@ -62,7 +50,7 @@
           </md-input-container>
         </div>
         
-          <md-button  class="md-accent md-raised login" ng-click='signup()'  >
+          <md-button type="submit" class="md-accent md-raised login" ng-click='signup()'  >
             <strong>Submit</strong>
           </md-button>
 
@@ -72,16 +60,6 @@
       
     </md-dialog-content>
 
-    <div class="md-actions" layout="row">
-      <!-- <md-button  target="_blank" md-autofocus>
-        hello
-      </md-button> -->
-      <span flex></span>
-
-      <md-button class="md-accent md-raised " ng-click="answer('useful')" style="margin-right:20px;" >
-        <strong>Close</strong>
-      </md-button>
-    </div>
   <!-- </form> -->
 </md-dialog>
 
