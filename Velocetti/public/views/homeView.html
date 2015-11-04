@@ -28,7 +28,7 @@
               <!-- https://docs.angularjs.org/error/filter/notarray?p0=%7B%7D -->
               <!-- data-ng-repeat="user in users  | filter: searchbox " > -->
               <md-grid-tile data-ng-repeat="user in users    "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
-                <md-card class="md-padding" flex layout="column" >
+                <md-card class="md-padding md-whiteframe-z3 userCards" flex layout="column" >
                     <md-card-content layout='row'  >
                       <img ng-src="{{::user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
                       <md-content class="usertitle" layout="column" layout-align="start center" flex>

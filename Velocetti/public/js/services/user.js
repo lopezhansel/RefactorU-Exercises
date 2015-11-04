@@ -1,6 +1,8 @@
 app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
 	var userService = this;
 	var startPos;
+	userService.location = undefined;
+	userService.allRequests = [];
 
 	userService.openToast = function(message,position) {
 		var input = (position ===undefined)? "top right" : position;
@@ -25,13 +27,20 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
+		console.log(userService.location);
 	});
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {
 		console.log(data);
-		userService.me.name = (data !== null) ? data.capitalizeFirstLetter() : "No Name";
+		userService.me = data;
+		// userService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
 
+	});
+	socket.on('allRequests', function(data) { 
+		console.log(data);
+
+		userService.allRequests.push(data);
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
