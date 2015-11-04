@@ -141,6 +141,7 @@ var loggedInUsers = { // This is Dummy Data to Render Some Users
 
 
 };
+var allRequests = {};
 
 socketServer.use(function(socket, next) {
     app.sessionMiddleware(socket.request, {}, next);
@@ -150,17 +151,18 @@ function isEven(n) {return n % 2 === 0; }
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
 
-
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
     var apiMe = "there";
     socket.emit('apiMe',apiMe);
+
 
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
 
         apiMe = socket.request.session.passport.user;
         socket.emit('apiMe',apiMe);
         console.log("UserId Logged In",apiMe);
+        console.log(" ");
 
         socket.on("newRequest", function(incoming) {
             console.log(incoming);
@@ -173,17 +175,18 @@ socketServer.on("connection", function(socket) {
             newRequest.lat       = incoming.lat;
             newRequest.lon       = incoming.lon;
             newRequest.timeStamp = incoming.timeStamp;
-            console.log(newRequest);
-            socket.emit('allRequests',newRequest);
-
+            
+            allRequests[incoming.who] = newRequest;
+            console.log(allRequests);
+            socket.emit('allRequests',allRequests);
         });////socket.on("newRequest",
+        socket.emit('allRequests',allRequests);
 
         User.findById(apiMe, function(error, userDoc) {
             console.log(userDoc);
             userDoc.password = null;
             loggedInUsers[apiMe] = userDoc;
             socket.emit('apiMe',userDoc);
-
             socketServer.emit('allUsers',loggedInUsers);
         });//// User.findById(apiMe
 
