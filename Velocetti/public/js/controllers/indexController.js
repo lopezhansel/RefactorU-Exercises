@@ -1,102 +1,119 @@
-app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", 
-	function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
+app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
+	function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
 
-	$scope.redirect = function(urlStr) {
-		$location.path(urlStr);
-	};
-	$scope.ngViewToggle = function(urlStr) {
-		if ($location.$$path === '/map'){$scope.selectedIndex = 1; }
-		if ($location.$$path === '/messages'){$scope.selectedIndex = 2; }
-		if ($location.$$path === '/login'){$scope.selectedIndex = 3; }
-		if ($location.$$path === '/home'){$scope.selectedIndex = 0; }
-		if ($location.$$path === '/accountSettings'){$scope.selectedIndex = 4; }
-		return $location.$$path === urlStr;
-	};
+		$scope.redirect = function(urlStr) {
+			$location.path(urlStr);
+		};
+		$scope.ngViewToggle = function(urlStr) {
+			if ($location.$$path === '/map') {
+				$scope.selectedIndex = 1;
+			}
+			if ($location.$$path === '/messages') {
+				$scope.selectedIndex = 2;
+			}
+			if ($location.$$path === '/login') {
+				$scope.selectedIndex = 3;
+			}
+			if ($location.$$path === '/home') {
+				$scope.selectedIndex = 0;
+			}
+			if ($location.$$path === '/accountSettings') {
+				$scope.selectedIndex = 4;
+			}
+			return $location.$$path === urlStr;
+		};
 
-	$scope.me = userService.me;
-	$timeout(function  () {
 		$scope.me = userService.me;
-	console.log($scope.me);
-	},1000);
-	$scope.selectedIndex = 2;
-	$scope.switchTabs = function(leftOrRight) {
-		console.log("switchTabs");
-		$scope.selectedIndex = $scope.selectedIndex + leftOrRight;
-		console.log($scope.selectedIndex);
-		if ($scope.selectedIndex < 0) {
-			$scope.selectedIndex = 0;
-		}
-	};
+		$timeout(function() {
+			$scope.me = userService.me;
+			console.log("$scope.me after one Second", $scope.me);
+		}, 1000);
+		$scope.selectedIndex = 2;
+		$scope.switchTabs = function(leftOrRight) {
+			console.log("switchTabs");
+			$scope.selectedIndex = $scope.selectedIndex + leftOrRight;
+			console.log($scope.selectedIndex);
+			if ($scope.selectedIndex < 0) {
+				$scope.selectedIndex = 0;
+			}
+		};
 
-	$scope.toggleSidenav = function(menuId) {
-		$mdSidenav(menuId).toggle();
-	};
-	$scope.newRequest = function(ev, index) {
-	  $scope.userPassed = index;
-	  $mdDialog.show({
-	      locals: {
-	        currentUserPopUP: $scope.userPassed
-	      },
-	      controller: requestController,
-	      templateUrl: '/views/requestView.html',
-	      parent: angular.element(document.body),
-	      targetEvent: ev,
-	      clickOutsideToClose: true
-	    })
-	    .then(function(answer) {
-		    $location.path("/accountSettings");
-	    	
-	      $scope.status = 'You said the information was "' + answer + '".';
-	    }, function() {
-	      $scope.status = 'You cancelled the dialog.';
-	    });
+		$scope.toggleSidenav = function(menuId) {
+			$mdSidenav(menuId).toggle();
+		};
+		$scope.newRequest = function(ev, index) {
+			$scope.userPassed = index;
+			$mdDialog.show({
+					locals: {
+						currentUserPopUP: $scope.userPassed
+					},
+					controller: requestController,
+					templateUrl: '/views/requestView.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					clickOutsideToClose: true
+				})
+				.then(function(answer) {
+					$location.path("/accountSettings");
 
-	    $location.path("/home");
+					$scope.status = 'You said the information was "' + answer + '".';
+				}, function() {
+					$scope.status = 'You cancelled the dialog.';
+				});
 
-	};
+			$location.path("/home");
+
+		};
 
 
-}]);
+	}
+]);
 
 
 
 function requestController($scope, $mdDialog, $http, userService) {
 	$scope.me = userService.me;
-  $scope.hide = function() {$mdDialog.hide(); };
-  $scope.cancel = function() {$mdDialog.cancel(); };
-  var socket = io();
-    $scope.emitNewRequest = function  () {
-    	var emitObject = {
-    		who : userService.me.firstName.capitalizeFirstLetter(),
-    		what: $scope.emitNewRequestMessage.what,
-    		email: userService.me.email,
-    		cell: $scope.emitNewRequestMessage.cell,
-    		lat : userService.location.lat,
-    		lon : userService.location.lng,
-    		timeStamp : Date.now(),
-    	};
-      socket.emit("newRequest",emitObject );
-      $mdDialog.hide();
-    };
+	$scope.hide = function() {
+		$mdDialog.hide();
+	};
+	$scope.cancel = function() {
+		$mdDialog.cancel();
+	};
+	var socket = io();
+	$scope.emitNewRequest = function() {
+		var emitObject = {
+			who: userService.me.firstName.capitalizeFirstLetter(),
+			what: $scope.me.what,
+			email: userService.me.email,
+			cell: $scope.me.cell,
+			lat: userService.location.lat,
+			lon: userService.location.lng,
+			timeStamp: Date.now(),
+		};
+		socket.emit("newRequest", emitObject);
+		$mdDialog.hide();
+	};
 
-  $scope.answer = function(answer) {$mdDialog.hide(answer); };
-  $scope.signup = function  () {
-    $mdDialog.hide();
-  };
-  $scope.logion = function(argument) {
-    console.log($scope.signupForm);
-    $http({
-      method: 'POST',
-      url: '/login',
-      data: $scope.signupForm
-    }).then(function(returnData) {
-      console.log(returnData);
-      if (returnData.data) {
-        window.location.href = "/";
-      } else {
-        console.log(returnData);
-      }
-    });
-    $mdDialog.hide();
-  };
+	$scope.answer = function(answer) {
+		$mdDialog.hide(answer);
+	};
+	$scope.signup = function() {
+		$mdDialog.hide();
+	};
+	$scope.logion = function(argument) {
+		console.log($scope.signupForm);
+		$http({
+			method: 'POST',
+			url: '/login',
+			data: $scope.signupForm
+		}).then(function(returnData) {
+			console.log(returnData);
+			if (returnData.data) {
+				window.location.href = "/";
+			} else {
+				console.log(returnData);
+			}
+		});
+		$mdDialog.hide();
+	};
 }

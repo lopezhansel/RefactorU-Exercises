@@ -4,6 +4,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	userService.location = undefined;
 	userService.allRequests = [];
 
+
 	userService.openToast = function(message,position) {
 		var input = (position ===undefined)? "top right" : position;
 		$mdToast.show($mdToast.simple().content(message).position(input));
@@ -27,20 +28,20 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
-		console.log(userService.location);
+		console.log("userService.location",userService.location);
 	});
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {
-		console.log(data);
+		console.log("userService.me from Apime",data);
 		userService.me = data;
 		// userService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
 
 	});
 	socket.on('allRequests', function(data) { 
-		console.log(data);
+		console.log("Sockets allRequests",data);
 
-		userService.allRequests.push(data);
+		userService.allRequests = data;
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
@@ -51,7 +52,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 			lon: showPosition.coords.longitude,
 			timeStamp: Date.now(),
 		};
-		console.log(myLocation);
+		console.log("socket emit watchPosition to  Server ",myLocation);
 		socket.emit("myLocation", myLocation);
 	});
 
