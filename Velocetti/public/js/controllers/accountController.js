@@ -1,6 +1,7 @@
 app.controller('accountController',  ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", 
   function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
     $scope.me = userService.me;
+    $scope.allRequests = userService.allRequests;
 }]);
 
 

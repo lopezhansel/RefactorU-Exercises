@@ -1,13 +1,5 @@
 app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", 
 	function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
-	$scope.topDirections = ['left', 'up'];
-	 $scope.bottomDirections = ['down', 'right'];
-	 $scope.isOpen = false;
-	 $scope.availableModes = ['md-fling', 'md-scale'];
-	 $scope.selectedMode = 'md-fling';
-	 $scope.availableDirections = ['up', 'down', 'left', 'right'];
-	 $scope.selectedDirection = 'up';
-
 
 	$scope.redirect = function(urlStr) {
 		$location.path(urlStr);
@@ -21,8 +13,11 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 		return $location.$$path === urlStr;
 	};
 
-	$scope.me = {};
 	$scope.me = userService.me;
+	$timeout(function  () {
+		$scope.me = userService.me;
+	console.log($scope.me);
+	},1000);
 	$scope.selectedIndex = 2;
 	$scope.switchTabs = function(leftOrRight) {
 		console.log("switchTabs");
@@ -49,10 +44,15 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 	      clickOutsideToClose: true
 	    })
 	    .then(function(answer) {
+		    $location.path("/accountSettings");
+	    	
 	      $scope.status = 'You said the information was "' + answer + '".';
 	    }, function() {
 	      $scope.status = 'You cancelled the dialog.';
 	    });
+
+	    $location.path("/home");
+
 	};
 
 
@@ -60,9 +60,25 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 
 
 
-function requestController($scope, $mdDialog, $http) {
+function requestController($scope, $mdDialog, $http, userService) {
+	$scope.me = userService.me;
   $scope.hide = function() {$mdDialog.hide(); };
   $scope.cancel = function() {$mdDialog.cancel(); };
+  var socket = io();
+    $scope.emitNewRequest = function  () {
+    	var emitObject = {
+    		who : userService.me.firstName.capitalizeFirstLetter(),
+    		what: $scope.emitNewRequestMessage.what,
+    		email: userService.me.email,
+    		cell: $scope.emitNewRequestMessage.cell,
+    		lat : userService.location.lat,
+    		lon : userService.location.lng,
+    		timeStamp : Date.now(),
+    	};
+      socket.emit("newRequest",emitObject );
+      $mdDialog.hide();
+    };
+
   $scope.answer = function(answer) {$mdDialog.hide(answer); };
   $scope.signup = function  () {
     $mdDialog.hide();
