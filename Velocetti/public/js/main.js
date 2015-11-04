@@ -103,9 +103,32 @@ app.config(function($mdThemingProvider) {
     'contrastLightColors': undefined    // could also specify this if default was 'dark'
   });
   $mdThemingProvider.theme('default')
-    .primaryPalette('myBlue')
-});
+    .primaryPalette('myBlue');
+  });
 
+// app.config(function($mdThemingProvider) {
+//   var customBackground = {
+//         '50': 'ffffff',
+//         '100': 'ffffff',
+//         '200': 'ffffff',
+//         '300': 'ffffff',
+//         '400': 'fcf8f5',
+//         '500': 'F5EAE2',
+//         '600': 'eedccf',
+//         '700': 'e8cfbc',
+//         '800': 'e1c1a9',
+//         '900': 'dbb396',
+//         'A100': 'F5EAE2', // backGround
+//         'A200': 'ffffff',
+//         'A400': 'ffffff',
+//         'A700': 'd4a583'
+//     };
+//     $mdThemingProvider
+//         .definePalette('customBackground', 
+//                         customBackground);
+//         $mdThemingProvider.theme('default').backgroundPalette('customBackground');
+
+// });
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.definePalette('myOrange', {
     '50': 'ffebee',
