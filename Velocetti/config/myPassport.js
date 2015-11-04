@@ -110,9 +110,7 @@ app.post('/signup', function(req, res) {
                                 err: loginErr
                             });
                         } else {
-                            res.send({
-                                success: 'success'
-                            });
+                            res.redirect('/');
                         }
                     });
                 }
