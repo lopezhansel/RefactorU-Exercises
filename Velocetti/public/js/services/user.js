@@ -40,7 +40,6 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 	socket.on('allRequests', function(data) { 
 		console.log("Sockets allRequests",data);
-
 		userService.allRequests = data;
 	});
 

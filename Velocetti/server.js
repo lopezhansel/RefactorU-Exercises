@@ -176,9 +176,10 @@ socketServer.on("connection", function(socket) {
             newRequest.lon       = incoming.lon;
             newRequest.timeStamp = incoming.timeStamp;
             
-            allRequests[incoming.who] = newRequest;
+            allRequests[incoming.timeStamp] = newRequest;
             console.log(allRequests);
-            socket.emit('allRequests',allRequests);
+            socketServer.emit('allRequests',allRequests);
+            // socketServer.emit('allU')
         });////socket.on("newRequest",
         socket.emit('allRequests',allRequests);
 
@@ -189,6 +190,7 @@ socketServer.on("connection", function(socket) {
             socket.emit('apiMe',userDoc);
             socketServer.emit('allUsers',loggedInUsers);
         });//// User.findById(apiMe
+
 
         socket.on("myLocation", function(userLocation) {
             // console.log(userLocation);

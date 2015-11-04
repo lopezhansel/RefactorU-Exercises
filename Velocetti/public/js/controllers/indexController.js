@@ -61,7 +61,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 					$scope.status = 'You cancelled the dialog.';
 				});
 
-			$location.path("/home");
+
 
 		};
 

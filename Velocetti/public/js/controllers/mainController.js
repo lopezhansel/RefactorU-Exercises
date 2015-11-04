@@ -19,7 +19,10 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   $timeout(function() {
     $scope.users = userService.users;
   }, 5);
-
+  
+  $interval(function() {
+    $scope.users = userService.users;
+  }, 1000);
   // socket.on('chatMessage', function(data) {   // #00FF24 #24FF00
   //   console.log('chat message? ', data);
   //   $scope.messageHistory.push(data);
