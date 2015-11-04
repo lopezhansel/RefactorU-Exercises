@@ -16,41 +16,39 @@
     
 
 
-      <h1>  Ask a biker to get you something</h1>
+      <h1> {{::me.firstName.capitalizeFirstLetter()}} Ask a biker to get you something</h1>
 
-      <form ng-submit="signup()" layout="column">
+      <form ng-submit="emitNewRequest()" layout="column">
+
         <div layout="row">
           <md-input-container flex> 
-            <label>Username</label> 
-            <input ng-model="signupForm.username" type="text"/> 
-          </md-input-container>
-          <md-input-container flex> 
-            <label>Password</label> 
-            <input ng-model="signupForm.password" type="password"/> 
+            <label>What</label> 
+            <input ng-model="emitNewRequestMessage.what" type="text"/> 
           </md-input-container>
         </div>
-        <div layout="row">
+        <!-- <div layout="row">
           <md-input-container flex> 
             <label>First Name</label> 
-            <input ng-model="signupForm.firstName" type="text"/> 
+            <input ng-model="emitNewRequestMessage.firstName" type="text"/> 
           </md-input-container>
           <md-input-container flex> 
             <label>Last Name</label> 
-            <input ng-model="signupForm.lastName" type="text"/> 
+            <input ng-model="emitNewRequestMessage.lastName" type="text"/> 
           </md-input-container>
-        </div>
+        </div> -->
         <div layout="row">
           <md-input-container flex> 
             <label>Email</label> 
-            <input ng-dblclick="hansel()" ng-model="signupForm.email" type="text"/> 
+            <input  ng-model="me.email" type="text"/> 
           </md-input-container>
+
           <md-input-container flex> 
-            <label>Picture</label> 
-            <input ng-dblclick="chuck()" ng-model="signupForm.pictureMd" type="text"/> 
+            <label>Cell</label> 
+            <input ng-model="me.cell" type="text"/> 
           </md-input-container>
         </div>
         
-          <md-button type="submit" class="md-accent md-raised login" ng-click='signup()'  >
+          <md-button type="submit" class="md-accent md-raised login"   >
             <strong>Submit</strong>
           </md-button>
 
