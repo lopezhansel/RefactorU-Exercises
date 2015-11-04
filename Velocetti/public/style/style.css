@@ -182,3 +182,28 @@ button.md-accent.md-raised.login.md-button {
 md-content.usertitle.layout-align-start-center.layout-column.flex {
     overflow: hidden;
 }
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize; }
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important; }
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem; }
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+
+  button.md-fab.md-button.md-ink-ripple {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+  }
+
+
+
+  /*uber live tracking in week which uber doesnt do */
+

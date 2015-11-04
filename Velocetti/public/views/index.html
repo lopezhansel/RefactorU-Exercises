@@ -28,6 +28,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc2/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./style/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
         <meta name="viewport" content="initial-scale=1" />
@@ -47,6 +48,10 @@
             <span flex></span>
 
             <md-button class="md-raised " href="/logout" aria-label="LogOut"  md-ripple-size="full" ng-if="me.name !== 'There'"><strong>Logout</strong></md-button>
+
+
+
+
           </div>
         </md-toolbar>
 
@@ -64,6 +69,7 @@
                 <h3 data-ng-click="setMapCenter()">Show Map</h3>
                 <h3><a href="#login">Login</a></h3>
             </md-sidenav>
+    
 
             <div flex layout="column" layout-fill>
                 <md-tabs md-stretch-tabs md-selected="selectedIndex" class="md-accent">
@@ -81,19 +87,21 @@
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                 
-                     <md-tab  label="AccountSettings"  ng-click="redirect('/accountSettings')"> 
+                     <md-tab  label="Account Settings"  ng-click="redirect('/accountSettings')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/accountSettings')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
+ 
                 
                   </md-tabs>
             </div>
             
 
 
-
-
-
         </div>
+          <md-button aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
+            <md-icon ><i class="material-icons ">add</i></md-icon>
+          </md-button>
+         
 
 
         <!-- // #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  #FF0000  -->

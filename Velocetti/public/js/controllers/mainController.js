@@ -145,8 +145,6 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
     // console.log('popopWorkded', index.name.first);
   };
 
-  // console.log($scope.isUsersEmpty);
-
 
   $scope.$watch(function() {
     return $mdMedia('sm');
@@ -209,7 +207,7 @@ function DialogController($scope, $mdDialog, $http) {
     $scope.guest = {
       username : "smallmouse892",
       password : "tunafish"
-    },
+    };
     $http({
       method: 'POST',
       url: '/login',
@@ -221,7 +219,7 @@ function DialogController($scope, $mdDialog, $http) {
       } else {
         console.log(returnData);
       }
-    });
+    } );
     $mdDialog.hide();
   };
   $scope.signup = function(argument) {
