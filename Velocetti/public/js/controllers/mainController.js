@@ -190,10 +190,11 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 }]);
 
 
-function DialogController($scope, $mdDialog, $http) {
+function DialogController($scope, $mdDialog, $http,userService) {
   // console.log(currentUserPopUP);
   // $scope.popUpDialogUser = currentUserPopUP;
   $scope.loginForm = {};
+  $scope.signupForm = {};
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -204,6 +205,8 @@ function DialogController($scope, $mdDialog, $http) {
     $mdDialog.hide(answer);
   };
   $scope.loginAsGuest = function() {
+
+    userService.openToast("There");
     $scope.guest = {
       username : "smallmouse892",
       password : "tunafish"
@@ -246,12 +249,11 @@ function DialogController($scope, $mdDialog, $http) {
     $scope.signupForm.pictureMd = 'https://avatars1.githubusercontent.com/u/11531054?v=3&s=400';
   };
   $scope.login = function(argument) {
-    console.log($scope.signupForm);
-
+    console.log($scope.loginForm);
     $http({
       method: 'POST',
       url: '/login',
-      data: $scope.signupForm
+      data: $scope.loginForm
     }).then(function(returnData) {
       console.log(returnData);
       if (returnData.data) {

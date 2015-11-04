@@ -126,6 +126,7 @@ app.get('/logout',function   (req,res ) {
 });
 
 app.post('/login', function(req, res, next) {
+    console.log(req.body);
     passport.authenticate('local', function(err, user, info) {
         if (err) {
             return next(err);
