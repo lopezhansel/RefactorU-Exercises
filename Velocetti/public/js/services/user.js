@@ -45,7 +45,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		// userService.openToast("Full Location Updated", "bottom right");
+		// userService.openToast("Full Location Updated", "bottom right");P
 		userService.location = {
 			lat: showPosition.coords.latitude,
 			lng: showPosition.coords.longitude,
