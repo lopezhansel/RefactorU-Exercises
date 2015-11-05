@@ -7,7 +7,9 @@
 
 
 app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-  if (userService.me=== "there"){ $location.path("/login");} 
+  $timeout(function  () {
+    if (userService.me === "there"){ $location.path("/login");} 
+  },500);
 
   var count = 0;
   $scope.users = null;

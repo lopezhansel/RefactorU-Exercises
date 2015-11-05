@@ -33,6 +33,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {
+		userService.openToast(data,'top left');
 		console.log("userService.me from Apime",data);
 		userService.me = data;
 		// userService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
@@ -56,6 +57,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 			lon: showPosition.coords.longitude,
 			timeStamp: Date.now(),
 		};
+		userService.openToast(userService.location);
 		console.log("socket emit watchPosition to  Server ",myLocation);
 		socket.emit("myLocation", myLocation);
 	});
@@ -63,6 +65,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 
 	socket.on('allUsers', function(data) { 
+		userService.openToast(data,"bottom left");
 		userService.users = data;
 		console.log(userService.users);
 		userService.isUsersEmpty = Object.keys(userService.users).length;

@@ -76,6 +76,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 
 function requestController($scope, $mdDialog, $http, userService) {
 	$scope.me = userService.me;
+	console.log($scope.me);
 	$scope.hide = function() {
 		$mdDialog.hide();
 	};
