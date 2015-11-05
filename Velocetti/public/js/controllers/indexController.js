@@ -37,7 +37,10 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 				$scope.selectedIndex = 0;
 			}
 		};
-
+		$scope.goToProfile = function  (user) {
+			userService.openToast(user);
+			$location.path("/messages");
+		};
 		$scope.toggleSidenav = function(menuId) {
 			$mdSidenav(menuId).toggle();
 		};

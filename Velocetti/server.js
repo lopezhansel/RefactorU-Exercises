@@ -1,3 +1,4 @@
+console.log = function () {};
 var express = require('express');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
@@ -211,9 +212,11 @@ socketServer.on("connection", function(socket) {
 
         socket.on("myLocation", function(userLocation) {
             // console.log(userLocation);
-            loggedInUsers[apiMe].lat = userLocation.lat;
-            loggedInUsers[apiMe].lon = userLocation.lon;
-            loggedInUsers[apiMe].timeStamp = userLocation.timeStamp;
+            if (apiMe){
+                loggedInUsers[apiMe].lat = userLocation.lat;
+                loggedInUsers[apiMe].lon = userLocation.lon;
+                loggedInUsers[apiMe].timeStamp = userLocation.timeStamp;
+            }
             // console.log(loggedInUsers);
             socketServer.emit('allUsers',loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);

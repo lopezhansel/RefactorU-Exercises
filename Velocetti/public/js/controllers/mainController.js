@@ -8,7 +8,7 @@
 
 app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
   if (userService.me=== "there"){ $location.path("/login");} 
-  var socket = io(); // #00FF24 #24FF00
+
   var count = 0;
   $scope.users = null;
   // $scope.isUsersEmpty = Object.keys($scope.users).length;
@@ -18,12 +18,12 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   $scope.me = userService.me;
   $timeout(function() {
     $scope.users = userService.users;
-  }, 5);
+  }, 50);
   
   $interval(function() {
     $scope.users = userService.users;
   }, 1000);
-  // socket.on('chatMessage', function(data) {   // #00FF24 #24FF00
+  // socket.on('chatMessage', function(data) {
   //   console.log('chat message? ', data);
   //   $scope.messageHistory.push(data);
   //   $scope.$apply();
@@ -52,7 +52,6 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   //   $scope.selectedUser = user;
   //   console.log($scope.selectedUser);
   //   $scope.selectedIndex = 1;
-
   //   $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
   //   $scope.cardColumn = "3";
   //   leafletData.getMap().then(function(map) {

@@ -3,14 +3,13 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	var startPos;
 	userService.location = undefined;
 	userService.allRequests = [];
-
+	var socket = io();
 
 	userService.openToast = function(message,position) {
 		var input = (position ===undefined)? "top right" : position;
 		$mdToast.show($mdToast.simple().content(message).position(input));
 	};
 
-	var socket = io();
 
 	(function(cb) {
 		$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
@@ -28,6 +27,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		});
 	})(function(returnData) {
 		userService.location = returnData;
+		userService.openToast("Semi Location Updated", "bottom right");
 		console.log("userService.location",userService.location);
 	});
 
@@ -44,7 +44,12 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		userService.openToast("Location Updated", "bottom right");
+		userService.openToast("Full Location Updated", "bottom right");
+		userService.location = {
+			lat: showPosition.coords.latitude,
+			lng: showPosition.coords.longitude,
+			zoom: 10
+		};
 		myLocation = {
 			accuracy: showPosition.coords.accuracy,
 			lat: showPosition.coords.latitude,
@@ -115,7 +120,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 //     }); // navigator.geolocation.getCurrentPosition
 //   } // if (count === 0) {
 //   $scope.$digest();
-// }); //socket.on('allUsers'   // #00FF24 #24FF00
+// }); //socket.on('allUsers'   
 
 ///////////////////////////////////////////////////////////////////////////////
 // this.location = {};
