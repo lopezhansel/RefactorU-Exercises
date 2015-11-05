@@ -33,7 +33,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {
-		userService.openToast(data,'top left');
+		// userService.openToast(data,'top left');
 		console.log("userService.me from Apime",data);
 		userService.me = data;
 		// userService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
@@ -45,7 +45,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		userService.openToast("Full Location Updated", "bottom right");
+		// userService.openToast("Full Location Updated", "bottom right");
 		userService.location = {
 			lat: showPosition.coords.latitude,
 			lng: showPosition.coords.longitude,
@@ -57,7 +57,6 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 			lon: showPosition.coords.longitude,
 			timeStamp: Date.now(),
 		};
-		userService.openToast(userService.location);
 		console.log("socket emit watchPosition to  Server ",myLocation);
 		socket.emit("myLocation", myLocation);
 	});
