@@ -1,0 +1,38 @@
+Hi
+So I wanted to name my App Bike City But  That name was taken already.
+So then i came up with Velocity 
+because velo means bike in french
+Velocity is bike Delivery  Website where you can have a bike rider birng you anything  You want
+In exchange you would tip him with cash
+
+With Velocity You will Be Able to login and see a list of Users around You
+
+You can Press on View On Map Buton To see them On the Map
+
+Did you know those Uber Cars you see on their app a fake? 
+Well Not This App 
+This Map is Live Updating Using Web Sockets
+
+You can click on the user to redirect to the uer Profile For More Information 
+
+Now If you want to Make a Request you can clike on this floating buton 
+You input what you want to be Delivered 
+And contact infomation
+You Will then Be redirected to the Request Page and see Other Users That Want Stuff Around You 
+
+
+
+Mobile View 
+Single Page Application Meaning You Wont Reload the page While your on it
+
+Feautues I will Implement later will be Email forwarding like craiglist so your email doesn't spammed
+Credit Cadit Transactions To Simplify Payments
+Direct Messaaging and Review system For both user and rider
+I will implement Ionic To make this and adroid app and iphone app
+
+So im a big biker 
+So City City Belo 
+
+
+Saving Time 
+Delivery 

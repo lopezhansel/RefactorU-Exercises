@@ -2,10 +2,10 @@
           <md-content class="md-padding">
            <md-content layout="column " layout-align="center center">
              <h2> Welcome to Velocetti ! </h2>
-             <h4> A Based Bike Delivery App </h4>
+             <h4> A Bike Delivery App </h4>
              <h3> "Velo" means BIKE in French</h3>
              <h2> Velo + City = <strong>Velocetti</strong> </h2>
-             <h4> Bikers can now get <strong>Paid</strong> to Bike </h4>
+             <h4> You now can now get <strong>Paid</strong> to Bike </h4>
            </md-content>
            <div class="md-actions" layout="row" layout-align="center center">
              <md-button ng-click="showAdvanced($event)" class="md-primary md-raised "><h3>Log In Here</h3></md-button>
@@ -15,10 +15,8 @@
         
 
         <md-content md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)">
-          <md-grid-list 
-              md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
-              md-row-height="200px"
-              md-gutter="8px" md-gutter-gt-sm="4px" >
+          <md-grid-list md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6"
+              md-row-height="200px" md-gutter="8px" md-gutter-gt-sm="4px" >
               <!-- https://docs.angularjs.org/error/filter/notarray?p0=%7B%7D -->
               <!-- data-ng-repeat="user in users  | filter: searchbox " > -->
               <md-grid-tile data-ng-repeat="user in users    "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
@@ -44,7 +42,7 @@
             
                       <md-content class="md-actions" layout="row" layout-align="end end">
                         <!-- <div flex="50">here</div> -->
-                        <md-button data-ng-click="goToProfile(user)">More Info</md-button>
+                        <md-button data-ng-click="goToProfile(user)">View Profile</md-button>
                         <md-button data-ng-click="setMapCenter(user)">View On Map</md-button>
                       </md-content>
                 </md-card>

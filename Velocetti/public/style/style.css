@@ -2,10 +2,10 @@ body{
 	/*box-sizing: border-box;*/
 	/*color: red;*/
 }
-#accountSettings{
-  background-image: linear-gradient(to bottom, #137499, #1ca8dd);
-  height: 100%;
-
+#accountSettings {
+    /* background-image: linear-gradient(to bottom, #EBB8A2, #846C61); */
+    height: 100%;
+    background: #EFEFEF;
 }
 html, body, #map-wcanvas {
   margin: 0;

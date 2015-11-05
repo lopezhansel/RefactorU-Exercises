@@ -1,7 +1,9 @@
 app.controller('accountController',  ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location","$timeout", 
   function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location,$timeout) {
 
-
+  $timeout(function  () {
+    if (userService.me === "there"){ $location.path("/login");} 
+  },200);
   $scope.me = userService.me;
     $scope.allRequests = userService.allRequests;
   

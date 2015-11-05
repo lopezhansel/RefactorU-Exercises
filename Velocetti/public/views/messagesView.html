@@ -1,41 +1,30 @@
-<md-content layout="row" flex>
-	<md-content  flex="30">
-		<md-toolbar layout="row">
-		<div class="md-toolbar-tools">
-			<md-button class="md-raised md-accent "><a href="#home">back</a></md-button>
-		</div>
-		</md-toolbar>
-		    <md-list>
-		    	<div ng-repeat="user in users">
-		    		<md-list-item>
-		    			<img ng-src={{user.pictureMd}} class="md-avatar" alt="{{item.who}}" />
-		    			        <div class="md-list-item-text" layout="column">
-		    			          <h3>{{user.username}}</h3>
-		    			          <h4> What?</h4>
-		    			          <p>Lorem ipsum dolor sit amet, ne quod novum mei</p>
-		    			        </div>
-		    		</md-list-item>
-		    		<md-divider ></md-divider>
-		    	</div>
-		    </md-list>
+<md-content layout-padding layout="row" id="accountSettings" layout-align="center start">
 
-	
-	</md-content>
+<md-content  layout="column"  flex="80" >
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools ">
+        <h1>{{user.firstName + " "+ user.lastName  | uppercase}}</h1>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding layout="row" layout-align-md="center center" layout-align-gt-md="start start">
+        <img class="profilePic" ng-src={{user.pictureMd}} flex-sm >
 
-	<md-content flex="70">
-		<md-toolbar layout="row">
-		<div class="md-toolbar-tools">
-		</div>
-		</md-toolbar>
-		<!-- {{users}} -->
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis recusandae eum ratione iusto voluptatum repudiandae. Minima quas explicabo natus ratione. Rerum laborum totam explicabo facilis magnam amet nobis voluptatem quisquam!
-	</md-content>
+    </md-content>
+    <md-content layout-padding>
+
+
+        <h2>User Name: {{user.username.capitalize() }}</h2>
+        <h3>Email: {{user.email}}</h3>
+        <h3>Phone: {{user.phone}}</h3>
+        <h3>Cell: {{user.cell}}</h3>
+        <h3>Gender: {{user.gender.capitalize()}}</h3>
+
+        <h2>{{user.dob|date}}</h2>
+        <!-- <h4>Latitude: {{user.lat}}</h4> -->
+        <!-- <h4>Longitutde: {{user.lon}}</h4> -->
+        <h4 ng-if="user.apart">Distance: {{user.apart}}</h4>
+
+    
+    </md-content>
 </md-content>
-
+</md-content>

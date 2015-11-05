@@ -22,7 +22,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			}
 			return $location.$$path === urlStr;
 		};
-
+		$scope.number = 1242342
 		$scope.me = userService.me;
 		$timeout(function() {
 			$scope.me = userService.me;
@@ -38,7 +38,10 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			}
 		};
 		$scope.goToProfile = function  (user) {
-			userService.openToast(user);
+			// userService.openToast(user);
+			console.log(user);
+		    userService.selectUserProfile = user;
+	
 			$location.path("/messages");
 		};
 		$scope.toggleSidenav = function(menuId) {

@@ -61,7 +61,7 @@
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 md-padding" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
                 <md-content layout="column" layout-align="center center">
                     <img class="profileImg" ng-src="{{::me.pictureMd}}">
-                <!-- <h1 >Hey {{me.firstName.capitalizeFirstLetter()}}</h1> -->
+                <h1 >Hey {{me.firstName.capitalizeFirstLetter()}}</h1>
                 </md-content>
                 <!-- <md-divider ></md-divider> -->
                 <br>
@@ -86,7 +86,7 @@
                     <md-tab label="Map" ng-click="redirect('/map')" > 
                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/map')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                     </md-tab>
-                     <md-tab  label="Messages"  ng-click="redirect('/messages')"> 
+                     <md-tab  label="Profile"  ng-click="redirect('/messages')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/messages')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>
                 
@@ -117,9 +117,9 @@
     <script src="./js/services/user.js"></script>
     <script src="./js/controllers/mainController.js"></script>
     <script src="./js/controllers/accountController.js"></script>
+    <script src="./js/controllers/profileController.js"></script>
     <script src="./js/controllers/messagesController.js"></script>
     <script src="./js/controllers/indexController.js"></script>
     <script src="./js/controllers/mapController.js"></script>
     </body>
 </html>
-    

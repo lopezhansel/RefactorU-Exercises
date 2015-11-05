@@ -18,7 +18,7 @@
 
       <h1> {{::me.firstName.capitalizeFirstLetter()}} Ask a biker to get you something</h1>
 
-      <form ng-submit="emitNewRequest()" layout="column">
+      <form layout="column">
 
         <div layout="row">
           <md-input-container flex> 
@@ -26,16 +26,6 @@
             <input ng-model="me.what" type="text"/> 
           </md-input-container>
         </div>
-        <!-- <div layout="row">
-          <md-input-container flex> 
-            <label>First Name</label> 
-            <input ng-model="me.firstName" type="text"/> me
-          </md-input-container>
-          <md-input-container flex> 
-            <label>Last Name</label> 
-            <input ng-model="me.lastName" type="text"/> 
-          </md-input-container>
-        </div> -->
         <div layout="row">
           <md-input-container flex> 
             <label>Email</label> 
@@ -49,7 +39,7 @@
         </div>
         
         
-          <md-button type="submit" class="md-accent md-raised login"  ng-submit="emitNewRequest()" >
+          <md-button  class="md-accent md-raised login" ng-click="emitNewRequest()" >
             <strong>Submit</strong>
           </md-button>
 

@@ -9,7 +9,7 @@
 app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
   $timeout(function  () {
     if (userService.me === "there"){ $location.path("/login");} 
-  },500);
+  },200);
 
   var count = 0;
   $scope.users = null;
@@ -91,10 +91,7 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
     // Could also do $mdToast.showSimple('Hello');
   };
 
-  $scope.selectUserProfile = function(user) {
-    $scope.currentUserProfile = user;
-    // console.log(user);  
-  };
+
 
   $scope.status = '  ';
   $scope.showAlert = function(ev) {
