@@ -81,14 +81,17 @@ function requestController($scope, $mdDialog, $http, userService) {
 	};
 	var socket = io();
 	$scope.emitNewRequest = function() {
+		console.log($scope.me.pictureMd);
 		var emitObject = {
-			who: userService.me.firstName.capitalizeFirstLetter(),
+			firstName : userService.me.firstName.capitalizeFirstLetter(),
+			lastName: userService.me.lastName.capitalizeFirstLetter(),
 			what: $scope.me.what,
 			email: userService.me.email,
 			cell: $scope.me.cell,
 			lat: userService.location.lat,
 			lon: userService.location.lng,
 			timeStamp: Date.now(),
+			pictureMd : $scope.me.pictureMd
 		};
 		socket.emit("newRequest", emitObject);
 		$mdDialog.hide();

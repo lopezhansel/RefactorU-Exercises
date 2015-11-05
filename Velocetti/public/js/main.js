@@ -75,9 +75,7 @@ var app = angular.module('StarterApp', ['ngAnimate', 'ngMaterial', 'ngRoute', 'u
 // #F44336
 
 
-// #61CBE9  
-// #F5EAE2
-// #F36F36
+// #61CBE9 // #F5EAE2 // #F36F36
 //http://mcg.mbitson.com/#/
 //http://angular-md-color.com/#/
 app.config(function($mdThemingProvider) {

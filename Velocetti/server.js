@@ -155,7 +155,23 @@ socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
     var apiMe = "there";
     socket.emit('apiMe',apiMe);
-
+    // var apiMe = {
+    //     "_id": undefined,
+    //     "username": undefined,
+    //     "password": undefined,
+    //     "gender": undefined,
+    //     "firstName": undefined,
+    //     "lastName": undefined,
+    //     "email": undefined,
+    //     "phone": undefined,
+    //     "cell": undefined,
+    //     "lat": undefined,
+    //     "lon": undefined,
+    //     "pictureLg": undefined,
+    //     "pictureMd": undefined,
+    //     "pictureSm": undefined,
+    //     "__v": undefined,
+    // };
 
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
 
@@ -168,14 +184,15 @@ socketServer.on("connection", function(socket) {
             console.log(incoming);
             console.log(" ");
             var newRequest       = {};
-            newRequest.who       = incoming.who;
+            newRequest.firstName       = incoming.firstName;
+            newRequest.lastName       = incoming.lastName;
             newRequest.what       = incoming.what;
             newRequest.email     = incoming.email;
             newRequest.cell      = incoming.cell;
             newRequest.lat       = incoming.lat;
             newRequest.lon       = incoming.lon;
             newRequest.timeStamp = incoming.timeStamp;
-            
+            newRequest.pictureMd = incoming.pictureMd;
             allRequests[incoming.timeStamp] = newRequest;
             console.log(allRequests);
             socketServer.emit('allRequests',allRequests);
