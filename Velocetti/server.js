@@ -20,125 +20,123 @@ app.server = app.listen(port, function() {
 
 var io = require("socket.io");
 var socketServer = io(app.server);
-var loggedInUsers = { // This is Dummy Data to Render Some Users
-    "563037f5369f0ff01e75fe7a": {
-        "_id": "563037f5369f0ff01e75fe7a",
-        "username": "goldengoose450",
-        "password": "$2a$10$9qCjH7dc0oF1dznsYt5lzuYXGGcGxqpcdmdIXPfyglPcG.PsPDmZu",
+var loggedInUsers = {
+
+    "563037f8369f0ff01e75fe8a": {
+        "_id": "563037f8369f0ff01e75fe8a",
+        "username": "crazyfrog828",
+        "password": "$2a$10$Y691neCbJxWkcd2r8F/2UOL0njvlQgPOQqnHKpAuKFFsyrN.33ehm",
         "gender": "female",
-        
-        "firstName": "sophia",
-        "lastName": "armstrong",
-        "email": "sophia.armstrong@example.com",
-        "phone": "017687 22811",
-        "cell": "0766-563-698",
-        "lat": 39.7713888888890000,
-        "lon": -105.1933333333300000,
-        "pictureLg": "https://randomuser.me/api/portraits/women/52.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/women/52.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/women/52.jpg",
+
+        "firstName": "sophie",
+        "lastName": "wilson",
+        "email": "sophie.wilson@example.com",
+        "phone": "017684 29638",
+        "cell": "0783-069-922",
+        "lat": 40.0080350000000000,
+        "lon": -105.2764789999999900,
+        "pictureLg": "https://randomuser.me/api/portraits/women/91.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/women/91.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/women/91.jpg",
         "__v": 0
     },
 
 
-    "563037f6369f0ff01e75fe7b": {
-        "_id": "563037f6369f0ff01e75fe7b",
-        "username": "silverduck220",
-        "password": "$2a$10$nchS0zrYZag1NxDXOZzjzOLrQHdsUKRy6zNF.HAlm98DYcJsbDYqW",
+
+    "563037f6369f0ff01e75fe80": {
+        "_id": "563037f6369f0ff01e75fe80",
+        "username": "tinygorilla394",
+        "password": "$2a$10$2wEWUdpHEmNn4TxxFgSIzunJAveJPwX37ZGwr/caNWTlhejp925Xu",
         "gender": "female",
-        
-        "firstName": "jenny",
-        "lastName": "lucas",
-        "email": "jenny.lucas@example.com",
-        "phone": "017684 94008",
-        "cell": "0737-069-124",
-        "lat": 40.0719444444440000,
-        "lon": -105.3538888888900000,
-        "pictureLg": "https://randomuser.me/api/portraits/women/85.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/women/85.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/women/85.jpg",
+
+        "firstName": "zoe",
+        "lastName": "hopkins",
+        "email": "zoe.hopkins@example.com",
+        "phone": "013873 81612",
+        "cell": "0759-090-576",
+        "lat": 38.8922120000000010,
+        "lon": -104.7994833333300000,
+        "pictureLg": "https://randomuser.me/api/portraits/women/88.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/women/88.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/women/88.jpg",
+        "__v": 0
+    },
+    "563037f9369f0ff01e75fe8f": {
+        "_id": "563037f9369f0ff01e75fe8f",
+        "username": "brownladybug791",
+        "password": "$2a$10$D.928Y9Kc8Xg2RGxWXn5Iecz/YUzndflnrN8qGcpPUe4JIZyHmtMW",
+        "gender": "female",
+
+        "firstName": "kristen",
+        "lastName": "kramers",
+        "email": "kristen.kramers@example.com",
+        "phone": "(764)-516-2785",
+        "cell": "(909)-919-0530",
+        "lat": 38.8282916666669990,
+        "lon": -104.8316333333300000,
+        "pictureLg": "https://randomuser.me/api/portraits/women/4.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/women/4.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/women/4.jpg",
         "__v": 0
     },
 
-
-    "563037f6369f0ff01e75fe7c": {
-        "_id": "563037f6369f0ff01e75fe7c",
-        "username": "blackelephant961",
-        "password": "$2a$10$h.wgI4.6l1VZFS3Co5ISp.SlCtkMB7Ta8Gn7HGNBc4K0/o0Pd7Laq",
+    "563037f8369f0ff01e75fe8b": {
+        "_id": "563037f8369f0ff01e75fe8b",
+        "username": "bigleopard416",
+        "password": "$2a$10$l6necFm4S/McbAu2Kb7gHO9SCMEk2/b/o7YfPtp2To1XfE/gTmmqe",
         "gender": "male",
-        
-        "firstName": "connor",
-        "lastName": "hunter",
-        "email": "connor.hunter@example.com",
-        "phone": "016977 36986",
-        "cell": "0748-146-281",
-        "lat": 38.8500000000000010,
-        "lon": -104.7500000000000000,
-        "pictureLg": "https://randomuser.me/api/portraits/men/50.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/men/50.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/50.jpg",
+
+        "firstName": "ralph",
+        "lastName": "hoffman",
+        "email": "ralph.hoffman@example.com",
+        "phone": "017687 28643",
+        "cell": "0718-560-810",
+        "lat": 38.8261111111109970,
+        "lon": -104.7413888888900000,
+        "pictureLg": "https://randomuser.me/api/portraits/men/70.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/men/70.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/70.jpg",
         "__v": 0
     },
 
-
-    "563037f6369f0ff01e75fe7d": {
-        "_id": "563037f6369f0ff01e75fe7d",
-        "username": "orangelion603",
-        "password": "$2a$10$T6Ol12H0SFg..hb4tzZ6ZOZnc3HZnsAv2Kr1Z.nCZ501/P2jCl9RW",
+    "563037f9369f0ff01e75fe90": {
+        "_id": "563037f9369f0ff01e75fe90",
+        "username": "heavymeercat968",
+        "password": "$2a$10$5yvEZIhuwgRwrRTfbE3RJ.SwF0HOelB8O6G8j2UkePZsV5fnXVJNC",
         "gender": "male",
-        
-        "firstName": "edgar",
-        "lastName": "king",
-        "email": "edgar.king@example.com",
-        "phone": "0151 346 2634",
-        "cell": "0732-032-793",
-        "lat": 39.7422222222219970,
-        "lon": -104.9869444444400000,
-        "pictureLg": "https://randomuser.me/api/portraits/men/44.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/men/44.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/44.jpg",
+
+        "firstName": "matthé",
+        "lastName": "de nooij",
+        "email": "matthé.de nooij@example.com",
+        "phone": "(501)-630-0891",
+        "cell": "(149)-454-2689",
+        "lat": 40.0028560000000010,
+        "lon": -105.2641540000000000,
+        "pictureLg": "https://randomuser.me/api/portraits/men/62.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/men/62.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/62.jpg",
         "__v": 0
     },
 
-
-    "563037f6369f0ff01e75fe7e": {
-        "_id": "563037f6369f0ff01e75fe7e",
-        "username": "greenostrich315",
-        "password": "$2a$10$V9bmcB28ZYZon4SdV2AB1OwoMTUKh1B9HLe8T.X4QnEs/9/GxYMTS",
+    "563037f7369f0ff01e75fe83": {
+        "_id": "563037f7369f0ff01e75fe83",
+        "username": "lazyfish598",
+        "password": "$2a$10$2xgiTfscEGqoa1Btf2i/Fu0ax/bzp9S2xKdJQNV6n0OXTPiVw1GsC",
         "gender": "male",
-        
-        "firstName": "bobby",
-        "lastName": "cook",
-        "email": "bobby.cook@example.com",
-        "phone": "013873 03346",
-        "cell": "0703-268-904",
-        "lat": 39.7915537000000010,
-        "lon": -105.2007859000000000,
-        "pictureLg": "https://randomuser.me/api/portraits/men/41.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/men/41.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/41.jpg",
-        "__v": 0
-    },
 
-
-    "563037f6369f0ff01e75fe7f": {
-        "_id": "563037f6369f0ff01e75fe7f",
-        "username": "goldenpanda643",
-        "password": "$2a$10$8asOf77EJYnfXSWL5hrVeuIv3LZmCFCLPK69mLXePQeshvFBzj54u",
-        "gender": "male",
-        
-        "firstName": "marion",
-        "lastName": "stephens",
-        "email": "marion.stephens@example.com",
-        "phone": "01507 42093",
-        "cell": "0787-615-511",
-        "lat": 38.8355555555559990,
-        "lon": -104.8213888888900000,
-        "pictureLg": "https://randomuser.me/api/portraits/men/47.jpg",
-        "pictureMd": "https://randomuser.me/api/portraits/med/men/47.jpg",
-        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/47.jpg",
+        "firstName": "charlie",
+        "lastName": "jensen",
+        "email": "charlie.jensen@example.com",
+        "phone": "01656 127474",
+        "cell": "0772-338-813",
+        "lat": 40.0037222222220020,
+        "lon": -105.2625000000000000,
+        "pictureLg": "https://randomuser.me/api/portraits/men/23.jpg",
+        "pictureMd": "https://randomuser.me/api/portraits/med/men/23.jpg",
+        "pictureSm": "https://randomuser.me/api/portraits/thumb/men/23.jpg",
         "__v": 0
-    },
+    }
+
 
 
 };
@@ -147,7 +145,10 @@ var allRequests = {};
 socketServer.use(function(socket, next) {
     app.sessionMiddleware(socket.request, {}, next);
 });
-function isEven(n) {return n % 2 === 0; }
+
+function isEven(n) {
+    return n % 2 === 0;
+}
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 // #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00  #FFFF00
 
@@ -155,7 +156,7 @@ function isEven(n) {return n % 2 === 0; }
 socketServer.on("connection", function(socket) {
     console.log("NEW SOCKET CONNECTION Adress: ", socket.handshake.address);
     var apiMe = "there";
-    socket.emit('apiMe',apiMe);
+    socket.emit('apiMe', apiMe);
     // var apiMe = {
     //     "_id": undefined,
     //     "username": undefined,
@@ -177,59 +178,59 @@ socketServer.on("connection", function(socket) {
     if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
 
         apiMe = socket.request.session.passport.user;
-        socket.emit('apiMe',apiMe);
-        console.log("UserId Logged In",apiMe);
+        socket.emit('apiMe', apiMe);
+        console.log("UserId Logged In", apiMe);
         console.log(" ");
 
         socket.on("newRequest", function(incoming) {
             console.log(incoming);
             console.log(" ");
-            var newRequest       = {};
-            newRequest.firstName       = incoming.firstName;
-            newRequest.lastName       = incoming.lastName;
-            newRequest.what       = incoming.what;
-            newRequest.email     = incoming.email;
-            newRequest.cell      = incoming.cell;
-            newRequest.lat       = incoming.lat;
-            newRequest.lon       = incoming.lon;
+            var newRequest = {};
+            newRequest.firstName = incoming.firstName;
+            newRequest.lastName = incoming.lastName;
+            newRequest.what = incoming.what;
+            newRequest.email = incoming.email;
+            newRequest.cell = incoming.cell;
+            newRequest.lat = incoming.lat;
+            newRequest.lon = incoming.lon;
             newRequest.timeStamp = incoming.timeStamp;
             newRequest.pictureMd = incoming.pictureMd;
             allRequests[incoming.timeStamp] = newRequest;
             console.log(allRequests);
-            socketServer.emit('allRequests',allRequests);
+            socketServer.emit('allRequests', allRequests);
             // socketServer.emit('allU')
-        });////socket.on("newRequest",
-        socket.emit('allRequests',allRequests);
+        }); ////socket.on("newRequest",
+        socket.emit('allRequests', allRequests);
 
         User.findById(apiMe, function(error, userDoc) {
             console.log(userDoc);
             userDoc.password = null;
             loggedInUsers[apiMe] = userDoc;
-            socket.emit('apiMe',userDoc);
-            socketServer.emit('allUsers',loggedInUsers);
-        });//// User.findById(apiMe
+            socket.emit('apiMe', userDoc);
+            socketServer.emit('allUsers', loggedInUsers);
+        }); //// User.findById(apiMe
 
 
         socket.on("myLocation", function(userLocation) {
             // console.log(userLocation);
-            if (apiMe){
+            if (apiMe) {
                 loggedInUsers[apiMe].lat = userLocation.lat;
                 loggedInUsers[apiMe].lon = userLocation.lon;
                 loggedInUsers[apiMe].timeStamp = userLocation.timeStamp;
             }
             // console.log(loggedInUsers);
-            socketServer.emit('allUsers',loggedInUsers);
+            socketServer.emit('allUsers', loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);
-        });////socket.on("myLocation",
+        }); ////socket.on("myLocation",
 
         socket.on('disconnect', function() {
             console.log('user disconnected');
-            delete  loggedInUsers[apiMe] ;
+            delete loggedInUsers[apiMe];
             socketServer.emit('loggedInUsers', loggedInUsers);
         }); //////socket.on('disconnect'
 
 
-    }////if (socket.request.session &&
+    } ////if (socket.request.session &&
 }); ////socketServer.on("connection",
 
 
