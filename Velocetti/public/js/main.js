@@ -152,7 +152,7 @@ app.config(function($mdThemingProvider) {
     'contrastLightColors': undefined    // could also specify this if default was 'dark'
   });
   $mdThemingProvider.theme('default')
-    .accentPalette('myOrange')
+    .accentPalette('myOrange');
 });
 
 app.filter('orderObjectBy', function() {

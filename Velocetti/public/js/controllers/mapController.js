@@ -1,5 +1,5 @@
 app.controller('mapController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-	if (userService.users=== undefined){ $location.path("/login");} 
+	if (userService.me=== "there"){ $location.path("/login");} 
 	else{
 		
 		$scope.mapMarkerss = userLocToMarkers(userService.users);

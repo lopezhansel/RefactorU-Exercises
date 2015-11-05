@@ -7,7 +7,7 @@
 
 
 app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-
+  if (userService.me=== "there"){ $location.path("/login");} 
   var socket = io(); // #00FF24 #24FF00
   var count = 0;
   $scope.users = null;
