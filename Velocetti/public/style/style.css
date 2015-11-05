@@ -60,10 +60,7 @@ html, body, #map-wcanvas {
 .card h1{
 	float: right;
 }
-md-card {
-	text-align: right;
-	/*color: red;*/
-}
+
 
 md-grid-tile{
 	/*margin-top: 50px;*/

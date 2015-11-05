@@ -3,7 +3,8 @@ app.controller('accountController',  ['$scope', '$mdSidenav', 'userService', '$r
 
 
   $scope.me = userService.me;
-
+    $scope.allRequests = userService.allRequests;
+  
   $interval(function() {
     $scope.me = userService.me;
     $scope.allRequests = userService.allRequests;
