@@ -200,7 +200,9 @@ md-content.usertitle.layout-align-start-center.layout-column.flex {
       right: 30px;
   }
 
-
+img.profileImg{
+  width: 180px;
+}
 
   /*uber live tracking in week which uber doesnt do */
 

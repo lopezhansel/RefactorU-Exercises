@@ -9,6 +9,7 @@ app.controller('accountController',  ['$scope', '$mdSidenav', 'userService', '$r
     $scope.me = userService.me;
     $scope.allRequests = userService.allRequests;
   }, 1000);
+  
 }]);
 
 
