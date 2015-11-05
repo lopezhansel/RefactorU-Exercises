@@ -11,25 +11,25 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	};
 
 
-	(function(cb) {
-		$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
-			// this.ip = result.data.ip;
-			return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
-				// This is to center map on user location based on their Ip
-				cb({
-					lat: res.data.latitude,
-					lng: res.data.longitude,
-					zoom: 10
-				});
-			}); ////$http.get("http://freegeoip
-		}, function(e) {
-			console.log("couldn't get Ip Address", e);
-		});
-	})(function(returnData) {
-		userService.location = returnData;
-		userService.openToast("Semi Location Updated", "bottom right");
-		console.log("userService.location",userService.location);
-	});
+	// (function(cb) {
+	// 	$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
+	// 		// this.ip = result.data.ip;
+	// 		return $http.get("http://freegeoip.net/json/" + result.data.ip).then(function(res) {
+	// 			// This is to center map on user location based on their Ip
+	// 			cb({
+	// 				lat: res.data.latitude,
+	// 				lng: res.data.longitude,
+	// 				zoom: 10
+	// 			});
+	// 		}); ////$http.get("http://freegeoip
+	// 	}, function(e) {
+	// 		console.log("couldn't get Ip Address", e);
+	// 	});
+	// })(function(returnData) {
+	// 	userService.location = returnData;
+	// 	userService.openToast("Semi Location Updated", "bottom right");
+	// 	console.log("userService.location",userService.location);
+	// });
 
 	userService.me = {};
 	socket.on('apiMe', function(data) {

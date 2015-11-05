@@ -150,11 +150,20 @@ app.get('/restricted', app.isAuthenticated, function(req, res) {
     });
 });
 
+
 app.get('/api/me', app.isAuthenticatedAjax, function(req, res) {
     res.send({
         user: req.user
     });
     console.log("/api/me route");
 });
+// app.get('/allUsers', app.isAuthenticated, function(req, res) {
+//     console.log("Here");
+    // User.find({},function  (err,docs) {
+    //     console.log(docs);
+    //     res.send(docs);
+    // }) ;
+//       console.log("/api/me route");
+// });
 
 module.exports = app;
