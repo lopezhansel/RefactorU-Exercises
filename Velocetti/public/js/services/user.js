@@ -45,7 +45,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		// userService.openToast("Full Location Updated", "bottom right");P
+		userService.openToast("Full Location Updated", " right");
 		userService.location = {
 			lat: showPosition.coords.latitude,
 			lng: showPosition.coords.longitude,
@@ -64,7 +64,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 
 	socket.on('allUsers', function(data) { 
-		userService.openToast(data,"bottom left");
+		// userService.openToast(data,"bottom left");
 		userService.users = data;
 		console.log(userService.users);
 		userService.isUsersEmpty = Object.keys(userService.users).length;

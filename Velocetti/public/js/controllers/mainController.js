@@ -1,6 +1,8 @@
 //     mongoimport --db taac --collection july2012 lariatData-sgeT-2012-07-02.json --jsonArray
+// mongoimport --db velociti --collection users users.json
 //$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
 // mongoexport --db test --collection traffic --out traffic.json
+// 
 // ps -A | grep node 
 // kill ####
 // Angular Services are SingleTons
@@ -207,7 +209,7 @@ function DialogController($scope, $mdDialog, $http,userService) {
   };
   $scope.loginAsGuest = function() {
 
-    userService.openToast("There");
+    // userService.openToast("There");
     $scope.guest = {
       username : "smallmouse892",
       password : "tunafish"

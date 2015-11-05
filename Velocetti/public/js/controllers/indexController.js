@@ -39,7 +39,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 		};
 		$scope.goToProfile = function  (user) {
 			// userService.openToast(user);
-			console.log(user);
+			// console.log(user);
 		    userService.selectUserProfile = user;
 	
 			$location.path("/messages");
