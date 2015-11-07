@@ -25,7 +25,7 @@
                       <img ng-src="{{::user.pictureMd}}" class="sm-card-image" alt="Movie Img" >
                       <md-content class="usertitle" layout="column" layout-align="start center" flex>
                         
-                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{$index}}">{{ ::user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
+                        <h1 class="md-title" ng-click="selectUserProfile(user)"><a href="#ProfileView/{{::$index}}">{{ ::user.firstName + ' '+ user.lastName| uppercase}}</a></h1>
 
 
                       </md-content>
@@ -33,7 +33,7 @@
                     <md-content  flex layout="column" layout-align="start start">
 
                       <div flex layout="column" layout-align="start start">
-                        <p class="md-title"> Username : {{user.username}} </p>
+                        <p class="md-title"> Username : {{::user.username}} </p>
                         <!-- <p>{{user.apart| limitTo: 3}} Miles Away</p> -->
                         <p>{{user.apart| limitTo: 3}} Miles Away</p>
                       </div>
