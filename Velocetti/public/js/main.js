@@ -1,7 +1,8 @@
-var clientLat = 0;
-var clientLng = 0;
+var clientLat = 1;
+var clientLng = 40;
 
 function greatCircleMethod(latitude, longitude) {
+  console.log(clientLat);
   var earthMedianRadius = (6371 / 1.609344); //Convert Kilometers to Miles 
   var φ1 = clientLat.toRad();
   var φ2 = latitude.toRad();
