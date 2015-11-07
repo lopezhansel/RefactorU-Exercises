@@ -66,12 +66,13 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	socket.on('allUsers', function(data) { 
 		// userService.openToast(data,"bottom left");
 		userService.users = data;
+		for (var prop2 in userService.users) {
+			userService.users[prop2].apart = greatCircleMethod(userService.users[prop2].lat, userService.users[prop2].lon);
+		}
+		
 		console.log(userService.users);
 		userService.isUsersEmpty = Object.keys(userService.users).length;
 
-		// for (var prop2 in $scope.users) {
-		// 	$scope.users[prop2].apart = greatCircleMethod($scope.users[prop2].lat, $scope.users[prop2].lon);
-		// }
 		// if (count === 0) {
 		// 	count++;
 		// 	navigator.geolocation.getCurrentPosition(function(position) {
