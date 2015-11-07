@@ -1,4 +1,4 @@
-// console.log = function () {};
+console.log = function () {};
 var express = require('express');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
