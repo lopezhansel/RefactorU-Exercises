@@ -1,11 +1,20 @@
-app.controller('profileController2', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", 
-  function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-  	// change Controller Name
-    $scope.hello = "hey there";
+app.controller('profileController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
+	function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
 
-    $scope.users = userService.users;
-    $timeout(function() {
-      $scope.users = userService.users;
-    }, 5);
 
-  }]);
+		// $scope.users = userService.users;
+		$timeout(function() {
+			if (userService.me === "there") {$location.path("/login"); }
+			if (userService.selectUserProfile) {
+			$scope.user = userService.selectUserProfile;
+				
+			}else{
+				
+			$scope.user = userService.me;
+			}
+
+			// $scope.users = userService.users;
+		}, 50);
+
+	}
+]);

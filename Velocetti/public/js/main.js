@@ -67,16 +67,7 @@ function getMessage(user) {
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngMaterial', 'ngRoute',  'leaflet-directive']);
 
-// app.config(function($mdThemingProvider) {
-//   $mdThemingProvider.theme('default')
-//     .primaryPalette('amber')
-//     .accentPalette('teal');
-// });
-// #FF4081
-// #F44336
-
-
-// #61CBE9 // #F5EAE2 // #F36F36
+//Velocity Colors #61CBE9 // #F5EAE2 // #F36F36
 //http://mcg.mbitson.com/#/
 //http://angular-md-color.com/#/
 app.config(function($mdThemingProvider) {
@@ -105,29 +96,6 @@ app.config(function($mdThemingProvider) {
     .primaryPalette('myBlue');
   });
 
-// app.config(function($mdThemingProvider) {
-//   var customBackground = {
-//         '50': 'ffffff',
-//         '100': 'ffffff',
-//         '200': 'ffffff',
-//         '300': 'ffffff',
-//         '400': 'fcf8f5',
-//         '500': 'F5EAE2',
-//         '600': 'eedccf',
-//         '700': 'e8cfbc',
-//         '800': 'e1c1a9',
-//         '900': 'dbb396',
-//         'A100': 'F5EAE2', // backGround
-//         'A200': 'ffffff',
-//         'A400': 'ffffff',
-//         'A700': 'd4a583'
-//     };
-//     $mdThemingProvider
-//         .definePalette('customBackground', 
-//                         customBackground);
-//         $mdThemingProvider.theme('default').backgroundPalette('customBackground');
-
-// });
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.definePalette('myOrange', {
     '50': 'ffebee',
