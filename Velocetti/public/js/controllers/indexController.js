@@ -5,24 +5,13 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			$location.path(urlStr);
 		};
 		$scope.ngViewToggle = function(urlStr) {
-			if ($location.$$path === '/map') {
-				$scope.selectedIndex = 1;
-			}
-			if ($location.$$path === '/profile') {
-				$scope.selectedIndex = 2;
-			}
-			if ($location.$$path === '/login') {
-				$scope.selectedIndex = 3;
-			}
-			if ($location.$$path === '/home') {
-				$scope.selectedIndex = 0;
-			}
-			if ($location.$$path === '/requests') {
-				$scope.selectedIndex = 4;
-			}
+			if ($location.$$path === '/map')       {$scope.selectedIndex = 1; }
+			if ($location.$$path === '/profile')   {$scope.selectedIndex = 2; }
+			if ($location.$$path === '/login')     {$scope.selectedIndex = 3; }
+			if ($location.$$path === '/home')      {$scope.selectedIndex = 0; }
+			if ($location.$$path === '/requests')  {$scope.selectedIndex = 4; }
 			return $location.$$path === urlStr;
 		};
-		$scope.number = 1242342;
 		$scope.me = userService.me;
 		$timeout(function() {
 			$scope.me = userService.me;

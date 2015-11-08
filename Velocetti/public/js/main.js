@@ -65,7 +65,7 @@ function getMessage(user) {
 }
 
 
-var app = angular.module('StarterApp', ['ngAnimate', 'ngMaterial', 'ngRoute', 'ui.bootstrap', 'leaflet-directive']);
+var app = angular.module('StarterApp', ['ngAnimate', 'ngMaterial', 'ngRoute',  'leaflet-directive']);
 
 // app.config(function($mdThemingProvider) {
 //   $mdThemingProvider.theme('default')
