@@ -45,7 +45,7 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		userService.openToast("Full Location Updated", " right");
+		userService.openToast("Full Location Updated", "bottom right");
 		clientLat = showPosition.coords.latitude;
 		clientLng = showPosition.coords.longitude;
 
@@ -68,14 +68,14 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 
 	socket.on('allUsers', function(data) { 
-		// userService.openToast(data,"bottom left");
+		userService.openToast("New Users","bottom left");
 		userService.users = data;
 		for (var prop2 in userService.users) {
 			userService.users[prop2].apart = greatCircleMethod(userService.users[prop2].lat, userService.users[prop2].lon);
 		}
 		
 		console.log(userService.users);
-		userService.isUsersEmpty = Object.keys(userService.users).length;
+		// userService.isUsersEmpty = Object.keys(userService.users).length;
 
 		// if (count === 0) {
 		// 	count++;

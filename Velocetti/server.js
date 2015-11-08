@@ -1,4 +1,4 @@
-console.log = function () {};
+//console.log = function () {};
 var express = require('express');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
@@ -226,7 +226,7 @@ socketServer.on("connection", function(socket) {
         socket.on('disconnect', function() {
             console.log('user disconnected');
             delete loggedInUsers[apiMe];
-            socketServer.emit('loggedInUsers', loggedInUsers);
+            socketServer.emit('allUsers', loggedInUsers);
         }); //////socket.on('disconnect'
 
 
