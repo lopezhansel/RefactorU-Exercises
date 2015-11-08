@@ -5,26 +5,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-aria.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc2/angular-material.min.js"></script>
-        <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
-        <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.8.7/angular-leaflet-directive.min.js"></script>
-        <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script> -->
-
         <script type="text/javascript", src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
         <script src="./js/vendors/hanselLib.js"></script>
  
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" />
-        
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
-        
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc2/angular-material.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -35,42 +27,29 @@
 
     <body ng-controller="indexController" ng-cloak>
 
-
         <md-toolbar layout="column"  class="md-whiteframe-z2" >
           <div class="md-toolbar-tools" md-ink-ripple >
             <md-button ng-click="toggleSidenav('left')" hide-gt-lg class="md-icon-button">
               <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
             </md-button>
-            <!-- <img ng-click="showMapUI()" class="logo" src="http://gdurl.com/0P2s"> -->
             <img ng-click="setMapCenter()" class="logo" src="http://gdurl.com/0P2s">
-            <!-- <h2>  sm: {{sm}} | md: {{md}} | lg: {{lg}} | gt-lg: {{xlg}}</h2> -->
             <span flex></span>
-
             <md-button class="md-raised " href="/logout" aria-label="LogOut"  md-ripple-size="full" ng-if="me.name !== 'There'"><strong>Logout</strong></md-button>
-
-
-
-
           </div>
         </md-toolbar>
 
-
-        <div  layout="row" layout-fill >
+        <div layout="row" layout-fill >
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 md-padding" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')" class="md-padding">
                 <md-content layout="column" layout-align="center center">
                     <img class="profileImg" ng-src="{{::me.pictureMd}}">
                 <h1 >Hey {{me.firstName.capitalizeFirstLetter()}}</h1>
                 </md-content>
-                <!-- <md-divider ></md-divider> -->
-                <br>
                 <md-input-container > 
-                  <label>Search</label> 
-            <md-icon ><i class="material-icons ">search</i></md-icon>
-
-                  <input ng-model="searchText" type="text"/> 
+                    <label>Search</label> 
+                    <md-icon ><i class="material-icons ">search</i></md-icon>
+                    <input ng-model="searchText" type="text"/> 
                 </md-input-container>
             </md-sidenav>
-    
 
             <div flex layout="column" layout-fill>
                 <md-tabs md-stretch-tabs md-selected="selectedIndex" class="md-accent">
@@ -83,31 +62,26 @@
                      <md-tab  label="Profile"  ng-click="redirect('/profile')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/profile')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>
-                
                      <md-tab  label="Login"  ng-click="redirect('/login')">  
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
-                
                      <md-tab  label="Delivery Requests"  ng-click="redirect('/requests')"> 
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/requests')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                   </md-tabs>
             </div>
-            
-
         </div>
-          <md-button ng-if="me !== 'there'" aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
+        
+        <md-button ng-if="me !== 'there'" aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
             <md-icon ><i class="material-icons ">add</i></md-icon>
-          </md-button>
-         
+        </md-button>
 
-   
-    <script src="./js/main.js"></script>
-    <script src="./js/services/user.js"></script>
-    <script src="./js/controllers/mainController.js"></script>
-    <script src="./js/controllers/requestsController.js"></script>
-    <script src="./js/controllers/profileController.js"></script>
-    <script src="./js/controllers/indexController.js"></script>
-    <script src="./js/controllers/mapController.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/services/user.js"></script>
+        <script src="./js/controllers/mainController.js"></script>
+        <script src="./js/controllers/requestsController.js"></script>
+        <script src="./js/controllers/profileController.js"></script>
+        <script src="./js/controllers/indexController.js"></script>
+        <script src="./js/controllers/mapController.js"></script>
     </body>
 </html>
