@@ -8,7 +8,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			if ($location.$$path === '/map') {
 				$scope.selectedIndex = 1;
 			}
-			if ($location.$$path === '/messages') {
+			if ($location.$$path === '/profile') {
 				$scope.selectedIndex = 2;
 			}
 			if ($location.$$path === '/login') {
@@ -42,7 +42,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			// console.log(user);
 		    userService.selectUserProfile = user;
 	
-			$location.path("/messages");
+			$location.path("/profile");
 		};
 		$scope.toggleSidenav = function(menuId) {
 			$mdSidenav(menuId).toggle();

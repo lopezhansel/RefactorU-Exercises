@@ -184,12 +184,12 @@ app.config(function($routeProvider) {
       templateUrl: 'views/requestsView.html'
     })
     .when('/ProfileView/:id', {
-      controller: 'mainController',
+      controller: 'profileController',
       templateUrl: 'views/ProfileView.html'
     })
-    .when('/messages', {
-      controller: 'messagesController',
-      templateUrl: 'views/messagesView.html'
+    .when('/profile', {
+      controller: 'profileController',
+      templateUrl: 'views/profileView.html'
     })
     .when('/login', {
       controller: 'mainController',
