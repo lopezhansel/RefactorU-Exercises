@@ -184,7 +184,7 @@ app.config(function($routeProvider) {
       templateUrl: 'views/requestsView.html'
     })
     .when('/ProfileView/:id', {
-      controller: 'profileController',
+      controller: 'mainController',
       templateUrl: 'views/ProfileView.html'
     })
     .when('/profile', {
