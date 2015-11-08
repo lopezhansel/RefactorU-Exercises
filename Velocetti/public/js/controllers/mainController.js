@@ -127,14 +127,14 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
     });
   };
 
-  $scope.showAdvanced = function(ev, index) {
+  $scope.showLoginDialog = function(ev, index) {
     $scope.popUpDialogUser = index;
     $mdDialog.show({
         locals: {
           currentUserPopUP: $scope.popUpDialogUser
         },
-        controller: DialogController,
-        templateUrl: '/views/profilePreview.html',
+        controller: loginDialogController,
+        templateUrl: '/views/loginDialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: true
@@ -145,7 +145,6 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
         $scope.status = 'You cancelled the dialog.';
       });
 
-    // console.log('popopWorkded', index.name.first);
   };
 
 
@@ -193,7 +192,7 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 }]);
 
 
-function DialogController($scope, $mdDialog, $http,userService) {
+function loginDialogController($scope, $mdDialog, $http,userService) {
   // console.log(currentUserPopUP);
   // $scope.popUpDialogUser = currentUserPopUP;
   $scope.loginForm = {};

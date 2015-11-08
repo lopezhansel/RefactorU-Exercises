@@ -161,7 +161,7 @@ app.config(function($routeProvider) {
     })
     .when('/login', {
       controller: 'mainController',
-      templateUrl: 'views/login.html'
+      templateUrl: 'views/loginView.html'
     })
     .otherwise({
       redirectTo: '/home'

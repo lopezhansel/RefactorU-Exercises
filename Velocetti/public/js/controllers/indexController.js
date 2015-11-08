@@ -43,7 +43,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 						currentUserPopUP: $scope.userPassed
 					},
 					controller: requestController,
-					templateUrl: '/views/requestView.html',
+					templateUrl: '/views/requestDialog.html',
 					parent: angular.element(document.body),
 					targetEvent: ev,
 					clickOutsideToClose: true
