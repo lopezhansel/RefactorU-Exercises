@@ -196,16 +196,23 @@ socketServer.on("connection", function(socket) {
             newRequest.timeStamp = incoming.timeStamp;
             newRequest.pictureMd = incoming.pictureMd;
             allRequests[incoming.timeStamp] = newRequest;
-            console.log(allRequests);
+            // console.log(allRequests);
             socketServer.emit('allRequests', allRequests);
             // socketServer.emit('allU')
         }); ////socket.on("newRequest",
         socket.emit('allRequests', allRequests);
+        
+        socket.on('deleteRequest', function(request) {
+            // if  (apiMe._id === request._id) {} // So Users  can only delete their own Request
+            delete allRequests[request.timeStamp] ;
+            socketServer.emit('allRequests', allRequests);
+        }); //////socket.on('disconnect'
 
         User.findById(apiMe, function(error, userDoc) {
             console.log(userDoc);
             userDoc.password = null;
             loggedInUsers[apiMe] = userDoc;
+
             socket.emit('apiMe', userDoc);
             socketServer.emit('allUsers', loggedInUsers);
         }); //// User.findById(apiMe
@@ -222,6 +229,7 @@ socketServer.on("connection", function(socket) {
             socketServer.emit('allUsers', loggedInUsers);
             // socketServer.emit('allUsers',loggedInUsers);
         }); ////socket.on("myLocation",
+        
 
         socket.on('disconnect', function() {
             console.log('user disconnected');

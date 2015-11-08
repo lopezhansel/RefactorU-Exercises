@@ -3,11 +3,15 @@
 		    <h3>Delivery Requests </h3>
 		</md-toolbar>
 	    <md-card class="md-padding"  flex-offset-gt-md="25" flex-gt-md="50" class="md-whiteframe-z5" ng-repeat="request in allRequests" >
-
-	        	<div class="md-padding" layout-align-sm="center center" layout="row">
+			<div layout="row">
+	        	<div layout-align-sm="center center" layout="row">
 	        		<h2 >{{request.firstName + " " + request.lastName}}</h2>
-
 	        	</div>
+	        	<span flex></span>
+	        	<md-button ng-click="deleteRequest(request)" class="md-icon-button md-primary" aria-label="Delete Request">
+	        	  <md-icon ><i class="material-icons">close</i></md-icon>
+	        	</md-button>
+			</div>
 
 	      <md-content layout="row" layout-sm="column">
 	      	<md-content >
