@@ -90,8 +90,8 @@
                         <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/login')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                 
-                     <md-tab  label="Delivery Requests"  ng-click="redirect('/accountSettings')"> 
-                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/accountSettings')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
+                     <md-tab  label="Delivery Requests"  ng-click="redirect('/requests')"> 
+                        <ng-view id="content" flex="100" layout="column"  ng-if="ngViewToggle('/requests')" md-swipe-left="switchTabs(1)" md-swipe-right="switchTabs(-1)"> </ng-view>
                      </md-tab>  
                   </md-tabs>
             </div>
@@ -112,7 +112,7 @@
     <script src="./js/main.js"></script>
     <script src="./js/services/user.js"></script>
     <script src="./js/controllers/mainController.js"></script>
-    <script src="./js/controllers/accountController.js"></script>
+    <script src="./js/controllers/requestsController.js"></script>
     <script src="./js/controllers/profileController.js"></script>
     <script src="./js/controllers/messagesController.js"></script>
     <script src="./js/controllers/indexController.js"></script>

@@ -17,7 +17,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			if ($location.$$path === '/home') {
 				$scope.selectedIndex = 0;
 			}
-			if ($location.$$path === '/accountSettings') {
+			if ($location.$$path === '/requests') {
 				$scope.selectedIndex = 4;
 			}
 			return $location.$$path === urlStr;
@@ -60,7 +60,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 					clickOutsideToClose: true
 				})
 				.then(function(answer) {
-					$location.path("/accountSettings");
+					$location.path("/requests");
 
 					$scope.status = 'You said the information was "' + answer + '".';
 				}, function() {

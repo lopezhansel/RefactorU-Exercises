@@ -179,9 +179,9 @@ app.config(function($routeProvider) {
       controller: 'mapController',
       templateUrl: 'views/mapView.html'
     })
-    .when('/accountSettings', {
-      controller: 'accountController',
-      templateUrl: 'views/accountSettingsView.html'
+    .when('/requests', {
+      controller: 'requestsController',
+      templateUrl: 'views/requestsView.html'
     })
     .when('/ProfileView/:id', {
       controller: 'mainController',
