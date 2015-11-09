@@ -1,13 +1,3 @@
-//     mongoimport --db taac --collection july2012 lariatData-sgeT-2012-07-02.json --jsonArray
-// mongoimport --db velociti --collection users users.json
-//$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
-// mongoexport --db test --collection traffic --out traffic.json
-// 
-// ps -A | grep node 
-// kill ####
-// Angular Services are SingleTons
-
-
 app.controller('mainController', ['$scope', 'mainService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, mainService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
   $timeout(function  () {
     if (mainService.me === "there"){ $location.path("/login");} 
@@ -15,7 +5,6 @@ app.controller('mainController', ['$scope', 'mainService', '$routeParams', '$mdM
 
   var count = 0;
   $scope.users = null;
-  // $scope.isUsersEmpty = Object.keys($scope.users).length;
 
   var myLocation = {};
 
@@ -27,16 +16,7 @@ app.controller('mainController', ['$scope', 'mainService', '$routeParams', '$mdM
   $interval(function() {
     $scope.users = mainService.users;
   }, 1000);
-  // socket.on('chatMessage', function(data) {
-  //   console.log('chat message? ', data);
-  //   $scope.messageHistory.push(data);
-  //   $scope.$apply();
-  // });
-  // socket.on('whisper', function(data) {   // #00FF24 #24FF00
-  //   console.log(data.sender + ': ' + data.content);
-  // });
 
-  // $scope.user = mainService.randomUsers[$routeParams.id];
 
   $scope.showMap = false;
   $scope.selectedUser = {};
@@ -52,81 +32,11 @@ app.controller('mainController', ['$scope', 'mainService', '$routeParams', '$mdM
     $location.path('/map');
   };
 
-  // $scope.setMapCenter = function(user) {
-  //   $scope.selectedUser = user;
-  //   console.log($scope.selectedUser);
-  //   $scope.selectedIndex = 1;
-  //   $scope.gridflex = ($scope.xlg === false) ? "flex-50" : 'noflex';
-  //   $scope.cardColumn = "3";
-  //   leafletData.getMap().then(function(map) {
-  //     setTimeout(function() {
-  //       map.invalidateSize(); // this fixes Map render Bug
-  //     }, 200);
-  //   }); ////leafletData.getMap().then(function(map) {
-  //   if (typeof(user) === "object") { // set position clicking on a user
-  //     // $scope.showMap = true;
-  //     $scope.mapCenter = {
-  //       lat: user.lat,
-  //       lng: user.lon,
-  //       zoom: 17,
-  //     };
-  //   } else { // other toggle 
-  //     console.log("not user defined");
-  //     $scope.showMap = !$scope.showMap;
-  //     if ($scope.showMap && $scope.xlg) {
-  //       $scope.gridflex = "noFlex";
-  //     } else if ($scope.showMap && !$scope.xlg) {
-  //       $scope.gridflex = "flex-50";
-  //     }
-  //     if (!$scope.showMap) {
-  //       $scope.gridflex = "";
-  //     }
-  //   }
-
-  // };
-
   $scope.cardColumn = "2";
   $scope.gridflex = "";
 
-  $scope.openToast = function(message) {
-    $mdToast.show($mdToast.simple().content(message).position("top right"));
-    // Could also do $mdToast.showSimple('Hello');
-  };
-
-
 
   $scope.status = '  ';
-  $scope.showAlert = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    // Modal dialogs should fully cover application
-    // to prevent interaction outside of dialog
-    $mdDialog.show(
-      $mdDialog.alert()
-      .parent(angular.element(document.querySelector('#popupContainer')))
-      .clickOutsideToClose(true)
-      .title('This is an alert title')
-      .content('You can specify some description text in here.')
-      .ariaLabel('Alert Dialog Demo')
-      .ok('Got it!')
-      .targetEvent(ev)
-    );
-  };
-  $scope.showConfirm = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-      .title('Would you like to delete your debt?')
-      .content('All of the banks have agreed to <span class="debt-be-gone">forgive</span> you your debts.')
-      .ariaLabel('Lucky day')
-      .targetEvent(ev)
-      .ok('Please do it!')
-      .cancel('Sounds like a scam');
-    $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
-  };
-
   $scope.showLoginDialog = function(ev, index) {
     $scope.popUpDialogUser = index;
     $mdDialog.show({
@@ -206,9 +116,8 @@ function loginDialogController($scope, $mdDialog, $http,mainService) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
+  
   $scope.loginAsGuest = function() {
-
-    // mainService.openToast("There");
     $scope.guest = {
       username : "smallmouse892",
       password : "tunafish"
