@@ -10,7 +10,6 @@ app.service('mainService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		$mdToast.show($mdToast.simple().content(message).position(input));
 	};
 
-
 	(function(cb) {
 		$http.get('http://ipv4.myexternalip.com/json').then(function(result) {
 			// this.ip = result.data.ip;
@@ -25,43 +24,49 @@ app.service('mainService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 		}, function(e) {
 			console.log("couldn't get Ip Address", e);
 		});
-	})(function(returnData) {
-		mainService.location = returnData;
-		mainService.openToast("Semi Location Updated", "bottom right");
-		console.log("mainService.location",mainService.location);
+	})(function(returnObj) {
+		if (mainService.location === undefined){
+			mainService.location = returnObj;
+			mainService.openToast("Semi Location Updated", "bottom right");
+			clientLat = returnObj.lat;
+			clientLng = returnObj.lng;
+			for (var prop2 in mainService.users) {
+				mainService.users[prop2].apart = greatCircleMethod(mainService.users[prop2].lat, mainService.users[prop2].lon);
+			}
+		}
 	});
 
 	mainService.me = {};
+
 	socket.on('apiMe', function(data) {
 		// mainService.openToast(data,'top left');
-		console.log("mainService.me from Apime",data);
+		// console.log("mainService.me from Apime",data);
 		mainService.me = data;
 		// mainService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
-
 	});
+
 	socket.on('allRequests', function(data) { 
 		console.log("Sockets allRequests",data);
 		mainService.allRequests = data;
 	});
 
-	navigator.geolocation.watchPosition(function(showPosition) {
+	navigator.geolocation.watchPosition(function(currentPosition) {
 		mainService.openToast("Full Location Updated", "bottom right");
-		clientLat = showPosition.coords.latitude;
-		clientLng = showPosition.coords.longitude;
-
+		clientLat = currentPosition.coords.latitude;
+		clientLng = currentPosition.coords.longitude;
 
 		mainService.location = {
-			lat: showPosition.coords.latitude,
-			lng: showPosition.coords.longitude,
+			lat: currentPosition.coords.latitude,
+			lng: currentPosition.coords.longitude,
 			zoom: 10
 		};
 		myLocation = {
-			accuracy: showPosition.coords.accuracy,
-			lat: showPosition.coords.latitude,
-			lon: showPosition.coords.longitude,
+			accuracy: currentPosition.coords.accuracy,
+			lat: currentPosition.coords.latitude,
+			lon: currentPosition.coords.longitude,
 			timeStamp: Date.now(),
 		};
-		console.log("socket emit watchPosition to  Server ",myLocation);
+		// console.log("socket emit watchPosition to  Server ",myLocation);
 		socket.emit("myLocation", myLocation);
 	});
 
@@ -74,7 +79,7 @@ app.service('mainService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 			mainService.users[prop2].apart = greatCircleMethod(mainService.users[prop2].lat, mainService.users[prop2].lon);
 		}
 		
-		console.log(mainService.users);
+		// console.log(mainService.users);
 		// mainService.isUsersEmpty = Object.keys(mainService.users).length;
 
 		// if (count === 0) {

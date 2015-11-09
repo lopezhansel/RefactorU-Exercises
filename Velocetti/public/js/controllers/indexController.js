@@ -15,7 +15,7 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'mainService', '$rout
 		$scope.me = mainService.me;
 		$timeout(function() {
 			$scope.me = mainService.me;
-			console.log("$scope.me after one Second", $scope.me);
+
 		}, 1000);
 		$scope.selectedIndex = 2;
 		$scope.switchTabs = function(leftOrRight) {
@@ -27,8 +27,6 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'mainService', '$rout
 			}
 		};
 		$scope.goToProfile = function  (user) {
-			// mainService.openToast(user);
-			// console.log(user);
 		    mainService.selectUserProfile = user;
 	
 			$location.path("/profile");
