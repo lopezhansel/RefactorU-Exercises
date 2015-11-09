@@ -276,3 +276,10 @@ p.md-display-1.login-btn.ng-scope {
 
 }
 
+md-card.ng-enter{
+  animation: rubberBand 1s;
+}
+
+md-card.ng-leave{
+  animation: zoomOutRight 1s;
+}
