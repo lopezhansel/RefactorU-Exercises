@@ -17,7 +17,9 @@ app.service('mainService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 	mainService.allRequests = [];
 	socket.on('allRequests', function(data) { 
-		console.log("Sockets allRequests",data);
+		// console.log("Sockets allRequests",data);
+
+		mainService.openToast("New Request In", "top right");
 		mainService.allRequests = data;
 	});
 
