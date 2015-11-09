@@ -2,7 +2,7 @@
   <md-grid-list md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6" md-cols-gt-lg="6" md-row-height="200px" md-gutter="8px" md-gutter-gt-sm="4px" >
 
   <!-- data-ng-repeat="user in users  | filter: searchbox " > --><!-- https://docs.angularjs.org/error/filter/notarray?p0=%7B%7D -->
-  <md-grid-tile data-ng-repeat="user in users    "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards" layout="column" >
+  <md-grid-tile data-ng-repeat="user in users    "  md-rowspan="2" md-colspan="{{cardColumn}}" md-colspan-md="2" md-colspan-sm="1" class="md-padding cards animate-repeat" layout="column" >
     <md-card class="md-padding md-whiteframe-z3 userCards" flex layout="column" >
         <md-content layout='row'  >
           <img ng-src="{{::user.pictureMd}}" class="sm-card-image" alt="Movie Img" >

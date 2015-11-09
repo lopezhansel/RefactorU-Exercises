@@ -207,3 +207,71 @@ img.profileImg{
 p.md-display-1.login-btn.ng-scope {
     margin: 10px;
 }
+
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  height: auto;
+  /*border: 1px solid black;*/
+  background: white;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  height: 0px;
+  opacity: 0;
+  padding: 0 10px;
+}
+
+./*example-animate-container {
+  background:white;
+  border:1px solid black;
+  list-style:none;
+  margin:0;
+  padding:0 10px;
+}
+*/
+.animate-repeat {
+  line-height:40/px;
+  list-style:none;
+  box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+     -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+     -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+     -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+     transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+     position: relative;
+     display: block;
+     overflow: hidden;
+     text-overflow: clip;
+     white-space:nowrap;
+
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity: 0;
+     width: 0px;
+     height: 0px;
+
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity: 1;
+      width: 150px;
+      height: 30px;
+
+}

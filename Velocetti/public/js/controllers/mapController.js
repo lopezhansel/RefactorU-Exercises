@@ -1,10 +1,10 @@
-app.controller('mapController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
-	if (userService.me=== "there"){ $location.path("/login");} 
+app.controller('mapController', ['$scope', 'mainService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, mainService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
+	if (mainService.me=== "there"){ $location.path("/login");} 
 	else{
 		
-		$scope.mapMarkerss = userLocToMarkers(userService.users);
+		$scope.mapMarkerss = userLocToMarkers(mainService.users);
 		$interval(function() {
-			$scope.mapMarkerss = userLocToMarkers(userService.users);
+			$scope.mapMarkerss = userLocToMarkers(mainService.users);
 		}, 500);
 	}
 
@@ -15,14 +15,14 @@ app.controller('mapController', ['$scope', 'userService', '$routeParams', '$mdMe
 	};
 
 	$timeout(function() {
-		if (userService.location) {
+		if (mainService.location) {
 			leafletData.getMap().then(function(map) {
 				setTimeout(function() {
 					map.invalidateSize(); // this fixes Map render Bug
 				}, 200);
 			}); ////leafletData.getMap().then(function(map) {
 
-			$scope.mapCenter = userService.location;
+			$scope.mapCenter = mainService.location;
 
 			$scope.$digest();
 		} else {
@@ -32,8 +32,8 @@ app.controller('mapController', ['$scope', 'userService', '$routeParams', '$mdMe
 				}, 200);
 			}); ////leafletData.getMap().then(function(map) {
 			$timeout(function() {
-				if (userService.location) {
-					$scope.mapCenter = userService.location;
+				if (mainService.location) {
+					$scope.mapCenter = mainService.location;
 					$scope.$digest();
 
 

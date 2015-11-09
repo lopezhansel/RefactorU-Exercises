@@ -1,11 +1,11 @@
-app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
-	var userService = this;
+app.service('mainService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", function($routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location) {
+	var mainService = this;
 	var startPos;
-	userService.location = undefined;
-	userService.allRequests = [];
+	mainService.location = undefined;
+	mainService.allRequests = [];
 	var socket = io();
 
-	userService.openToast = function(message,position) {
+	mainService.openToast = function(message,position) {
 		var input = (position ===undefined)? "top right" : position;
 		$mdToast.show($mdToast.simple().content(message).position(input));
 	};
@@ -26,31 +26,31 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 	// 		console.log("couldn't get Ip Address", e);
 	// 	});
 	// })(function(returnData) {
-	// 	userService.location = returnData;
-	// 	userService.openToast("Semi Location Updated", "bottom right");
-	// 	console.log("userService.location",userService.location);
+	// 	mainService.location = returnData;
+	// 	mainService.openToast("Semi Location Updated", "bottom right");
+	// 	console.log("mainService.location",mainService.location);
 	// });
 
-	userService.me = {};
+	mainService.me = {};
 	socket.on('apiMe', function(data) {
-		// userService.openToast(data,'top left');
-		console.log("userService.me from Apime",data);
-		userService.me = data;
-		// userService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
+		// mainService.openToast(data,'top left');
+		console.log("mainService.me from Apime",data);
+		mainService.me = data;
+		// mainService.me = (data.name !== undefined) ? data.name.capitalizeFirstLetter() : "No Name";
 
 	});
 	socket.on('allRequests', function(data) { 
 		console.log("Sockets allRequests",data);
-		userService.allRequests = data;
+		mainService.allRequests = data;
 	});
 
 	navigator.geolocation.watchPosition(function(showPosition) {
-		userService.openToast("Full Location Updated", "bottom right");
+		mainService.openToast("Full Location Updated", "bottom right");
 		clientLat = showPosition.coords.latitude;
 		clientLng = showPosition.coords.longitude;
 
 
-		userService.location = {
+		mainService.location = {
 			lat: showPosition.coords.latitude,
 			lng: showPosition.coords.longitude,
 			zoom: 10
@@ -68,14 +68,14 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 
 
 	socket.on('allUsers', function(data) { 
-		userService.openToast("New Users","bottom left");
-		userService.users = data;
-		for (var prop2 in userService.users) {
-			userService.users[prop2].apart = greatCircleMethod(userService.users[prop2].lat, userService.users[prop2].lon);
+		mainService.openToast("New Users","bottom left");
+		mainService.users = data;
+		for (var prop2 in mainService.users) {
+			mainService.users[prop2].apart = greatCircleMethod(mainService.users[prop2].lat, mainService.users[prop2].lon);
 		}
 		
-		console.log(userService.users);
-		// userService.isUsersEmpty = Object.keys(userService.users).length;
+		console.log(mainService.users);
+		// mainService.isUsersEmpty = Object.keys(mainService.users).length;
 
 		// if (count === 0) {
 		// 	count++;
@@ -147,9 +147,9 @@ app.service('userService', ['$routeParams', '$mdMedia', '$mdDialog', '$mdToast',
 // 	});
 
 // }
-// var userService = this;
+// var mainService = this;
 // getLocation(function (data) {
 // 	console.log(data);
-// 	userService.location = data;
+// 	mainService.location = data;
 // });
 //////////////////////////////////////////////////////////

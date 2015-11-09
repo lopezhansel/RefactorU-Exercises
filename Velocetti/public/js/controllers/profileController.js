@@ -1,19 +1,19 @@
-app.controller('profileController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
-	function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
+app.controller('profileController', ['$scope', 'mainService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
+	function($scope, mainService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
 
 
-		// $scope.users = userService.users;
+		// $scope.users = mainService.users;
 		$timeout(function() {
-			if (userService.me === "there") {$location.path("/login"); }
-			if (userService.selectUserProfile) {
-			$scope.user = userService.selectUserProfile;
+			if (mainService.me === "there") {$location.path("/login"); }
+			if (mainService.selectUserProfile) {
+			$scope.user = mainService.selectUserProfile;
 				
 			}else{
 				
-			$scope.user = userService.me;
+			$scope.user = mainService.me;
 			}
 
-			// $scope.users = userService.users;
+			// $scope.users = mainService.users;
 		}, 50);
 
 	}

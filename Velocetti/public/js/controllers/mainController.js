@@ -8,9 +8,9 @@
 // Angular Services are SingleTons
 
 
-app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
+app.controller('mainController', ['$scope', 'mainService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout", function($scope, mainService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
   $timeout(function  () {
-    if (userService.me === "there"){ $location.path("/login");} 
+    if (mainService.me === "there"){ $location.path("/login");} 
   },200);
 
   var count = 0;
@@ -19,13 +19,13 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 
   var myLocation = {};
 
-  $scope.me = userService.me;
+  $scope.me = mainService.me;
   $timeout(function() {
-    $scope.users = userService.users;
+    $scope.users = mainService.users;
   }, 50);
   
   $interval(function() {
-    $scope.users = userService.users;
+    $scope.users = mainService.users;
   }, 1000);
   // socket.on('chatMessage', function(data) {
   //   console.log('chat message? ', data);
@@ -36,13 +36,13 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
   //   console.log(data.sender + ': ' + data.content);
   // });
 
-  // $scope.user = userService.randomUsers[$routeParams.id];
+  // $scope.user = mainService.randomUsers[$routeParams.id];
 
   $scope.showMap = false;
   $scope.selectedUser = {};
   $scope.setMapCenter = function(user) {
     $scope.selectedUser = user;
-    userService.location = {
+    mainService.location = {
         lat: user.lat,
         lng: user.lon,
         zoom: 17,
@@ -192,7 +192,7 @@ app.controller('mainController', ['$scope', 'userService', '$routeParams', '$mdM
 }]);
 
 
-function loginDialogController($scope, $mdDialog, $http,userService) {
+function loginDialogController($scope, $mdDialog, $http,mainService) {
   // console.log(currentUserPopUP);
   // $scope.popUpDialogUser = currentUserPopUP;
   $scope.loginForm = {};
@@ -208,7 +208,7 @@ function loginDialogController($scope, $mdDialog, $http,userService) {
   };
   $scope.loginAsGuest = function() {
 
-    // userService.openToast("There");
+    // mainService.openToast("There");
     $scope.guest = {
       username : "smallmouse892",
       password : "tunafish"

@@ -1,5 +1,5 @@
-app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
-	function($scope, $mdSidenav, userService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
+app.controller('indexController', ['$scope', '$mdSidenav', 'mainService', '$routeParams', '$mdMedia', '$mdDialog', '$mdToast', "$http", "$interval", 'leafletData', "$location", "$timeout",
+	function($scope, $mdSidenav, mainService, $routeParams, $mdMedia, $mdDialog, $mdToast, $http, $interval, leafletData, $location, $timeout) {
 
 		$scope.redirect = function(urlStr) {
 			$location.path(urlStr);
@@ -12,9 +12,9 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			if ($location.$$path === '/requests')  {$scope.selectedIndex = 4; }
 			return $location.$$path === urlStr;
 		};
-		$scope.me = userService.me;
+		$scope.me = mainService.me;
 		$timeout(function() {
-			$scope.me = userService.me;
+			$scope.me = mainService.me;
 			console.log("$scope.me after one Second", $scope.me);
 		}, 1000);
 		$scope.selectedIndex = 2;
@@ -27,9 +27,9 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 			}
 		};
 		$scope.goToProfile = function  (user) {
-			// userService.openToast(user);
+			// mainService.openToast(user);
 			// console.log(user);
-		    userService.selectUserProfile = user;
+		    mainService.selectUserProfile = user;
 	
 			$location.path("/profile");
 		};
@@ -66,8 +66,8 @@ app.controller('indexController', ['$scope', '$mdSidenav', 'userService', '$rout
 
 
 
-function requestController($scope, $mdDialog, $http, userService) {
-	$scope.me = userService.me;
+function requestController($scope, $mdDialog, $http, mainService) {
+	$scope.me = mainService.me;
 	console.log($scope.me);
 	$scope.hide = function() {
 		$mdDialog.hide();
@@ -77,15 +77,15 @@ function requestController($scope, $mdDialog, $http, userService) {
 	};
 	var socket = io();
 	$scope.emitNewRequest = function() {
-		console.log($scope.me.pictureMd);
+		// console.log($scope.me.pictureMd);
 		var emitObject = {
-			firstName : userService.me.firstName.capitalizeFirstLetter(),
-			lastName: userService.me.lastName.capitalizeFirstLetter(),
+			firstName : mainService.me.firstName.capitalizeFirstLetter(),
+			lastName: mainService.me.lastName.capitalizeFirstLetter(),
 			what: $scope.me.what,
-			email: userService.me.email,
+			email: mainService.me.email,
 			cell: $scope.me.cell,
-			lat: userService.location.lat,
-			lon: userService.location.lng,
+			lat: mainService.location.lat,
+			lon: mainService.location.lng,
 			timeStamp: Date.now(),
 			pictureMd : $scope.me.pictureMd
 		};
