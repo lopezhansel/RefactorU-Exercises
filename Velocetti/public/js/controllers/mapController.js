@@ -2,10 +2,11 @@ app.controller('mapController', ['$scope', 'mainService', '$routeParams', '$mdMe
 	if (mainService.me=== "there"){ $location.path("/login");} 
 	else{
 		
-		$scope.mapMarkerss = userLocToMarkers(mainService.users);
-		$interval(function() {
-			$scope.mapMarkerss = userLocToMarkers(mainService.users);
-		}, 500);
+		if (mainService.users){
+			$timeout(function() {
+				$scope.mapMarkerss = userLocToMarkers(mainService.users);
+			}, 500);
+		}
 	}
 
 	$scope.mapCenter = {
