@@ -74,6 +74,17 @@
             </div>
         </div>
         
+        <!-- <div  flex layout="column" >
+            <md-tabs  md-stretch-tabs md-selected="selectedIndex" class="md-accent">
+                <md-tab label="Home" ng-click="redirect('/home')" ></md-tab>
+                <md-tab label="Map" ng-click="redirect('/map')" ></md-tab>
+                <md-tab  label="Profile"  ng-click="redirect('/profile')"></md-tab>
+                <md-tab  label="Login"  ng-click="redirect('/login')"></md-tab>
+                <md-tab  label="Delivery Requests"  ng-click="redirect('/requests')"></md-tab>
+            </md-tabs>
+            <ng-view class="wobble" flex></ng-view>
+        </div> -->
+        
         <md-button ng-if="me !== 'there'" aria-label="menu" ng-click="newRequest($event)" class="md-fab ">
             <md-icon ><i class="material-icons ">add</i></md-icon>
         </md-button>

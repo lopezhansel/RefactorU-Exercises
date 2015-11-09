@@ -281,5 +281,5 @@ md-card.ng-enter{
 }
 
 md-card.ng-leave{
-  animation: zoomOutRight 1s;
+  animation: zoomOutDown 1s;
 }
