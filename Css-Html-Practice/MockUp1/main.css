@@ -1,0 +1,227 @@
+*{
+       box-sizing: border-box;
+}
+body{
+	background: #7F8C8D ;
+	padding: 10px;
+	font-family: sans-serif;
+}
+.main h1 {
+    font-size: larger;
+}
+
+.main p {
+    font-size: small;
+    padding: 5px 15px;
+    /* color: green; */
+}
+
+.main h2 {
+    font-size: medium;
+    border-bottom: 1px solid;
+    border-bottom-color: #B9B9B9;
+}
+
+/*===============================================================*/
+.content-wrapper{
+	max-width: 800px;
+	margin: auto;
+
+}
+
+/*===============================================================*/
+
+.header {
+	background: #2ECC71;
+	color: white;
+	border-bottom: 5px solid;
+	border-bottom-color:#27AE60;
+	height: 200px;
+	line-height: 200px;
+
+
+/*	position: relative;
+*/}
+.header .title {
+    padding: 10px;
+    font-size: x-large;
+    font-weight: 600;
+    line-height: initial;
+    vertical-align: bottom;
+    display: inline-block;
+/*    position: absolute;
+    bottom: 0;*/
+}
+/*===============================================================*/
+
+.navbar {
+	background: #34495E;
+	color: white;
+	border-bottom: 5px solid;
+	border-bottom-color: #2C3E50;
+}
+.navbar ul {
+    margin: 0;
+    text-align: right;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 10px;
+    font-size: smaller;
+}
+
+/*===============================================================*/
+.main {
+	background-color: #ECF0F1;
+	max-width: 960px;
+	margin:auto;
+	padding: 15px;
+}
+/*=========================SIDEBAR======================================*/
+.article-title-wrapper{
+	position: relative;
+}
+.sidebar{
+	position: absolute;
+	width: 200px;
+	height: 400px;
+	right: -270px;
+	background-color: white;
+}
+.sidebar p {
+	font-weight: bold;
+	font-size: medium;
+}
+.sidebar li{
+	list-style: none;
+	font-size: small;
+}
+/*==========================ARTICLE TITLE=====================================*/
+.orange{
+	color: #D3543C;
+}
+/*==========================TABLE=====================================*/
+	table{
+		width:100%;
+		text-align: left;
+		font-size: smaller;
+	}
+	td{
+		padding: 5px;
+	}
+	.table-title td {
+		background: #BDC3C7;
+		font-weight: bold;
+	}
+
+	table button{
+		background-color: #3498DB;
+		border:none;
+		color: white;
+		padding: 3px 15px;
+
+	}
+	td:nth-last-of-type(1){
+		text-align: center;
+	}
+/*===========================CODE====================================*/
+.code{
+	background: #BDC3C7;
+	padding: 25px;
+    font-size: small;
+    color: rgb(51, 51, 51);
+}
+/*===========================IMAGE====================================*/
+.ordered-list p{
+	padding: 0;
+}
+.section img{
+	width: 100%;
+}
+.credits {
+	color: #999999;
+    font-size: small;
+}
+
+/*===========================Strike====================================*/
+.strike{
+	border-bottom: 1px solid;
+	border-bottom-color: #B9B9B9;
+	margin:10px 1px;
+}
+.strike-text p{
+	color: #B9B9B9;
+	display: inline-block;
+	background-color: #ECF0F1;
+	margin-top: -24px;
+	margin-left: 30px;
+	padding: 6px 13px;
+	position: absolute;
+}
+/*===========================COMMENTER====================================*/
+.commenter-info{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	margin: 10px 0px;
+}
+.commenter-info-container{
+	padding: 5px;
+}
+.commenter-info-label{
+	width:20%;
+	float: left;
+	text-align: right;
+	padding-right: 5px;
+	margin-top: 3px;
+	font-size: small;
+}
+input.commenter-info-box{
+	width: 79%;
+	display: inline-block;
+
+}
+textarea.comment-box{
+	width:100%;
+	height: 200px;
+	margin: 10px 0;
+}
+.submit-button{
+	background-color: #C0392B;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	color: white;
+	font-size: large;
+	font-weight: 800;
+}
+
+.how-button{
+	background-color: #3498DB;
+}
+.recent-post{
+	color: #444444
+}
+/*===============================================================*/
+.submited-comment img{
+	float: left;
+}
+.submited-comment  {
+	overflow: hidden;
+	margin: 10px 0;
+	font-size: small;
+}
+.submited-comments{
+	margin:40px 0px;
+}
+.user-name{
+	font-weight: bold;
+}
+.submitted-date{
+	color: gray;
+	font-size: small;
+}
+
+/*===============================================================*/

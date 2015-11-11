@@ -1,0 +1,38 @@
+/*
+	Starter styles (do not edit)
+*/
+
+body {
+	margin: 0;
+	padding: 40px;
+	background-color: #EFEFEF;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+h2 {
+	margin-top: 0px;
+}
+
+.portfolio-item {
+	float: left;
+	margin: 10px;
+}
+
+.front, .back {
+	background: #CCC;
+	border-radius: 10px;
+}
+
+.front {
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+}
+
+.back {
+	padding: 20px;
+	width: 160px;
+	height: 160px;
+}
+

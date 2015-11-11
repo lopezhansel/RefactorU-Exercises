@@ -1,0 +1,153 @@
+/* ADD YOUR STYLES HERE */
+/*==============================Horizontally Spaced================================*/
+
+.horizontally img , .horizontally p ,.horizontally div , .horizontally ol {
+	margin-left: 30px;
+	display:inline-block;
+	float: left;
+}
+.horizontally .list {
+	display: block;
+	float: left;
+}
+/*============================Vertically Spaced==================================*/
+
+.vertical2 {
+	line-height: 200px;
+}
+.vertical2 img{
+	vertical-align: middle;
+}
+.vertical3 {
+}
+
+.vertical4{
+	padding: 100px 0;
+}
+
+.horizonList li{
+	display: inline;
+}
+/*============================Buttons==================================*/
+.btn{
+	background-color: #ED818A;
+	width: 130px;
+	border-radius:5px;
+	display: inline-block;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+	border: none;
+}
+input.btn{
+	
+}
+.one { 
+width: 180px;
+padding: 21px;font-size: x-large;}
+.two {
+	width: 150px;
+}
+.three{
+	width: 22px;
+	font-size: smaller;
+	padding: 6px;
+}
+
+/*=============================Navigation=================================*/
+.Navigation{
+	display: inline-block;
+	background-color: #ED818A;
+	border-radius: 5px;
+}
+.Navigation ul {
+    position: initial;
+    padding: 0px;
+}
+.Navigation li{
+	display: inline-block;
+	/* text-decoration: none; */
+	/* text-align: center; */
+}
+.Navigation a {
+	text-decoration: none;
+	color: white;
+	padding: 11px 32px;
+	display: inline-block;
+	/* text-align: center; */
+	/* border-radius: 5px; */
+}
+/*===========================Pagination===================================*/
+.Pagination{
+	display: inline-block;
+	color: gray;
+}
+.Pagination li{
+	display: inline-block;
+	border-bottom: solid;
+	border-bottom-color: #ED818A;
+	padding: 0px 10px;
+}
+ol.Pagination {}
+
+.Pagination a {
+    text-decoration: none;
+    color: #ED818A;
+}
+
+li.active {
+    border-bottom-color: gray;
+}
+
+li.arrow {
+    border-bottom: none;
+}
+/*==========================Comment Stream====================================*/
+.comment-box{
+	position: relative;
+	display: inline-block;
+}
+.comment-pic{
+	float: left;
+}
+.comment-content{
+	float: left;
+}
+
+/*==============================Tabs================================*/
+
+.tabs li{
+	display: inline-block;
+	margin-right: 15px;
+}
+.tabs a {
+	text-decoration: none;
+}
+.tabs-content{
+	border-radius: 5px;
+	border: solid 1px;
+	padding: 10px;
+	border-color: #A1A3C7;
+}
+.tab-selector{
+	border-top-radius: 5px;
+	border: solid 1px;
+	padding: 4px 13px;
+	border-color: #A1A3C7;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom: none;
+	margin-bottom: -2px;
+	margin: 0px -10px -2px;
+	font-weight: 700;
+}
+.second{
+	background: white;
+	border-bottom: 2px solid;
+	border-bottom-color: white;
+	z-index: 2;
+}
+ul.tabs {
+    padding-left: 22px;
+}

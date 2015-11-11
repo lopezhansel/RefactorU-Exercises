@@ -1,0 +1,56 @@
+/* ADD YOUR STYLES HERE */
+.data-table td {
+	border-bottom: solid;
+	padding-right: 50px;
+	padding-left: 5px;
+	font-size: 12px;
+	
+}
+.data-table table{
+	width: 100%;
+}
+
+.stats td{
+	border-bottom: solid;
+	border-top: solid;
+	border-color: gray;
+	padding-right: 10px;
+	text-align: center;
+}
+
+.number{
+    font-weight: bold;
+    font-size: -webkit-xxx-large;
+}
+
+.number-description{
+	font-size: small;
+	color: gray;
+}
+.instruction-answer {
+	width: 100%;
+}
+.bar-chart th {
+	text-align: right;
+
+}
+.bar-chart-table div {
+	background: red;
+}
+.lightbox {
+
+}
+
+.lbox1{
+
+}
+.lbox2{
+	background: gray;
+	padding: 75px;
+}
+.lbox3{
+
+	background: white;
+	border-radius: 5px;
+	padding:10px;
+}

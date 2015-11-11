@@ -1,0 +1,36 @@
+/* PROVIDED STYLES... DO NOT EDIT */
+
+/* Defaults */
+body {
+	font-family: Helvetica;
+	margin: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+}
+
+/* ? */
+input[type="checkbox"] {
+	-webkit-appearance: checkbox;
+}
+
+.instructions-container {
+	margin: 20px auto;
+	max-width: 800px;
+}
+
+.instruction-list > li {
+	margin-bottom: 120px;
+}
+
+.instruction-text {
+	color: #369;
+	font-weight: 300;
+	font-size: 24px;
+}
+
+.instruction-answer {
+	margin-bottom: 60px;
+	overflow: hidden;
+}

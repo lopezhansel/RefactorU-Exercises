@@ -1,0 +1,23 @@
+
+.back {
+	transform: rotateY(180deg); 
+	position: relative;	  
+}
+.front {
+	position: absolute; 	
+}
+
+ .front, .back {
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+  	transition: all .6s ease;
+}
+
+.portfolio-item:hover .front {
+	transform: rotateY(180deg);  	
+}
+
+ .portfolio-item:hover .back {
+	transform: rotateY(0deg);
+  	
+}
